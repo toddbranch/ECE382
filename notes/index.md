@@ -2,12 +2,12 @@
 
 - [Course Goals](course_goals)
 - [Foreword](foreword)
-- [Lesson 1](L1/) - Course Introduction. Architecture vs Microarchitecture.
-- [Lesson 2](L2) - Intro to the MSP430.  Machine Language.  MSP430 Programming Model.
+- [Lesson 1](L1) - Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC.
+- [Lesson 2](L2) - Assembly Lanugage.  Machine Language.  Compilation Process.  Intro to the MSP430.  MSP430 Microarchitecture.
 - [Lesson 3](L3) - MSP430 Instruction Set and Execution.
-- [Lesson 4](L4) - CompEx 1 - Introduction to the MSP430 and CodeComposer
-- [Lesson 5](L5)
-- [Lesson 6](L6)
+- [Lesson 4](L4) - Addressing Modes.  CompEx1 Intro.
+- [Lesson 5](L5) - CompEx 1 - Introduction to the MSP430 and CodeComposer
+- [Lesson 6](L6) - 
 - [Lesson 7](L7)
 - [Lesson 8](L8)
 - [Lesson 9](L9)
@@ -32,13 +32,13 @@
 - [Lesson 28](L28)
 - [Lesson 29](L29)
 - [Lesson 30](L30)
-- [Lesson 31](L31)
-- [Lesson 32](L32)
-- [Lesson 33](L33)
-- [Lesson 34](L34)
-- [Lesson 35](L35)
-- [Lesson 36](L36)
-- [Lesson 37](L37)
-- [Lesson 38](L38)
-- [Lesson 39](L39)
-- [Lesson 40](L40)
+- [Lesson 31](L31) - GR #2
+- [Lesson 32](L32) - Timer System (Input Capture / Output Compare).  Pulse Width Modulation.  Gate Array Logic.
+- [Lesson 33](L33) - [**Lab 5**]()- Robot Motion
+- [Lesson 34](L34) - [**Lab 5**]() - Robot Motion
+- [Lesson 35](L35) - [**Lab 5**]() - Robot Motion
+- [Lesson 36](L36) - Analog-to-Digital and Digital-to-Analog Conversion
+- [Lesson 37](L37) - [**Lab 6**]() - Robot Sensing
+- [Lesson 38](L38) - [**Lab 7**]() - Robot Maze
+- [Lesson 39](L39) - [**Lab 7**]() - Robot Maze
+- [Lesson 40](L40) - [**Lab 7**]() - Robot Maze / Competition
