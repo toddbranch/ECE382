@@ -3,24 +3,25 @@
 - [Course Goals](course_goals)
 - [Foreword](foreword)
 - [Lesson 1](L1) - Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC.
-- [Lesson 2](L2) - Assembly Lanugage.  Machine Language.  Compilation Process.  Intro to the MSP430.  MSP430 Microarchitecture.
-- [Lesson 3](L3) - MSP430 Instruction Set and Execution.
+- [Lesson 2](L2) - Assembly and Machine Languages.  Intro to the MSP430.  MSP430 Architecture.
+- [Lesson 3](L3) - MSP430 Instruction Set.  MSP430 Execution Model.  Converting Assembly to Machine Code.
 - [Lesson 4](L4) - Addressing Modes.  CompEx1 Intro.
-- [Lesson 5](L5) - CompEx 1 - Introduction to the MSP430 and CodeComposer
-- [Lesson 6](L6) - 
-- [Lesson 7](L7)
-- [Lesson 8](L8)
-- [Lesson 9](L9)
-- [Lesson 10](L10)
-- [Lesson 11](L11)
-- [Lesson 12](L12)
-- [Lesson 13](L13)
+- [Lesson 5](L5) - CompEx1 - Introduction to the MSP430 and CodeComposer
+- [Lesson 6](L6) - Movement Instructions.  Flow of Control.
+- [Lesson 7](L7) - Arithmetic / Logic, Shift / Rotate Instructions.
+- [Lesson 8](L8) - Directives.  Assembly Process.  CompEx2 Introduction.
+- [Lesson 9](L9) - CompEx2 - Loops / Branches.  "Simple Calculator"
+Maybe switch CompEx2 to fibonacci numbers or factorial or something like that.  Speed profile always seemed irrelevant.  Still can do pass-by-ref vs pass-by-val.  Would make it more manageable for single period.
+- [Lesson 10](L10) - The Stack.  Subroutines.  CompEx3 Introduction.
+- [Lesson 11](L11) - CompEx3 - Subroutines.  "Robot Speed Profile".
+- [Lesson 12](L12) - Ports.  GPIO.
+- [Lesson 13](L13) - Polling.  Debouncing.  Software Delay Routines.
 - [Lesson 14](L14)
 - [Lesson 15](L15)
-- [Lesson 16](L16)
-- [Lesson 17](L17)
-- [Lesson 18](L18)
-- [Lesson 19](L19)
+- [Lesson 16](L16) - GR #1
+- [Lesson 17](L17) - Compilers.  Introduction to C.
+- [Lesson 18](L18) - C Programming - Structs, Functions, and Headers.
+- [Lesson 19](L19) - 
 - [Lesson 20](L20)
 - [Lesson 21](L21)
 - [Lesson 22](L22)
@@ -34,11 +35,11 @@
 - [Lesson 30](L30)
 - [Lesson 31](L31) - GR #2
 - [Lesson 32](L32) - Timer System (Input Capture / Output Compare).  Pulse Width Modulation.  Gate Array Logic.
-- [Lesson 33](L33) - [**Lab 5**]()- Robot Motion
-- [Lesson 34](L34) - [**Lab 5**]() - Robot Motion
-- [Lesson 35](L35) - [**Lab 5**]() - Robot Motion
+- [Lesson 33](L33) - [Lab 5]()- Robot Motion
+- [Lesson 34](L34) - [Lab 5]() - Robot Motion
+- [Lesson 35](L35) - [Lab 5]() - Robot Motion
 - [Lesson 36](L36) - Analog-to-Digital and Digital-to-Analog Conversion
-- [Lesson 37](L37) - [**Lab 6**]() - Robot Sensing
-- [Lesson 38](L38) - [**Lab 7**]() - Robot Maze
-- [Lesson 39](L39) - [**Lab 7**]() - Robot Maze
-- [Lesson 40](L40) - [**Lab 7**]() - Robot Maze / Competition
+- [Lesson 37](L37) - [Lab 6]() - Robot Sensing
+- [Lesson 38](L38) - [Lab 7]() - Robot Maze
+- [Lesson 39](L39) - [Lab 7]() - Robot Maze
+- [Lesson 40](L40) - [Lab 7]() - Robot Maze / Competition

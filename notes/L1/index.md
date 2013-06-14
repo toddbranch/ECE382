@@ -1,6 +1,7 @@
 # Lesson 1 Notes
 
 ## Readings
+- [Embedded System](http://en.wikipedia.org/wiki/Embedded_system)
 - [RISC vs CISC](http://www-cs-faculty.stanford.edu/~eroberts/courses/soco/projects/risc/risccisc/)
 
 ## Lesson Outline
@@ -11,20 +12,24 @@
 - Architecture vs Microarchitecture
 
 ## Course Intro
-Welcome to ECE382.  In this class, we'll learn about computers - how they work and how we use them to accomplish tasks.
+Welcome to ECE382, Embedded Systems I.  In this class, we'll learn about computers - how they work and how we use them to accomplish tasks.
 My goal is for you to leave this course with enough excitement and knowledge to be dangerous.
 
-We're going to get very hands-on and expect you to build things that actually work.  By the end of the semester, you'll program this robot to navigate this maze. (DEMO)
+What are embedded systems?  You're familiar with general-purpose computers- devices that are designed to be flexible and accomodate a wide range of needs.  Embedded systems are built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.
 
-TODO: Need more motivation in this section.  Why do they care?
+I think that this area of computing is going to be a big part of the future.  
+[Lemnos Labs / Momentum Machines](http://www.trendhunter.com/trends/machine-that-makes-burgers)
+
+But even if you don't agree with this vision, learning about computers at a low level gives you an great insight into how these machines actually work.  You'll develop skills that will make you a better engineer, regardless of your ultimate focus.
+
+We're going to get very hands-on and expect you to build things that actually work.  By the end of the semester, you'll program this robot to navigate this maze. [DEMO]
 
 ## Instructor Intro
 
 [Capt Todd Branchflower](branchflower.html) - Course Director  
 [Dr. George York](york.html)  
 
-TODO: Talk about how this course aligns with my interests.
-I have an interest in Linux and low-level system programming.  The stuff we teach in this course is extremely relevant to that.
+Capt Branchflower - I have an interest in Linux and low-level system programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
 ## Admin
 - Show course website, walk through structure - goal is to have everything you need on here
@@ -102,3 +107,6 @@ TODO: Image showing me SSHing in and displaying processor info.
 ### RISC vs CISC
 ISAs fall into two different categories.
 
+In the past, we worked with the Motorola 68S12, which used a CISC architecture.  
+
+This semester, we'll be working with the MSP430.  It uses a RISC architecture.  **Insert some general characteristics about the MSP430**.
