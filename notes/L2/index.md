@@ -3,10 +3,13 @@
 ## Readings
 
 ## Lesson Outline
-- Architecture
 - Intro to the MSP430
-- MSP430 Execution
-- MSP430 Instruction Set
+- MSP430 Architecture
+- Assembly and Mahcine Languages
+
+## Intro to the MSP430
+
+**Issue Launchpad Kits**
 
 ## Architecture
 Remember, the Instruction Set Architecture (ISA) is the programmer's API into the CPU.
@@ -18,6 +21,35 @@ Any architecture will consist of:
 - registers
 - interaction with memory
 - program counter
+
+## MSP430 Architecture
+- RISC architecture
+
+- Set of Operations
+    - 27 Instructions in 3 families
+        - Single-operand arithmetic
+        - Conditional jump
+        - Two-operand arithmetic
+
+- Registers
+    - Four special purpose
+        - r0 - Program Counter
+        - r1 - Stack Pointer
+        - r2 - Status Register
+        - r3 - Constant Generator
+    - 12 general purpose
+
+- Interaction with Memory
+
+- Little Endian
+    - Discuss endianness (Big vs Little Endian)
+    - Endianness is concerned with the ordering of bytes on a computer.
+    - Little Endian means the least significant byte of a chunk of data is stored at the lowest memory address.
+        - The MSP430 and your computer, presuming you run an x86_64 processor use this.
+    - Big Endian means the most significant byte of a chunk of data is stored at the lowest memory address.
+        - The 68S12 we used last semester used this
+
+## Assembly and Machine Languages
 
 ### Assembly Language
 Now that we're familiar with our API, how do we interact with it?  How do we talk to the computer?
@@ -94,38 +126,8 @@ In semesters past, we've spent a lot of time working directly with assembly.  A 
 
 Since the code we'll be writing isn't for the machine we're running on, we'll be using a **cross-assembler**.  All this means is the assembler is creating machine code for an architecture different than what it's running on.
 
-## Intro to the MSP430
+**Let's write our first MSP430 program.**
 
-
-## MSP430 Architecture
-- RISC architecture
-
-- Set of Operations
-    - 27 Instructions in 3 families
-        - Single-operand arithmetic
-        - Conditional jump
-        - Two-operand arithmetic
-
-- Registers
-    - Four special purpose
-        - r0 - Program Counter
-        - r1 - Stack Pointer
-        - r2 - Status Register
-        - r3 - Constant Generator
-    - 12 general purpose
-
-- Interaction with Memory
-
-- Little Endian
-    - Discuss endianness (Big vs Little Endian)
-    - Endianness is concerned with the ordering of bytes on a computer.
-    - Little Endian means the least significant byte of a chunk of data is stored at the lowest memory address.
-        - The MSP430 and your computer, presuming you run an x86_64 processor use this.
-    - Big Endian means the most significant byte of a chunk of data is stored at the lowest memory address.
-        - The 68S12 we used last semester used this
-
-## MSP430 Execution
-A simple MSP430 program:
 ```
 .text
     main:
@@ -139,4 +141,4 @@ A simple MSP430 program:
 
 [DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]
 
-Let's walk through execution.
+**We'll walk through how this program executes in the next lesson.**

@@ -6,8 +6,8 @@ Davies 5.2 (pp125 - pp131)
 
 *Note*: Davies is great for walking through each addressing mode step-by-step and showing how it's relevant to higher-level programming.  MSP430 Addressing Modes addresses some of the nuances and conversion to machine code.
 
-## Assignemnt
-[Addressing Modes]()
+## Assignment
+[Addressing Modes](/ECE382/assignments/L4_addressing_modes.html)
 
 ## Lesson Outline
 - Addressing Modes

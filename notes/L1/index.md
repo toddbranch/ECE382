@@ -116,6 +116,9 @@ In fact, the router I use at home runs MIPS and embedded Linux.
 ### RISC vs CISC
 ISAs fall into two different categories, RISC and CISC.
 
-In the past, we worked with the Motorola 68S12, which used a CISC architecture.  
+**TODO: add RISC vs CISC section**
 
-This semester, we'll be working with the MSP430.  It uses a RISC architecture.  **Insert some general characteristics about the MSP430**.
+In the past, we worked with the Motorola 68S12, which used a CISC architecture.  
+*[Show old S12 reference book as example of volume of instructions]*
+
+This semester, we'll be working with the MSP430.  It uses a RISC architecture.  It has a grand total of 27 instructions.

@@ -3,7 +3,7 @@
 - [Course Goals](course_goals)
 - [Foreword](foreword)
 - [Lesson 1](L1/index.html) - Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC.
-- [Lesson 2](L2/) - Assembly and Machine Languages.  Intro to the MSP430.  MSP430 Architecture.
+- [Lesson 2](L2/) - Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Languages.
 - [Lesson 3](L3/) - MSP430 Instruction Set.  MSP430 Execution Model.  Converting Assembly to Machine Code.
 - [Lesson 4](L4/) - Addressing Modes.  CompEx1 Intro.
 - [Lesson 5](L5/) - CompEx1 - Introduction to the MSP430 and CodeComposer.  Blink the light.
