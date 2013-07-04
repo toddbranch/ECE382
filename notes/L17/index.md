@@ -34,13 +34,13 @@ What are some benefits of using these over programming in assembly?
 
 *Some perspective*: everything that happens on a computer is machine code.  What do we use to generate machine code?  The assembler.  So every program you write ultimately becomes assembly code, then machine code.
 
-*Remember our workflow*: assembly code --> assembler --> relocatable machine code --> linker --> executable
+*Remember our workflow*: **assembly code --> assembler --> relocatable machine code --> linker --> executable**
 
 The compiler adds a layer on top of that.  It converts code written in a higher language into assembly, which can then be fed into the rest of our process:  
 
 **HLL --> compiler --> assembly code --> assembler --> relocatable machine code --> linker --> executable**
 
-or, since we'll be compiling and assembling code for a different architecture:  
+or, since we'll be compiling and assembling code for a different architecture than the one our computer is running, we'll be using a cross-compiler / cross-assembler:  
 
 **HLL --> cross-compiler --> assembly code --> cross-assembler --> relocatable machine code --> linker --> executable**
 
@@ -69,7 +69,8 @@ The HLL we'll use for the remainder of the course is C.  C is one of the most wi
 - almost anything embedded , device drivers
 
 **C is a portable, higher-level assembly.  That's the way you should think about it.**  
-The reason it's still used in many modern applications is that it gives you a lot of control over the generated assembly - making it FAST and MEMORY EFFICIENT.
+Great programmers use C very precisely to generate the exact assembly they want to perform a given task - so it's important to understand how the C constructs we'll learn about map to assembly.  I'll save that for a later lesson.
+The reason it's still used in many modern applications is that it gives you a lot of control over the generated assembly - making it FAST and MEMORY EFFICIENT.  
 
 *[Open up vim and code in front of the class]*
 

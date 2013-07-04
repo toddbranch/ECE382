@@ -1,6 +1,8 @@
 # Lesson 2 Notes
 
 ## Readings
+Assembler
+Linker
 
 ## Lesson Outline
 - Intro to the MSP430
@@ -9,37 +11,79 @@
 
 ## Intro to the MSP430
 
+The family of microcontrollers we'll be working with for the remainder of the semester is TI's MSP430 - it's the first semester we've ever used it.  For the past many years, we've used Motorola's 68S12 as our platform - but it had become less relevant and the tools we used were no longer being supported.  Last year, I went out looking for a platform that would be easy to learn, but still relevant.  The MSP430 is an industry leader in low-cost, low-power consumption embedded applications - and it uses a RISC architecture with just 27 instructions.
+
+[Products in the Wild Using MSP430](http://www.43oh.com/2012/03/winner-products-using-the-msp430/)
+
+Suffice to say, this chip is used by engineers to create real-world products that you've probably interacted with before.  Cool!
+
+The other cool thing - they're cheap!  The MSP430 Launchpad development kit costs only $5 including shipping, so you can definitely get your own if you want to experiment with this beyond the semester.  We can also get replacement chips cheaply for when you inevitably burn them out.
+
 **Issue Launchpad Kits**
 
+For the rest of the semester, you'll be using these kits along with CodeComposer or msp430-gcc to learn about the msp430 and build things with it.  I'll be the goto guy for msp430-gcc if you truly want to and Dr. York will be the goto guy for CodeComposer.
+
 ## Architecture
+Ok, back to the dirty details about computer architecture.
+
 Remember, the Instruction Set Architecture (ISA) is the programmer's API into the CPU.
 
 Any architecture will consist of:
 
 - set of operations (instructions)
-- data units (sizes, addressing modes, etc)
 - registers
-- interaction with memory
-- program counter
+- data units 
+- addressing modes
+- memory organization
 
 ## MSP430 Architecture
 - RISC architecture
+    - fewer instructions
+    - emulates higher-level instructions
+    - 16-bit datapath
+        - word size is 16 bits
+        - all instructions are 16 bits long
 
 - Set of Operations
     - 27 Instructions in 3 families
         - Single-operand arithmetic
+            - 
         - Conditional jump
+            - 
         - Two-operand arithmetic
+            - 
 
-- Registers
+- Registers - 16 bits wide
+    - fast memory that holds values in-use by the CPU
     - Four special purpose
-        - r0 - Program Counter
-        - r1 - Stack Pointer
-        - r2 - Status Register
-        - r3 - Constant Generator
+        - r0 - Program Counter - holds address of instruction currently being executed
+        - r1 - Stack Pointer - address of top of stack
+        - r2 - Status Register - holds flags related to various conditions
+        - r3 - Constant Generator - 0, but can assume other values for different addressing modes (L4)
     - 12 general purpose
 
-- Interaction with Memory
+- Data Units
+    - word size is 16 bits
+    - instructions for byte and word actions
+    - words must use even memory address
+    - byte-addressable
+
+**TODO: add addressing modes**  
+
+- Addressing Modes
+    - 
+
+- Memory Organization
+
+![MSP430 Memory Map](memory_map.jpg)
+
+*[Briefly discuss what each section is used for, etc.]*
+
+We'll be working with the **msp430g2553** variant.  
+512b of RAM - 0x200-0x400  
+16kb of ROM - 0xc000-0xffdf  
+
+0x1100-0xc000 is empty!  There is no memory backing it up!  Other variants of the msp430 might use it, but ours is specialized for purposes that don't need much memory - making it cheaper.  If you attempt to write to this area of memory, you'll trigger what's essentially a **segmentation fault** because that memory doesn't exist.  It will cause the chip to do a Power-up Clear (PUC), essentially resetting the state of your processor.
 
 - Little Endian
     - Discuss endianness (Big vs Little Endian)
@@ -54,91 +98,88 @@ Any architecture will consist of:
 ### Assembly Language
 Now that we're familiar with our API, how do we interact with it?  How do we talk to the computer?
 
-- To command a computer, you must understand its language:
+- To command a computer, you must understand its language (ISA):
     - **Instructions:** words in a computers language
     - **Instruction Set:** the dictionary of the language
+
+So we're going to write some instructions out of its instruction set.  
+As I said earlier, the MSP430 has 27 instructions in its instruction set.  How do we write them?
+
 - Instructions indicate the operation to perform and the instructions to use
     - **Assembly Language:** human-readable format of computer instructions
     - **Machine Language:** computer-readable instructions - binary (1's and 0's)
 
+Computers run on 1s and 0s - machine code.  Assembly is the human-readable equivalent.  For the first half of this course, we'll be writing in assembly.  We use an **assembler** to convert from assembly to machine code.
+
 ### Assembly Process
-**Machine vs Assembly**
-
-Computers run on machine code, so why even worry about assembly?  Because machine code is hard to read.  Here's some machine code (in hex) for a factorial program on the MSP430:
-```
-  0x0000c000    55422001 35d0085a 82450002 31400004 
-  0x0000c010    3f400000 0f930824 92420002 20012f83 
-  0x0000c020    9f4fbcc0 0002f823 3f400000 0f930724 
-  0x0000c030    92420002 20011f83 cf430002 f9230441 
-  0x0000c040    24533150 d8ff3f40 0500b012 6ec0844f 
-  0x0000c050    d6ff3f40 0900b012 6ec0844f fcff0f43 
-  0x0000c060    31502800 32d0f000 fd3f3040 bac00412 
-  0x0000c070    04412453 2183844f fcff8493 fcff0324 
-  0x0000c080    9493fcff 02201f43 093c1f44 fcff3f53 
-  0x0000c090    b0126ec0 1e44fcff b012a2c0 21533441 
-  0x0000c0a0    30410d4f 0f430e93 072412c3 0d100128 
-  0x0000c0b0    0f5e0e5e 0d93f723 30410013          
-```
-
-Here's the equivalent assembly.  It's not beautiful because it was produced by a compiler, but much easier to read.  Assembly is the human-readable equivalent of machine code.
-```
-factorial:
-	push	r4
-	mov	r1, r4
-	add	#2, r4
-	sub	#2, r1
-	mov	r15, -4(r4)
-	cmp	#0, -4(r4)
-	jeq	.L2
-	cmp	#1, -4(r4)
-	jne	.L3
-.L2:
-	mov	#1, r15
-	jmp	.L4
-.L3:
-	mov	-4(r4), r15
-	add	#llo(-1), r15
-	call	#factorial
-	mov	-4(r4), r14
-	call	#__mulhi3
-.L4:
-	add	#2, r1
-	pop	r4
-	ret
-main:
-	mov	r1, r4
-	add	#2, r4
-	add	#llo(-40), r1
-	mov	#5, r15
-	call	#factorial
-	mov	r15, -42(r4)
-	mov	#9, r15
-	call	#factorial
-	mov	r15, -4(r4)
-	mov	#0, r15
-	add	#40, r1
-```
-
-*\[DEMO - show [C code](factorial.c) that was compiled to generate this\]*
-
-In semesters past, we've spent a lot of time working directly with assembly.  A lot of people complained that it's irrelevant - could not be farther from the truth.  Every single program that runs on your computer followed this process.  Every single program becomes assembly code.
-*[Demo - disassemble 'ls' command and show x86_64 assembly]*
-
-Since the code we'll be writing isn't for the machine we're running on, we'll be using a **cross-assembler**.  All this means is the assembler is creating machine code for an architecture different than what it's running on.
-
-**Let's write our first MSP430 program.**
+**Let's write our first MSP430 program.**  
+*[DEMO Open vim and write this program]*
 
 ```
+; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
+
+.equ    WDTPW, 0x5a00
+.equ    WDTHOLD, 0x0080
+.equ    WDTCTL, 0x0120
+.equ    P1DIR, 0x0022
+.equ    P1OUT, 0x0021
+
 .text
-    main:
+main:
+    mov.w   #WDTPW, r15
+    xor.w   #WDTHOLD, r15
+    mov.w   r15, &WDTCTL
     bis.b   #0xFF, &P1DIR
     bis.b   #0xFF, &P1OUT
+loop:
+	jmp loop
 
 .section ".vectors", "a"
     .org    0x1e
     .word   main
 ```
 
+*Walk through the basic idea of the program.*
+
+For the machine to be able to execute our code, we have to convert it to machine code.  That's where the assembler comes in.
+
+Here's the first step of our assembly process:
+**Assembly Language Program --> Assembler --> Relocatable Object Code**
+
+Since the code we'll be writing isn't for the machine we're running on, we'll be using a **cross-assembler**.  All this means is the assembler is creating machine code for an architecture different than what it's running on.
+
+To accomplish it, I run the command `msp430-as -mmcu=msp430g2553 lightLED.S -o lightLED.o`
+
+The output is a file called lightLED.o - a file containing relocatable object code.  Here's what the machine code looks like:
+
+```
+Hex dump of section '.text':
+  0x00000000 3f40005a 3fe08000 824f2001 f2d32200 
+  0x00000010 f2d32100 b0120000 ff3f             
+```
+Are we good to go?  Can we just load this on our MCU?  No!
+
+Think back to our memory map - can we write this region of memory?  No, that's where our registers and memory-mapped peripherals are.
+
+This file is formatted this way so that its code is relocatable.  In the future, we may want to combine this with code from other files to create a single executable.  So we need something that can potentially combine multiple object code files and place their code at the correct memory location depending on the MCU.  The tool we use for this job is called a **linker**.
+
+**Assembly Language Program --> Assembler --> Relocatable Object Code --> Linker --> Executable Binary**
+
+To accomplish this, I run the command `msp430-ld lightLED.o -o lightLED.elf -L /usr/msp430/lib/ldscripts/msp430g2553 -T /usr/msp430/lib/ldscripts/msp430.x`
+
+*[Show memory.x file for msp430g2553]* - this is how the linker knows memory map for our particular chip.
+
+Here's what the machine code looks like now:
+```
+Hex dump of section '.text':
+  0x0000c000 3f40005a 3fe08000 824f2001 f2d32200
+  0x0000c010 f2d32100 b0121ac0 ff3fc243 21003041
+```
+It's located at c000, the start of our flash ROM block!  Great!  Now we can use it to program the chip.
+
 [DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]
 
 **We'll walk through how this program executes in the next lesson.**
+
+In years past, we've spent a the entire semester working directly with assembly.  A lot of people complained that it's irrelevant - could not be farther from the truth.  Every single program that runs on your computer followed this process.  Every single program becomes assembly code.  
+*[Demo - disassemble 'ls' command and show x86_64 assembly]*

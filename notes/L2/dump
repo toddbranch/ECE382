@@ -1,0 +1,6 @@
+
+Hex dump of section '.text':
+ NOTE: This section has relocations against it, but these have NOT been applied to this dump.
+  0x00000000 3f40005a 3fe08000 824f2001 f2d32200 ?@.Z?....O ...".
+  0x00000010 f2d32100 b0120000 ff3f              ..!......?
+
