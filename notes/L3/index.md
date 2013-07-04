@@ -43,9 +43,9 @@ loop:
     .org    0x1e
     .word   main
 ```
-Ok, let's send it through our assembly process and load it onto our chip.  It works!  Just like last time.  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
+Let's send it through our assembly process and load it onto our chip.  It works!  Just like last time.  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
 
-I'll **disassemble** the executable to give us a better idea of where the linker wound up placing our instructions.
+I'll **disassemble** the executable to give us a better idea of where the linker wound up placing our instructions.  Disassembly is the process of converting machine code into assembly language.
 ```
 Disassembly of section .text:
 
@@ -59,6 +59,12 @@ Disassembly of section .text:
 0000c014 <loop>:
     c014:	ff 3f       	jmp	$+0      	;abs 0xc014
 ```
+
+To analyze how this program works, I'm going to use a tool called a **debugger**.  It allows us to step through code gradually and monitor the impact of different instructions on the state of the chip.  The debugger I'll use is call **gdb** (GNU Debugger) and can be used to debug programs on just about any architecture there is.
+
+Looking at our disassembled program, at what address does our program begin?  0xc000.  
+
+**Say something about the clock, clock speed, how long each instruction takes to execute**
 
 ## MSP430 Instruction Set
 
