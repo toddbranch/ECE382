@@ -113,7 +113,7 @@ Computers run on 1s and 0s - machine code.  Assembly is the human-readable equiv
 
 ### Assembly Process
 **Let's write our first MSP430 program.**  
-*[DEMO Open vim and write this program]*
+*[DEMO Open vim and write this program, walking through instructions as they're written]*
 
 ```
 ; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
@@ -178,6 +178,23 @@ Hex dump of section '.text':
 It's located at c000, the start of our flash ROM block!  Great!  Now we can use it to program the chip.
 
 [DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]
+
+Let's disassemble the program.  This will take our executable and attempt to convert it back to assembly.  It gives us a good idea of which hex bytes correspond to which instructions.
+
+```
+Disassembly of section .text:
+
+0000c000 <__ctors_end>:
+    c000:	3f 40 00 5a 	mov	#23040,	r15	;#0x5a00
+    c004:	3f e0 80 00 	xor	#128,	r15	;#0x0080
+    c008:	82 4f 20 01 	mov	r15,	&0x0120	
+    c00c:	f2 d3 22 00 	bis.b	#-1,	&0x0022	;r3 As==11
+    c010:	f2 d3 21 00 	bis.b	#-1,	&0x0021	;r3 As==11
+
+0000c014 <loop>:
+    c014:	ff 3f       	jmp	$+0      	;abs 0xc014
+```
+From this disassembly, how can we tell if this is big-endian or little-endian?
 
 **We'll walk through how this program executes in the next lesson.**
 
