@@ -16,15 +16,28 @@ Davies 5.2 (pp125 - pp131)
 
 ## Addressing Modes
 
-### Register Mode
+Last lesson, we discussed the MSP430 instruction set and ended with converting a few instructions from assembly language to machine code.  We noticed that in order to convert from assembly language to machine code, you've got to have an excellent understanding of the instruction to include the **addressing modes** it uses to reference its operands.
 
-Referencing one or two registers in the CPU.
+![Addressing Modes](../L3/images/addressing_modes.jpg)
 
+![Assembly to Machine Code](images/assembly_to_machine.jpg)
+
+Today, we're going to cover the full range of MSP430 addressing modes, practice some more conversion from assembly to machine code, and introduce you to your first computer exercise.
+
+### Register Mode or Register Direct
+
+This is the most straight-forward addressing mode - taking information directly from the CPUs registers.  If used in a one-operand instruction, the Ad value is `00`.  If used in a two operand instruction, Ad would be `0` because there are only two available addressing modes.  As would be `00`.
+
+A few examples:
 ```
-mov.w   r11,r10     ;move the word from r11 into r10
-bis.b   r7, r6      
-xor.w   r5          ;flip the bits in r5
+mov.w   r11,r10     ;move the word from r11 into r10 - both the source and destination addressing modes are register direct
+
+bis.b   #0xFF, r6   ;set all the bits in r6.  in this instruction, only the destination addressing mode would be register direct 
+
+inv.w   r5          ;remember, inv is an *emulated instruction* - it translates to xor #-1, r5 - only the destination addressing mode would be register direct
+
 push    r9          ;push the value in r9 onto the stack
+
 swpb    r10         ;swap the upper and lower byte of r10
 ```
 
@@ -94,7 +107,7 @@ Is not the same as:
 ```
 mov.b   &P1OUT,r7
 ```
-## Converting to Machine Code
+## More Conversion to Machine Code
 
 What's the instruction size of the MSP430?  16 bits!  
 Only takes a single clock cycle.

@@ -46,7 +46,7 @@ loop:
     .org    0x1e
     .word   main
 ```
-What was the role of the `.equ` statements?  What does the `.text` directive do?  Briefly walk through program again.
+What was the role of the `.equ` statements?  What does the `.text` directive do?  Briefly walk through program again.  I'm pulling up a copy of the same program, but I've abstracted the `.equ` statements into a header file and used it using the `.include` directive.  *[Bring it up in vim]*
 
 Let's send it through our assembly process and load it onto our chip.  It works!  Just like last time.  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
 
@@ -77,9 +77,6 @@ View registers - $pc holds 0xc000!  What's this instruction do?  What's the addr
 
 *[Go through instruction by instruction until it's clear everyone gets it]*
 
-**Instruction Length**  
-Instruction length is primarily based on addressing mode, which we'll talk about next time.
-
 **Execution Time**  
 The time it takes to execute an instruction varies based on the clock speed of the CPU and the number of cycles a given instruction takes to execute.  The msp430g2553 has a clock that defaults to around 1.1MHz, but can be configured to run at up to 16MHz.  We'll talk about this more further along in the semester.
 
@@ -91,13 +88,15 @@ Debuggers are a tool we'll use a lot.  Here's some more cool features that will 
 
 ## MSP430 Instruction Set
 
-As I said last lesson, the MSP430 has only 27 native instructions.  There are three instruction formats, each contained in their own table below.  These tables are all taken from [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html). 
+As I said last lesson, the MSP430 has only 27 native instructions.  There are three instruction formats - one operand, relative jumps, and two operand.  These tables are all taken from [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html). 
 
-Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All instructions are 16 bits long.
+Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All instructions are 16 bits long.  Their binary format looks like this:
 
-![Assembly to Machine Code](assembly_to_machine.jpg)
+![Assembly to Machine Code](images/assembly_to_machine.jpg)
 
-If instructions could be both word or byte instructions, they're word by default.  You can specify byte by appending .B to the instruction.  You can also explicitly add .W for word, but that's unnecessary.
+If instructions can be both word or byte instructions, they're word by default.  You can specify byte by appending .B to the instruction.  You can also explicitly add .W for word, but that's unnecessary.
+
+We'll go through these in a lot more detail as the semester goes on - so I don't expect you to know all of them right now.
 
 ### One Operand Instructions
 
@@ -118,7 +117,7 @@ These are of the format `RRA    r10`.
 
 These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.
 
-| Opcode | Assembly Instruction | Description |
+| Condition Code | Assembly Instruction | Description |
 | :---: | :---: | :---: |
 | 000 | JNE/JNZ | Jump if Z==0 (if `!=`) |
 | 001 | JEQ/Z | Jump if Z==1 (if `==`) |
@@ -190,12 +189,12 @@ Shift / rotate left are emulated with ADD.
 | RLA(.B) | ADD(.B) dst, dst |
 | RLC(.B) | ADDC(.B) dst, dst |
 
-Some commond one-operand instructions:
+Some common one-operand instructions:
 
 | Emulated Instruction | Assembly Instruction |
 | :---: | :---: | :---: |
 | INV(.B) dst | XOR(.B) #-1, dst |
-| INV(.B) dst | MOV(.B) #0, dst |
+| CLR(.B) dst | MOV(.B) #0, dst |
 | TST(.B) dst | CMP(.B) #0, dst |
 
 Increment / decrement:
@@ -215,7 +214,59 @@ Adding / subtracting using only the carray bit:
 | DADC(.B) dst | DADDC(.B) #0, dst |
 | SBC(.B) dst | SUBC(.B) #0, dst |
 
-## Converting Assembly to Machine Code
-How can we be sure that the assembler is doing its job?  How can we know that it is producing the proper machine code for the instructions we've given it?
+Here's a sample program using some of these instructions.  Let's walk through it using our **debugger**.
+```
+.include "header.s"
 
-![Assembly to Machine Code](assembly_to_machine.jpg)
+.text
+main:
+    ;disable watchdog timer
+    mov     #WDTPW, r10
+    xor     #WDTHOLD, r10
+    mov     r10, &WDTCTL
+    ;initialize stack
+    mov     #RAMEND, r1
+
+    ;code
+    mov.b     #0x75, r10
+    add.b     #0xC7, r10
+    ;result should be 0x13c, so we should see 3c in r10 and carry bit set
+    adc     r10
+    ;since carry bit was set, this should increment r10 to 3d
+    inv.b     r10
+    ;invert, so r10 should be c2
+    mov.w   #0x00aa, r10
+    sxt     r10
+    ;sign extend should clear upper 8 bits
+    inv     r10 
+
+forever:
+    jmp     forever
+
+.section    ".vectors", "a"
+.org    0x1e
+    .word   main
+```
+
+## Converting Assembly to Machine Code
+How can we be sure that the assembler is doing its job?  How can we know that it is producing the proper machine code for the instructions we've given it?  The table I showed initially gives us the tools to manually convert assembly to machine code as well as the reverse
+
+Our three types of instructions and their binary breakdown:
+
+![Assembly to Machine Code](images/assembly_to_machine.jpg)
+
+Our available addressing modes (we'll learn more about this next time) and their binary breakdown:
+
+![Addressing Modes](images/addressing_modes.jpg)
+
+First, let's convert a single-operand instruction - `SXT r10`
+
+The first six bits are always `000100`.  Next comes the opcode, which we'll look up - it's `011`.  Since this is a word instruction, B/W will be `0` - byte would be 1.  We'll learn about addressing modes tomorrow, but the addressing mode we use here is called Register Direct and is coded by `00`.  Finally, we have to specify our destination register r10 - what's the binary for 10?  `1010`.  So our hand-assembled machine code instruction is `0001000110001010` or `8a 11` in little-endian hex.
+
+Let's try a relative jump instruction - `JMP $0` - this instruction would jump to itself, a forever loop.
+
+The first 3 bits will always be `001`.  Next, we'll find the condition code - `111`.  Finally, we need to calculate the PC offset - -2 in our case, since the PC increments immediately when we execute an instruction.  Remember, we're jumping 2x the sign-extended offset.  So our jump is going to be -1 or `1111111111`.  So our hand-assembled machine code instruction is `0011111111111111` or `ff 3f` in little-endian hex.
+
+Let's try a two-operand instruction - `add.b #0xC7, r10`.
+
+The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction - the instruction pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - PC indirect , so Register Indirect with a post increment - `11`.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101000001111010` or `7a 50` in little-endian hex.

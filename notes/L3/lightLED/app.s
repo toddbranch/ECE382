@@ -1,9 +1,7 @@
 ; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
 ;
 
-;#include <msp430.h>
-
-.include "header.S"
+.include "header.s"
 
 .text
 main:
