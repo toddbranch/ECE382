@@ -1,0 +1,25 @@
+
+app.elf:     file format elf32-msp430
+
+
+Disassembly of section .text:
+
+0000c000 <__ctors_end>:
+    c000:	3a 40 00 5a 	mov	#23040,	r10	;#0x5a00
+    c004:	3a e0 80 00 	xor	#128,	r10	;#0x0080
+    c008:	82 4a 20 01 	mov	r10,	&0x0120	
+    c00c:	31 40 00 04 	mov	#1024,	r1	;#0x0400
+    c010:	0a 4b       	mov	r11,	r10	
+    c012:	76 d3       	bis.b	#-1,	r6	;r3 As==11
+    c014:	35 e3       	inv	r5		
+    c016:	8a 10       	swpb	r10		
+
+0000c018 <forever>:
+    c018:	ff 3f       	jmp	$+0      	;abs 0xc018
+
+Disassembly of section .vectors:
+
+0000ffe0 <_edata+0xfde0>:
+	...
+    fffc:	00 00       	.word	0x0000;	????	
+    fffe:	00 c0       	bic	r0,	r0	

@@ -18,7 +18,12 @@ Davies 5.2 (pp125 - pp131)
 
 Last lesson, we discussed the MSP430 instruction set and ended with converting a few instructions from assembly language to machine code.  We noticed that in order to convert from assembly language to machine code, you've got to have an excellent understanding of the instruction to include the **addressing modes** it uses to reference its operands.
 
-![Addressing Modes](../L3/images/addressing_modes.jpg)
+| Code | Addressing Mode | Description |
+| :-: | :-: | :-: |
+| 00 |  Rn	| Register direct |
+| 01 |  offset(Rn)	| Register indexed |
+| 10 |  @Rn	| Register indirect |
+| 11 |  @Rn+	| Register indirect with post-increment |
 
 ![Assembly to Machine Code](images/assembly_to_machine.jpg)
 
@@ -26,7 +31,7 @@ Today, we're going to cover the full range of MSP430 addressing modes, practice 
 
 ### Register Mode or Register Direct
 
-This is the most straight-forward addressing mode - taking information directly from the CPUs registers.  If used in a one-operand instruction, the Ad value is `00`.  If used in a two operand instruction, Ad would be `0` because there are only two available addressing modes.  As would be `00`.
+This is the most straight-forward addressing mode - taking information directly from the CPUs registers.  If used in a one-operand instruction, the Ad value is `00`.  If used in a two operand instruction, Ad would be `0` because there are only two available addressing modes - register direct and indexed.  As would be `00`.
 
 A few examples:
 ```
@@ -36,14 +41,37 @@ bis.b   #0xFF, r6   ;set all the bits in r6.  in this instruction, only the dest
 
 inv.w   r5          ;remember, inv is an *emulated instruction* - it translates to xor #-1, r5 - only the destination addressing mode would be register direct
 
-push    r9          ;push the value in r9 onto the stack
-
 swpb    r10         ;swap the upper and lower byte of r10
 ```
 
+Disassembled:
+```
+c010:	0a 4b       	mov	r11,	r10	
+c012:	76 d3       	bis.b	#-1,	r6	;r3 As==11
+c014:	35 e3       	inv	r5		
+c016:	8a 10       	swpb	r10		
+```
+
+*[Go through conversion from assembly to machine of `mov` instruction]*
+
+*[Start going through conversion of `bis.b` instruction]*
+
+How does this work?  Certain common constants are coded in a special way - we need some more information.
+
+| Code | Addressing Mode | Description |
+| :-: | :-: | :-: |
+| 00 0010 |	r2 |	Normal access |
+| 01 0010 |	&< location> |	Absolute addressing. The extension word is used as the address directly. The leading & is TI's way of indicating that the usual PC-relative addressing should not be used. |
+| 10 0010 |	#4 |	This encoding specifies the immediate constant 4. |
+| 11 0010 |	#8 |	This encoding specifies the immediate constant 8. |
+| 00 0011 |	#0 |	This encoding specifies the immediate constant 0. |
+| 01 0011 |	#1 |	This encoding specifies the immediate constant 1. |
+| 10 0011 |	#2 |	This encoding specifies the immediate constant 2. |
+| 11 0011 |	#- |1	This specifies the all-bits-set constant, -1. |
+
 ### Indexed Mode
 
-In this mode, your adding an offset to a given register to determine the actual address.
+In this mode, you're adding an offset to a given register to determine the actual address. If used in a one-operand instruction, the Ad value is `01`.  If used in a two operand instruction, Ad would be `1`.   As would be `01`.
 
 ```
 mov.w   3(r6), r5   ;this would move the word in the memory location at 3+r6 into r5
