@@ -257,7 +257,12 @@ Our three types of instructions and their binary breakdown:
 
 Our available addressing modes (we'll learn more about this next time) and their binary breakdown:
 
-![Addressing Modes](images/addressing_modes.jpg)
+| Code | Addressing Mode | Description |
+| :-: | :-: | :-: |
+| 00 |  Rn	| Register direct |
+| 01 |  offset(Rn)	| Register indexed |
+| 10 |  @Rn	| Register indirect |
+| 11 |  @Rn+	| Register indirect with post-increment |
 
 First, let's convert a single-operand instruction - `SXT r10`
 
