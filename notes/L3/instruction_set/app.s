@@ -23,6 +23,7 @@ repeat:
     ;sign extend should clear upper 8 bits
     inv     r10 
     swpb    r10
+    mov.w   r10, r9
 
     jmp     repeat
 

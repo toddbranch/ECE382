@@ -1,3 +1,5 @@
 *.html
 *.swp
+*.o
+*.lss
 /GRs

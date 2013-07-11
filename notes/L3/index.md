@@ -228,6 +228,7 @@ main:
     mov     #RAMEND, r1
 
     ;code
+repeat:
     mov.b     #0x75, r10
     add.b     #0xC7, r10
     ;result should be 0x13c, so we should see 3c in r10 and carry bit set
@@ -239,23 +240,41 @@ main:
     sxt     r10
     ;sign extend should clear upper 8 bits
     inv     r10 
+    swpb    r10
+    mov.w   r10, r9
 
-forever:
-    jmp     forever
+    jmp     repeat
 
 .section    ".vectors", "a"
 .org    0x1e
     .word   main
 ```
 
+Disassembled:
+```
+c010:	7a 40 75 00 	mov.b	#117,	r10	;#0x0075
+c014:	7a 50 c7 00 	add.b	#199,	r10	;#0x00c7
+c018:	0a 63       	adc	r10		
+c01a:	7a e3       	xor.b	#-1,	r10	;r3 As==11
+c01c:	3a 40 aa 00 	mov	#170,	r10	;#0x00aa
+c020:	8a 11       	sxt	r10		
+c022:	3a e3       	inv	r10		
+c024:	8a 10       	swpb	r10		
+c026:	09 4a       	mov	r10,	r9	
+c028:	f3 3f       	jmp	$-24     	;abs 0xc010
+```
+
 ## Converting Assembly to Machine Code
+
+*[This can spill over into the next lesson if necessary]*
+
 How can we be sure that the assembler is doing its job?  How can we know that it is producing the proper machine code for the instructions we've given it?  The table I showed initially gives us the tools to manually convert assembly to machine code as well as the reverse
 
 Our three types of instructions and their binary breakdown:
 
 ![Assembly to Machine Code](images/assembly_to_machine.jpg)
 
-Our available addressing modes (we'll learn more about this next time) and their binary breakdown:
+Addressing modes cover how our instructions reference their operands - the pieces of information they need to do their job.  Our available addressing modes (we'll learn more about this next time) and their binary breakdown:
 
 | Code | Addressing Mode | Description |
 | :-: | :-: | :-: |
@@ -264,14 +283,24 @@ Our available addressing modes (we'll learn more about this next time) and their
 | 10 |  @Rn	| Register indirect |
 | 11 |  @Rn+	| Register indirect with post-increment |
 
-First, let's convert a single-operand instruction - `SXT r10`
+Let's try a couple to get us familiar with the process.
 
-The first six bits are always `000100`.  Next comes the opcode, which we'll look up - it's `011`.  Since this is a word instruction, B/W will be `0` - byte would be 1.  We'll learn about addressing modes tomorrow, but the addressing mode we use here is called Register Direct and is coded by `00`.  Finally, we have to specify our destination register r10 - what's the binary for 10?  `1010`.  So our hand-assembled machine code instruction is `0001000110001010` or `8a 11` in little-endian hex.
+First, let's convert a single-operand instruction - `SXT r10` - from our disassembly, `c020:	8a 11       	sxt	r10`
 
-Let's try a relative jump instruction - `JMP $0` - this instruction would jump to itself, a forever loop.
+The first six bits are always `000100`.  Next comes the opcode, which we'll look up - it's `011`.  Since this is a word instruction, B/W will be `0` - byte would be 1.  We'll learn about addressing modes tomorrow, but the addressing mode we use here is called Register Direct because we're referencing the value contained in a register and is coded by `00`.  Finally, we have to specify our destination register r10 - what's the binary for 10?  `1010`.  So our hand-assembled machine code instruction is `0001 0001 1000 1010` or `8a 11` in little-endian hex.
 
-The first 3 bits will always be `001`.  Next, we'll find the condition code - `111`.  Finally, we need to calculate the PC offset - -2 in our case, since the PC increments immediately when we execute an instruction.  Remember, we're jumping 2x the sign-extended offset.  So our jump is going to be -1 or `1111111111`.  So our hand-assembled machine code instruction is `0011111111111111` or `ff 3f` in little-endian hex.
+Let's try a relative jump instruction - `JMP $-24` - from our disassembly, `c028:	f3 3f       	jmp	$-24     	;abs 0xc010`.   This instruction jumps back to the start of our code - -24 from 0xc028.
 
-Let's try a two-operand instruction - `add.b #0xC7, r10`.
+The first 3 bits will always be `001`.  Next, we'll find the condition code - `111`.  Finally, we need to calculate the PC offset - -26 in our case, since the PC increments immediately when we execute an instruction.  Remember, we're jumping 2x the sign-extended offset.  So our jump is going to be -13 or `1111110011`.  So our hand-assembled machine code instruction is `0011 1111 1111 0011` or `f3 3f` in little-endian hex.
 
-The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction - the instruction pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - PC indirect , so Register Indirect with a post increment - `11`.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101000001111010` or `7a 50` in little-endian hex.
+Let's try a two-operand instruction - `mov r10, r9` - from our disassembly, `c026:	09 4a       	mov	r10,	r9`.
+
+The first 4 bits are the opcode, which we'll look up - it's `0100`.  Next, we need to indicate the source register - r10, which is `1010` in binary.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a word, so `0`.  Finally, source addressing mode - also Register Direct, so `00`.  Finally, we need the destination register, r9 - `1001`.  So our hand-assembled machine code instruction is `0100 1010 0000 1001` or `09 4a` in little-endian hex.
+
+**Tough One!** - this introduces some addressing concepts, which we'll discuss next lesson.  Potentially a teaser.
+
+Let's try another two-operand instruction - `add.b #0xC7, r10` - from our disassembly, `c014:	7a 50 c7 00 	add.b	#199,	r10	;#0x00c7`.
+
+The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction - the instruction pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - PC indirect , so Register Indirect with a post increment - `11`.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101 0000 0111 1010` or `7a 50` in little-endian hex.
+
+Easy enough?!

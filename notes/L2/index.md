@@ -64,6 +64,7 @@ Any architecture will consist of:
 
 - Data Units
     - word size is 16 bits
+        - words must lie on **even addresses**
     - instructions for byte and word actions
     - words must use even memory address
     - byte-addressable

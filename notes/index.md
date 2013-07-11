@@ -7,7 +7,7 @@
 - [Lesson 3](L3/index.html) - Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code.
 - [Lesson 4](L4/) - Addressing Modes.  CompEx1 Intro.
 - [Lesson 5](L5/) - [CompEx1]() - Introduction to the MSP430 and CodeComposer.  Blink the light.
-- [Lesson 6](L6/) - Movement Instructions.  Flow of Control.  Status Register.
+- [Lesson 6](L6/) - Status Register.  Movement Instructions.  Flow of Control.
 - [Lesson 7](L7/) - Arithmetic / Logic, Shift / Rotate Instructions.
 - [Lesson 8](L8/) - Directives.  Assembly Process.  Structured Design and Test.  Debugging.  CompEx2 Introduction.
 - [Lesson 9](L9/) - [CompEx2]() - Loops / Branches.  "Simple Calculator".  Should give them multiplication / division code.
