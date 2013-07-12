@@ -92,7 +92,11 @@ As I said last lesson, the MSP430 has only 27 native instructions.  There are th
 
 Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All instructions are 16 bits long.  Their binary format looks like this:
 
-![Assembly to Machine Code](images/assembly_to_machine.jpg)
+| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 | 0 | 1 | 0 | 0 | Opcode colspan=3 | B/W | Ad colspan=2 | Dest reg colspan=4 |
+| 0 | 0 | 1 | Condition colspan=3 | PC offset (10 bit) colspan=10 |
+| Opcode colspan=4 | Source reg colspan=4 | Ad | B/W | As colspan=2 | Dest reg colspan=4 |
 
 If instructions can be both word or byte instructions, they're word by default.  You can specify byte by appending .B to the instruction.  You can also explicitly add .W for word, but that's unnecessary.
 
@@ -135,7 +139,7 @@ These are of the format `JMP    loop`.
 There are generally of the form `dest = src OP dest`.  Operands are written in the order src, dest (AT&T syntax).
 
 | Opcode | Assembly Instruction | Description | Notes |
-| :---: | :---: | :---: |
+| :---: | :---: | :---: | :---: |
 | 0100 | MOV src, dest | dest = src | The status flags are NOT set. |
 | 0101 | ADD src, dest | dest += src | |
 | 0110 | ADDC src, dest | dest += src + C | |
@@ -145,7 +149,7 @@ There are generally of the form `dest = src OP dest`.  Operands are written in t
 | 1010 | DADD src, dest | dest += src + C, BCD (Binary Coded Decimal) | Sets status only; the destination is not written. |
 | 1011 | BIT src, dest | dest & src | Sets status only; the destination is not written. |
 | 1100 | BIC src, dest | dest &= ~src | The status flags are NOT set. |
-| 1101 | BIS src, dest | dest |= src | The status flags are NOT set. |
+| 1101 | BIS src, dest | dest &#124;=src | The status flags are NOT set. |
 | 1110 | XOR src, dest | dest ^= src | |
 | 1111 | AND src, dest | dest &= src | |
 
@@ -153,7 +157,7 @@ These are of the format `ADD r9, r10`.
 
 ### Emulated Instructions
 
-There are a number of instructions that will be understood by the assembler that aren't native to the instruction set.  These are known as 'emulated' instructions.  They are actually implemented using one of the core instructions.
+There are a number of instructions that will be understood by the assembler that aren't native to the instruction set.  24 in total.  These are known as 'emulated' instructions.  They are actually implemented using one of the core instructions.  So, including emulated instructions, there are 51 different assembly instructions you can write.
 
 | Emulated Instruction | Assembly Instruction | Notes |
 | :---: | :---: | :---: |
@@ -272,7 +276,11 @@ How can we be sure that the assembler is doing its job?  How can we know that it
 
 Our three types of instructions and their binary breakdown:
 
-![Assembly to Machine Code](images/assembly_to_machine.jpg)
+| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 | 0 | 1 | 0 | 0 | Opcode colspan=3 | B/W | Ad colspan=2 | Dest reg colspan=4 |
+| 0 | 0 | 1 | Condition colspan=3 | PC offset (10 bit) colspan=10 |
+| Opcode colspan=4 | Source reg colspan=4 | Ad | B/W | As colspan=2 | Dest reg colspan=4 |
 
 Addressing modes cover how our instructions reference their operands - the pieces of information they need to do their job.  Our available addressing modes (we'll learn more about this next time) and their binary breakdown:
 
@@ -293,6 +301,8 @@ Let's try a relative jump instruction - `JMP $-24` - from our disassembly, `c028
 
 The first 3 bits will always be `001`.  Next, we'll find the condition code - `111`.  Finally, we need to calculate the PC offset - -26 in our case, since the PC increments immediately when we execute an instruction.  Remember, we're jumping 2x the sign-extended offset.  So our jump is going to be -13 or `1111110011`.  So our hand-assembled machine code instruction is `0011 1111 1111 0011` or `f3 3f` in little-endian hex.
 
+Luckily, when we're writing assembly we don't have to worry about calculating the PC offset - the assembler does that work for us!  That's why labels are so useful.
+
 Let's try a two-operand instruction - `mov r10, r9` - from our disassembly, `c026:	09 4a       	mov	r10,	r9`.
 
 The first 4 bits are the opcode, which we'll look up - it's `0100`.  Next, we need to indicate the source register - r10, which is `1010` in binary.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a word, so `0`.  Finally, source addressing mode - also Register Direct, so `00`.  Finally, we need the destination register, r9 - `1001`.  So our hand-assembled machine code instruction is `0100 1010 0000 1001` or `09 4a` in little-endian hex.
@@ -301,6 +311,9 @@ The first 4 bits are the opcode, which we'll look up - it's `0100`.  Next, we ne
 
 Let's try another two-operand instruction - `add.b #0xC7, r10` - from our disassembly, `c014:	7a 50 c7 00 	add.b	#199,	r10	;#0x00c7`.
 
-The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction - the instruction pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - PC indirect , so Register Indirect with a post increment - `11`.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101 0000 0111 1010` or `7a 50` in little-endian hex.
+This addes the value 0xC7 to r10.
+
+The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction for our value - the location pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - we're referencing the value at the address pointed to by the PC, so register indirect - we also need to post-increment so it contains the next executable instruction.  So register indirect with post-increment - `11`.  The PC always increments by 2 when this is specified because the word size is 2 bytes.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101 0000 0111 1010` or `7a 50` in little-endian hex.
+
 
 Easy enough?!

@@ -23,13 +23,17 @@ Luckily, the MSP430 has only 4 different addressing modes to cover:
 | Code | Addressing Mode | Description |
 | :-: | :-: | :-: |
 | 00 | Rn	| Register direct |
-| 01 | offset(Rn)	| Register indexed |
+| 01 | offset(Rn) | Register indexed |
 | 10 | @Rn	| Register indirect |
 | 11 | @Rn+	| Register indirect with post-increment |
 
 Review - Who can name the three different instruction types and their formats?  One operand, relative jump, and two operand.
 
-![Assembly to Machine Code](../L3/images/assembly_to_machine.jpg)
+| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 | 0 | 1 | 0 | 0 | Opcode colspan=3 | B/W | Ad colspan=2 | Dest reg colspan=4 |
+| 0 | 0 | 1 | Condition colspan=3 | PC offset (10 bit) colspan=10 |
+| Opcode colspan=4 | Source reg colspan=4 | Ad | B/W | As colspan=2 | Dest reg colspan=4 |
 
 Today, we're going to cover the full range of MSP430 addressing modes, practice some more conversion from assembly to machine code, and introduce you to your first computer exercise.
 
@@ -45,6 +49,8 @@ c01c:	ff 3f       	jmp	$+0      	;abs 0xc01c
 ```
 
 The first 3 bits will always be `001`.  Next, we'll find the condition code - `111`.  Finally, we need to calculate the PC offset - -2 in our case, since the PC increments immediately when we execute an instruction.  Remember, we're jumping 2x the sign-extended offset.  So our jump is going to be -1 or `1111111111`.  So our hand-assembled machine code instruction is `0011 1111 1111 1111` or `ff 3f` in little-endian hex.
+
+Using an *offset* is important because it allows us to have relocatable code.  It doesn't matter where our code ultimately gets placed in memory because we're only jumping relative to our position within the code.
 
 Ok, let's get into the instructions that actually use addressing modes.
 
@@ -111,34 +117,47 @@ It may seem a little convoluted right now - why would we address this way?  We'l
 
 #### PC Relative
 
+We can also index off of the program counter!  It might look something like this:
 ```
-mov.w   reset, r7
-```
+    mov.w   magic_number, r7
 
-#### Absolute Mode
-
-In this mode, you precede the location with an & to tell the assembler this is a literal location.
-
-```
-mov.w   0xff, &P1OUT
+magic_number:
+    .word   0xafaf
 ```
 
-WARNING - potential pitfall:
+In practice, the assembler will convert our magic_number reference to an offset from the program counter and replace it with 0xXXXX(r0).
+
+But be careful - this only works for locations that are always the same distance relative to the PC.  Absolute locations, like peripherals, or locations that get located away from our executable code, like RAM, wouldn't work.  Read only data `.rodata` works great with this addressing mode.
+
+### Register Indirect Mode
+
+Register indirect is when you're accessing the value at the *memory location* contained in a register.  It is the same as using Register Indexed with an offset of 0.  The reason you'd use this instead is that it saves a word of memory - you don't need to specify an extension word of 0!
+
+This addressing mode is available only for the source and is coded `10`.
+
+An example:
 ```
-mov.b   P1OUT,r7
+mov.w   #0x200, r6          ;storing the location of the start of RAM in r6
+mov.w   #0xcccc, &0x0200    ;storing 0xcccc at that location
+mov.w   @r6, r7             ;now 0xcccc is in r7
 ```
-Is not the same as:
+Disassembled:
 ```
-mov.b   &P1OUT,r7
+c032:	36 40 00 02 	mov	#512,	r6	;#0x0200
+c036:	b2 40 cc cc 	mov	#-13108,&0x0200	;#0xcccc
+c03a:	00 02 
+c03c:	27 46       	mov	@r6,	r7	
 ```
 
-### Indirect Register Mode
+Let's hand-assemble to see what's going on.  First, is the opcode - `0100`.  Next, source register - r6 - `0110`.  Next, Ad - register direct, so `0`.  Next, B/W - word, so `0`.  Next, As - register indirect, so `10`.  Finally, destination register - r7, `0111`.  Binary - `0100 0110 0010 0111`, or little-endian hex - `27 46`.  Note no extension word!
 
+This would be useful if a register holds a memory address, a pointer in C, instead of a value.
 
+### Register Indirect Mode with Post-Increment
 
-### Indirect Register Mode with Post-Increment
+This is the same as the Register Indirect, but we'll increment the address contained in the register afterwards.    It is extremely useful in specifying immediate values for instructions.
 
-In this mode, we're getting our operand from the memory address pointed to by the register, then incrementing the register afterwards.  It is extremely useful in specifying immediate values for instructions.
+This addressing mode is available only for the source and is coded `11`.
 
 ```
 mov.w   #0xC7, r9   ;move C7 into r9 - only destination uses register direct.
@@ -148,7 +167,9 @@ mov.w   #0xC7, r9   ;move C7 into r9 - only destination uses register direct.
 c014:	39 40 c7 00 	mov	#199,	r9	;#0x00c7
 ```
 
-First, what's the opcode?  `0100`.  Next, we need source register - we're using immediate, indicated by the #.  In assembly, this means we'll specify the value in the instruction.  In machine code, this means we'll put the value immediately after the instruction and reference it using the PC - see how `c7 00` is right after the instruction in the disassembly?  This is known is **register indirect** because we'll take the value in the register as an *address* and use the value at that address.  We'll also want to increment the PC after so it points to the next instruction - known as **post-increment**.  The PC is r0, `0000`.  Next, destination addressing mode - register direct, so `0`.  Next, B/W - word, so `0`.  Next, source addressing mode - register indirect with post increment as we said earlier - `11`.  Next, destination register - r9, which is `1001`.  Our binary instruction is `0100 0000 0011 1001` or `39 40` in little-endian hex.
+First, what's the opcode?  `0100`.  Next, we need source register - we're using immediate, indicated by the #.  In assembly, this means we'll specify the value in the instruction.  In machine code, this means we'll put the value immediately after the instruction and reference it using the PC - see how `c7 00` is right after the instruction in the disassembly?  This is known is **register indirect** because we'll take the value in the register as an *address* and use the value at that address.  We'll also want to increment the PC by 2 after so it points to the next instruction - known as **post-increment**.  The PC is r0, `0000`.  Next, destination addressing mode - register direct, so `0`.  Next, B/W - word, so `0`.  Next, source addressing mode - register indirect with post increment as we said earlier - `11`.  Next, destination register - r9, which is `1001`.  Our binary instruction is `0100 0000 0011 1001` or `39 40` in little-endian hex.
+
+An immediate cannot be used for the destination!
 
 ### Special Cases
 
@@ -156,7 +177,6 @@ Let's look at a few instructions that might look like ones we've covered, but ar
 
 ```
 bis.b   #0xFF, r6   ;set all the bits in r6.  in this instruction, only the destination addressing mode would be register direct 
-
 inv.w   r5          ;remember, inv is an *emulated instruction* - it translates to xor #-1, r5 - only the destination addressing mode would be register direct
 ```
 
@@ -178,15 +198,40 @@ The designers of the MSP430 realized that some of our registers don't make sense
 | 01 | 0010 | &< location> | Absolute addressing. The extension word is used as the address directly. The leading & is TI's way of indicating that the usual PC-relative addressing should not be used. |
 | 10 | 0010 | #4 | This encoding specifies the immediate constant 4. |
 | 11 | 0010 | #8 | This encoding specifies the immediate constant 8. |
-| 00 | 0011 | #0 | This encoding specifies the immediate constant 0. |
+| 00 | 0011 | #0 | This encoding specifies the immediate constant 0.  Also normal access. |
 | 01 | 0011 | #1 | This encoding specifies the immediate constant 1. |
 | 10 | 0011 | #2 | This encoding specifies the immediate constant 2. |
 | 11 | 0011 | #-1 | This specifies the all-bits-set constant, -1. |
+
+If you want to access the values stored in r2/r3, register direct addressing works as normal!
 
 Hmm, so in our `bis.b` instruction we're using the immediate -1 - which is a common constant listed above.  That means As should be `11` and the source register should be `0011`.  Let's sub that in and see if it works - our binary is now `1101001101110110` or `37 d3` in little-endian hex - consistent with our disassembly.
 
 But, as programmers, we don't have to remember the way the constant generators work when we're writing assembly.  We can simply code immediate values and the assembler will convert them to the native format using the constant generator automatically.
 
+Let's try the the `inv r5` instruction.  Remember, this is an emulated instruction - it translates to `xor #-1, r5`.
+
+A two-operand instruction - what's the opcode?  `1110`.  Next, we need the source register - since this is a common constant, we find the source register is r3 from the common constants table - `0011`.  Next, Ad - `0` for register direct.  Next, B/W - `0` for word.  The source register also comes from the common constant table - `11`.  Finally, the destination register - r5 - `0101`.  Binary - `1110 0011 0011 0101`, little-endian hex - `35 e3`.
+
+#### Absolute Mode
+
+The last mode we'll talk about is **absolute addressing** - a unique mode given in the common constants table.  In this mode, you are specifiying an absolute location in memory.  You precede the location with an & to tell the assembler this is a literal location.
+
+```
+mov.w   #0xff, &0x1111    ;this instruction moves the immediate value 0xff to the memory location 0x1111
+mov.w   #0xff, &P1OUT    ;this instruction moves the immediate value 0xff to the memory location P1OUT
+```
+
+WARNING - potential pitfall:
+```
+mov.b   P1OUT,r7        ;in this case, the assembler will interpret P1OUT as PC-relative!  Since P1OUT is a constant memory location, the offset will change after linking!  This could crash the CPU if it references unbacked memory
+```
+Is not the same as:
+```
+mov.b   &P1OUT,r7       ;this is what you need to do to move the value in memory location P1OUT into r7
+```
+
+Any questions?  I know this was pretty jam-packed - so make sure to do some self-study if you feel uncomfortable with this material.  Addressing modes are fundamental to assembly language programming.
 ## CompEx1 Intro
 
 *[Pass out CompEx to students]*
