@@ -11,7 +11,8 @@
 | [Lesson 4](L4/index.html) | Addressing Modes.  CompEx1 Intro. | Assignment | |
 | [Lesson 5](L5/index.html) | [CompEx1]() - Introduction to the MSP430 and CodeComposer.  Blink the light. | Assignment | |
 | [Lesson 6](L6/index.html) | Status Register.  Flow of Control.  Movement Instructions. | | |
-| [Lesson 7](L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions. | | |
+| [Lesson 7](L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watch Dog. | | |
+
 | [Lesson 8](L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  CompEx2 Introduction. | | |
 | [Lesson 9](L9/index.html) | [CompEx2]() - Loops / Branches.  "Simple Calculator".  Should give them multiplication / division code. | | |
 | [Lesson 10](L10/index.html) | The Stack.  Subroutines.  CompEx3 Introduction. | | |
