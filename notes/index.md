@@ -5,11 +5,11 @@
 
 | Lesson | Topic | Assigned | Due | Notes |
 | :-: | :-: | :-: | :-: | :-: |
-| [Lesson 1](L1/index.html) | Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC. | | |
+| [Lesson 1](L1/index.html) | Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC. | Skills Review | |
 | [Lesson 2](L2/index.html) | Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Languages. | | |
-| [Lesson 3](L3/index.html) | Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code. | | |
-| [Lesson 4](L4/index.html) | Addressing Modes.  CompEx1 Intro. | | |
-| [Lesson 5](L5/index.html) | [CompEx1]() - Introduction to the MSP430 and CodeComposer.  Blink the light. | | |
+| [Lesson 3](L3/index.html) | Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code. | Skills Review | |
+| [Lesson 4](L4/index.html) | Addressing Modes.  CompEx1 Intro. | Assignment | |
+| [Lesson 5](L5/index.html) | [CompEx1]() - Introduction to the MSP430 and CodeComposer.  Blink the light. | Assignment | |
 | [Lesson 6](L6/index.html) | Status Register.  Flow of Control.  Movement Instructions. | | |
 | [Lesson 7](L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions. | | |
 | [Lesson 8](L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  CompEx2 Introduction. | | |

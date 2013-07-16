@@ -3,7 +3,7 @@
 
 Consider the following code snippet:
 ```
-mov.w   0xFF, P1OUT
+mov.w   #0xFF, P1OUT
 ```
 What addressing modes are being used here?
 

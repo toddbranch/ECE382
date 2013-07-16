@@ -146,7 +146,7 @@ There are generally of the form `dest = src OP dest`.  Operands are written in t
 | 0111 | SUBC src, dest | dest += ~src + C | |
 | 1001 | SUB src, dest | dest -= src | Implemented as dest += ~src + 1 |
 | 1001 | CMP src, dest | dest - src | Sets status only; the destination is not written. |
-| 1010 | DADD src, dest | dest += src + C, BCD (Binary Coded Decimal) | Sets status only; the destination is not written. |
+| 1010 | DADD src, dest | dest += src + C, BCD (Binary Coded Decimal) | |
 | 1011 | BIT src, dest | dest & src | Sets status only; the destination is not written. |
 | 1100 | BIC src, dest | dest &= ~src | The status flags are NOT set. |
 | 1101 | BIS src, dest | dest &#124;=src | The status flags are NOT set. |
@@ -210,7 +210,7 @@ Increment / decrement:
 | INC(.B) dst | ADD(.B) #1, dst |
 | INCD(.B) dst | ADD(.B) #2, dst |
 
-Adding / subtracting using only the carray bit:
+Adding / subtracting using only the carry bit:
 
 | Emulated Instruction | Assembly Instruction |
 | :---: | :---: | :---: |

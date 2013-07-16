@@ -9,9 +9,10 @@
 ## Lesson Outline
 - The Stack
 - Subroutines
+- CompEx 3 Introduction
 
 ## The Stack
 
-```
-Block of code
-```
+## Subroutines
+
+## CompEx 3 Introduction
