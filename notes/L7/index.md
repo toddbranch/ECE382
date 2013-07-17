@@ -1,7 +1,7 @@
 # Lesson 7 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+[Watchdog Timer](http://en.wikipedia.org/wiki/Watchdog_timer)
 
 ## Assignment
 
@@ -9,10 +9,13 @@
 - Arithmetic Instructions
 - Logic Instructions
 - Shift / Rotate Instructions
-- Watch Dog
+- Watchdog Timer
 
 Last time, we discussed the Status Register and how it's used in conditional code exectuion in assembly language programs.  We saw how we could use it and relative jump instructions to implement higher level code constructs like if/then and looping.  This time, we're going to learn about a lot more of the available MSP430 instructions - what they do, what flags they set, etc. - it will be our last lesson on the instruction set.  After today, I'll expect that you're all comfortable using these instructions to write your own assembly programs.
 
+### Warning
+
+Remember our memory map from L2.  We saw that there was a large portion (0x1100 - 0xbfff) that was unused - the msp430g2553 doesn't have memory at those addresses.  If you access these unimplemented sections of memory, that will trigger a Power-Up Clear (PUC) and reset your chip.  Bugs like these can be tough to diagnose if you're not looking for them.  For instance, `mov  #10, &0xabab` would trigger a PUC and reset my chip.
 
 ## Arithmetic Instructions
 
@@ -177,10 +180,44 @@ Rotate left is emulated by addition.  A rotate left is the equivalent of multipl
 
 ```
 mov     #2, r10
+
 rla     r10         ;$r10 is now 0x4
 rla     r10         ;$r10 is now 0x8 
 setc
 rlc     r10         ;$r10 is now 0b10001, or 0x11
 ```
 
-## Watch Dog
+## Watchdog Timer (WDT)
+Microcontrollers like the MSP430 are typically used in embedded applications - meaning they are meant to function within devices without human intervention.  You often can't easily access the MCU to restart it if necessary.
+
+Because of this, MCUs need to be able to monitor themselves for problems and restart if necessary.
+
+This job is performed by the Watchdog Timer (WDT) on the MSP430 or computer operating properly (COP) on other devices.  It's a timer that, if not reset in a timely fashion, resets the chip.  The idea is that if code execution is faulty, it will neglect to reset the WDT and will eventually be reset, fixing the problem.  Properly executing code must regularly reset the WDT or the chip will constantly restart.
+
+In the MSP430, after a PUC condition, the WDT enters watchdog mode with a period of 32768 cycles.  The user must setup / halt / clear the WDT prior to the end of this period, or it will generate a PUC.  The default clock speed for the MSP430 is in the 1MHz range, so you have approximately 32 milliseconds to reset it.  It needs to be one of the first things you do in your program.
+
+We'll cover this more later, but special functions / peripherals are manipulated by registers in memory.  Remember our memory map - 8-bit peripherals from 0x10-0xff, 16-bit peripherals from 0x100-0x1ff.  The Watchdog Timer Control Register (WDTCTL) is manipulated this way.
+
+
+Here's the structure of the register:
+
+| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| WDTPW	colspan=8 | WDTHOLD | WDTNMIES | WDTNMI | WDTTMSEL | WDTCNTCL | WDTSSEL | WDTISx colspan=2 |
+
+User's guide page 355.
+
+WDTPW - the WDT uses a password to prevent inadvertent writing - it's 0x5a.  You must write that in the upper 8 bits for a write to work - otherwise you'll get a PUC.
+WDTHLD - setting this bit stops the watchdog timer.
+
+Other registers are unnecessary for our purposes at this point, but explore them more if you want.
+
+Here's some code that disables the watchdog:
+```
+;disable watchdog timer
+mov     #WDTPW, r10         ;to prevent inadvertent writing, the watchdog has a password - if you write without the password in the upper 8 bits, you'll initiate a PUC.
+                            ;the password is 0x5a in the upper 8 bits.  if you read from the password, you'll read 0x69.
+xor     #WDTHOLD, r10       ;next, we need to xor the password with the lower 8 bits that tell the timer to hold, not count
+mov     r10, &WDTCTL        ;next, we need to write that value to the WDTCTL - this is a static address in memory (not relative to our code), so we need 
+```
+
