@@ -1,3 +1,7 @@
+; Lab 1 - Simple Calculator
+; Capt Todd Branchflower, USAF
+; 17 Jul 2013
+
 .include "header.s"
 
 .data
