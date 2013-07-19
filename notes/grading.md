@@ -5,8 +5,8 @@
 | | Prog | Final |
 | :-: | :-: | :-: |
 | GRs | 40 (1) | 30 (2) |
-| Labs / CompEx | 45 (3) | 35 (7) |
-| HW / Quizzes | 15 | 10 |
+| Labs | 45 (3) | 35 (7) |
+| HW / Quizzes / Skills Review / CompEx | 15 | 10 |
 | Final | | 25 |
 | TOTAL | 100 | 100 |
 

@@ -1,2 +1,5 @@
-L2 - General stuff about the MSP430 - what it's used for, etc.  Talk about assembly / linking process - especially in context of memory map.
-L4 - Finish addressing stuff.  Good resources - book 125-131, mspgcc site, users guide
+- Remove lab1 solution from git tree
+- Finish assignment from L4
+- Update syllabus with new assignments, due dates, etc.
+- Update Skills Review!
+- Update datasheets!
