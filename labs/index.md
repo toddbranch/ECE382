@@ -1,8 +1,10 @@
-# Labs
+# Labs / Computer Exercises
 
-- [Lab 1](/labs/lab1.html)
-- [Lab 2](/labs/lab2.html)
-- [Lab 3](/labs/lab3.html)
-- [Lab 4](/labs/lab4.html)
-- [Lab 5](/labs/lab5.html)
-- [Lab 6](/labs/lab6.html)
+- [CompEx1](/ECE382/labs/compex1/index.html)
+- [Lab 1](/ECE382/labs/lab1/index.html)
+- [Lab 2](#)
+- [Lab 3](#)
+- [Lab 4](#)
+- [Lab 5](#)
+- [Lab 6](#)
+- [Lab 1](#)
