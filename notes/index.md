@@ -14,11 +14,11 @@
 | [L2](L2/index.html) | Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Languages. | | Skills Review |
 | [L3](L3/index.html) | Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code. | [Assignment 1]() | |
 | [L4](L4/index.html) | Addressing Modes.  CompEx1 Intro. | [Assignment 2](L4/L4_addressing_modes.html) | |
-| [L5](L5/index.html) | [CompEx1](/ECE382/labs/compex1/index.html) - Introduction to the MSP430 and CodeComposer.  Blink the light. | CompEx1 | [Assignment 2](L4/L4_addressing_modes.html )|
+| [L5](L5/index.html) | [CompEx1](/labs/compex1/index.html) - Introduction to the MSP430 and CodeComposer.  Blink the light. | CompEx1 | [Assignment 2](L4/L4_addressing_modes.html )|
 | [L6](L6/index.html) | Status Register.  Flow of Control.  Movement Instructions. | | CompEx1 Questions |
 | [L7](L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | | |
 | [L8](L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  Lab 1 Introduction. | Lab 1 Prelab | |
-| [L9](L9/index.html) | [Lab 1](/ECE382/labs/lab1/index.html) - Loops / Branches.  "Simple Calculator".  Should give them multiplication / division code. | CompEx2 | CompEx2 Prelab |
+| [L9](L9/index.html) | [Lab 1](/labs/lab1/index.html) - Loops / Branches.  "Simple Calculator".  Should give them multiplication / division code. | CompEx2 | CompEx2 Prelab |
 | [L10](L10/index.html) | The Stack.  Subroutines.  CompEx3 Introduction. | CompEx3 Prelab | CompEx2 Functionality |
 | [L11](L11/index.html) | [CompEx3]() - Subroutines.  "Robot Speed Profile". | CompEx3 | CompEx2 Lab Notebook (Signoff), CompEx3 Prelab |
 | [L12](L12/index.html) | Ports.  GPIO. | | CompEx3 Functionality |
