@@ -1,3 +1,7 @@
 # Datasheets
 
-- [SLAU131c.pdf](/datasheets/slau131c.pdf)
+- [MSP430x2xx Family Users Guide](msp43_msp430x2xx_family_users_guide.pdf)
+- [MSP430G2x53 MSP430G2x13 Mixed Signal Microcontroller](msp430g2x53_2x13_mixed_sig_mcu.pdf)
+- [MSP430G2553 Device Erratasheet](msp430g2553_device_erratasheet.pdf)
+- [Calibrating the DCO](calibrating_the_dco.pdf)
+- [MSP430G2553 Memory Map](memory_map.x)
