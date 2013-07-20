@@ -2,6 +2,7 @@
 
 Welcome to ECE 382!
 
- * [Lesson Notes](notes/index.html)
- * [Labs](labs/index.html)
- * [Datasheets](datasheets/index.html)
+- [Lesson Notes](notes)
+- [Labs](labs)
+- [Datasheets](datasheets)
+- [Admin](admin)
