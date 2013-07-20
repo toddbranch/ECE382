@@ -1,13 +1,5 @@
 # Lesson Notes
 
-- [Course Letter](course_letter.html)
-
-
-- [Foreword](foreword)
-- [Course Goals](course_goals)
-- [Grading](grading.html)
-- [Lab Notebooks](labs.html)
-
 | Lesson | Topic | Assigned | Due |
 | :-: | :-: | :-: | :-: | :-: |
 | [L1](L1/index.html) | Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC. | [Skills Review](L1/skills_review.html) | |
