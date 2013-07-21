@@ -12,7 +12,7 @@ You'll write a program that decrypts an encrypted message using a simple encrypt
 
 A simple, yet effective encryption technique is to ``XOR`` a piece of information with a key and send the result.  The receiver must have the key in order to decrypt the message - which is accomplished simply by `XOR`ing the encrypted data with the key.  Let's say I wanted to send the binary byte `0b01100011` and my key was `0b11001010`.  To encrypt, I `XOR` the two - the resulting byte is `0b10101001`.  To decrypt, I `XOR` it with the key again - the resulting byte is `0b01100011` - the same as the original byte!
 
-An encrypted message of arbitrary length is stored in ROM.  Your job is to decrypt it, given a key - which is also stored in ROM.  The contents of the message are [ASCII characters](http://en.wikipedia.org/wiki/ASCII) - each character is encoded in a single byte.  You know that the final decrypted byte of every message is `0x23`, the `#` character in ASCII.  You must write two subroutines.  The job of the first is to decrypt an individual piece of information.  It should use the pass-by-value technique and take in the encrypted value and the key and pass out the decrypted value.  The job of the second is to leverage the first subroutine to decrypt the entire message.  It should use the pass-by-reference technique to take in the address of the beginning of the message, the address of the key, and the address in RAM where the decrypted message will be placed.  It will pass the encrypted message byte-by-byte to the first subroutine, then stores the decrypted results in RAM.
+An encrypted message of arbitrary length is stored in ROM.  Your job is to decrypt it, given a key - which is also stored in ROM.  The contents of the message are [ASCII characters](http://en.wikipedia.org/wiki/ASCII) - each character is encoded in a single byte.  You know that the final decrypted byte of every message is `0x23`, the `#` character in ASCII.  You must write two subroutines.  The job of the first is to decrypt an individual piece of information.  It should use the pass-by-value technique and take in the encrypted value and the key and pass out the decrypted value.  The job of the second is to leverage the first subroutine to decrypt the entire message.  It should use the pass-by-reference technique to take in the address of the beginning of the message, the address of the key, and the address in RAM where the decrypted message will be placed.  It will pass the encrypted message byte-by-byte to the first subroutine, then store the decrypted results in RAM.
 
 Almost all of the work of your program will be performed in your two subroutines.  Your main program should look something like this:
 ```
@@ -136,6 +136,8 @@ Think about how you'll implement your subroutines.  Draw a flowchart of how it w
 ## Notes
 
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+
+If you want, decrypt the first word of the message by hand so you get the idea of how it works.  If the ASCII characters you're getting don't make sense, you're probably thinking about the problem wrong.
 
 The MCU is fast - your program should execute almost instantaneously.  Set a breakpoint at the point in your code where you trap the CPU - if it isn't hit quickly, you've got a problem.
 
