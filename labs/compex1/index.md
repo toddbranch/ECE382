@@ -218,7 +218,7 @@ Section:
 <br>
 <br>
 <br>
-6. (15pts) Are the values in memory stored in little-endian or big-endian format?  Using the debugger, how can yo utell?  If they were stored in the other format, what would it look like?  Give me an example from your code.
+6. (15pts) Are the values in memory stored in little-endian or big-endian format?  Using the debugger, how can you tell?  If they were stored in the other format, what would it look like?  Give me an example from your code.
 <br>
 <br>
 <br>

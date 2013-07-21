@@ -1,0 +1,86 @@
+# Lab 2 - Subroutines - "Cryptography"
+
+## Objectives
+
+You'll practice your programming skills by writing some subroutines.  You'll need to use both the call-by-value and call-by-reference techniques to pass arguments to your subroutines.
+
+## Details
+
+### The Basic Idea
+
+You'll write a program that decrypts an encrypted message using a simple encryption technique.  To achieve A-level functionality, you'll have to decrypt a message without knowledge of the key that was used to encrypt it.
+
+A simple, yet effective encryption technique is to XOR a piece of information with a key and send the result.  The receiver must have the key in order to decrypt the message - which is accomplished simply by XORing the encrypted data with the key.  Let's say I wanted to send the binary byte 0b01100011 and my key was 0b11001010.  To encrypt, I XOR the two - the resulting byte is 0b10101001.  To decrypt, I XOR it with the key again - the resulting byte is 0b01100011 - the same as the original byte!
+
+An encrypted message of arbitrary length is stored in ROM.  Your job is to decrypt it, given a key - which is also stored in ROM.  The contents of the message are [ASCII characters](http://en.wikipedia.org/wiki/ASCII) - each character is encoded in a single byte.  You know that the final decrypted byte of every message is `0x23`, the `#` character in ASCII.  You must write two subroutines.  The job of the first is to decrypt an individual piece of information.  It should use the pass-by-value technique and take in the encrypted value and the key and pass out the decrypted value.  The job of the second is to leverage the first subroutine to decrypt the entire message.  It should use the pass-by-reference technique to take in the address of the beginning of the message, the address of the key, and the address in RAM where the decrypted message will be placed.  It will pass the encrypted message byte-by-byte to the first subroutine, then stores the decrypted results in RAM.
+
+Your main program should look something like this:
+```
+;initialize stack
+;disable watchdog
+
+;load addresses into registers to pass to decrypt_message subroutine
+
+call        decrypt_message
+
+forever     jmp     forever     ;trap CPU
+```
+
+Sometimes the key isn't conveniently the same length as the unit of information you're trying to decrypt.  To achieve B functionality, you'll have to adjust your implementation to handle arbitrarily long keys.
+
+
+To achieve unbreakable encryption, the key and the message must be the same length.  For long messages, this is often impractical and a key substantially shorter than the message is used.  Thus, the key must be applied repeatedly to decrypt the message.  If you have knowledge of the contents of the message (you know it's English ASCII text, for instance), you can exploit this repetition to determine the key.  To achieve A-level functionality, you'll have to use this technique to decrypt a message without knowledge of the key.
+
+### Required Functionality
+
+- The encrypted and decrypted message will be in memory locations.  The encrypted message and key will be stored in ROM - any location in ROM is acceptable.  The message will be of arbitrary length, but the key will be one byte long.  The decrypted message will be stored in RAM starting at 0x0200.  Labels shall be used to to refer to the location of the encrypted message, decrypted message, and key.
+- The key and encrypted message will be given to you.  The final decrypted byte of every message is `0x23`, the ASCII `#` character.
+- Good coding standards, in accordance with the [Lab guidelines](/admin/labs.html), must be used throughout.
+
+Example encrypted message: `ab ab ab ab ab `  
+Example key: `d7`  
+Example decrypted message: `Some message!`
+
+Your calculator will be tested with various combinations of encrypted messages and keys.  Results will be verified using the debugger.
+
+### B Functionality
+
+In addition to the Required Functionality, your program must decrypt messages using arbitrarily long keys. 
+
+### A Functionality
+
+In addition to B Functionality, you must decrypt the following message without knowledge of its key:
+
+Message: `ab ab`
+
+You've intercepted a related message, along with its key.  Use your B functionality code to decrypt the following:
+
+Encrypted message: `ab ab ab`  
+Key: `dfec`
+
+This will give you some information about the contents of the message that will help you in decrypting it.
+
+## Prelab
+
+Paste the grading section in your lab notebook as the first page of this lab.
+
+Include whatever information from this lab you think will be useful in creating your program.
+
+Think about how you'll implement your subroutines.  Draw a flowchart of how it will operate - include pseudocode, as well as the interfaces to your subroutines (which registers contain inputs, which registers contain ouputs, etc.).
+
+## Notes
+
+Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+
+Since decryption and encryption are the same operation, you can encrypt test messages using the same subroutines you'll use to decrypt them.  This would be a great way to test functionality of your code.
+
+## Grading
+
+| Item | Grade | Points | Out of | Date | Due |
+|:-: | :-: | :-: | :-: | :-: |
+| Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L9 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L10 |
+| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
+| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
+| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L11 |
+| **Total** | | | **100** | | |
