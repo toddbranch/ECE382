@@ -74,7 +74,7 @@ forever     jmp     forever                 ;traps CPU
 
 Click the Project menu, then Build All (shortcut Ctl-B).  Fix any errors if necessary.  You'll get a bunch of warnings for unimplemented interrupt handler routines - disregard those for now, we'll talk about interrupts later in the course.
 
-In the Run menu, select Debug (shortcut F11).  If you get an error saying it couldn't find your Launchpad development board, connect it to a USB port on your computer and Retry - you might need to wait a minute for the drivers to install.  You're now in the "CCS Debug" perspective.  At the top right of your screen, you should see a small toolbar that lets you change perspective - you'll move between Edit and Debug very often.
+In the Run menu, select Debug (shortcut F11).  If you get an error saying it couldn't find your Launchpad development board, connect it to a USB port on your computer and Retry - you might need to wait a minute for the drivers to install.  *Note: upon initial connection, the LEDs at the bottom of the board will flash.  This is normal - it's a program pre-loaded by TI.*  You're now in the "CCS Debug" perspective.  At the top right of your screen, you should see a small toolbar that lets you change perspective - you'll move between Edit and Debug very often.
 
 The first instruction of your code should be highlighted - `RESET        mov.w   #__STACK_END,SP`.  This initializes the stack pointer, which we'll learn about in a later lesson.  At the top, to the right of the red Stop button, there is a yellow arrow that indicates "Step Into".  Click the button and watch as the instruction is executed, and we move to the next line. 
 

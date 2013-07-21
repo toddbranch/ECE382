@@ -71,6 +71,8 @@ Here are the MSP430 instructions that relate to subroutines:
 | :---: | :---: | :---: |
 | 101 | CALL |  Fetch operand, push PC, then assign operand value to PC. Note the immediate form is the most commonly used. There is no easy way to perform a PC-relative call; the PC-relative addressing mode fetches a word and uses it as an absolute address. This has no byte form. |
 
+**Important:** You should call all subroutines using the immediate addressing mode - there's no easy way to do it PC-relative.  A call should be of the form `call  #mySubroutine`.
+
 | Emulated Instruction | Assembly Instruction |
 | :---: | :---: | :---: |
 | RET | MOV @SP+, PC |
@@ -83,7 +85,7 @@ Here are the MSP430 instructions that relate to subroutines:
 main:
     mov.w   #2, r10
     mow.w   #4, r11
-    call    addition
+    call    #addition
 
 addition:
     add.w   r10, r11 
@@ -103,12 +105,26 @@ A subroutine must specify which registers it expects arguments to passed in and 
 ;Authoer: Capt Todd Branchflower, USAF
 ;Function: Adds two numbers, returns the result
 ;Inputs: operand1 in r10, operand2 in r11
-;Outputs; result in r11
+;Outputs: result in r11
 ;Registers destroyed: r11
 ;---------------------------------------------------
 
 addition:
     add.w   r10, r11 
+    ret
+```
+
+If your subroutine needs to use registers, but the programmer needs them to be preserved between function calls, the stack is a good way to handle that.  Note, popping registers will overwrite their contents - make sure you aren't trying to pass a result back in a register you're trying to preserve.  Also, note that you must pop registers in the opposite order you pushed them.
+
+```
+mySubroutine:
+    push.w  r5
+    push.w  r6
+    push.w  r7
+
+    pop.w   r7
+    pop.w   r6
+    pop.w   r5
     ret
 ```
 

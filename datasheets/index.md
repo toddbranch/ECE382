@@ -5,3 +5,5 @@
 - [MSP430G2553 Device Erratasheet](msp430g2553_device_erratasheet.pdf)
 - [Calibrating the DCO](calibrating_the_dco.pdf)
 - [MSP430G2553 Memory Map](memory_map.x)
+- [MSP430 Assembly Language Tools](msp430_assembly_language_tools.pdf)
+- [GNU Assembler](http://tigcc.ticalc.org/doc/gnuasm.html)
