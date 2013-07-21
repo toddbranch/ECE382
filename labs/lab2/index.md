@@ -60,7 +60,33 @@ Your decryptor will be tested with various combinations of encrypted messages an
 
 ### B Functionality
 
-In addition to the Required Functionality, your program must decrypt messages using arbitrarily long keys. 
+In addition to the Required Functionality, your program must decrypt messages with word-length keys.
+
+Encrypted Message:  
+```
+0x91,0x85,0xbc,0x89,0xff,0x86,0xb0,0x8e
+0xfe,0xcc,0xff,0xb5,0xb0,0x99,0xf8,0x9a
+0xba,0xcc,0xac,0x99,0xbc,0x8f,0xba,0x9f
+0xac,0x8a,0xaa,0x80,0xb3,0x95,0xff,0x89
+0xb1,0x8f,0xad,0x95,0xaf,0x98,0xba,0x88
+0xff,0x8d,0xff,0x81,0xba,0x9f,0xac,0x8d
+0xb8,0x89,0xff,0x99,0xac,0x85,0xb1,0x8b
+0xff,0x8d,0xff,0x9b,0xb0,0x9e,0xbb,0xc1
+0xb3,0x89,0xb1,0x8b,0xab,0x84,0xff,0x87
+0xba,0x95,0xff,0x8d,0xb1,0x88,0xff,0x8d
+0xbc,0x84,0xb6,0x89,0xa9,0x89,0xbb,0xcc
+0x9d,0xcc,0x99,0x99,0xb1,0x8f,0xab,0x85
+0xb0,0x82,0xbe,0x80,0xb6,0x98,0xa6,0xcd
+0xfc
+```
+
+Key: `0xdfec`  
+
+### A Functionality
+
+In addition to the B Functionality, your program must decrypt messages with arbitrarily long keys.  The keys are arbitrarily long series of bytes.
+
+The length of the key should be a parameter passed into your subroutine.
 
 Your subroutines don't have to exclusively pass-by-reference or pass-by-value - it's perfectly acceptable to make a subroutine that uses both.
 
@@ -78,20 +104,13 @@ Encrypted Message:
 0x8f
 ```
 
-Key: `0xac,0xdf,0x23`
+Key: `0xacdf23`
 
-### A Functionality
+Successfully decrypting this message will give you useful information to solve the Bonus Challenge.
 
-In addition to B Functionality, you must decrypt the following message without knowledge of its key:
+### Bonus Challenge
 
-Message: `ab ab`
-
-You've intercepted a related message, along with its key.  Use your B functionality code to decrypt the following:
-
-Encrypted message: `ab ab ab`  
-Key: `dfec`
-
-This will give you some information about the contents of the message that will help you in decrypting it.
+In addition to A Functionality, you must decrypt the following message without knowledge of its key:
 
 ## Prelab
 
@@ -125,5 +144,6 @@ byteLabel       .byte       0xab,0xcd,0xef
 | Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L10 |
 | B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
 | A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
+| Bonus Challenge | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
 | Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L11 |
 | **Total** | | | **100** | | |

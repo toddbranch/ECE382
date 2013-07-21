@@ -7,9 +7,9 @@ decrypted_message:
 
 .text
 plaintext_message:
-.string     "*****The message key length is 16 bits.  It is an English sentence.*****#"
+.string     "Nice job!  You've successfully encrypted a message using a word-length key and achieved B Functionality!#"
 key:
-.byte       0xac,0xdf,0x23
+.word       0xdfec
 
 .align     2 
 main:
@@ -24,7 +24,6 @@ main:
     mov.w   #plaintext_message, r5
     mov.w   #key, r6
     mov.w   #encrypted_message, r7
-    mov.w   #3,r8                               ;key length in bytes
 
     call    #encrypt_message
 
@@ -32,7 +31,6 @@ main:
     mov.w   #encrypted_message, r5
     mov.w   #key, r6
     mov.w   #decrypted_message, r7
-    mov.w   #3,r8                               ;key length in bytes
 
     call    #decrypt_message
 
@@ -42,44 +40,53 @@ forever:
 ;---------------------------------------------------
 ;Subroutine Name: encrypt_message
 ;Authoer: Capt Todd Branchflower, USAF
-;Function: Takes in the location of an encrypted message  and key
-; and uses the xor_bytes subroutine to decrypt it.  It
+;Function: Takes in the location of a plaintext message and key
+; and uses the xor_bytes subroutine to encrypt it.  It
 ; stores the results at a passed in memory location.  Stops when
 ; the ASCII character # is encountered.
-;Inputs: 
-; - plain text message address in r5 (reference)
-; - key address in r6 (reference)
-; - encrypted message address in r7 (reference)
-; - key length in r8 (value)
+;Inputs: plaintext message address in r5, key in r6, encrypted
+; message address in r7
 ;Outputs: none
 ;Registers destroyed: none
 ;---------------------------------------------------
 encrypt_message:
             ; saving registers
             push.w  r5
+            push.w  r6
             push.w  r7
             push.w  r8
            
-            mov.w   r6, r9
-            mov.w   r9, r11
-            mov.w   r8, r10
+            mov.w   @r6, r6                         ; retrieving key
+            swpb    r6                              ; flipping key to make encryption of byte-oriented data work
 
-encrypt_next_byte:
-            mov.b   @r5+, r8                        ; retrieving next byte
+encrypt_next_word:
+            mov.w   @r5+, r8                        ; retrieving next word
             cmp.b   #0x23, r8
-            jeq     encryption_done
-            call    #xor_byte_with_arbitrary_length_key
-            mov.b   r8, 0(r7)                       ; storing encrypted byte
-            inc     r7
-            jmp     encrypt_next_byte
+            jeq     encryption_done_bottom_half     ; want to encrypt only the bottom half here
+            swpb    r8
+            cmp.b   #0x23, r8
+            jeq     encryption_done_whole_word      ; want to encrypt the whole word here
+            swpb    r8                                ; we're good, so swapping back
 
-encryption_done:
-            call    #xor_byte_with_arbitrary_length_key
+            call    #xor_words
+            mov.w   r8, 0(r7)                       ; storing encrypted byte
+            incd    r7
+            jmp     encrypt_next_word
+
+encryption_done_bottom_half:
+            call    #xor_bytes
             mov.b   r8, 0(r7)
+            jmp     done_encryption
+
+encryption_done_whole_word:
+            call    #xor_words
+            mov.w   r8, 0(r7)
 
             ; restoring registers
+done_encryption:
             pop.w   r8
             pop.w   r7
+            pop.w   r6
             pop.w   r5
             ret
 
@@ -90,79 +97,65 @@ encryption_done:
 ; and uses the xor_bytes subroutine to decrypt it.  It
 ; stores the results at a passed in memory location.  Stops when
 ; the ASCII character # is encountered.
-;Inputs: 
-; - encrypted message address in r5 (reference)
-; - key address in r6 (reference)
-; - decrypted message address in r7 (reference)
-; - key length in r8 (value)
+;Inputs: encrypted message address in r5, key in r6, decrypted
+; message address in r7
 ;Outputs: none
 ;Registers destroyed: none
 ;---------------------------------------------------
 decrypt_message:
             ; saving registers
             push.w  r5
+            push.w  r6
             push.w  r7
             push.w  r8
            
-            mov.w   r6, r9
-            mov.w   r9, r11
-            mov.w   r8, r10
-
-decrypt_next_byte:
-            mov.b   @r5+, r8                        ; retrieving next byte
-            call    #xor_byte_with_arbitrary_length_key
-            mov.b   r8, 0(r7)                       ; storing decrypted byte
+            mov.w   @r6, r6                         ; retrieving key
+            swpb    r6
+decrypt_next_word:
+            mov.w   @r5+, r8                        ; retrieving next word
+            call    #xor_words
             cmp.b   #0x23, r8
-            jeq     decryption_done
-            inc     r7
-            jmp     decrypt_next_byte
+            jeq     decryption_done_half_word
+            swpb    r8
+            cmp.b   #0x23, r8
+            jeq     decryption_done_whole_word
+            swpb    r8
 
-decryption_done:
+            mov.w   r8, 0(r7)                       ; storing decrypted word
+            incd    r7
+            jmp     decrypt_next_word
+
+decryption_done_half_word:
+            mov.b   r8, 0(r7)
+            jmp     done_encryption
+
+decryption_done_whole_word:
+            mov.w   r8, 0(r7) 
+
+done_decryption:
             ; restoring registers
             pop.w   r8
             pop.w   r7
+            pop.w   r6
             pop.w   r5
             ret
 
 ;---------------------------------------------------
-;Subroutine Name: xor_byte_with_arbitrary_length_key
+;Subroutine Name: xor_bytes
 ;Authoer: Capt Todd Branchflower, USAF
-;Function: 
-; Takes in the base location of a key, its length, 
-; and current position.  It uses this information to
-; find the next byte of the key and XOR it with a byte
-; passed in.  It returns the result and updated key
-; position.
-;Inputs: 
-; - byte to be XORed with the key in r8 
-; - key base location in r9 (reference)
-; - key length in r10 (value)
-; - current key position in r11 (reference)
-;Outputs: 
-; - result in r8 (value)
-; - new key position in r11 (reference)
-;Registers destroyed: r8, r11
+;Function: Takes in two bytes, XORs them, returns the result.
+;Inputs: Byte 1 in r6, byte 2 in r8
+;Outputs: Result in r8
+;Registers destroyed: r8
 ;---------------------------------------------------
+xor_words:
+            xor.w   r6, r8
 
-xor_byte_with_arbitrary_length_key:
-            push.w  r9
-            push.w  r10
+            ret
 
-            add.w   r10, r9
-            cmp     r11, r9
-            jeq     end_of_key 
+xor_bytes:
+            xor.b   r6, r8
 
-            xor.b   @r11+, r8
-            jmp     xor_finished
-
-end_of_key:
-           sub.w    r10, r9
-           mov.w    r9, r11
-           xor.b   @r11+, r8
-            
-xor_finished:
-            pop.w   r10
-            pop.w   r9
             ret
 
 .section    ".vectors", "a"
