@@ -7,7 +7,7 @@ decrypted_message:
 
 .text
 plaintext_message:
-.string     "*****Congratulations!  You decrypted the ECE382 hidden message and achieved required functionality!*****#"
+.string     "Congratulations!  You decrypted the ECE382 hidden message and achieved required functionality!#"
 key:
 .byte       0xac
 

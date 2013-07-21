@@ -8,8 +8,12 @@ decrypted_message:
 .text
 plaintext_message:
 .string     "Nice job!  You've successfully encrypted a message using a word-length key and achieved B Functionality!#"
+mystery_message:
+.string     "Fast. Neat. Average. Friendly. Good. Good.#"
 key:
 .word       0xdfec
+mystery_key:
+.word       0x73be
 
 .align     2 
 main:
@@ -21,15 +25,30 @@ main:
     mov     #RAMEND, r1
 
     ;load registers
-    mov.w   #plaintext_message, r5
-    mov.w   #key, r6
+    ;mov.w   #plaintext_message, r5
+    ;mov.w   #key, r6
+    ;mov.w   #encrypted_message, r7
+
+    ;call    #encrypt_message
+
+    ;load registers
+    ;mov.w   #encrypted_message, r5
+    ;mov.w   #key, r6
+    ;mov.w   #decrypted_message, r7
+
+    ;call    #decrypt_message
+
+
+    ;load registers
+    mov.w   #mystery_message, r5
+    mov.w   #mystery_key, r6
     mov.w   #encrypted_message, r7
 
     call    #encrypt_message
 
     ;load registers
     mov.w   #encrypted_message, r5
-    mov.w   #key, r6
+    mov.w   #mystery_key, r6
     mov.w   #decrypted_message, r7
 
     call    #decrypt_message
