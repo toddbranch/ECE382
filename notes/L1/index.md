@@ -2,6 +2,7 @@
 
 ## Readings
 - [Embedded System](http://en.wikipedia.org/wiki/Embedded_system)
+- [Complex Instruction Set Computing](http://en.wikipedia.org/wiki/Complex_instruction_set_computing)
 - [RISC vs CISC](http://www-cs-faculty.stanford.edu/~eroberts/courses/soco/projects/risc/risccisc/)
 
 ## Lesson Outline
@@ -16,7 +17,6 @@ Welcome to ECE382, Embedded Systems I.  In this class, we'll learn about compute
 My goal is for you to leave this course with enough excitement and knowledge to be dangerous.
 
 What are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.  Embedded systems are built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.
-
 
 I think that this area of computing is going to be a big part of the future.  
 [Lemnos Labs / Momentum Machines](http://www.trendhunter.com/trends/machine-that-makes-burgers)
@@ -49,16 +49,16 @@ Capt Branchflower - I have an interest in Linux and low-level systems programmin
         - Lockers
         - Lab Cleanliness
     - Lab Notebooks
-        - From ECE281, you nkow the standard - grading will be less forgiving in this course
+        - From ECE281, you know the standard - grading will be less forgiving in this course
         - "Securely Affixed" - tape all around, glue
         - "Hit by a Bus" standard
     - Late Policy
-    - Course Text
+    - Course Text (optional!)
 - Instructor policies:
     - Go over teaching schedule
     - Encouraged to bring computer to class - if you'll do useful work with it
 - Skills Review!
-    - Due L3?
+    - Due L3
 
 ## Structure of a Computer
 Let's start with some perspective.  What are the key components of a computer?  
@@ -76,8 +76,10 @@ If you take the core components from this computer, shrink them, and integrate t
 
 These SoCs have powerful CPUs and are capable of running modern software like Linux / Windows.  Typically they need external memory chips (flash, RAM) to support this software - so they're not completely single-chip. 
 
+*[DEMO: in the future, would love to crack open a smartphone and show the guts]*
+
 ### Microcontrollers
-When you scale this down even further (100kB of RAM or less), you reach the world of [microcontrollers](http://en.wikipedia.org/wiki/Microcontroller).  That's where we'll live this semester.  Microcontrollers typically are completely single-chip.  They're extremely low power and low cost.  But they typically come with some limitations - memory, CPU speed, onboard subsystems, etc.
+When you scale this down even further (100kB of RAM or less), you reach the world of [microcontrollers](http://en.wikipedia.org/wiki/Microcontroller).  That's where we'll live this semester.  Microcontrollers typically are completely single-chip.  They're extremely low power and low cost.  But they typically come with some limitations - memory, CPU speed, onboard subsystems, etc.  Another distinction is that they're built to interact with the outside world - they have hardware support for common peripheral devices and they have a lot of input / output lines to enable them to interact with external devices.
 
 ## Architecture vs Microarchitecture
 Now, let's see where we are in the overall hierarchy of ECE - and talk about CPUs a bit more.
@@ -90,7 +92,7 @@ The ISA is the programmer's view of the processor.  Processors with the same ISA
 Are all processors that implement an ISA the same?  Are the Intel and AMD chips that implement x86 the same (Pentium, Athlon)?  NO - different microarchitectures.
 
 [Microarchitecture](http://en.wikipedia.org/wiki/Microarchitecture)  
-The microarchitecture is the hardware implementation of a given ISA.  An ISA can be implemented with different microarchitectures.
+The microarchitecture is the hardware implementation of a given ISA.  An ISA can be implemented with different microarchitectures.  This allows programmers to write software that functions on chips made by different manufacturers.
 
 Does anyone know what instruction set / processor their computer is running?  
 Mine runs x86_64:
@@ -108,15 +110,19 @@ Can anyone name any more instruction set architectures (ISA)?
 - MSP430 - ISA we'll use in this course
 - PRISM - what you learned in ECE281
 
-Aside from maybe PRISM, these aren't toy architectures - they're used in all sorts of devices we used everyday.
+Aside from maybe PRISM, these aren't toy architectures - they're used in all sorts of devices we use everyday.
 
 In fact, the router I use at home runs MIPS and embedded Linux.  
 *[DEMO SSH into router, show processor that it's running]*
 
+The architecture we'll use in this course is the MSP430 - it specializes in extremely low power applications.  We'll learn more about it next lesson.
+
 ### RISC vs CISC
 ISAs fall into two different categories, RISC and CISC.
 
-**TODO: add RISC vs CISC section**
+Early in the history of computing, most programming was done using the ISA directly (assembly language).  Higher level languages weren't as widely available and the associated compilation technology wasn't as good.  Consequently, computer architects designed ISAs that included progressively higher-level programming constructs - designed to make the assembly programmer's life easier.  As a result, instructions were created that were capable of performing several low-level operations in a single step.  For example, a single instruction might load some information from memory, perform an addition operation, and store the result.  Since instructions coded for more operations, this had the added benefit of making program length shorter - which was important because memory was expensive at the time.
+
+Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.
 
 In the past, we worked with the Motorola 68S12, which used a CISC architecture.  
 *[Show old S12 reference book as example of volume of instructions]*

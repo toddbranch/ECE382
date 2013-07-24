@@ -6,10 +6,18 @@ encrypted_message:
 decrypted_message:
 
 .text
-plaintext_message:
-.string     "Congratulations!  You decrypted the ECE382 hidden message and achieved required functionality!#"
-key:
-.byte       0xac
+message1:
+.string     "This is message 1!#"
+message2:
+.string     "This is message 2!#"
+message3:
+.string     "This is message 3!#"
+key1:
+.byte       0xab
+key2:
+.byte       0xcd
+key3:
+.byte       0xef
 
 .align     2 
 main:
@@ -21,15 +29,15 @@ main:
     mov     #RAMEND, r1
 
     ;load registers
-    mov.w   #plaintext_message, r5
-    mov.w   #key, r6
+    mov.w   #message3, r5
+    mov.w   #key3, r6
     mov.w   #encrypted_message, r7
 
     call    #encrypt_message
 
     ;load registers
     mov.w   #encrypted_message, r5
-    mov.w   #key, r6
+    mov.w   #key3, r6
     mov.w   #decrypted_message, r7
 
     call    #decrypt_message

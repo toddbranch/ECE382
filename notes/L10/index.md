@@ -102,7 +102,7 @@ A subroutine must specify which registers it expects arguments to passed in and 
 ```
 ;---------------------------------------------------
 ;Subroutine Name: Addition
-;Authoer: Capt Todd Branchflower, USAF
+;Author: Capt Todd Branchflower, USAF
 ;Function: Adds two numbers, returns the result
 ;Inputs: operand1 in r10, operand2 in r11
 ;Outputs: result in r11
