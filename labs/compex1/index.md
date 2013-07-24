@@ -51,9 +51,19 @@ If it presents the "License Setup Wizard", select the CODE SIZE LIMITED (MSP430)
 
 Click New Project.
 
-Name it something descriptive - I'll use Branchflower_CompEx1.  Leave the output type as Executable.  Next, you can choose where it will be saved - I'll use the default location.  Next, we need to select our device.  We'll be using the MSP430G2553, from the MSP430Gxxx Family.  Make sure this is the chip in your Launchpad development board - the kit also comes with a MSP430G2452 chip - we won't be using that.  Leave the connection as TI MSP430 USB1 [Default].  Don't touch the advanced settings.  Expand  "Project templates and examples" - select Empty Assembly-only Project.
+Project settings:
 
-This will place you in the "CCS Edit" perspective and give you some boilerplate in your main.asm.  Keep the boilerplate - this is your starting point.  
+- Name it something descriptive - I'll use Branchflower_CompEx1.
+- Leave the output type as Executable.
+- Next, you can choose where it will be saved - I'll use the default location.
+- Next, we need to select our device.  We'll be using the MSP430G2553, from the MSP430Gxxx Family.  Make sure this is the chip in your Launchpad development board - the kit also comes with a MSP430G2452 chip - we won't be using that.
+- Leave the connection as TI MSP430 USB1 [Default].
+- Don't touch the advanced settings.
+- Expand  "Project templates and examples" - select Empty Assembly-only Project.
+
+Click finish.
+
+This will place you in the "CCS Edit" perspective and give you some boilerplate in your main.asm.  There is some code that is already generated for you.  This is called bolierplate - keep it, this is your starting point.  
 
 The first comment block at the top is your program header.  In that, you should specify the following:
 
@@ -71,6 +81,8 @@ Make it look something like this:
 ; program, assemble, flash, and debug the MSP430.
 ;-------------------------------------------------------------
 ```
+
+This might be a good point to save your work.
 
 ## Your First Program
 

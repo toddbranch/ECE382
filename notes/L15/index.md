@@ -67,3 +67,23 @@ Talk about Tx, Rx flags.  Make it known that when Tx is set, that just mades tha
 ## Lab 3 Introduction
 
 ## Logic Analyzer Demo
+
+I'm going to walk you through the majority of your prelab right now by showing you how to do Step 1 of Lab 3.  Here's what it says:
+
+> **Step 1**: The Subsystem Master Clock (SMCLK) is the same speed as the Master Clock (MCLK) that runs your CPU.  Measure its period via logic analyzer - you'll want to screen capture / print this for your lab notebook.  There will be a table on the board for all students to record their CPU speed - record yours there.  **Never forget to ground your logic analyzer**.
+
+Remember, the pins on our MSP430 are multiplexed because we don't have many.  We need to write some code to make it available on one of our pins so we can measure it.  Here's the MSP430G2553 pinout:
+
+![MSP430G2553 DIP20 Pinout](/notes/L13/msp430g2553_dip20_pinout.jpg)
+
+Looks like the SMCLK is available on P1.4 if I set the P1DIR, P1SEL, and P1SEL2 registers properly.  To the Users Guide!
+
+![P1.4 Pin Functions](p1_4_pin_functions.jpg)
+
+Using this, here's the code we need to get access to SMCLK:
+```
+mov.b   #0b00010000, &P1DIR
+mov.b   #0b00010000, &P1SEL
+```
+
+Ok, now we'll use the Logic Analyzer to look at the signal and do some measurements.

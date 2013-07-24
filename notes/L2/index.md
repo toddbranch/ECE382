@@ -19,7 +19,7 @@ Suffice to say, this chip is used by engineers to create real-world products tha
 
 The other cool thing - they're cheap!  The MSP430 Launchpad development kit costs only $5 including shipping, so you can definitely get your own if you want to experiment with this beyond the semester.  We can also get replacement chips cheaply for when you inevitably burn them out.
 
-**Issue Launchpad Kits**
+**Issue Launchpad Kits, Geek Boxes**
 
 For the rest of the semester, you'll be using these kits along with CodeComposer or msp430-gcc to learn about the msp430 and build things with it.  I'll be the goto guy for msp430-gcc if you truly want to and Dr. York will be the goto guy for CodeComposer.
 
@@ -46,12 +46,9 @@ Any architecture will consist of:
 
 - Set of Operations
     - 27 Instructions in 3 families
-        - Single-operand arithmetic
-            - 
+        - Single-operand 
         - Conditional jump
-            - 
-        - Two-operand arithmetic
-            - 
+        - Two-operand 
 
 - Registers - 16 bits wide
     - fast memory that holds values in-use by the CPU
@@ -72,7 +69,13 @@ Any architecture will consist of:
 **TODO: add addressing modes**  
 
 - Addressing Modes
-    - 
+
+| Code | Addressing Mode | Description |
+| :-: | :-: | :-: |
+| 00 | Rn	| Register direct |
+| 01 | offset(Rn) | Register indexed |
+| 10 | @Rn	| Register indirect |
+| 11 | @Rn+	| Register indirect with post-increment |
 
 - Memory Organization
 
@@ -84,7 +87,7 @@ We'll be working with the **msp430g2553** variant.
 512b of RAM - 0x200-0x400  
 16kb of ROM - 0xc000-0xffdf  
 
-0x1100-0xc000 is empty!  There is no memory backing it up!  Other variants of the msp430 might use it, but ours is specialized for purposes that don't need much memory - making it cheaper.  If you attempt to write to this area of memory, you'll trigger what's essentially a **segmentation fault** because that memory doesn't exist.  It will cause the chip to do a Power-up Clear (PUC), essentially resetting the state of your processor.
+0x1100-0xc000 is empty!  There is no memory backing it up!  Other variants of the msp430 might use it, but ours is specialized for purposes that don't need much memory - making it cheaper.  If you attempt to write to this area of memory, you'll trigger what's essentially a **segmentation fault** because that memory doesn't exist.  It will cause the chip to do a Power-up Clear (PUC), resetting the state of your processor.
 
 - Little Endian
     - Discuss endianness (Big vs Little Endian)

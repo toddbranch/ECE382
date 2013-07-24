@@ -3,6 +3,7 @@
 ## Readings
 - [Embedded System](http://en.wikipedia.org/wiki/Embedded_system)
 - [Complex Instruction Set Computing](http://en.wikipedia.org/wiki/Complex_instruction_set_computing)
+- [Reduced Instruction Set Computing](https://en.wikipedia.org/wiki/Reduced_instruction_set_computing)
 - [RISC vs CISC](http://www-cs-faculty.stanford.edu/~eroberts/courses/soco/projects/risc/risccisc/)
 
 ## Lesson Outline
@@ -117,14 +118,26 @@ In fact, the router I use at home runs MIPS and embedded Linux.
 
 The architecture we'll use in this course is the MSP430 - it specializes in extremely low power applications.  We'll learn more about it next lesson.
 
-### RISC vs CISC
+### Some History - RISC vs CISC
 ISAs fall into two different categories, RISC and CISC.
 
-Early in the history of computing, most programming was done using the ISA directly (assembly language).  Higher level languages weren't as widely available and the associated compilation technology wasn't as good.  Consequently, computer architects designed ISAs that included progressively higher-level programming constructs - designed to make the assembly programmer's life easier.  As a result, instructions were created that were capable of performing several low-level operations in a single step.  For example, a single instruction might load some information from memory, perform an addition operation, and store the result.  Since instructions coded for more operations, this had the added benefit of making program length shorter - which was important because memory was expensive at the time.
+Early in the history of computing, most programming was done using the ISA directly (assembly language).  Higher level languages weren't as widely available and the associated compilation technology wasn't as good.  Consequently, computer architects designed ISAs that included progressively higher-level programming constructs - designed to make the assembly programmer's life easier.  As a result, instructions were created that were capable of performing several low-level operations in a single step.  For example, a single instruction might load some information from memory, perform an addition operation, and store the result - taking many clock cycles.  Since instructions coded for more operations, this had the added benefit of making program length shorter - which was important because memory was expensive and slow at the time.
 
-Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.
+Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.  So programmer convenience became less of an driving force behind ISA design.  Designers noticed that compilers didn't need many of the features meant to facilitate manual assembly programming.  They thought that these *complex* instruction could be replaced with sequences of simpler ones.  The simpler hardware would give room for more registers, reducing the number of slow memory accesses.  In these designs, instructions were typically of uniform length - allowing for better pipelining and higher clock frequences.  This strategy became known as Reduced Instruction Set Computing (RISC).
+
+Others thought that hardware design was more mature than compiler design and sought to implement these higher level constructs in hardware - this philosophy became known as Complex Instruction Set Computing (CISC).
+
+RISC designers focused on architectures with a small amount of highly-optimized instructions.  They found that these could often be faster than complex instructions performing the same operation.  You'll learn a lot more about this in ECE485 with Dr. York.  But the key characteristics of RISC are a small, highly optimized instruction set, many general purpose registers, and higher clock speeds than CISC processors.  They also have longer programs lengths than CISC architectures.
+
+But RISC never really made it mainstream.  That's probably due to the large amount of software written for x86, a CISC architecture - only the most recent version of Windows is available on ARM.  Intel also could afford to invest a lot more in process improvements, etc. than the RISC manufacturers.  They also adapted a lot of the RISC improvements to their own architecture - CISC architectures often translate their higher-level instructions in hardware to microcode, similarly to RISC.   Now high-performing CPUs (both RISC and CISC) are all pretty similar.
+
+x86 is still pretty dominant on PCs, but RISC has found a home in [low-end mobile systems and high-end supercomputing](https://en.wikipedia.org/wiki/Reduced_instruction_set_computing#RISC:_from_cell_phones_to_supercomputers).
 
 In the past, we worked with the Motorola 68S12, which used a CISC architecture.  
 *[Show old S12 reference book as example of volume of instructions]*
 
 This semester, we'll be working with the MSP430.  It uses a RISC architecture.  It has a grand total of 27 instructions.
+
+*[Show Launchpad kit]*
+
+Remainder of class, they can get moving on the Skills Review.

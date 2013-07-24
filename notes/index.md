@@ -4,8 +4,8 @@
 | :-: | :-: | :-: | :-: | :-: |
 | [L1](L1/index.html) | Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC. | [Skills Review](L1/skills_review.html) | |
 | [L2](L2/index.html) | Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Languages. | | Skills Review |
-| [L3](L3/index.html) | Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code. | [Assignment 1]() | |
-| [L4](L4/index.html) | Addressing Modes.  [CompEx 1](/labs/compex1/index.html) Intro. | [Assignment 2](L4/L4_addressing_modes.html) | |
+| [L3](L3/index.html) | Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code. | [Assignment 1](L3/L3_execution.html) | |
+| [L4](L4/index.html) | Addressing Modes.  [CompEx 1](/labs/compex1/index.html) Intro. | [Assignment 2](L4/L4_addressing_modes.html) | [Assignment 1](L3/L3_execution.html) |
 | [L5](L5/index.html) | [CompEx 1](/labs/compex1/index.html) - Introduction to the MSP430 and CodeComposer.  Blink the light. | [CompEx 1](/labs/compex1/index.html) | [Assignment 2](L4/L4_addressing_modes.html )|
 | [L6](L6/index.html) | Status Register.  Flow of Control.  Movement Instructions. | | [CompEx 1](/labs/compex1/index.html) Questions |
 | [L7](L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | | |

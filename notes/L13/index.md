@@ -68,6 +68,8 @@ Since you have complete control, GPIO is infinitely flexible.  If the MCU you're
 
 Pins are expensive - and most applications won't use all of the features available in a chip for a single application. So designers save on cost by making many different functions available on the same pin.
 
+Some dev boards give you a ton of pins *[show S12 dev board]*.  Ours does not.
+
 Remember the pinout for our MSP430G2553:
 
 ![MSP430G2553 Pinout](msp430g2553_dip20_pinout.jpg)

@@ -1,4 +1,4 @@
-# Lab 2 - I/O
+# Lab 3 - I/O
 
 ## Objectives
 
