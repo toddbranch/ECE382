@@ -111,7 +111,7 @@ Click the "Step Into" button.  You should see the contents of memory at 0x0200-0
 <br>
 We can also use the Memory Browser to change the contents of memory.  Go back to 0x0200, double-click on the memory locations and write in your own values.  You're actually altering the contents of RAM on the chip!
 
-You can also fill blocks of memory.  Write click a memory address and select "Fill Memory...".  In the start address, enter 0x0200.  Length: 50.  Data Value: 0xAB.  Type-size: Char.  Select OK and watch as 50 bytes of RAM are filled!
+You can also fill blocks of memory.  Right click any memory address and select "Fill Memory...".  In the start address, enter 0x0200.  Length: 50.  Data Value: 0xAB.  Type-size: Char.  Select OK and watch as 50 bytes of RAM are filled!
 
 Click the "Step Into" button - this will enter an infinite loop that will trap our CPU and prevent it from doing anything else.
 
