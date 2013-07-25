@@ -42,6 +42,8 @@ Most of these features are beyond the scope of this class. But we'll introduce y
 
 Talk about memory-mapped vs port IO.
 
+Port IO typically uses a special set of instructions to access ports, while memory mapped IO uses the same instructions and address space.
+
 ## GPIO
 
 General Purpose Input Output (GPIO) is the default peripheral available on your ports.  When configured in output mode, this allows you to drive each bit individually to logic high or low.  When configured in input mode, you can read logic high or low from an external source.  It's perfectly acceptable to have some pins be output and others input on the same port.
@@ -90,4 +92,4 @@ bis.b   #BIT1, P1SEL2
 ; others are set correctly by default - you should set them if previous code used them
 ```
 
-Next lesson, we'll learn about the Serial Peripheral Interface (SPI) - which the MSP430 has hardware support for.  You'll need all of this knowledge to configure / use the SPI subsytem on Lab 3.
+Next lesson, we'll learn about using a technique called polling to accept input from peripherals.
