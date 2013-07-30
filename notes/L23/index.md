@@ -1,7 +1,9 @@
 # Lesson 23 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+- [Revision Control][https://en.wikipedia.org/wiki/Revision_control]
+- [Git][https://en.wikipedia.org/wiki/Git_(software)]
+- [Github](https://en.wikipedia.org/wiki/Github)
 
 ## Assignment
 - Clone the [ECE382 Electronic Lab Notebook repo](https://github.com/toddbranch/electronic_lab_notebook).  Look at Lab 4, and make some additions to the lab report.  Commit and push the results.
