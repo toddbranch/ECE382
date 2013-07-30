@@ -9,6 +9,7 @@
 - Structs
 - Functions
 - Headers
+- Example
 
 ## Structs
 
@@ -123,3 +124,130 @@ The preprocessor is executed before your code compiles.  It handles any lines th
     - Code is only included if `<SOME_CONSTANT>` is not defined
     - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
 - Note: these lines do not end with a semicolon (;)!
+
+### C Headers
+
+- A separate file that contians a related set of:
+    - Function _prototypes_
+    - `typedef` declarations
+    - `#define` constants
+    - etc.
+- File naming convention:
+    - All lowercase
+    - Use "_" to combine words
+    - ".h" is the file extension
+    - Example: `atd_helper.h`
+- You must "wrap" the header in a `#ifndef` to prevent circular inclusions
+
+```
+#ifndef _ATD_HELPER_H_
+#define _ATD_HELPER_H_
+
+// Your header file code (typedefs, function prototypes, #defines, etc.)
+// Use good comment headers to define each function (see example)
+// ...
+
+#endif // _ATD_HELPER_H
+```
+
+### C Implementation Files
+
+- A separate C file that implements the header file
+- Contains the function _definitions_
+- `#include` the header file as your first line
+- File naming convention:
+    - Same name as the header file!
+    - ".c" is the file extension
+    - Example: `atd_helper.c`
+
+```
+#include "atd_helper.h"
+
+// Function definitions
+// ...
+```
+
+## Example
+
+### Program Requirements
+
+- Build a program that can calculate the following:
+    - Summation
+    - Factorial
+    - Minimum of two values
+    - Maximum of two values
+    - Provides user helpful mathematic constants
+- Must write modular / reusable code:
+    - Header file
+    - Implementation file
+    - `main()` file
+
+### math_helper.h
+
+```
+// Your high-quality header wtih aythor / description / revision history
+#ifndef _MATH_HELPER_H_
+#define _MATH_HELPER_H_
+
+// Usefule mathematic constants
+                                (estimate)      (actual)
+#define PI  (339 / 108)     //  3.139       vs  3.142
+#define E  (155 / 57)       //  2.719       vs  2.718
+
+// Note: you would add some really good headers before each of these
+//       functions to describe their purpose.  In the interest of
+//       brevity, I'm omitting them here.
+unsigned int summation(unsigned char n);
+unsigned int factorial(unsigned char n);
+char max(char a, char b);
+char min(char a, char b);
+
+#endif // _MATH_HELPER_H_
+```
+
+### math_helper.c
+
+```
+#include "math_helper.h"
+
+unsigned int summation(unsigned char n)
+{
+    // code here
+}
+
+unsigned int factorial(unsigned char n)
+{
+    // code here
+}
+
+char max(char a, char b)
+{
+    return (a > b) ? a : b;
+}
+
+char min(char a, char b)
+{
+    return (a < b) ? a : b;
+}
+```
+
+### main.c
+
+```
+#include "math_helper.h"
+
+void main(void)
+{
+    char a = 10;
+    char b = 15;
+    char maxVar, minVar;
+    unsigned int sum, fact;
+
+    sum = summation(a);
+    fact = factorial(6);
+    maxVar = max(a, b);
+    minVar = min(a, b);
+
+    while(1){};                 // trap CPU
+}
+```
