@@ -6,6 +6,7 @@
 ## Assignment
 
 - [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
+- [Install git](git_install.html) - **We will use this during next class**
 
 ## Lesson Outline
 - Pointers

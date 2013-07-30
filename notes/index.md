@@ -23,8 +23,8 @@
 | [L19](L19/index.html) | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
 | [L20](L20/index.html) | Compilers.  Introduction to C. | | |
 | [L21](L21/index.html) | C Programming - Structs, Functions, and Headers. | | |
-| [L22](L22/index.html) | C Programming - Pointers and Arrays | | |
-| [L23](L23/index.html) | C Programming - Clean and Testable Code | | |
+| [L22](L22/index.html) | C Programming - Pointers and Arrays | KSplice Pointer Challenge, [Install Git](L22/git_install.html) | |
+| [L23](L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | | KSplice Pointer Challenge, [Install Git](L22/git_install.html) |
 | [L24](L24/index.html) | C Programming - the MSP430.  Modular code design.  Creating libraries / using external libraries.  [Lab 4](/labs/lab4/index.html) Introduction. | [Lab 4](/labs/lab4/index.html) Prelab | |
 | [L25](L25/index.html) | [Lab 4]() - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
 | [L26](L26/index.html) | [Lab 4]() - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
