@@ -6,27 +6,38 @@
 - [Reduced Instruction Set Computing](https://en.wikipedia.org/wiki/Reduced_instruction_set_computing)
 - [RISC vs CISC](http://www-cs-faculty.stanford.edu/~eroberts/courses/soco/projects/risc/risccisc/)
 
+## Assignments
+[Skills Review](skills_review.html)
+
 ## Lesson Outline
 - Course Intro
 - Instructor Intro
 - Admin
 - Structure of a Computer
 - Architecture vs Microarchitecture
+- RISC vs CISC
 
 ## Course Intro
 Welcome to ECE382, Embedded Systems I.  In this class, we'll learn about computers - how they work and how we use them to accomplish tasks.
+
+In this class, we'll be:
+
+- Writing programs in Assembly Language, then C
+- Learning about and using the functional units of a microcontroller
+- Using the microcontroller to interface with peripheral devices
+
 My goal is for you to leave this course with enough excitement and knowledge to be dangerous.
 
 What are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.  Embedded systems are built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.
 
 I think that this area of computing is going to be a big part of the future.  
-[Lemnos Labs / Momentum Machines](http://www.trendhunter.com/trends/machine-that-makes-burgers)
+[Swarm of Quadrotors](http://www.youtube.com/watch?v=YQIMGV5vtd4)
 
 But even if you don't agree with this vision, learning about computers at a low level gives you a great insight into how these machines actually work.  You'll develop skills that will make you a better engineer, regardless of your ultimate focus.
 
 We're going to get very hands-on and expect you to build things that actually work.  By the end of the semester, you'll program this robot to navigate this maze. 
 
-*[DEMO - show robot navigating maze]*
+*[Show robot]*
 
 ## Instructor Intro
 
@@ -36,12 +47,15 @@ We're going to get very hands-on and expect you to build things that actually wo
 Capt Branchflower - I have an interest in Linux and low-level systems programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
 ## Admin
+There have been a **ton** of changes in this course from last year to this.  
+
+
 - Show course website, walk through structure - goal is to have everything you need on here
 - Go over course goals
 - Go through rough block structure of course - brief overview of each
     - Stuff due every lesson
-    - 2 GRs, 7 Labs, 3 Computer Exercises, HW / Quizzes
-        - Must complete every Lab / CompEx!
+    - 2 GRs, 8 Labs, HW / Quizzes
+        - Must complete every Lab!
     - There is a final - no validations
 - Course policies:
     - Lab

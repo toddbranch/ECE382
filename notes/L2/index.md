@@ -1,8 +1,8 @@
 # Lesson 2 Notes
 
 ## Readings
-Assembler
-Linker
+[Assembler][http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler]
+[Linker][https://en.wikipedia.org/wiki/Linker_(computing)]
 
 ## Lesson Outline
 - Intro to the MSP430
@@ -21,7 +21,7 @@ The other cool thing - they're cheap!  The MSP430 Launchpad development kit cost
 
 **Issue Launchpad Kits, Geek Boxes**
 
-For the rest of the semester, you'll be using these kits along with CodeComposer or msp430-gcc to learn about the msp430 and build things with it.  I'll be the goto guy for msp430-gcc if you truly want to and Dr. York will be the goto guy for CodeComposer.
+For the rest of the semester, you'll be using these kits along with CodeComposer to learn about the msp430 and build things with it.
 
 ## Architecture
 Ok, back to the dirty details about computer architecture.
@@ -37,18 +37,25 @@ Any architecture will consist of:
 - memory organization
 
 ## MSP430 Architecture
+
+I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in these areas in the next few lessons.
+
 - RISC architecture
     - fewer instructions
     - emulates higher-level instructions
+        - for instance, `NOP`
     - 16-bit datapath
         - word size is 16 bits
         - all instructions are 16 bits long
 
 - Set of Operations
-    - 27 Instructions in 3 families
+    - 27 Instructions in 3 families - we'll talk about these next time
         - Single-operand 
+            - for instance, `SWPB`
         - Conditional jump
+            - for instance, `JMP    jump_label`
         - Two-operand 
+            - for instance, `MOV    r12, r10`
 
 - Registers - 16 bits wide
     - fast memory that holds values in-use by the CPU
@@ -58,26 +65,26 @@ Any architecture will consist of:
         - r2 - Status Register - holds flags related to various conditions
         - r3 - Constant Generator - 0, but can assume other values for different addressing modes (L4)
     - 12 general purpose
+        - can be used to hold anything you want
 
 - Data Units
     - word size is 16 bits
         - words must lie on **even addresses**
     - instructions for byte and word actions
+        - `MOV.B`
+        - `MOV.W`
     - words must use even memory address
     - byte-addressable
 
-**TODO: add addressing modes**  
-
 - Addressing Modes
-
-| Code | Addressing Mode | Description |
-| :-: | :-: | :-: |
-| 00 | Rn	| Register direct |
-| 01 | offset(Rn) | Register indexed |
-| 10 | @Rn	| Register indirect |
-| 11 | @Rn+	| Register indirect with post-increment |
+    - how programmers reference operands in instructions
+    - register direct, for instance
+        - `MOV    r12, r10`
+    - will discuss them in detail in L4
 
 - Memory Organization
+
+*[Spend some time here]*
 
 ![MSP430 Memory Map](memory_map.jpg)
 
@@ -163,7 +170,7 @@ Hex dump of section '.text':
 ```
 Are we good to go?  Can we just load this on our MCU?  No!
 
-Think back to our memory map - can we write this region of memory?  No, that's where our registers and memory-mapped peripherals are.
+Think back to our memory map - can we write this region of memory?  No, that's where our special function registers and memory-mapped peripherals are.
 
 This file is formatted this way so that its code is relocatable.  In the future, we may want to combine this with code from other files to create a single executable.  So we need something that can potentially combine multiple object code files and place their code at the correct memory location depending on the MCU.  The tool we use for this job is called a **linker**.
 
@@ -204,3 +211,5 @@ From this disassembly, how can we tell if this is big-endian or little-endian?
 
 In years past, we've spent a the entire semester working directly with assembly.  A lot of people complained that it's irrelevant - could not be farther from the truth.  Every single program that runs on your computer followed this process.  Every single program becomes assembly code.  
 *[Demo - disassemble 'ls' command and show x86_64 assembly]*
+
+`objdump -d /usr/bin/ls`

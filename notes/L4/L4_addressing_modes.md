@@ -6,7 +6,7 @@ This assignment will be graded on the CheckPlus / Check / CheckMinus / 0 scale -
 
 1. For each of the following instructions, identify the addressing modes being used and hand-assemble it.
 ```
-some instruction
+mov.w   @r12, &0x0200
 ```
 Addressing modes used:
 <br>
@@ -25,7 +25,9 @@ Hand-assembled machine code:
 <br>
 <br>
 ```
-some instruction
+            jmp     TARGET      ; address is 0xc000
+...
+TARGET:     nop                 ; address is 0xc024
 ```
 Addressing modes used:
 <br>
@@ -44,7 +46,7 @@ Hand-assembled machine code:
 <br>
 <br>
 ```
-some instruction
+xor     @r12+, 0(r6)
 ```
 Addressing modes used:
 <br>
@@ -63,7 +65,26 @@ Hand-assembled machine code:
 <br>
 <br>
 ```
-some instruction
+swpb    r7
+```
+Addressing modes used:
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Hand-assembled machine code:
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+```
+nop
 ```
 Addressing modes used:
 <br>
