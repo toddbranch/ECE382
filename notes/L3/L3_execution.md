@@ -8,12 +8,19 @@ All of the code behind the course website is available at [https://github.com/to
 
 ## Assembly Process
 
-**Assembly Process.**
+**What does the assembler do?**
+
+**What does the linker do?**
 
 ## MSP430 Execution
 
 **MSP430 Execution.**
 
+```
+```
+
 ## MSP430 Instruction Set
 
 **MSP430 Instruction Set.**
+
+Do some basic instruction decoding?  What does this instruction do?

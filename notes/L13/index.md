@@ -52,6 +52,8 @@ The different features of MSP430 chips we just talked about are made available t
 
 So how do we interact with these ports / features?  In the MSP430, we use specialized registers that have their own locations in the MSP430 memory map.  This is known as memory-mapped IO.
 
+*[Show Family Users Guide, some registers and memory locations]*
+
 ### Memory-Mapped IO
 
 IO and memory share the same address space.  Peripherals are mapped to specific addresses in the MCU address space.

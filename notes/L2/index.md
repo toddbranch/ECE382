@@ -11,7 +11,7 @@
 
 ## Intro to the MSP430
 
-The family of microcontrollers we'll be working with for the remainder of the semester is TI's MSP430 - it's the first semester we've ever used it.  For the past many years, we've used Motorola's 68S12 as our platform - but it had become less relevant and the tools we used were no longer being supported.  Last year, I went out looking for a platform that would be easy to learn, but still relevant.  The MSP430 is an industry leader in low-cost, low-power consumption embedded applications - and it uses a RISC architecture with just 27 instructions.
+The family of microcontrollers we'll be working with for the remainder of the semester is TI's MSP430 - it's the first semester we've ever used it.  *[Show Launchpad kit]* For the past many years, we've used Motorola's 68S12 as our platform - but it had become less relevant and the tools we used were no longer being supported.  *[Show S12]* Last year, I went out looking for a platform that would be easy to learn, but still relevant.  The MSP430 is an industry leader in low-cost, low-power consumption embedded applications - and it uses a RISC architecture with just 27 instructions.
 
 [Products in the Wild Using MSP430](http://www.43oh.com/2012/03/winner-products-using-the-msp430/)
 
@@ -44,14 +44,17 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
     - fewer instructions
     - emulates higher-level instructions
         - for instance, `NOP`
+        - `MOV r3, r3`
     - 16-bit datapath
         - word size is 16 bits
+            - 16 bit addresses
+            - 16 bit registers
         - all instructions are 16 bits long
 
 - Set of Operations
     - 27 Instructions in 3 families - we'll talk about these next time
         - Single-operand 
-            - for instance, `SWPB`
+            - for instance, `SWPB   r12`
         - Conditional jump
             - for instance, `JMP    jump_label`
         - Two-operand 
@@ -68,13 +71,13 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
         - can be used to hold anything you want
 
 - Data Units
-    - word size is 16 bits
-        - words must lie on **even addresses**
+    - byte-addressable
     - instructions for byte and word actions
         - `MOV.B`
         - `MOV.W`
+    - remember, word size is 16 bits
+        - words must lie on **even addresses**
     - words must use even memory address
-    - byte-addressable
 
 - Addressing Modes
     - how programmers reference operands in instructions
@@ -85,6 +88,8 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
 - Memory Organization
 
 *[Spend some time here]*
+
+This is equivalent to RAM on your PC in terms of access - the CPU can directly access any of it.  Your hard drive isn't directly accessible by the CPU.
 
 ![MSP430 Memory Map](memory_map.jpg)
 
@@ -100,7 +105,7 @@ We'll be working with the **msp430g2553** variant.
     - Discuss endianness (Big vs Little Endian)
     - Endianness is concerned with the ordering of bytes on a computer.
     - Little Endian means the least significant byte of a chunk of data is stored at the lowest memory address.
-        - The MSP430 and your computer, presuming you run an x86_64 processor use this.
+        - The MSP430 and your computer, presuming you run an x86_64 processor, use this.
     - Big Endian means the most significant byte of a chunk of data is stored at the lowest memory address.
         - The 68S12 we used last semester used this
 
@@ -116,7 +121,7 @@ Now that we're familiar with our API, how do we interact with it?  How do we tal
 So we're going to write some instructions out of its instruction set.  
 As I said earlier, the MSP430 has 27 instructions in its instruction set.  How do we write them?
 
-- Instructions indicate the operation to perform and the instructions to use
+- Instructions indicate the operation to perform and the operations to use
     - **Assembly Language:** human-readable format of computer instructions
     - **Machine Language:** computer-readable instructions - binary (1's and 0's)
 
@@ -124,7 +129,7 @@ Computers run on 1s and 0s - machine code.  Assembly is the human-readable equiv
 
 ### Assembly Process
 **Let's write our first MSP430 program.**  
-*[DEMO Open vim and write this program, walking through instructions as they're written]*
+*[DEMO Open this program in VIM, walk through instructions]* 
 
 ```
 ; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
@@ -188,9 +193,10 @@ Hex dump of section '.text':
 ```
 It's located at c000, the start of our flash ROM block!  Great!  Now we can use it to program the chip.
 
-[DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]
+*[DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]*
 
-Let's disassemble the program.  This will take our executable and attempt to convert it back to assembly.  It gives us a good idea of which hex bytes correspond to which instructions.
+Let's **disassemble** the program.  This will take our executable and attempt to convert it back to assembly.  It gives us a good idea of which hex bytes correspond to which instructions.
+
 
 ```
 Disassembly of section .text:

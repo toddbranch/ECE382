@@ -77,13 +77,15 @@ View registers - $pc holds 0xc000!  What's this instruction do?  What's the addr
 
 *[Go through instruction by instruction until it's clear everyone gets it]*
 
+*[Maybe add instruction that references undefined memory, see what happens]*
+
 **Execution Time**  
-The time it takes to execute an instruction varies based on the clock speed of the CPU and the number of cycles a given instruction takes to execute.  The msp430g2553 has a clock that defaults to around 1.1MHz, but can be configured to run at up to 16MHz.  We'll talk about this more further along in the semester.
+The time it takes to execute an instruction varies based on the clock speed of the CPU and the number of cycles a given instruction takes to execute.  The msp430g2553 has a Master Clock (MCLK) that defaults to around 1.1MHz, but can be configured to run at up to 16MHz.  We'll talk about this more further along in the semester.
 
 Debuggers are a tool we'll use a lot.  Here's some more cool features that will help you get to the bottom of problems:
 
 - Set breakpoints to stop execution at points of interest.
-- Print items of interest after each step.
+- View items of interest
 - Examine memory directly
 
 ## MSP430 Instruction Set
@@ -98,9 +100,13 @@ Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All
 | 0 | 0 | 1 | Condition colspan=3 | PC offset (10 bit) colspan=10 |
 | Opcode colspan=4 | Source reg colspan=4 | Ad | B/W | As colspan=2 | Dest reg colspan=4 |
 
+*[Spend a bit of time describing this table and the fields]*
+
+We'll use the above table a lot next lesson when we spend a lot of time converting assembly language to machine code by hand.
+
 If instructions can be both word or byte instructions, they're word by default.  You can specify byte by appending .B to the instruction.  You can also explicitly add .W for word, but that's unnecessary.
 
-We'll go through these in a lot more detail as the semester goes on - so I don't expect you to know all of them right now.
+We'll go through these instructions in a lot more detail as the semester goes on - so I don't expect you to know all of them right now.
 
 ### One Operand Instructions
 
@@ -119,7 +125,7 @@ These are of the format `RRA    r10`.
 
 ### Relative Jumps
 
-These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.
+These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.  Remember, the PC increments by 2 the instant the instruction begins execution.
 
 | Condition Code | Assembly Instruction | Description |
 | :---: | :---: | :---: |
