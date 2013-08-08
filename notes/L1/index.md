@@ -18,6 +18,8 @@
 - RISC vs CISC
 
 ## Course Intro
+*[Take roll - use icebreaker questions from sheet.]*
+
 Welcome to ECE382, Embedded Systems I.  First things first - what have you heard about this class?!
 
 We're going to learn about computers - how they work and how we use them to accomplish tasks.  Specifically, we'll work with small computers called microcontrollers.
@@ -43,13 +45,15 @@ But even if you don't agree with this vision, learning about computers at a low 
 
 We're going to get very hands-on and expect you to build things that actually work.  By the end of the semester, you'll program this robot to navigate this maze. 
 
-*[Show robot]*
+*[Show robot]* - and if you win, you'll get your name on the wall - we've been running the maze competition since 1997.
 
 ## Instructor Intro
 
 [Capt Todd Branchflower](branchflower.html) - Course Director  
-[Dr. George York](york.html)
 
+*[My slides]*
+
+[Dr. George York](york.html)
 
 Capt Branchflower - I have an interest in Linux and low-level systems programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
@@ -70,6 +74,7 @@ There have been a **ton** of changes in this course from last year to this.  We'
 - Course policies:
     - Lab
         - After hours, sign in / out on log
+        - Time Logs
         - Sign out equipment!  Work with Mr. Evans
         - Lockers
         - Lab Cleanliness
@@ -85,10 +90,12 @@ There have been a **ton** of changes in this course from last year to this.  We'
         - If you didn't get the book, don't expect that I'll give you what it says in EI
 - Instructor policies:
     - Go over teaching schedule
-        - Branchflower - only teaching this class, sections?
     - Encouraged to bring computer to class
         - Datasheets
         - IDE
+        - I want you to write code, frequently!
+            - to see how things work
+            - to test your assumptions
 - Skills Review!
     - Due L3
 
@@ -107,6 +114,8 @@ Let's start with some perspective.  What are the key components of a computer?
 - Nonvolataile storage
     - RAM clears when it's powered off
     - If you don't want to lose your work, you need some sort of persistent storage (hard drive)
+
+If you shrink this to a single PCB, you've got what we call a **single board computer** - I've got a Raspberry Pi.
 
 ### System on a Chip
 If you take the core components from this computer, shrink them, and integrate them on a single die, you have what's known as a [System on a Chip (SoC)](http://en.wikipedia.org/wiki/System_on_a_chip).  Multiple components on a single die is the core feature here.  This is what powers your cell phones.  The Galaxy S4, for instance, has two models - one uses Qualcomm SnapDragon 600 and other Samsung Exynos 5 Octa.  They can include additional components based on application.
@@ -130,12 +139,12 @@ Now, let's see where we are in the overall hierarchy of ECE - and talk about CPU
 [Instruction Set Architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set)  
 The ISA is the programmer's view of the processor.  Processors with the same ISA share the same data types, assembly lanugage instructions, registers, addressing modes, memory architecture, interrupts, IO, etc.  This is the API into the processor for the programmer - the tools the programmer has access to to accomplish what they want.
 
-Are all processors that implement an ISA the same?  Are the Intel and AMD chips that implement x86 the same (Pentium, Athlon)?  NO - different microarchitectures.
+Are all processors that implement an ISA the same?  Are the Intel and AMD chips that implement x86 the same (Pentium, Athlon)?  **Pause - wait for answer**.  NO - different microarchitectures.
 
 [Microarchitecture](http://en.wikipedia.org/wiki/Microarchitecture)  
 The microarchitecture is the hardware implementation of a given ISA.  An ISA can be implemented with different microarchitectures.  This allows programmers to write software that functions on chips made by different manufacturers.
 
-Does anyone know what instruction set / processor their computer is running?  
+Does anyone know what ISA  / processor their computer is running?  
 Mine runs x86_64:
 
 ![Capt Branchflower's Architecture](ISA.jpg)
@@ -160,15 +169,21 @@ In fact, the router I use at home runs MIPS and embedded Linux.
 The architecture we'll use in this course is the MSP430 - it specializes in extremely low power applications.  We'll learn more about it next lesson.
 
 ### Some History - RISC vs CISC
-ISAs fall into two different categories, RISC and CISC.
+On board - ISAs fall into two different categories, Reduced Instruction Set Computer (RISC) and Complex Instruction Set Computer (CISC).
 
 Early in the history of computing, most programming was done using the ISA directly (assembly language).  Higher level languages (compiled - C, C++, etc interpreted - Python, Ruby, etc) weren't as widely available and the associated compilation technology wasn't as good.  Consequently, computer architects designed ISAs that included progressively higher-level programming constructs - designed to make the assembly programmer's life easier.  As a result, instructions were created that were capable of performing several low-level operations in a single step.  For example, a single instruction might load some information from memory, perform an addition operation, and store the result - taking many clock cycles.  Since instructions coded for more operations, this had the added benefit of making program length shorter - which was important because memory was expensive and slow at the time.
 
+Brief summary on board.
+
 Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.  So programmer convenience became less of an driving force behind ISA design.  Designers noticed that compilers didn't need many of the features meant to facilitate manual assembly programming.  They thought that these *complex* instruction could be replaced with sequences of simpler ones.  The simpler hardware would give room for more registers, reducing the number of slow memory accesses.  In these designs, instructions were typically of uniform length - allowing for better pipelining and higher clock frequences.  This strategy became known as Reduced Instruction Set Computing (RISC).
+
+Brief summary on board.
 
 Others thought that hardware design was more mature than compiler design and sought to implement these higher level constructs in hardware - this philosophy became known as Complex Instruction Set Computing (CISC).
 
 RISC designers focused on architectures with a small amount of highly-optimized instructions.  They found that these could often be faster than complex instructions performing the same operation.  You'll learn a lot more about this in ECE485 with Dr. York.  But the key characteristics of RISC are a small, highly optimized instruction set, many general purpose registers, and higher clock speeds than CISC processors.  They also have longer programs lengths than CISC architectures.
+
+CISC is characterized by a bigger instruction set, many addressing modes, instructions take multiple clock cycles, and typically slower clock speeds than RISC.
 
 But RISC never really made it mainstream.  That's probably due to the large amount of software written for x86, a CISC architecture - only the most recent version of Windows is available on ARM.  Intel also could afford to invest a lot more in process improvements, etc. than the RISC manufacturers.  They also adapted a lot of the RISC improvements to their own architecture - CISC architectures often translate their higher-level instructions in hardware to microcode, similarly to RISC.   Now high-performing CPUs (both RISC and CISC) are all pretty similar.
 
@@ -181,4 +196,15 @@ This semester, we'll be working with the MSP430.  It uses a RISC architecture.  
 
 *[Show Launchpad kit]*
 
-Remainder of class, they can get moving on the Skills Review.
+## Notecards
+
+(If there's time).
+
+- Name
+- Hometown
+- Hobbies / Interests
+- Course Goals?
+- Issues / Concerns about this course?
+- Anything else I should know?
+
+**Remainder of class, they can get moving on the Skills Review.**

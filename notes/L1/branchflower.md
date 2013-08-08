@@ -13,3 +13,11 @@ Other stuff I like:
  - Taylor Ham (NJ delicacy)
  - Climbing (have climbed Mt Rainier, Grand Teton, Mt Kilimanjaro, Forbidden Peak, Devil's Tower)
  - Linux (run Arch Linux), vim, bash, i3 (Tiling Window Manager), 
+
+Teaching schedule
+- Teach M1 / M4 / T4
+- Course Prep M7 / T7
+- I'm also the exec, so there's a good chance someone will have me doing something.  Make an appointment if you absolutely need EI during a certain time period.
+- I hang around the lab a lot.
+
+Office: 2F46A
