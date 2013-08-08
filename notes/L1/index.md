@@ -18,7 +18,9 @@
 - RISC vs CISC
 
 ## Course Intro
-Welcome to ECE382, Embedded Systems I.  We're going to learn about computers - how they work and how we use them to accomplish tasks.
+Welcome to ECE382, Embedded Systems I.  First things first - what have you heard about this class?!
+
+We're going to learn about computers - how they work and how we use them to accomplish tasks.  Specifically, we'll work with small computers called microcontrollers.
 
 In this class, we'll be:
 
@@ -30,7 +32,9 @@ My goal is for you to leave this course with enough knowledge to be confident yo
 
 Did anyone do the reading for today?!  Readings / Assignments in the lesson notes on the course website.
 
-What are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.  Embedded systems are built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.
+So if you read, what are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.
+
+Embedded systems are different - they're built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.  Or perform functions in manufacturing lines, power plants or water treatment facilities.
 
 I think that this area of computing is going to be a big part of the future.  
 [Swarm of Quadrotors](http://www.youtube.com/watch?v=YQIMGV5vtd4)
@@ -45,6 +49,7 @@ We're going to get very hands-on and expect you to build things that actually wo
 
 [Capt Todd Branchflower](branchflower.html) - Course Director  
 [Dr. George York](york.html)
+
 
 Capt Branchflower - I have an interest in Linux and low-level systems programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
