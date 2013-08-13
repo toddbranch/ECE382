@@ -10,14 +10,9 @@ Disassembly of section .text:
     c008:	82 4f 20 01 	mov	r15,	&0x0120	
     c00c:	f2 d3 22 00 	bis.b	#-1,	&0x0022	;r3 As==11
     c010:	f2 d3 21 00 	bis.b	#-1,	&0x0021	;r3 As==11
-    c014:	b0 12 1a c0 	call	#0xc01a	
 
-0000c018 <loop>:
-    c018:	ff 3f       	jmp	$+0      	;abs 0xc018
-
-0000c01a <turn_off>:
-    c01a:	c2 43 21 00 	mov.b	#0,	&0x0021	;r3 As==00
-    c01e:	30 41       	ret			
+0000c014 <loop>:
+    c014:	ff 3f       	jmp	$+0      	;abs 0xc014
 
 Disassembly of section .vectors:
 

@@ -1,5 +1,6 @@
 # Lesson 8 Notes
 
+
 ## Readings
 [Reading 1](/path/to/reading)
 
@@ -14,15 +15,14 @@
 
 ## Assembly Process
 
-On L2, I talked about assembly and machine languages - and we discussed how the assembly process works.  Starting next lesson, you're going to be writing your own assembly language programs with little help from me - and running them on the MSP430 using this process.  Let's review it quickly and maybe add a little bit to our knowledge.
+On L2, I talked about assembly and machine languages - and we discussed how the assembly process works.  Starting next lesson, you're going to be writing your own assembly language programs with little help from me - and running them on the MSP430 using this process.  Let's review it quickly.
 
-
-
-*[Discuss linking pre-compiled object files, etc]*
+*[Quick review of Assembly Language Prog -> Assembler -> Relocatable Object Code -> Linker -> Executable]*
 
 ## Directives
 
-The directives you've seen so far in the notes are in the GNU assembler style.  
+The directives you've seen so far in the notes are in the GNU assembler style.
+
 
 ```
 .text           ;this directive tells the assembler to put the following code in the text section (ROM) - it contains executable code

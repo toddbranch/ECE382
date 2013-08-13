@@ -17,7 +17,7 @@ dis-elf:
 	msp430-objdump -D $(APP).elf > dis-elf
 
 load:
-	$(LD) -o $(APP).elf $(APP).o function.o  -L /usr/msp430/lib/ldscripts/msp430g2553/ -T /usr/msp430/lib/ldscripts/msp430.x
+	$(LD) -o $(APP).elf $(APP).o -L /usr/msp430/lib/ldscripts/msp430g2553/ -T /usr/msp430/lib/ldscripts/msp430.x
 
 hex-dump-obj:
 	msp430-readelf --hex-dump=.text $(APP).o > dump-obj
@@ -26,4 +26,4 @@ hex-dump-elf:
 	msp430-readelf --hex-dump=.text $(APP).elf > dump-elf
 
 clean:
-	rm -f $(APP).elf $(APP).o function.o
+	rm -f $(APP).elf $(APP).o 

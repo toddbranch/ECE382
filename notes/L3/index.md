@@ -1,7 +1,7 @@
 # Lesson 3 Notes
 
 ## Readings
-Debuggers
+[Debuggers](http://en.wikipedia.org/wiki/Debugger)  
 [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html)
 
 ## Lesson Outline

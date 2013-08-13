@@ -17,7 +17,7 @@ This review is **individual effort** and willbe counted as a quiz grade.  You ma
 
 ## Part 1: Software
 
-Install the Code Composer Studio (CCS) Integrated Development Environment (IDE) using the instructions from [Computer Exercise 1](/ECE382/labs/compex1/index.html) - the "Installing Code Composer Studio (CCS)" block .  Do not do anything else from the computer exercise.
+Install the Code Composer Studio (CCS) Integrated Development Environment (IDE) using the instructions from [Computer Exercise 1](/labs/compex1/index.html) - the "Installing Code Composer Studio (CCS)" block .  Do not do anything else from the computer exercise.
 
 This will not be checked, but **it must be accomplished by BOC on Lesson 5**.  Failure to accomplish this will result in a **50% penalty** on this assignment.
 
@@ -40,7 +40,7 @@ Objectives:
 <br>
 <br>
 <br>
-    b. 40B7 (base 11)
+    b. 40A7 (base 11)
 <br>
 <br>
 <br>

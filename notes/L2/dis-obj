@@ -1,0 +1,20 @@
+
+lightLED.o:     file format elf32-msp430
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	3f 40 00 5a 	mov	#23040,	r15	;#0x5a00
+   4:	3f e0 80 00 	xor	#128,	r15	;#0x0080
+   8:	82 4f 20 01 	mov	r15,	&0x0120	
+   c:	f2 d3 22 00 	bis.b	#-1,	&0x0022	;r3 As==11
+  10:	f2 d3 21 00 	bis.b	#-1,	&0x0021	;r3 As==11
+
+00000014 <loop>:
+  14:	ff 3f       	jmp	$+0      	;abs 0x14
+
+Disassembly of section .vectors:
+
+00000000 <.vectors>:
+	...
