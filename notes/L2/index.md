@@ -9,7 +9,14 @@
 - MSP430 Architecture
 - Assembly and Mahcine Languages
 
+## Admin
+
+- Everyone getting my emails?
+- Skills Review due next time!
+
 ## Intro to the MSP430
+
+What's the family of MCUs we'll be using this semester?
 
 The family of microcontrollers we'll be working with for the remainder of the semester is TI's MSP430 - it's the first semester we've ever used it.  *[Show Launchpad kit]* For the past many years, we've used Motorola's 68S12 as our platform - but it had become less relevant and the tools we used were no longer being supported.  *[Show S12]* Last year, I went out looking for a platform that would be easy to learn, but still relevant.  The MSP430 is an industry leader in low-cost, low-power consumption embedded applications - and it uses a RISC architecture with just 27 instructions.
 
@@ -19,6 +26,8 @@ Suffice to say, this chip is used by engineers to create real-world products tha
 
 The other cool thing - they're cheap!  The MSP430 Launchpad development kit costs only $5 including shipping, so you can definitely get your own if you want to experiment with this beyond the semester.  We can also get replacement chips cheaply for when you inevitably burn them out.
 
+We're still issuing the Geek Boxes because they have peripherals we'll need to do the labs.
+
 **Issue Launchpad Kits, Geek Boxes**
 
 For the rest of the semester, you'll be using these kits along with CodeComposer to learn about the msp430 and build things with it.
@@ -26,19 +35,25 @@ For the rest of the semester, you'll be using these kits along with CodeComposer
 ## Architecture
 Ok, back to the dirty details about computer architecture.
 
-Remember, the Instruction Set Architecture (ISA) is the programmer's API into the CPU.
+What's an ISA?
+
+The Instruction Set Architecture (ISA) is the programmer's API into the CPU.
 
 Any architecture will consist of:
 
+*[Ask questions about each of these]*
+
 - set of operations (instructions)
 - registers
-- data units 
+- data units (byte/word/etc)
 - addressing modes
-- memory organization
+- memory organization / memory map
 
 ## MSP430 Architecture
 
-I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in these areas in the next few lessons.
+I'll give a brief, top-level overview of the MSP430's ISA - we'll go a lot more in depth in these areas in the next few lessons.
+
+What type of architecture is the MSP430?
 
 - RISC architecture
     - fewer instructions
@@ -46,19 +61,11 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
         - for instance, `NOP`
         - `MOV r3, r3`
     - 16-bit datapath
-        - word size is 16 bits
+        - word size is 16 bits - word is the natural unit of info for a processor
             - 16 bit addresses
             - 16 bit registers
-        - all instructions are 16 bits long
-
-- Set of Operations
-    - 27 Instructions in 3 families - we'll talk about these next time
-        - Single-operand 
-            - for instance, `SWPB   r12`
-        - Conditional jump
-            - for instance, `JMP    jump_label`
-        - Two-operand 
-            - for instance, `MOV    r12, r10`
+            - all instructions are 16 bits long
+            - this consistency isn't necessarily true of all processors, but it's convenient - allows us to load addresses into registers, perform ops on them, etc.
 
 - Registers - 16 bits wide
     - fast memory that holds values in-use by the CPU
@@ -70,14 +77,22 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
     - 12 general purpose
         - can be used to hold anything you want
 
+- Set of Operations
+    - 27 Instructions in 3 families - we'll talk about these next time
+        - Single-operand 
+            - for instance, `SWPB   r12`
+        - Conditional jump
+            - for instance, `JMP    jump_label`
+        - Two-operand 
+            - for instance, `MOV    r12, r10`
+
 - Data Units
-    - byte-addressable
+    - byte-addressable memory
     - instructions for byte and word actions
         - `MOV.B`
         - `MOV.W`
     - remember, word size is 16 bits
         - words must lie on **even addresses**
-    - words must use even memory address
 
 - Addressing Modes
     - how programmers reference operands in instructions
@@ -91,54 +106,62 @@ I'll give a brief overview of the MSP430's ISA - we'll go a lot more in depth in
 
 This is equivalent to RAM on your PC in terms of access - the CPU can directly access any of it.  Your hard drive isn't directly accessible by the CPU.
 
+*[Show the memory map on screen]*
+
 ![MSP430 Memory Map](memory_map.jpg)
 
 *[Briefly discuss what each section is used for, etc.]*
 
+Talk about the different variants of the MSP430 and why these sections aren't consistent across devices.
+
 We'll be working with the **msp430g2553** variant.  
+
+*[Draw sections of memory in on memory map]*
+
 512b of RAM - 0x200-0x400  
 16kb of ROM - 0xc000-0xffdf  
 
-0x1100-0xc000 is empty!  There is no memory backing it up!  Other variants of the msp430 might use it, but ours is specialized for purposes that don't need much memory - making it cheaper.  If you attempt to write to this area of memory, you'll trigger what's essentially a **segmentation fault** because that memory doesn't exist.  It will cause the chip to do a Power-up Clear (PUC), resetting the state of your processor.
+0x1100-0xc000 is empty!  There is no memory backing it up!  If you attempt to write to this area of memory, you'll trigger what's essentially a **segmentation fault** because that memory doesn't exist.  It will cause the chip to do a Power-up Clear (PUC), resetting the state of your processor.  This is a tough error to debug.
 
-- Little Endian
-    - Discuss endianness (Big vs Little Endian)
+- Endianness
     - Endianness is concerned with the ordering of bytes on a computer.
     - Little Endian means the least significant byte of a chunk of data is stored at the lowest memory address.
         - The MSP430 and your computer, presuming you run an x86_64 processor, use this.
     - Big Endian means the most significant byte of a chunk of data is stored at the lowest memory address.
         - The 68S12 we used last semester used this
 
+For instance, if I executed the instruction `MOV.W  #0xdfec, &0x0200`, how would that word be stored in memory?  Remember, each location (cubby hole) in memory stores one byte.
+
+*[Draw picture of memory here to contrast the two]*
+
+Often, the debugger will show memory like this: `0x0200: 0xec 0xdf 0xxx 0xxx`, which can make it tough to read in little endian format.
+
 ## Assembly and Machine Languages
 
 ### Assembly Language
 Now that we're familiar with our API, how do we interact with it?  How do we talk to the computer?
 
-- To command a computer, you must understand its language (ISA):
-    - **Instructions:** words in a computers language
-    - **Instruction Set:** the dictionary of the language
+- **Instructions:** words in a computers language
+- **Instruction Set:** the dictionary of the language
 
-So we're going to write some instructions out of its instruction set.  
-As I said earlier, the MSP430 has 27 instructions in its instruction set.  How do we write them?
+- **Assembly Language:** human-readable format of computer instructions
+- **Machine Language:** computer-readable instructions - binary (1's and 0's)
 
-- Instructions indicate the operation to perform and the operations to use
-    - **Assembly Language:** human-readable format of computer instructions
-    - **Machine Language:** computer-readable instructions - binary (1's and 0's)
+Can a computer read assembly language?  NO!  What does a computer read?  1's and 0's.  
 
-Computers run on 1s and 0s - machine code.  Assembly is the human-readable equivalent.  For the first half of this course, we'll be writing in assembly.  We use an **assembler** to convert from assembly to machine code.
+For the first half of this course, we'll be writing in assembly.  We use an **assembler** to convert from assembly to machine code.
 
 ### Assembly Process
 **Let's write our first MSP430 program.**  
-*[DEMO Open this program in VIM, walk through instructions]* 
+
+What's the first program we write when we're learning a language?  Hello, world!  But we don't have a screen on our dev board.  So we use the only thing we've got - turn on the LEDs.
+
+*[Cat this prgoram to the screen, walk through what each instruction is doing]*
 
 ```
 ; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
 
-.equ    WDTPW, 0x5a00
-.equ    WDTHOLD, 0x0080
-.equ    WDTCTL, 0x0120
-.equ    P1DIR, 0x0022
-.equ    P1OUT, 0x0021
+.include 'header.S'
 
 .text
 main:
@@ -155,8 +178,6 @@ loop:
     .word   main
 ```
 
-*Walk through the basic idea of the program.*
-
 For the machine to be able to execute our code, we have to convert it to machine code.  That's where the assembler comes in.
 
 Here's the first step of our assembly process:
@@ -164,9 +185,11 @@ Here's the first step of our assembly process:
 
 Since the code we'll be writing isn't for the machine we're running on, we'll be using a **cross-assembler**.  All this means is the assembler is creating machine code for an architecture different than what it's running on.
 
-To accomplish it, I run the command `msp430-as -mmcu=msp430g2553 lightLED.S -o lightLED.o`
+**Don't worry about the individual instructions I'm running and the way I assemble.  The IDE you'll use (CodeComposer) is a modern, GUI-based IDE that hides all of this from you.  I'm just using these utilities to illustrate everything that goes on behind the scenes.**
 
 The output is a file called lightLED.o - a file containing relocatable object code.  Here's what the machine code looks like:
+
+Notice the addresses - the code starts at 0x0.
 
 ```
 Hex dump of section '.text':
@@ -177,11 +200,9 @@ Are we good to go?  Can we just load this on our MCU?  No!
 
 Think back to our memory map - can we write this region of memory?  No, that's where our special function registers and memory-mapped peripherals are.
 
-This file is formatted this way so that its code is relocatable.  In the future, we may want to combine this with code from other files to create a single executable.  So we need something that can potentially combine multiple object code files and place their code at the correct memory location depending on the MCU.  The tool we use for this job is called a **linker**.
+This file is formatted this way so that its code is relocatable.  In the future, we may want to combine this with code from other files (from libraries, etc.) to create a single executable.  So we need something that can potentially combine multiple object code files.  We also need to place their code at the correct memory location depending on the MCU.  The tool we use for this job is called a **linker**.
 
 **Assembly Language Program --> Assembler --> Relocatable Object Code --> Linker --> Executable Binary**
-
-To accomplish this, I run the command `msp430-ld lightLED.o -o lightLED.elf -L /usr/msp430/lib/ldscripts/msp430g2553 -T /usr/msp430/lib/ldscripts/msp430.x`
 
 *[Show memory.x file for msp430g2553]* - this is how the linker knows memory map for our particular chip.
 
@@ -195,8 +216,9 @@ It's located at c000, the start of our flash ROM block!  Great!  Now we can use 
 
 *[DEMO: show the program on the computer, program the MSP430, show the result - Both LEDs light up]*
 
-Let's **disassemble** the program.  This will take our executable and attempt to convert it back to assembly.  It gives us a good idea of which hex bytes correspond to which instructions.
+Let's get a round of applause for our first program!
 
+Let's **disassemble** the program.  This will take our executable and attempt to convert it back to assembly.  It gives us a good idea of which hex bytes correspond to which instructions.
 
 ```
 Disassembly of section .text:
@@ -215,7 +237,10 @@ From this disassembly, how can we tell if this is big-endian or little-endian?
 
 **We'll walk through how this program executes in the next lesson.**
 
-In years past, we've spent a the entire semester working directly with assembly.  A lot of people complained that it's irrelevant - could not be farther from the truth.  Every single program that runs on your computer followed this process.  Every single program becomes assembly code.  
+In years past, we've spent the entire semester working directly with assembly.  A lot of people complained that it's irrelevant - could not be farther from the truth.  Every single program that runs on your computer followed this process.  It doesn't matter what language you start in.  Every single program becomes assembly code.  They all then are converted to machine code.
+
 *[Demo - disassemble 'ls' command and show x86_64 assembly]*
 
 `objdump -d /usr/bin/ls`
+
+This can be used by computer security folks to analyze malware.  Or for hackers to analyzer software for vulnerabilities.  There are people out there looking through lines and lines and lines of assembly code all day to do just this.
