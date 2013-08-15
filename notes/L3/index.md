@@ -9,78 +9,87 @@
 - MSP430 Instruction Set
 - Converting Assembly to Machine Code
 
-## MSP430 Execution Model
-*[Move through introducing the program and disassembly quickly, was covered last lesson]*
+## Admin
 
-Last time, we introduced the MSP430, talked a little about its architecture, and we wrote and ran our first program.
+- Funny video!
+- Collect skills reviews!
+
+## MSP430 Execution Model
+Last time, we introduced the MSP430, talked a little about its architecture, and we wrote and ran our embedded "hello, world!" program.
 
 Can anyone tell me what the process is to convert an assembly language program to an executable that we can load onto our chip?
 
 **Assembly Language Program --> Assembler --> Relocatable Object Code --> Linker --> Executable Binary**
 
-*[Touch on what each stage in the process does]*
+Ask questions about what each stage in the process does.
 
 Be familiar with this process - we'll be using it and building on it for the remainder of the course.  And it's the way computer programs on every computer are run.
 
-Ok, remember the program we ended last class period on.
-```
-; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.
+So last time, we walked through this process at the command line level - just to show you what's going on at the lowest level.  The IDE you'll be using - CCS - does a lot of that for you.  So let's take a look at how that program might work in CCS.
 
-.equ    WDTPW, 0x5a00
-.equ    WDTHOLD, 0x0080
-.equ    WDTCTL, 0x0120
-.equ    P1DIR, 0x0022
-.equ    P1OUT, 0x0021
+Let's start from scratch.  What variant of the MSP430 are we using?  **MSP430G2553**
 
-.text
-main:
-    mov.w   #WDTPW, r15
-    xor.w   #WDTHOLD, r15
-    mov.w   r15, &WDTCTL
-    bis.b   #0xFF, &P1DIR
-    bis.b   #0xFF, &P1OUT
-loop:
-	jmp loop
+Let's check out the boilerplate you'll be given.
 
-.section ".vectors", "a"
-    .org    0x1e
-    .word   main
-```
-What was the role of the `.equ` statements?  What does the `.text` directive do?  Briefly walk through program again.  I'm pulling up a copy of the same program, but I've abstracted the `.equ` statements into a header file and used it using the `.include` directive.  *[Bring it up in vim]*
+Ask about different elements.
 
-Let's send it through our assembly process and load it onto our chip.  It works!  Just like last time.  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
-
-I'll **disassemble** the executable to give us a better idea of where the linker wound up placing our instructions.  Remember, disassembly is the process of converting machine code into assembly language.  Is MSP430 big-endian or little-endian?  How can we tell?
+Let's add the three lines of code that lit up our LEDs in the Main Loop section.
 
 ```
-Disassembly of section .text:
+            bis.b   #0xff, &P1DIR
+            bis.b   #0xff, &P1OUT
 
-0000c000 <__ctors_end>:
-    c000:	3f 40 00 5a 	mov	#23040,	r15	;#0x5a00
-    c004:	3f e0 80 00 	xor	#128,	r15	;#0x0080
-    c008:	82 4f 20 01 	mov	r15,	&0x0120	
-    c00c:	f2 d3 22 00 	bis.b	#-1,	&0x0022	;r3 As==11
-    c010:	f2 d3 21 00 	bis.b	#-1,	&0x0021	;r3 As==11
-
-0000c014 <loop>:
-    c014:	ff 3f       	jmp	$+0      	;abs 0xc014
+forever     jmp     forever
 ```
+
+What does the `.text` directive do?  Briefly walk through program again.  What do the `bis.b` statements do?
+
+Remember all the nerdery we had to go through to make this work last time?  All that goes on behind the scenes in CCS.  But it's doing all the same work under the hood.
+
+**Show Console window, show different steps in process**
+
+Let's send it through our assembly process and load it onto our chip.  It works!  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
+
+Let's open the disassembly window to give us a better idea of where the linker wound up placing our instructions.  Remember, disassembly is the process of converting machine code into assembly language.  Is MSP430 big-endian or little-endian?  How can we tell?
+
 *[OK, can slow back down - this stuff is new]*
 
-To analyze how this program works, I'm going to use a tool called a **debugger**.  It allows us to step through code gradually and monitor the impact of different instructions on the state of the chip.  The debugger I'll use is called **gdb** (GNU Debugger) and can be used to debug programs on just about any architecture there is - I've also used it to debug on my Raspberry Pi (ARM) and x86_64 computers.  Real programmers use it all the time.  There's also a debugger built into Code Composer.  This is an important tool you'll use a lot in analyzing the behavior of your program when you encounter errors.
+To analyze how this program works, we're going to use a tool called a **debugger**.  It allows us to step through code gradually and monitor the impact of different instructions on the state of the chip.
 
-*[Open up gdb side-by-side with disassembled code]*
+Can anyone name any debuggers?  Anyone used a debugger before?
 
-Looking at our disassembled program, at what address does our program begin?  0xc000.  Think back to the registers we described yesterday.  Does anyone remember what the program counter does?  It holds the address of the instruction that's about to be executed!  Don't worry about anything else for now - we'll learn about the other special purpose registers later.
+There's a debugger built into Code Composer.  This is an important tool you'll use a lot in analyzing the behavior of your program when you encounter errors.
 
-View registers - $pc holds 0xc000!  What's this instruction do?  What's the address of our next instruction?  So what would we expect $r15 and $pc to hold once we execute it?  $pc = 0xc004, $r15 = 0x5a00.  Step.
+Looking at our disassembled program, at what address does our program begin?  0xc000.  What does the program counter do?  It holds the address of the instruction that's about to be executed.
+
+View registers - $pc holds 0xc000!  What's this instruction do?  What's the address of our next instruction?
 
 *[Go through instruction by instruction until it's clear everyone gets it]*
 
-*[Maybe add instruction that references undefined memory, see what happens]*
+Remember last time when I said if we referenced undefined memory, our CPU would reset?  I wasn't quite write.  If we try to execute instructions in these areas, it will reset.  Writing won't do anything, reading will give you undefined results.
 
-**Execution Time**  
-The time it takes to execute an instruction varies based on the clock speed of the CPU and the number of cycles a given instruction takes to execute.  The msp430g2553 has a Master Clock (MCLK) that defaults to around 1.1MHz, but can be configured to run at up to 16MHz.  We'll talk about this more further along in the semester.
+Let's add this instruction to see what happens.
+
+`mov.w      #0x9000, $SP`
+
+Power up clear!
+
+That's a little boring.  Let's add some code that does something more interesting.  Summation.  What's a summation?
+
+```
+            mov.w       #10, r6
+            mov.w       #0, r5
+
+summation   add.w       r6, r5
+            dec         r6
+            jnz         summation
+
+            mov.w       r6, &0x0200
+
+forever     jmp         forever
+```
+
+It's boring to have to step through this entire thing.  I want to see what r6 contains when this is over with.  How can I do that?  Breakpoints!  I can also examine memory - let's see what wound up being stored at 0x0200.
 
 Debuggers are a tool we'll use a lot.  Here's some more cool features that will help you get to the bottom of problems:
 
@@ -93,6 +102,8 @@ Debuggers are a tool we'll use a lot.  Here's some more cool features that will 
 As I said last lesson, the MSP430 has only 27 native instructions.  There are three instruction formats - one operand, relative jumps, and two operand.  These tables are all taken from [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html). 
 
 Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All instructions are 16 bits long.  Their binary format looks like this:
+
+*[Write this on the board]*
 
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -123,9 +134,13 @@ We'll go through these instructions in a lot more detail as the semester goes on
 
 These are of the format `RRA    r10`.
 
+When might we use a rotate right?  When might we use RRA?
+
 ### Relative Jumps
 
-These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.  Remember, the PC increments by 2 the instant the instruction begins execution.
+These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.  Remember, the PC increments by 2 the instant the instruction begins execution (for JMP instructions).
+
+The range makes sense, right?  How many bits do we have for offset in a jump?  What is the range of signed numbers?
 
 | Condition Code | Assembly Instruction | Description |
 | :---: | :---: | :---: |
@@ -142,7 +157,7 @@ These are of the format `JMP    loop`.
 
 ### Two Operand Instructions
 
-There are generally of the form `dest = src OP dest`.  Operands are written in the order src, dest (AT&T syntax).
+There are generally of the form `dest = src OP dest`.  Operands are written in the order `src, dest` (AT&T syntax).
 
 | Opcode | Assembly Instruction | Description | Notes |
 | :---: | :---: | :---: | :---: |
@@ -160,6 +175,10 @@ There are generally of the form `dest = src OP dest`.  Operands are written in t
 | 1111 | AND src, dest | dest &= src | |
 
 These are of the format `ADD r9, r10`.
+
+Bear in mind how the SUBC works.  BCD - each decimal digit can be coded with 4 bits.  Takes care of the carries, etc. for you.
+
+Walk thorugh how BIC, BIS work.  See how AND is the inverse of that.
 
 ### Emulated Instructions
 
@@ -199,6 +218,8 @@ Shift / rotate left are emulated with ADD.
 | RLA(.B) | ADD(.B) dst, dst |
 | RLC(.B) | ADDC(.B) dst, dst |
 
+What does it mean to rotate left in binary?
+
 Some common one-operand instructions:
 
 | Emulated Instruction | Assembly Instruction |
@@ -226,18 +247,6 @@ Adding / subtracting using only the carry bit:
 
 Here's a sample program using some of these instructions.  Let's walk through it using our **debugger**.
 ```
-.include "header.s"
-
-.text
-main:
-    ;disable watchdog timer
-    mov     #WDTPW, r10
-    xor     #WDTHOLD, r10
-    mov     r10, &WDTCTL
-    ;initialize stack
-    mov     #RAMEND, r1
-
-    ;code
 repeat:
     mov.b     #0x75, r10
     add.b     #0xC7, r10
@@ -254,10 +263,6 @@ repeat:
     mov.w   r10, r9
 
     jmp     repeat
-
-.section    ".vectors", "a"
-.org    0x1e
-    .word   main
 ```
 
 Disassembled:
