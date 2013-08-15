@@ -12,9 +12,40 @@
 ## Admin
 
 - Funny video!
-- Collect skills reviews!
+- Collect skills reviews at end of class
+
+## Review
+
+**On Board!**
+
+- Different types of instructions
+    - One Operand
+        - `SWPB r7`
+    - Relative Jump
+        - `JNE loop`
+    - Two Operand
+        - `add r5, r6`
+        - `add src, dst`
+        - `dst = dst + src`
+        - `dst += src`
+    - Three Operand?
+        - `add r5, r6, r7`
+        - These don't exist!
+- Specifying values
+    - `#10`
+        - What's the `#` mean?
+        - What base is this number in?
+    - `#0x10`
+        - What base is this number in?
+    - `#0b10`
+        - What base is this number in?
+
+Assembler does the work of base conversion for you.
 
 ## MSP430 Execution Model
+
+You're going to get the firehose approach here.  I'm going to expose you to a bunch of new, different instructions and tools.  If you don't understand something, ask.  The goal is to get us writing code as quickly as possible.
+
 Last time, we introduced the MSP430, talked a little about its architecture, and we wrote and ran our embedded "hello, world!" program.
 
 Can anyone tell me what the process is to convert an assembly language program to an executable that we can load onto our chip?
@@ -27,11 +58,13 @@ Be familiar with this process - we'll be using it and building on it for the rem
 
 So last time, we walked through this process at the command line level - just to show you what's going on at the lowest level.  The IDE you'll be using - CCS - does a lot of that for you.  So let's take a look at how that program might work in CCS.
 
-Let's start from scratch.  What variant of the MSP430 are we using?  **MSP430G2553**
+Let's start from scratch.  Check out all of the variants available - each has different combinations of peripherals, memory.
+
+What variant of the MSP430 are we using?  **MSP430G2553**
 
 Let's check out the boilerplate you'll be given.
 
-Ask about different elements.
+Ask about different elements.  What does the `.text` directive do?  Where does our main ROM start?  Talk about SP initialization, WDT.
 
 Let's add the three lines of code that lit up our LEDs in the Main Loop section.
 
@@ -42,39 +75,29 @@ Let's add the three lines of code that lit up our LEDs in the Main Loop section.
 forever     jmp     forever
 ```
 
-What does the `.text` directive do?  Briefly walk through program again.  What do the `bis.b` statements do?
+Briefly walk through program again.  What do the `bis.b` statements do?
 
 Remember all the nerdery we had to go through to make this work last time?  All that goes on behind the scenes in CCS.  But it's doing all the same work under the hood.
 
-**Show Console window, show different steps in process**
+**Build, Show Console window, show different steps in process**
 
-Let's send it through our assembly process and load it onto our chip.  It works!  But **how** does it work?  Let's learn about how the MSP430 executes the code we've given it.
+To analyze how this program executes on the chip, we're going to use a tool called a **debugger**.  It allows us to step through code gradually and monitor the impact of different instructions on the state of the chip.
 
-Let's open the disassembly window to give us a better idea of where the linker wound up placing our instructions.  Remember, disassembly is the process of converting machine code into assembly language.  Is MSP430 big-endian or little-endian?  How can we tell?
-
-*[OK, can slow back down - this stuff is new]*
-
-To analyze how this program works, we're going to use a tool called a **debugger**.  It allows us to step through code gradually and monitor the impact of different instructions on the state of the chip.
-
-Can anyone name any debuggers?  Anyone used a debugger before?
+Anyone used a debugger before?  Can anyone name any debuggers?
 
 There's a debugger built into Code Composer.  This is an important tool you'll use a lot in analyzing the behavior of your program when you encounter errors.
 
-Looking at our disassembled program, at what address does our program begin?  0xc000.  What does the program counter do?  It holds the address of the instruction that's about to be executed.
+**Open up the disassembly window.**  Looking at our disassembled program, at what address does our program begin?  0xc000.  What does the program counter do?  It holds the address of the instruction that's about to be executed.
 
-View registers - $pc holds 0xc000!  What's this instruction do?  What's the address of our next instruction?
+View registers - PC holds 0xc000!  What's this instruction do?  What's the address of our next instruction?  So once I **step** to the next instruction, what should be in PC?
 
 *[Go through instruction by instruction until it's clear everyone gets it]*
 
-Remember last time when I said if we referenced undefined memory, our CPU would reset?  I wasn't quite write.  If we try to execute instructions in these areas, it will reset.  Writing won't do anything, reading will give you undefined results.
+*[When you get to the `bis.b` instructions, look at the P1 registers to watch them change]*
 
-Let's add this instruction to see what happens.
+That's a little boring.  Let's add some code that does something more interesting.  Let's say I want to add the numbers `10+9+8+...+1`, how would I do it in a high-level language?  Ok, let's write assembly to do that.
 
-`mov.w      #0x9000, $SP`
-
-Power up clear!
-
-That's a little boring.  Let's add some code that does something more interesting.  Summation.  What's a summation?
+**Walk through what each instruction does, have them calculate result**
 
 ```
             mov.w       #10, r6
@@ -89,7 +112,18 @@ summation   add.w       r6, r5
 forever     jmp         forever
 ```
 
-It's boring to have to step through this entire thing.  I want to see what r6 contains when this is over with.  How can I do that?  Breakpoints!  I can also examine memory - let's see what wound up being stored at 0x0200.
+It's boring to have to step through this entire thing.  I want to see what r6 contains when this is over with.  How can I do that?  Breakpoints!  Set breakpoint at `mov` instruction, execute.  Look at contents of `r5` and `r6`.  I can also examine memory - let's see what wound up being stored at 0x0200.  **Open memory window, look at contents, step, watch them change.**
+
+Remember last time when I said if we referenced undefined memory, our CPU would reset?  I wasn't quite right.  If we try to execute instructions in these areas, it will reset.  Writing won't do anything, reading will give you undefined results.
+
+How can we change the address of the current instruction we're executing?  Write to the PC!
+
+Let's add this instruction to see what happens.
+
+`mov.w      #0x9000, $SP`
+
+Power up clear!
+
 
 Debuggers are a tool we'll use a lot.  Here's some more cool features that will help you get to the bottom of problems:
 
@@ -103,21 +137,21 @@ As I said last lesson, the MSP430 has only 27 native instructions.  There are th
 
 Anyone remember the standard word / datapath size for the MSP430?  16 bits.  All instructions are 16 bits long.  Their binary format looks like this:
 
-*[Write this on the board]*
-
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0 | 0 | 1 | 0 | 0 | Opcode colspan=3 | B/W | Ad colspan=2 | Dest reg colspan=4 |
 | 0 | 0 | 1 | Condition colspan=3 | PC offset (10 bit) colspan=10 |
 | Opcode colspan=4 | Source reg colspan=4 | Ad | B/W | As colspan=2 | Dest reg colspan=4 |
 
-*[Spend a bit of time describing this table and the fields]*
+*[Spend a short bit of time describing this table and the fields]*
 
 We'll use the above table a lot next lesson when we spend a lot of time converting assembly language to machine code by hand.
 
 If instructions can be both word or byte instructions, they're word by default.  You can specify byte by appending .B to the instruction.  You can also explicitly add .W for word, but that's unnecessary.
 
 We'll go through these instructions in a lot more detail as the semester goes on - so I don't expect you to know all of them right now.
+
+*[Go through, only highlighting interesting instructions.  Don't spend much time on jumps or status register manipulation]*
 
 ### One Operand Instructions
 
@@ -134,13 +168,16 @@ We'll go through these instructions in a lot more detail as the semester goes on
 
 These are of the format `RRA    r10`.
 
-When might we use a rotate right?  When might we use RRA?
+Touch on RRC, SWPB, RRA, SXT.
+
+RRC - when would we use it?  Division. `1000` -> `0100`
+RRA - preserves sign in division. `1000` -> `1100`
 
 ### Relative Jumps
 
-These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.  Remember, the PC increments by 2 the instant the instruction begins execution (for JMP instructions).
+How many bits do we have for offset in a jump?  What is the range of signed numbers?
 
-The range makes sense, right?  How many bits do we have for offset in a jump?  What is the range of signed numbers?
+These are all PC-relative jumps, adding twice the sign-extended offset to the PC, for a jump range of -1024 to +1022.  Remember, the PC increments by 2 the instant the instruction begins execution (for JMP instructions).
 
 | Condition Code | Assembly Instruction | Description |
 | :---: | :---: | :---: |
@@ -155,9 +192,11 @@ The range makes sense, right?  How many bits do we have for offset in a jump?  W
 
 These are of the format `JMP    loop`.
 
+Talk about differences in naming between loops that do the same thing - good for code readability depending on what you're doing.
+
 ### Two Operand Instructions
 
-There are generally of the form `dest = src OP dest`.  Operands are written in the order `src, dest` (AT&T syntax).
+There are generally of the form `OP src, dst` which actually means `dest = src OP dest`.
 
 | Opcode | Assembly Instruction | Description | Notes |
 | :---: | :---: | :---: | :---: |
@@ -176,13 +215,19 @@ There are generally of the form `dest = src OP dest`.  Operands are written in t
 
 These are of the format `ADD r9, r10`.
 
-Bear in mind how the SUBC works.  BCD - each decimal digit can be coded with 4 bits.  Takes care of the carries, etc. for you.
+Talk about `~` - one's complement.  Use it to describe difference between SUBC, SUB.
 
-Walk thorugh how BIC, BIS work.  See how AND is the inverse of that.
+BCD - each decimal digit can be coded with 4 bits.  Takes care of the carries, etc. for you.
+
+Talk about `+=`, `-=`, `^=`.
+
+Walk thorugh how BIC, BIS work.
 
 ### Emulated Instructions
 
 There are a number of instructions that will be understood by the assembler that aren't native to the instruction set.  24 in total.  These are known as 'emulated' instructions.  They are actually implemented using one of the core instructions.  So, including emulated instructions, there are 51 different assembly instructions you can write.
+
+Assembler will make the swap for you behind the scenes - can make your code much more readable.
 
 | Emulated Instruction | Assembly Instruction | Notes |
 | :---: | :---: | :---: |
@@ -211,7 +256,7 @@ These instructions are useful for manipulating the status register.
 | DINT | BIC #8, SR |
 | EINT | BIS #8, SR |
 
-Shift / rotate left are emulated with ADD.
+Shift / rotate left are emulated with ADD.  Use `0100 + 0100 = 1000`.
 
 | Emulated Instruction | Assembly Instruction |
 | :---: | :---: | :---: |
@@ -278,6 +323,8 @@ c024:	8a 10       	swpb	r10
 c026:	09 4a       	mov	r10,	r9	
 c028:	f3 3f       	jmp	$-24     	;abs 0xc010
 ```
+
+**This was as far as we got.**
 
 ## Converting Assembly to Machine Code
 
