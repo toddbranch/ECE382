@@ -1,7 +1,7 @@
 # Lesson 2 Notes
 
 ## Readings
-<a href="http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler">Assembler</a>
+<a href="http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler">Assembler</a>  
 <a href="https://en.wikipedia.org/wiki/Linker_(computing)">Linker</a>
 
 ## Lesson Outline
