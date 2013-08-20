@@ -4,6 +4,9 @@
 [Debuggers](http://en.wikipedia.org/wiki/Debugger)  
 [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html)
 
+## Assignment
+[Execution](L3_execution.html)
+
 ## Lesson Outline
 - MSP430 Execution Model
 - MSP430 Instruction Set
@@ -344,10 +347,10 @@ Addressing modes cover how our instructions reference their operands - the piece
 
 | Code | Addressing Mode | Description |
 | :-: | :-: | :-: |
-| 00 |  Rn	| Register direct |
-| 01 |  offset(Rn)	| Register indexed |
-| 10 |  @Rn	| Register indirect |
-| 11 |  @Rn+	| Register indirect with post-increment |
+| 00 | Rn	| Register direct |
+| 01 | offset(Rn)	| Register indexed |
+| 10 | @Rn	| Register indirect |
+| 11 | @Rn+	| Register indirect with post-increment |
 
 Let's try a couple to get us familiar with the process.
 

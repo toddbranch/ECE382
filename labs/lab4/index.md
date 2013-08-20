@@ -32,7 +32,7 @@ Include whatever information from this lab you think will be useful in creating 
 
 ## Notes
 
-Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
 ## Grading
 

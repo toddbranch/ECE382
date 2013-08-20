@@ -135,7 +135,7 @@ Think about how you'll implement your subroutines.  Draw a flowchart of how it w
 
 ## Notes
 
-Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
 If you want, decrypt the first word of the message by hand so you get the idea of how it works.  If the ASCII characters you're getting don't make sense, you're probably thinking about the problem wrong.
 

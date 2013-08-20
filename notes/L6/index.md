@@ -1,6 +1,7 @@
 # Lesson 6 Notes
 
 ## Readings
+[MSP430 Family Users Guide pp121](/datasheets/msp430_msp430x2xx_family_users_guide.pdf)  
 Davies pp123-124  
 [Control Flow](http://en.wikipedia.org/wiki/Control_flow)  
 [Overflow Flag](http://en.wikipedia.org/wiki/Overflow_flag)
@@ -12,13 +13,21 @@ Davies pp123-124
 - Flow of Control
 - Movement Instructions
 
+## Admin
+
+- Video
+- Collect CompEx Questions at end of period
+
+*[Discuss CompEx, get some feedback]*
+
+## Review
+
+- Review Addressing Modes assignment
+- Review addressing modes, hit anything we missed in L4 (**SPECIAL CASES**)
+
 ## Status Register
 
-*[Discuss CompEx, get some feedback, remind them of due dates]*
-
 Quick review - how many registers does the MSP430 have?  16.  How many of these have special purposes?  4 - program counter (PC), stack pointer (SP), status register (SR), and constant generator (CG).
-
-What's the purpose of the program counter?  Holds the address of the next instruction.  We'll cover the purpose of the stack pointer later.
 
 Last lesson we learned how the SR and CG are used to shorten the length of instructions involving common constants and allow for immediate addresssing.
 
@@ -42,9 +51,17 @@ Many of the bits in the Status Register can give us information about the result
 
 The V bit is the **overflow** bit.
 
-Who can tell me what an overflow is?  
+Who can tell me what an overflow is?
 
 This indicates that the signed two's-complement result of an operation cannot fit in the available space.  Remember, in two's-complement the most significant bit is the sign bit.  If I had a large positive number and added it to another positive number, the result could spill over into the most significant bit and appear negative, even though the addition of two positive numbers can't be negative.  For instance, `0x7fff + 0x01` would result in `0x8000`.  In unsigned addition, this result is correct.  In signed, it isn't.  So this flag is only meaningful when dealing with signed numbers.
+
+```
+mov.w   #0x7fff, r5
+add.w   #1, r5
+
+mov.b   #0x80, r5
+add.b   #0x80, r5
+```
 
 In practice, it is set when the result of adding two positive numbers is negative or the result of adding two negative numbers is positive.  Essentially, when the sign of the result is different when adding two numbers with the same sign.  It is never set when adding numbers with different signs.  This could also result if positive - negative = negative or negative - positive = positive.
 
@@ -52,9 +69,23 @@ The N bit is the **negative** bit.
 
 This is the same as the first bit of the result of the previous operation.  This only works for signed numbers - where the MSB of the result indicates the sign.  1 indicates a negative number, 0 a positive.
 
+```
+mov.w   #0x8001, r5
+cmp.w   #0x1, r5
+
+cmp.w   #0x1000, r5
+```
+
 The Z bit is the **zero** bit.
 
-This is set if the result of the previous operation is 0.  If not, it is cleared.  This functions the same way for both signed and unsigned numbers.  This is commonly used to test for equality.  You'd subtract to numbers - if the result is 0, they are equal.
+This is set if the result of the previous operation is 0.  If not, it is cleared.  This functions the same way for both signed and unsigned numbers.  This is commonly used to test for equality.  You'd subtract two numbers - if the result is 0, they are equal.
+
+```
+mov.w   #10, r5
+cmp.w   #10, r5
+
+sub.w   #10, r5
+```
 
 The C bit is the **carry** bit.
 

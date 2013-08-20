@@ -171,7 +171,7 @@ Section:
 
 ### Scenario
 
-1. (30pts) What's the purpose of the mystery program?  Don't repeat what each step does, give me a **concise explanation of purpose**.  It should only be one sentence.
+1. (20pts) What's the purpose of the mystery program?  Don't repeat what each step does, give me a **concise explanation of purpose**.  It should only be one sentence.
 <br>
 <br>
 <br>
@@ -184,7 +184,7 @@ Section:
 <br>
 <br>
 <br>
-2. (15pts) If you wanted to change the program to make it more readable and understandable, what changes would you make?  **Be specific**.
+2. (10pts) If you wanted to change the program to make it more readable and understandable, what changes would you make?  **Be specific**.
 <br>
 <br>
 <br>
@@ -197,7 +197,7 @@ Section:
 <br>
 <br>
 <br>
-3. (15pts) If you were an attacker and wanted to obfuscate (make unclear) the purpose of your code, what changes would you make?  **Be specific**.
+3. (10pts) If you were an attacker and wanted to obfuscate (make unclear) the purpose of your code, what changes would you make?  **Be specific**.
 <br>
 <br>
 <br>
@@ -213,7 +213,7 @@ Section:
 
 ### General
 
-4. (15pts) What's the purpose of a breakpoint?  Why are they useful?  Give an example of a situation where you'd use a breakpoint.
+4. (10pts) What's the purpose of a breakpoint?  Why are they useful?  Give an example of a situation where you'd use a breakpoint.
 <br>
 <br>
 <br>
@@ -226,7 +226,7 @@ Section:
 <br>
 <br>
 <br>
-5. (15pts) Consider the `forever    jmp forever` instruction from the simple program you wrote first.  What addressing mode is being used?  Hand-assemble the instruction (show your work!).  Is the result the same as the machine code you recorded?
+5. (10pts) Consider the `forever    jmp forever` instruction from the simple program you wrote first.  What type of instruction is this?  Hand-assemble the instruction (show your work!).  Is the result the same as the machine code you recorded?
 <br>
 <br>
 <br>
@@ -239,7 +239,33 @@ Section:
 <br>
 <br>
 <br>
-6. (15pts) Are the values in memory stored in little-endian or big-endian format?  Using the debugger, how can you tell?  If they were stored in the other format, what would it look like?  Give me an example from your code.
+6. (10pts) Are the values in memory stored in little-endian or big-endian format?  Using the debugger, how can you tell?  If they were stored in the other format, what would it look like?  Give me an example from your code.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+7. (10pts) What additional capabilities does a Hardware Breakpoint offer from a standard breakpoint?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+8. (20pts) Write a program that fills RAM (0x0200 - 0x0400) with words starting at 0 and counting upward by 2.
 <br>
 <br>
 <br>

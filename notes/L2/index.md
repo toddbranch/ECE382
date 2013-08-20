@@ -1,8 +1,8 @@
 # Lesson 2 Notes
 
 ## Readings
-[Assembler][http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler]
-[Linker][https://en.wikipedia.org/wiki/Linker_(computing)]
+<a href="http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler">Assembler</a>
+<a href="https://en.wikipedia.org/wiki/Linker_(computing)">Linker</a>
 
 ## Lesson Outline
 - Intro to the MSP430

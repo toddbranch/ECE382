@@ -135,7 +135,7 @@ Perform the required calculations for your LCDDELAY1 and LCDDELAY2 - you can imp
 
 ## Notes
 
-Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
 Use assembler directives for placing strings / byte sequences in memory:
 ```
