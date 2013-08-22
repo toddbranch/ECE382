@@ -1,5 +1,7 @@
 # Grading 
 
+All grading will be performed in Q2i.
+
 ## Grade Distribution and Policy
 
 | | Prog | Final |
@@ -25,9 +27,10 @@ If problems arise with graded assignments, see your instructor in advance.  Assi
 
 ## CheckPlus / Check / CheckMinus / 0
 
-Many assignments in this course will be graded on the CheckPlus / Check / CheckMinus / 0 scale.  Here are some general guidelines about what these grades mean:
+Many assignments in this course will be graded on the CheckPlus / Check / CheckMinus / 0 scale.  The goal here is to give you fast feedback without putting an undue grading burden on instructore.  Here are some general guidelines about what these grades mean:
 
-- **CheckPlus** - Superlative.  Truly outstanding work.  Complete and thorough.  Any mistakes are minor and do not detract from the assignment.
-- **Check** - Good work.  Few errors or omissions.
-- **CheckMinus** - Complete, but low-quality work.  Big errors or omissions.
-- **0** - Unacceptable work.  Incomplete.
+- **CheckPlus** - Superlative.  Truly outstanding work.  Complete and thorough.  Any mistakes are minor and do not detract from the assignment.  Corresponds to grade of 100%.
+- **Check** - Good work.  Few errors or omissions.  Corresponds to grade of 85%.
+- **CheckMinus** - Complete, but low-quality work.  Big errors or omissions.  Corresponds to grade of 70%.
+- **50** - Incomplete.  Corresponds to grade of 50%.
+- **0** - Did not turn in.  Corresponds to grade of 0%.

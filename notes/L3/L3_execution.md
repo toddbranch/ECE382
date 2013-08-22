@@ -4,11 +4,11 @@
 
 All of the code behind the course website is available at [https://github.com/toddbranch/ECE382](https://github.com/toddbranch/ECE382).  If you find a mistake or have a suggestion for improvement, you should file a bug report so I can fix it.  You can review all outstanding issues as well as report new issues at [https://github.com/toddbranch/ECE382/issues](https://github.com/toddbranch/ECE382/issues).
 
-**Find an issue with the course website and file a bug report.**
+**Find an issue with the course website and file a bug report.  Seriously, find a bug and report it for this assignment.**
 
 ## Assembly Process
 
-**What does the assembler do?**
+**What does the assembler do?  Be specific.**
 <br>
 <br>
 <br>
@@ -20,7 +20,7 @@ All of the code behind the course website is available at [https://github.com/to
 <br>
 <br>
 <br>
-**What does the linker do?**
+**What does the linker do?  Be specific.**
 <br>
 <br>
 <br>
@@ -63,7 +63,7 @@ mov.w   #0xdfec, &0x0200        ; stores the value 0xdfec at memory location 0x0
 <br>
 ## MSP430 Execution
 
-**What's the purpose of the program counter?**
+**What's the purpose of the program counter?  Be specific.**
 <br>
 <br>
 <br>
@@ -75,7 +75,7 @@ mov.w   #0xdfec, &0x0200        ; stores the value 0xdfec at memory location 0x0
 <br>
 <br>
 <br>
-**Assume `pc` currently holds `0xc000`.  The current instruction is 4 bytes long.  What is the value of `pc` the instant I step?**
+**Assume `pc` currently holds `0xc000`.  The current instruction is 4 bytes long.  What is the value of `pc` the instant I step?  Don't overthink this.**
 <br>
 <br>
 <br>
@@ -87,7 +87,7 @@ mov.w   #0xdfec, &0x0200        ; stores the value 0xdfec at memory location 0x0
 <br>
 <br>
 <br>
-**What happens if you attempt to access a memory address that isn't implemented in your chip?**
+**What happens if you attempt to access a memory address that isn't implemented in your chip?  Talk about reads, writes, and execution.**
 <br>
 <br>
 <br>
@@ -113,7 +113,7 @@ inv.w   r8
 dec.w   r8
 ```
 
-**Show the contents of `r8` after each the execution of each instrution.**
+**Show the contents of `r8` after the execution of each instrution.**
 <br>
 <br>
 <br>

@@ -6,28 +6,7 @@ This assignment will be graded on the CheckPlus / Check / CheckMinus / 0 scale -
 
 1. For each of the following instructions, identify the addressing modes being used and hand-assemble it.
 ```
-mov.w   @r12, &0x0200
-```
-Addressing modes used:
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-Hand-assembled machine code:
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-```
-            jmp     TARGET      ; address is 0xc000
-...
-TARGET:     nop                 ; address is 0xc024
+swpb    r7
 ```
 Addressing modes used:
 <br>
@@ -65,7 +44,7 @@ Hand-assembled machine code:
 <br>
 <br>
 ```
-swpb    r7
+nop
 ```
 Addressing modes used:
 <br>
@@ -84,7 +63,28 @@ Hand-assembled machine code:
 <br>
 <br>
 ```
-nop
+            jmp     TARGET      ; address is 0xc000
+...
+TARGET:     nop                 ; address is 0xc024
+```
+What addressing mode do relative jumps use (if any)?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Hand-assembled machine code:
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+```
+mov.w   @r12, &0x0200
 ```
 Addressing modes used:
 <br>
