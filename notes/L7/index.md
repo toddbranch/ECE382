@@ -25,7 +25,7 @@
     - We'll discuss expectations next class.
 - Questions about stuff we did last lesson?  Earlier?
 - CompEx
-    - When I say "write a program that...", that is NOT an abstract exercise.  You have the board - write in CCS, run, and debug!
+    - When I say "write a program that...", that is NOT an abstract exercise.  You have the development board - write in CCS, run, and debug!
 - Datasheets
     - Has anyone looked at the datasheets on the datasheets section of the website?
     - **These are crucial** - the definitive guide to the chip.
@@ -40,7 +40,7 @@
     - Look at chip-specific datasheet
         - Show pinout
 
-**Link to all code**
+[Link to all code](all_code.html)
 
 What did we talk about last time?
 
@@ -62,14 +62,16 @@ Ok, let's take a look at a few more instructions.
 Make error - get class to diagnose - forget `0x`.
 
 ```
-mov     #0xabab, r10
-add     #0xabab, r10    ; sets C and V
+    mov     #0xabab, r10
+    add     #0xabab, r10    ; sets C and V
 
-addc    #2, r10         
+    addc    #2, r10         
 
 ```
 
 Look at Family Users Guide - if no carry, treated as borrow.
+
+For `SUBC`, think about it as flipping the carry bit!  If C=1, it won't subtract the carry.  If C=0, it will.
 
 | Opcode | Assembly Instruction | Description | Notes |
 | :---: | :---: | :---: | :---: |
@@ -77,16 +79,18 @@ Look at Family Users Guide - if no carry, treated as borrow.
 | 1001 | SUB src, dest | dest -= src | Implemented as dest += ~src + 1 |
 
 ```
-mov     #5, r10
-sub     #8, r10         ; which flags will be set?  carry because we're adding the 2's complement!  Remember - 2's complement is 1 + bitwise not
+    mov     #5, r10
+    sub     #8, r10         ; which flags will be set?  carry because we're adding the 2's complement!  Remember - 2's complement is 1 + bitwise not
 
-subc    #1, r10         ; expected result
+    subc    #1, r10         ; expected result
 
-mov     #5, r10
-mov     #4, r10
+    mov     #5, r10
+    sub     #4, r10
 
-subc    #1, r10         ; weird result - what's going on here?  Watch out for SUBC - can be confusing!
+    subc    #1, r10         ; weird result - what's going on here?  Watch out for SUBC - can be confusing!
 ```
+
+Show DADD in datasheet to illustrate use of carry bit.
 
 | Opcode | Assembly Instruction | Description | Notes |
 | :---: | :---: | :---: | :---: |
@@ -96,23 +100,23 @@ subc    #1, r10         ; weird result - what's going on here?  Watch out for SU
 Compare sets the flags based on subtracting the destination from the source - but it does not write to the destination.  It can be a little tricky to wrap your head around.
 
 ```
-mov     #5, r10
-cmp     #10, r10        ;evaluates 1-10, sets negative flag - remember, subtraction involves adding the 2's complement (a bit-wise invert + 1)
+    mov     #5, r10
+    cmp     #10, r10        ;evaluates 1-10, sets negative flag - remember, subtraction involves adding the 2's complement (a bit-wise invert + 1)
 
-subc    #1, r10         ; still weird!
+    subc    #1, r10         ; still weird!
 
-mov     #10, r10
-cmp     #1, r10         ;evaluates 10-1, sets carry flag - remember, subtraction involves adding the 2's complement (a bit-wise invert + 1)
+    mov     #10, r10
+    cmp     #1, r10         ;evaluates 10-1, sets carry flag - remember, subtraction involves adding the 2's complement (a bit-wise invert + 1)
 ```
 
 DADD does binary coded decimal (BCD) addition.  In BCD, each nibble represents a binary digit.  So if I used DADD to add 0x0009 and 0x1, the result would be 0x0010 - not 0x000A.  This can actually be very useful if you're recording a value for later output in decimal.  Another note - DADD also adds the carry bit!  If you want a pure add, clear the carry first.
 
 ```
-clrc
-mov     #0x99, r10
-dadd    #1, r10
-setc
-dadd    #1, r10         ; DADD uses the carry bit!
+    clrc
+    mov     #0x99, r10
+    dadd    #1, r10
+    setc
+    dadd    #1, r10         ; DADD uses the carry bit!
 ```
 
 These are great for going up or down a word or byte.
@@ -137,17 +141,17 @@ SBC only works when the carry is clear!
 This final set of emulated instructions allows you to add or subtract the carry bit by itself.
 
 ```
-incd    r10
-dec     r10
+    incd    r10
+    dec     r10
 
-sbc     r10             ;why doesn't this subtract one?  think about what the operation is doing
+    sbc     r10             ;why doesn't this subtract one?  think about what the operation is doing
 
-clrc
+    clrc
 
-sbc     r10
+    sbc     r10
 
-setc
-adc    r10
+    setc
+    adc    r10
 ```
 
 ## Logic Instructions
@@ -161,23 +165,19 @@ These instructions can be very useful for manipulating / testing individual bits
 | 1101 | BIS src, dest | dest &#124;=src | The status flags are NOT set. |
 
 ```
-incd    r10
-dec     r10
+    mov     #1, r5
 
-bit     #10b, r2
+    bit     #1b, r5
+    bit     #10b, r5
+    bit     #100b, r5
 
-incd    r10
-dec     r10
+    mov.b   #0xff, &P1OUT 
+    mov.b   #0xff, &P1DIR
 
-bit     #1b, r2
-
-mov.b   #0xff, &P1OUT 
-mov.b   #0xff, &P1DIR
-
-bic     #1b, &P1OUT
-bic     #1000000b, &P1OUT
-bis     #1b, &P1OUT
-bis     #1000000b, &P1OUT
+    bic     #1b, &P1OUT
+    bic     #1000000b, &P1OUT
+    bis     #1b, &P1OUT
+    bis     #1000000b, &P1OUT
 ```
 
 Logical operators AND and XOR are available as well.  These operations set status flags, while the BIC / BIS operators don't.
@@ -188,12 +188,12 @@ Logical operators AND and XOR are available as well.  These operations set statu
 | 1111 | AND src, dest | dest &= src | |
 
 ```
-mov     #0xdfec, r12
-mov     #0, r11
-setc
-and     r11, r12
-mov     #0x5555, r11
-xor     #0xffff, r11
+    mov     #0xdfec, r12
+    mov     #0, r11
+    setc
+    and     r11, r12
+    mov     #0x5555, r11
+    xor     #0xffff, r11
 ```
 
 There are a few emulated logical instructions: INV, CLR, and TST.  TST has unique behavior in that it always clears the V flag and set the C flag.  N and Z are set as expected.
@@ -207,16 +207,16 @@ INV will flip all of the bits, CLR sets all bits to 0, TST compares the dst to 0
 | TST(.B) dst | CMP(.B) #0, dst | V always clear, C always set |
 
 ```
-mov     #0xec00, r10
-inv     r10                 ;$r10 is 0x13ff, set overflow and carry flags
-bic     #100000000b, r2     ;clear overflow bit
-mov     #0x8000, r10
-inv     r10                 ;$r10 is 0x7fff, set overflow and carry flags
+    mov     #0xec00, r10
+    inv     r10                 ;$r10 is 0x13ff, set overflow and carry flags
+    bic     #100000000b, r2     ;clear overflow bit
+    mov     #0x8000, r10
+    inv     r10                 ;$r10 is 0x7fff, set overflow and carry flags
 
-clr     r10                 ;$r10 is 0 - status flags not set because this is a mov instruction
-tst     r10                 ;set zero, carry flags
-inv     r10                 ;$r10 is 0xffff, set negative and carry flags
-tst     r10                 ;set negative, carry flags  
+    clr     r10                 ;$r10 is 0 - status flags not set because this is a mov instruction
+    tst     r10                 ;set zero, carry flags
+    inv     r10                 ;$r10 is 0xffff, set negative and carry flags
+    tst     r10                 ;set negative, carry flags  
 ```
 
 ## Shift / Rotate Instructions
@@ -235,18 +235,18 @@ If the carry is cleared, RRC is a logical right shift.  RRA is an arithmetic rig
 SXT sign extends the MSB of the lower byte into the upper byte.  SWPB sways 8-bit register halves.
 
 ```
-clrc
-mov     #10010101b, r10
-rrc.b     r10                     ;r10 is now 01001010, carry is set 
-rrc.b     r10                     ;r10 is now 10100101, carry bit is clear
+    clrc
+    mov     #10010101b, r10
+    rrc.b     r10                     ;r10 is now 01001010, carry is set 
+    rrc.b     r10                     ;r10 is now 10100101, carry bit is clear
 
-rra.b     r10                     ;r10 is now 11010010, carry bit is set 
-rra.b   r10                     ;r10 is now 11101001, carry bit is clear
+    rra.b     r10                     ;r10 is now 11010010, carry bit is set 
+    rra.b   r10                     ;r10 is now 11101001, carry bit is clear
 
-swpb    r10
-swpb    r10
+    swpb    r10
+    swpb    r10
 
-sxt     r10
+    sxt     r10
 ```
 
 Rotate left is emulated by addition.  A rotate left is the equivalent of multiplication by two, so it is emulated by adding the destination to itself.
@@ -259,12 +259,12 @@ RLA is not arithmetic - doesn't preserve most significant bit.  Carry comes in o
 | RLC(.B) | ADDC(.B) dst, dst |
 
 ```
-mov     #2, r10
+    mov     #2, r10
 
-rla     r10         ;$r10 is now 0x4
-rla     r10         ;$r10 is now 0x8 
-setc
-rlc     r10         ;$r10 is now 0b10001, or 0x11
+    rla     r10         ;$r10 is now 0x4
+    rla     r10         ;$r10 is now 0x8 
+    setc
+    rlc     r10         ;$r10 is now 0b10001, or 0x11
 ```
 
 ## Watchdog Timer (WDT)
@@ -301,11 +301,11 @@ Other registers are unnecessary for our purposes at this point, but explore them
 
 Here's some code that disables the watchdog:
 ```
-;disable watchdog timer
-mov     #WDTPW, r10         ;to prevent inadvertent writing, the watchdog has a password - if you write without the password in the upper 8 bits, you'll initiate a PUC.
-                            ;the password is 0x5a in the upper 8 bits.  if you read from the password, you'll read 0x69.
-bis     #WDTHOLD, r10       ;next, we need to bis the password with the bit that tells the timer to hold, not count
-mov     r10, &WDTCTL        ;next, we need to write that value to the WDTCTL - this is a static address in memory (not relative to our code), so we need 
+    ;disable watchdog timer
+    mov     #WDTPW, r10         ;to prevent inadvertent writing, the watchdog has a password - if you write without the password in the upper 8 bits, you'll initiate a PUC.
+                                ;the password is 0x5a in the upper 8 bits.  if you read from the password, you'll read 0x69.
+    bis     #WDTHOLD, r10       ;next, we need to bis the password with the bit that tells the timer to hold, not count
+    mov     r10, &WDTCTL        ;next, we need to write that value to the WDTCTL - this is a static address in memory (not relative to our code), so we need 
 ```
 
 ## Wrap Up
