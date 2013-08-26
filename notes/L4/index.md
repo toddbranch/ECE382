@@ -37,7 +37,24 @@ Anyone try to run a program on their MSP430 yet?
 - What does `add.w  r5, r6` do?  `r6 = r5 + r6`, shorthand for that is `r6 += r5`
 - What does `dst |= src` mean?  What about `dst &= src`?  What about `dst ^= src`?
 
-Let's start with a quick sample program.
+## Addressing Modes
+
+Last lesson, we discussed the MSP430 instruction set.  We didn't quite get to assembly-machine conversion last time - we will today.  Learning about all of the different addressing modes also gives us a better understanding of the kinds of instructions we can write and how they work.
+
+Luckily, the MSP430 has only 4 different addressing modes to cover.  The old S12 had a lot more.
+
+**[Remember instruction formats: `mov.w src, dst`, `swpb dst`]**
+
+**[On side board, mark first two as available two both, bottom two as available only to destination - circle last bit for dest]**
+
+| Code | Addressing Mode | Description | Example | Given r5=0x0200, 0x0200: 0x1234, 0x0202: 0x5678 |
+| :-: | :-: | :-: | :-: | :-: |
+| 00 | Rn	| Register direct | `mov r5, r6` | r6 = 0x0200 |
+| 01 | offset(Rn) | Register indexed | `mov 2(r5), r6` | r6 = 0x5678 |
+| 10 | @Rn	| Register indirect | `mov @r5, r6` | r6 = 0x1234 |
+| 11 | @Rn+	| Register indirect with post-increment | `mov @r5+, r6` | r6 = 0x1234, r5 = 0x0202 |
+
+Let's start with a quick sample program.  *Use this program to illustrate addressing modes.*
 
 *[Go around the room asking what each operation does.  End with: what does this program actually do?]*
 ```
@@ -54,25 +71,6 @@ fill        mov.w   r6, 0(r5)           ; anyone know what this syntax means?
 forever     jmp     forever
 ```
 *[Quckly through this]*
-
-Last time we learned about breakpoints.  But there's another type, we've got a limited number of hardware breakpoints, that give us additional capabilities.  They allow us to pass through a breakpoint a certain number of times.
-
-## Addressing Modes
-
-Last lesson, we discussed the MSP430 instruction set.  We didn't quite get to assembly-machine conversion last time - we will today.  Learning about all of the different addressing modes also gives us a better understanding of the kinds of instructions we can write and how they work.
-
-Luckily, the MSP430 has only 4 different addressing modes to cover.  The old S12 had a lot more.
-
-**[Remember instruction formats: `mov.w src, dst`, `swpb dst`]**
-
-**[On side board, mark first two as available two both, bottom two as available only to destination - circle last bit for dest]**
-
-| Code | Addressing Mode | Description |
-| :-: | :-: | :-: |
-| 00 | Rn	| Register direct |
-| 01 | offset(Rn) | Register indexed |
-| 10 | @Rn	| Register indirect |
-| 11 | @Rn+	| Register indirect with post-increment |
 
 Review - Who can name the three different instruction types?  One operand, relative jump, and two operand.
 
@@ -174,11 +172,11 @@ c02c:	06 00
 **[reference table]**
 If used in a one-operand instruction, the Ad value is `01`.  If used in a two operand instruction, Ad would be `1`.   As would be `01`.
 
-**show disassembly of final instruction first this time, but show it in word format - not littl endian**
+**show disassembly of final instruction first this time, but show it in word format - not little endian**
 
 Let's look at the final `mov` instruction above.  This is the first time we've looked at a three-word instruction.  The second word is holding our source offset and the third word is holding our destination offset.  These are called extension words.  If we specify Register Indexed, the CPU knows to look at the PC for the offset and then increment it afterwards!
 
-Let's hand-assemble it.  What type of instruction is this?  Since it's a two-operand instruction, first is the opcode - `0100` in this case.  Then is the source register - r6 - `0110`.  Then comes destination addressing mode - Register Indexed - `1`.  Next, B/W - `0` for word.  Next, source addressing mode - Register Indexed - `01`.  Finally, destination register - r5 - `0101`.  Binary instruction is `0100 0110 1001 0101` or `95 46` in little-endian hex.
+Let's hand-assemble it.  What type of instruction is this?  Since it's a two-operand instruction, first is the opcode - `0100` in this case.  Then is the source register - r6 - `0110`.  Then comes destination addressing mode - Register Indexed - `1`.  Next, B/W - `0` for word.  Next, source addressing mode - Register Indexed - `01`.  Finally, destination register - r5 - `0101`.  Binary instruction is `0100 0110 1001 0101` or `95 46` in little-endian hex.  Each offset is an extension word.  So the final instruction is `95 46 02 00 06 00`.
 
 It may seem a little convoluted right now - why would we address this way?  We'll see that this addressing mode is extremely useful when working with higher level data structures like arrays or referencing variables on the stack once we begin to work with C.
 

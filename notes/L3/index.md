@@ -290,7 +290,7 @@ Adding / subtracting using only the carry bit:
 | Emulated Instruction | Assembly Instruction |
 | :---: | :---: | :---: |
 | ADC(.B) dst | ADDC(.B) #0, dst |
-| DADC(.B) dst | DADDC(.B) #0, dst |
+| DADC(.B) dst | DADD(.B) #0, dst |
 | SBC(.B) dst | SUBC(.B) #0, dst |
 
 Here's a sample program using some of these instructions.  Let's walk through it using our **debugger**.

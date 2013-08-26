@@ -8,8 +8,8 @@
 | [L4](notes/L4/index.html) | Addressing Modes.  [CompEx 1](/labs/compex1/index.html) Intro. | [Assignment 2](notes/L4/L4_addressing_modes.html) | [Assignment 1](notes/L3/L3_execution.html) |
 | L5 | [CompEx 1](/labs/compex1/index.html) - Introduction to the MSP430 and CodeComposer. | [CompEx 1](/labs/compex1/index.html) | [Assignment 2](notes/L4/L4_addressing_modes.html )|
 | [L6](notes/L6/index.html) | Status Register.  Flow of Control.  Movement Instructions. | | [CompEx 1](/labs/compex1/index.html) Questions |
-| [L7](notes/L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | | |
-| [L8](notes/L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  [Lab 1](/labs/lab1/index.html) Introduction. | [Lab 1](/labs/lab1/index.html) Prelab | |
+| [L7](notes/L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | [Assignment 3](notes/L7/L7_control_flow.html) | |
+| [L8](notes/L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  [Lab 1](/labs/lab1/index.html) Introduction. | [Lab 1](/labs/lab1/index.html) Prelab | [Assignment 3](notes/L7/L7_control_flow.html) |
 | L9 | [Lab 1](/labs/lab1/index.html) - Loops / Branches.  "Simple Calculator". | [Lab 1](/labs/lab1/index.html) | [Lab 1](/labs/lab1/index.html) Prelab |
 | [L10](notes/L10/index.html) | The Stack.  Subroutines.  [Lab 2](/labs/lab2/index.html) Introduction. | [Lab 2](/labs/lab2/index.html) Prelab | [Lab 1](/labs/lab1/index.html) Functionality |
 | L11 | [Lab 2](/labs/lab2/index.html) - Subroutines.  "Cryptography". | [Lab 2](/labs/lab2/index.html) | [Lab 1](/labs/lab1/index.html) Lab Notebook (Signoff), [Lab 2](/labs/lab2/index.html) Prelab |

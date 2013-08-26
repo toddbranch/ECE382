@@ -4,6 +4,8 @@ This assignment will be graded on the CheckPlus / Check / CheckMinus / 0 scale -
 
 ## Addressing Modes
 
+**All answers should be in little-endian, hex format.**
+
 1. For each of the following instructions, identify the addressing modes being used and hand-assemble it.
 ```
 swpb    r7

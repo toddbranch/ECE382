@@ -265,7 +265,7 @@ Section:
 <br>
 <br>
 <br>
-8. (20pts) Write a program that fills RAM (0x0200 - 0x0400) with words starting at 0 and counting upward by 2.
+8. (20pts) Write a program that fills RAM (0x0200 - 0x03ff) with words starting at 0 and counting upward by 2.
 <br>
 <br>
 <br>
