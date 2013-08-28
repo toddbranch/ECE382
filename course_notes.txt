@@ -1,0 +1,4 @@
+Look into more interactive exercises.  Have cadets bring computers, MSP430 boards to class - actually do in-class coding.
+
+Look into screen-sharing - remote desktop into cadet machines and show them writing code in front of rest of class.
+

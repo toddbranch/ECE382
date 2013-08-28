@@ -7,3 +7,9 @@
 - [MSP430G2553 Memory Map](memory_map.x)
 - [MSP430 Assembly Language Tools](msp430_assembly_language_tools.pdf)
 - [GNU Assembler](http://tigcc.ticalc.org/doc/gnuasm.html)
+
+## Other Useful Resources
+
+- [Programming the MSP430 In-Cicruit](http://www.youtube.com/watch?v=dL2YPS96L18)
+- [Using the MSP430 with the Geek Box](geek_box.html)
+- [Using the MSP430 with the Robot](robot.html)

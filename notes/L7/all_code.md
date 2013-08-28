@@ -11,7 +11,7 @@
     subc    #1, r10         ; expected result
 
     mov     #5, r10
-    mov     #4, r10
+    sub     #4, r10
 
     subc    #1, r10         ; weird result - what's going on here?  Watch out for SUBC - can be confusing!
 
