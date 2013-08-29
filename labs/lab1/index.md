@@ -71,7 +71,25 @@ Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html)
 
 Since you haven't learned about them yet, don't use subroutines.  Do everything in the main program.  You'll get to use subroutines in future labs.
 
-**Memory Management** - Remember that you must tell the assembler where to place your program and variables.  Use the ORG assembler directive to start your program at 0xc000.  You must not have any addresses (actual address values) in your program itself except in ORG statements.  You should use labels for all accesses to memory locations, jumps, and branches.  You should also use EQU statements to label all constants.  This is in accordance with the ECE382 Coding Standards.
+- Comments
+    - Assume the reader is a competent assembly language programmer
+    - Comment above blocks of code to convey **purpose**
+    - Only comment individual lines when purpose is unclear
+- Labels
+    - Descriptive!
+        - loop or loop1 or l1 or blah - not acceptable!
+    - Used for all memory location, jumps, etc. 
+- Constants
+    - Use `.equ` syntax for all constants!
+    - Don't want to see naked values
+- Instruction Choice
+    - Use the instruction that makes your code readable!
+        - `JHS` rather than `JC`
+        - `INCD` rather than `ADD #2`
+    - Well-written code requires few comments
+- Spacing
+    - Align your code to make it readable
+    - Put whitespace between logical blocks of code
 
 ## Grading
 
