@@ -1,11 +1,8 @@
 # Lesson 10 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
-[Stacks](http://en.wikipedia.org/wiki/Stack_(abstract_data_type/))
-
-## Assignment
-[Subroutines]()
+- [Stacks](http://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+- [Stack Overflow](http://en.wikipedia.org/wiki/Stack_overflow)
 
 ## Lesson Outline
 - The Stack

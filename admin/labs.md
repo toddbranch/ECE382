@@ -46,7 +46,7 @@ Your commit history will be used as verification that you've been keeping your l
 
 You are expected to use the same structured programming techniques that you were taught in CS110.
 
-You must comment your code where appropriate.  This doesn't mean commenting every line you write - that's distracting and unproductive.  Comments should be used to convey the general idea of a block of code or explain a section that may be unclear.  You can assume the reader is a knowledgeable engineer.
+You must comment your code where appropriate.  This doesn't mean commenting every line you write - that's distracting and unproductive.  Comments should be used to convey the general purpose of a block of code or explain a section that may be unclear.  You can assume the reader is a knowledgeable engineer.
 
 Use meaningful, readable variable names - variable1 or var1 or loop1 or L1 are unacceptable.
 
@@ -65,5 +65,27 @@ You should organize your code in such a way that it's easily readable.  While no
 - Subroutines
 - Interrupts service routines
 - Interrupts vectors
+
+Other guidance:
+
+- Comments
+    - Assume the reader is a competent assembly language programmer
+    - Comment above blocks of code to convey **purpose**
+    - Only comment individual lines when purpose is unclear
+- Labels
+    - Descriptive!
+        - loop or loop1 or l1 or blah - not acceptable!
+    - Used for all memory location, jumps, etc. 
+- Constants
+    - Use `.equ` syntax for all constants!
+    - Don't want to see naked values
+- Instruction Choice
+    - Use the instruction that makes your code readable!
+        - `JHS` rather than `JC`
+        - `INCD` rather than `ADD #2`
+    - Well-written code requires few comments
+- Spacing
+    - Align your code to make it readable
+    - Put whitespace between logical blocks of code
 
 ### C

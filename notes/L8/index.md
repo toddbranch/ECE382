@@ -26,7 +26,7 @@
     - Anyone get under 25 instructions?
     - Any problems people ran into that they want to talk about?
     - Make sure you turn it in before you leave today.
-    - [Sample HW to review](#)
+    - [Sample HW to review](hw_sample.html)
         - Talk about style
         - Talk about coding standards
         - Check for ways to shorten
