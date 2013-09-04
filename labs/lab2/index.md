@@ -21,7 +21,7 @@ Almost all of the work of your program will be performed in your two subroutines
 
 ;load addresses into registers to pass to decrypt_message subroutine
 
-call        decrypt_message
+call        #decrypt_message
 
 forever     jmp     forever     ;trap CPU
 ```

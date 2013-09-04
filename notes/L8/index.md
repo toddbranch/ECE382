@@ -65,7 +65,7 @@ forever jmp     forever
 
 We need more information - how many clock cycles different instructions take to execute!
 
-To the datasheet! (pp60)
+It's in the datasheet - (not enough time to show in class, just inform them it's in there).
 
 ### Single Operand Instruction - Cycles and Lengths
 

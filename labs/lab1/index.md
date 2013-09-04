@@ -91,6 +91,10 @@ Since you haven't learned about them yet, don't use subroutines.  Do everything 
     - Align your code to make it readable
     - Put whitespace between logical blocks of code
 
+## Test Cases!
+
+[Test Cases](test_cases.html)
+
 ## Grading
 
 | Item | Grade | Points | Out of | Date | Due |
