@@ -204,6 +204,20 @@ addition:
 
 I had to do a bit of work to preserve r12.  It would have been easier to just pass the result out in r12, but I want to be true to the subroutine header.
 
+### Key Subroutine Rules
+
+**Always return from a subroutine!**
+
+You should never enter a forever loop in a subroutine.  You should never jump out of a subroutine.  The final instruction in every subroutine should be `ret`.  You should only return from one place in your subroutine.
+
+**Subroutines only receive information via registers!**
+
+The whole point of subroutines is modularity.  Meaning they should be reusable in many different programs.  In that regard, independence is key.  Subroutines should not rely on specific label names, which are usually unique to individual programs.  You can declare your own constants (via `.equ` statements) in subroutines, but these should never change across programs.
+
+**Subroutines should be reusable!**
+
+So split your problems into parts that logically belong together and could be reused independently.  Don't make your subroutines so unique that they could never be reused unless for the exact application you're working on.  Put the application-specific parts in their own subroutine.
+
 ### Application Binary Interface (ABI)
 
 Even modern operating systems must obey the convention of specifying which registers are used for arguments passed in to a subroutine and which are used to pass back results.  This convention is known as the Application Binary Interface (ABI).
