@@ -35,31 +35,34 @@ forever:    jmp     forever
                                             ; Subroutines
 ;-------------------------------------------------------------------------------
 
-;---------------------------------------------------
+;-------------------------------------------------------------------------------
 ;Subroutine Name: decryptMessage
 ;Author: 
-;Function: Decrypts a string of bytes and stores the result in memory.  Accepts the address of the encrypted message, 
-;           address of the key, and address of the decrypted message (pass-by-reference).  Accepts the length of the 
-;           message by value.  Uses the decryptCharacter subroutine to decrypt each byte of the message.  Stores the
-;           results to the decrypted message location.
+;Function: Decrypts a string of bytes and stores the result in memory.  Accepts 
+;           the address of the encrypted message, address of the key, and address
+;           of the decrypted message (pass-by-reference).  Accepts the length of
+;           the message by value.  Uses the decryptCharacter subroutine to decrypt
+;           each byte of the message.  Stores theresults to the decrypted message
+;           location.
 ;Inputs: 
 ;Outputs: 
 ;Registers destroyed: 
-;---------------------------------------------------
+;-------------------------------------------------------------------------------
 
 decryptMessage:
 
             ret
 
-;---------------------------------------------------
+;-------------------------------------------------------------------------------
 ;Subroutine Name: decryptCharacter
 ;Author: 
-;Function: Decrypts a byte of data by XORing it with a key byte.  Returns the decrypted byte in the same register the 
-;           encrypted byte was passed in.  Expects both the encrypted data and key to be passed by value.
+;Function: Decrypts a byte of data by XORing it with a key byte.  Returns the
+;           decrypted byte in the same register the encrypted byte was passed in.
+;           Expects both the encrypted data and key to be passed by value.
 ;Inputs: 
 ;Outputs: 
 ;Registers destroyed: 
-;---------------------------------------------------
+;-------------------------------------------------------------------------------
 
 decryptCharacter:
 
