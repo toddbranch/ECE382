@@ -221,7 +221,7 @@ For Lab 2, you're going to use your new knowledge of subroutines to decrypt some
     - `XOR` again to decrypt
     - Do basic example
         - 10101011 data (0xab)
-        - 01010101 key (ox55)
+        - 01010101 key (0x55)
 - ASCII Characters
     - ASCII is an encoding for English characters and punctuation
     - It encodes each character in a single byte

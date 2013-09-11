@@ -9,6 +9,7 @@ Write a program that reads an **unsigned** word from `0x0216`.
 - If the value is greater than `0x1234`: 
     - Use a loop to add `20+19+18+...+1` (decimal)
     - Store the result (as a word) in `0x0206`
+    - Note: don't add `20+19+18+...+1` to `0x1234`, just sum the sequence by itself and store in memory.
 - If the value is less than or equal to `0x1234`:
     - If the value is greater than `0x1000`:
         - Add `0xEEC0` to the value

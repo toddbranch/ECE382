@@ -138,6 +138,8 @@ This begs the question of what sections actually are.  They are groupings of cod
 
 .data                   ;put code into the data sesction - maps to RAM
 
+; other sections - don't spend time on these in class
+
 .sect ".reset"          ;put this at the reset vector
 .sect .stack            ;make this the location of the stack
 
@@ -161,6 +163,8 @@ Open CCS, show how each of these work.
 .text                   ;code below this goes into FLASH (ROM)
 .data                   ;code below this goes into RAM
 
+; other sections - don't spend time on these in class
+
 .sect ".reset"          ;put this at the reset vector
 .sect .stack            ;make this the location of the stack
 
@@ -169,29 +173,46 @@ Open CCS, show how each of these work.
 ### Reserve space in memory for uninitialized variables
 
 ```
-.bss    LABEL, 20       ;bss is a section for uninitialized constants (mapped into RAM) - placed after your data section
 .space                  ;reserve space for future use
+
+; another way to initialize space - don't cover in class
+
+.bss    LABEL, 20       ;bss is a section for uninitialized constants (mapped into RAM) - placed after your data section
 ```
 
 ### Initialize memory
 
+**Note: It's not possible to initialize RAM!**
+
+*[Roll up screen, go over examples on whiteboard]*
+
 ```
-.byte                   ;initialize sequence of bytes
-.word                   ;initialize sequence of words
-.string                 ;initialize strings
-.char                   ;initialize characters
+        .byte                   ;initialize sequence of bytes
+bytes:  .byte       9,8,7,6,5,4,3,2,1
 
-;other useful directives that have to do with this
+        .word                   ;initialize sequence of words
+words:  .word       0x1111,0x2222,0x3333,0x4444
 
-.equ                    ;assign a label to a particular value
-.align                  ;align a variable with a particular multiple of bytes (useful to ensure word on even address)
+        .string                 ;initialize strings
+myStr:  .string     "hello, world!"
 
-;probably won't use these often, but they're available
+        .char                   ;initialize characters
+chars:  .char       'a','b','c','d'
 
-.float                  ;floating point value
-.int                    ;16-bit int
-.short                  ;16-bit int
-.long                   ;32-bit int
+        ;other useful directives that have to do with this
+
+        .equ                    ;assign a label to a particular value
+CONST:  .equ        0x11
+
+        .align                  ;align a variable with a particular multiple of bytes (useful to ensure word on even address)
+        .align      2
+
+        ;probably won't use these often, but they're available
+
+        .float                  ;floating point value
+        .int                    ;16-bit int
+        .short                  ;16-bit int
+        .long                   ;32-bit int
 ```
 
 Examine other directives in their boilerplate:
@@ -201,7 +222,7 @@ Examine other directives in their boilerplate:
 .retainrefs             ;also, preserve references to this section in other code
 ```
 
-Just show directives for these, talk about what they do - probably won't use these in your programs.
+Other uses of directives:
 
 - Control the appearance of listings
 - Assemble conditional blocks
@@ -283,6 +304,8 @@ Items of emphasis:
 ## Lab 1 Introduction
 
 The goal of this lab is to implement a simple calculator using assembly language.
+
+*[Put lab on board, walk through calculator instructions in each program]*
 
 [Lab 1](/labs/lab1/index.html)
 

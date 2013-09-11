@@ -91,6 +91,8 @@ Since you haven't learned about them yet, don't use subroutines.  Do everything 
     - Align your code to make it readable
     - Put whitespace between logical blocks of code
 
+[Other Notes](notes.html)
+
 ## Test Cases!
 
 [Test Cases](test_cases.html)
