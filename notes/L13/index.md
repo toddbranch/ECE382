@@ -12,15 +12,46 @@
 - GPIO
 - Multiplexing
 
-What did you think of the encryption lab?  That's brand new for this year - so give me any feedback you've got and I'll incorporate it for next year's class.
+## Admin
+
+- Video
+- Notebook due COB
+- Lab
+    - What did you think of the encryption lab?
+    - Issues from lab
+        - `.text` vs `.data`
+        - Modularity
+            - think about how you break your program into subroutines
+            - just because it works doesn't mean your code is good
+    - Bonus and weaknesses
+        - Weakness: knowing that the last character is `#` and that key is two bytes
+        - Techniques
+            - Weakness combined with guess and check
+            - Frequency analysis
+            - Slow brute force
+            - Fast brute force (personal favorite)
+                - Big O Notation
+                    - In computer science and algorithms, speed is crucial
+                    - Multiply for lab 1
+                        - O(n) technique
+                        - O(log n) technqiue
+    - Changes for next year
+        - Required functionality is same
+        - A functionality is B functionality
+        - Bonus is A functionality
+        - No # at the end of each  message - have to count bytes
 
 So through that lab, we showed that the CPU on the MSP430 can be used to accomplish any type of general purpose programming task via its instruction set architecture (ISA).
 
 But the power of an MCU isn't in its ability to accomplish general-purpose computing. It's meant to be embedded in the real world, interacting with peripherals without human intervention - and MCU design is finely tuned for those functions. In that regard, there's a ton of built-in hardware support to make common embedded functions fast and easy for the programmer.
 
+Look at schedule.  Talk about upcoming lab - writing your first device drivers for LCD, push button.  Show black box.
+
 ## Peripherals
 
-Here's a rundown of some of the features that the MSP430G2xx has hardware support for *(show MSP430 wikipedia)*:
+Peripherals are external stuff.  What are some peripherals you know of?  (keyboard, mouse, etc.)
+
+Here's a rundown of some of the features that the MSP430G2xx has hardware support for [show MSP430 wikipedia](http://en.wikipedia.org/wiki/TI_MSP430):
 
 - Watchdog Timer
 - Universal Serial Communication Interface (USCI) - implements SPI and I2C protocols
@@ -29,6 +60,8 @@ Here's a rundown of some of the features that the MSP430G2xx has hardware suppor
 - Temperature Sensor
 - Capacitive Touch I/O
     - For working with touch screens, etc.
+
+Explain PWM using two signals of varying duty cycle.  Explain how this mimics analog voltages for digital systems.
 
 Different variants of the MSP430 support a huge array of peripherals.
 
@@ -52,27 +85,43 @@ The different features of MSP430 chips we just talked about are made available t
 
 So how do we interact with these ports / features?  In the MSP430, we use specialized registers that have their own locations in the MSP430 memory map.  This is known as memory-mapped IO.
 
-*[Show Family Users Guide, some registers and memory locations]*
+*[Show Family Users Guide, some registers and memory locations]* - Watchdog Timer, Digital IO
 
 ### Memory-Mapped IO
+
+Motorola originally pushed this method.
 
 IO and memory share the same address space.  Peripherals are mapped to specific addresses in the MCU address space.
 
 ![MSP430 Memory Map](../L2/memory_map.jpg)
 
-Advantage: 
-    - Fewer instructions
-    - Can use the same addressing modes for IO as for other instructions
+Watchdog Timer in 16 bit peripherals.  Digital IO in 8 bit peripherals.
 
-Disadvantage: Lose memory to IO.
+Advantage: 
+
+- Fewer instructions
+- Can use the same addressing modes for IO as for other instructions
+
+Disadvantage:
+
+- Lose memory to IO.
+- Doesn't protect programmer from mistakes.
 
 ### Isolated IO or Port-mapped IO
 
-Speical set of instructions for manipulating IO - found on Intel microprocessors.  IO also resides in its own, separate address space.
+Intel originally pushed this method.
 
-Advangtage: Don't lose memory for IO
+Special set of instructions for manipulating IO - found on Intel microprocessors.  IO also resides in its own, separate address space.
 
-Disadvantage: Need more instructions.
+Advantage:
+
+- Don't lose memory for IO.
+- Protects coder from mistakes.
+
+Disadvantage:
+
+- Need more instructions.
+- Different address spaces / modes for IO.
 
 ## GPIO
 
@@ -85,6 +134,7 @@ The registers used to configure GPIO are PxDIR, PxOUT, and PxIN.
 - PxDIR configures which pins are input and which pins are output - 1 corresponds to output, 0 to input
 - Writing to PxOUT controls the output of each pin
 - PxIN allows you to read the values on these pins
+- PxREN controls pull up / pull down resistors to avoid floating inputs.
 
 *[Look them up in the Family User's Guide]*
 
@@ -92,23 +142,26 @@ The registers used to configure GPIO are PxDIR, PxOUT, and PxIN.
 
 There are additional registers that control other characteristics of GPIO, but we'll stick with these for now.
 
-Let's say I wanted to configure P1.0-3 to be output and P1.4-7 to be input.  Code would look like this:
+Let's use this to write a program that controls the onboard LEDs on our launchpad with the onboard push button:
 ```
-mov.b   #0b00001111, &P1DIR
-
-; drive P1.0-3 all high
-bis.b   #0b00001111, &P1OUT
-
-; this would work also
-mov.b   #0xff, &P1OUT
-
-; read from P1.4-7 to a register
-mov.b   &P1IN, r5
+                    bis.b  #BIT0|BIT6, &P1DIR
+                    bis.b  #BIT3, &P1OUT
+                    bis.b  #BIT3, &P1REN
+                    bic.b  #BIT3, &P1DIR
+ 
+check_btn:          bit.b  #BIT3, &P1IN
+                    jz            set_lights
+                    bic.b  #BIT0|BIT6, &P1OUT
+                    jmp           check_btn
+set_lights:         bis.b  #BIT0|BIT6, &P1OUT
+                    jmp           check_btn
 ```
+
+Issues with LEDs and push button - buttons are mechanical, so there are bouncing issues.  Will discuss next time.
 
 **PITFALL!**
 ```
-mov.b   #0xff, P1DIR        ; PC-relative addressing is a **bad idea** for addressing peripheral registers
+    mov.b   #0xff, P1DIR        ; PC-relative addressing is a **bad idea** for addressing peripheral registers
 ```
 
 Since you have complete control, GPIO is infinitely flexible.  If the MCU you're using lacks a peripheral implementing a certain protocol and it's impractical to get one that has it, it's always possible to bit-bang the protocol.  That involves driving GPIO to achieve the individual bits you need to communicate.
@@ -133,8 +186,8 @@ Let's say I wanted to make the UCA0SOMI function available on P1.1. Here's the c
 
 ```
 ; 'from USCI' means this bit is set automatically by the USCI when enabled
-bis.b   #BIT1, P1SEL   
-bis.b   #BIT1, P1SEL2
+    bis.b   #BIT1, P1SEL   
+    bis.b   #BIT1, P1SEL2
 
 ; others are set correctly by default - you should set them if previous code used them
 ```
