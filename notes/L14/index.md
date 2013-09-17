@@ -1,9 +1,26 @@
 # Lesson 14 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+
+Just some motivational stuff today!
+
+Tutorial on MSP430-based quadcopter:
+
+- [Hack-a-Day Writeup](http://hackaday.com/2011/06/27/msp430-based-palm-size-quad-copter/)
+- [Full Tutorial](http://www.rcgroups.com/forums/showthread.php?t=1335765)
+ 
+Videos of cool MSP430 project:
+
+- [LED Cube](http://www.youtube.com/watch?v=Jr50gT5O5IE)
+- [Playing Music](http://www.youtube.com/watch?v=5A3bBXRpYCI)
+- [Hacking an RC Car](http://www.youtube.com/watch?v=SPbOUqOpu3I)
+- [Interactive Periodic Table](http://www.youtube.com/watch?v=s0c2vkO8tck)
 
 ## Assignment
+
+Very short assignment:
+
+[What does this subroutine do?](L14_subroutines.html)
 
 ## Lesson Outline
 - Polling
@@ -42,6 +59,12 @@ The buttons you'll be using in Lab 3 are mechanical - and they have the tendency
 That's the concept, but let's look at how the concept manifests itself in the real world with a tool called the Logic Analyzer.
 
 *[Use logic analyzer to demonstrate what button bouncing looks like, how unpredictable it can be]*
+
+![Bounce Example 1](bounce1.png)
+
+![Bounce Example 1](bounce2.png)
+
+![Bounce Example 1](bounce3.png)
 
 What's a potential problem that could arise from this button bouncing?
 

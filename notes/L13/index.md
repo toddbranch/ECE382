@@ -142,22 +142,27 @@ The registers used to configure GPIO are PxDIR, PxOUT, and PxIN.
 
 There are additional registers that control other characteristics of GPIO, but we'll stick with these for now.
 
-Let's use this to write a program that controls the onboard LEDs on our launchpad with the onboard push button:
+Let's use this to write a program that controls the onboard LEDs on our launchpad with the onboard push button.  *[Work through this with the class]*.
 ```
-                    bis.b  #BIT0|BIT6, &P1DIR
-                    bis.b  #BIT3, &P1OUT
-                    bis.b  #BIT3, &P1REN
-                    bic.b  #BIT3, &P1DIR
+                     bis.b  #BIT0|BIT6, &P1DIR
+                     bic.b  #BIT3, &P1DIR
+                     bis.b  #BIT3, &P1REN
+                     bis.b  #BIT3, &P1OUT
  
-check_btn:          bit.b  #BIT3, &P1IN
-                    jz            set_lights
-                    bic.b  #BIT0|BIT6, &P1OUT
-                    jmp           check_btn
-set_lights:         bis.b  #BIT0|BIT6, &P1OUT
-                    jmp           check_btn
+check_btn:    bit.b  #BIT3, &P1IN
+                     jz            set_lights
+                     bic.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+set_lights:   bis.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
 ```
 
-Issues with LEDs and push button - buttons are mechanical, so there are bouncing issues.  Will discuss next time.
+There are some things going on here that might be confusing.  Let me explain:
+
+When the button is pushed, it drives P1.3 low.  When the button is released, it leaves P1.3 floating.  This is a problem.  We need P1.3 to be logic high when the button isn't pushed.  What can we do?
+
+Add a pull up resistor!  And, with the MSP430, we can do this internally.  The P1REN register enables / disables the pull up / down resistors.  I set BIT3 to enable it.  Next, I have to make it pull-up.  If a pin is configured as input, the corresponding bit on P1OUT determines whether it is pull up or pull down - setting it to 1 makes it pull up.
+
 
 **PITFALL!**
 ```
