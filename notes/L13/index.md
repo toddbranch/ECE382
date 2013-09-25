@@ -143,6 +143,23 @@ The registers used to configure GPIO are PxDIR, PxOUT, and PxIN.
 There are additional registers that control other characteristics of GPIO, but we'll stick with these for now.
 
 Let's use this to write a program that controls the onboard LEDs on our launchpad with the onboard push button.  *[Work through this with the class]*.
+
+```
+                     bis.b  #BIT0|BIT6, &P1DIR
+                     bic.b  #BIT3, &P1DIR
+ 
+check_btn:    bit.b  #BIT3, &P1IN
+                     jz            set_lights
+                     bic.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+set_lights:   bis.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+```
+
+Why doesn't this work?  Push button is low on push and *floating* on release.  We have no idea how the MCU will interpret the button when it's up.  We need to add a pull-up resistor!  A pull-up resistor will push a pin to logic high if it's floating - but it's not powerful enough to overwhelm a true logic low signal.  The reverse is true for pull-down resistors.
+
+If a pin is configured as input, PxOUT has a dual purpose - setting the appropriate bit to 1 configures it as pull-up, while clearing it configures it as pull-down.  The PxREN register enables / disables the pullup/down networks.
+
 ```
                      bis.b  #BIT0|BIT6, &P1DIR
                      bic.b  #BIT3, &P1DIR

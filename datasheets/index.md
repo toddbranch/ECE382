@@ -8,6 +8,11 @@
 - [MSP430 Assembly Language Tools](msp430_assembly_language_tools.pdf)
 - [GNU Assembler](http://tigcc.ticalc.org/doc/gnuasm.html)
 
+## Geek Box LCD (Lab 3)
+
+- [LCD Driver Datasheet](lcd_driver_datasheet.pdf)
+- [LCD Commands](lcd_commands.pdf)
+
 ## Other Useful Resources
 
 - [Programming the MSP430 In-Cicruit](http://www.youtube.com/watch?v=dL2YPS96L18)

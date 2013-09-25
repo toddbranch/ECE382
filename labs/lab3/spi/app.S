@@ -9,6 +9,9 @@ LCDCON:
     .space  1
 
 .text
+hello_string:   .string   "hello"
+world_string:   .string   "world"
+
 main:
     ;disable watchdog timer
     mov     #WDTPW, r10
@@ -18,6 +21,7 @@ main:
     mov     #0x0400, r1
     ;code
 
+
     ; think I should init LCDCON to 0.
     mov.b   #0, &LCDCON
 
@@ -25,10 +29,86 @@ main:
 
     call    #LCDINIT
 
+    call    #LCDCLR
+
     ; they should create the init_spi routine, set_SS_high, set_SS_low, and two delay routines
+
+    mov.b   #0, &LCDCON                                             ; clear RS
+    mov.b   #0x0F, &LCDSEND
+    call    #LCDWRT8
+    call    #LCDDELAY1
+
+write:
+    mov     #hello_string, r9
+    call    #writeString
+
+    call    #GotoLineTwo
+
+    mov     #world_string, r9
+    call    #writeString
+
+    bic.b   #BIT1, &P1DIR
+
+    call    #WaitButton
+
+    call    #LCDCLR
+
+    call    #WaitButton
+
+    jmp     write
 
 forever:
     jmp     forever
+
+; Wait For Button Push Subroutine
+
+WaitButton:
+    bit.b   #BIT1, &P1IN
+    jnz     WaitButton
+
+wait_release:
+    bit.b   #BIT1, &P1IN
+    jz      wait_release    
+
+    call    #LCDDELAY2
+
+    ret
+
+; Go To Line 2 Subroutine
+
+GotoLineTwo:
+    mov.b   #0, &LCDCON                                             ; clear RS
+    mov.b   #0xC0, &LCDSEND
+    call    #LCDWRT8
+    call    #LCDDELAY1
+
+    ret
+
+; Write String Subroutine
+; takes in address of string to print in r9
+writeString:
+getChar:
+    mov.b   #0x40, &LCDCON                                          ; set RS
+    mov.b   @r9, r8
+    tst.b   r8
+    jz      done
+    call    #writeChar
+    inc     r9
+
+    jmp     getChar
+
+done:
+    ret
+
+; Write Char Subroutine
+; takes in char in r8
+
+writeChar:
+    mov.b   r8, &LCDSEND
+    call    #LCDWRT8
+    call    #LCDDELAY2
+
+    ret
 
 ; Initializes the SPI subsytem.
 ; Doesn't impact any registers

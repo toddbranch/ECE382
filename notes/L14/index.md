@@ -57,6 +57,8 @@ poll_button:
 forever             jmp     forever                 ; set break here
 ```
 
+*[Run, pause.  Run, pause.  Push button - BREAK]*
+
 In Lab 3, you're going to be polling buttons for presses from a person to capture inputs.
 
 ## Intro to Logic Analyzer
@@ -124,9 +126,9 @@ check_btn:    bit.b  #BIT3, &P1IN
                      jmp           check_btn
  
 btn_pushed:   inc           r4
-                     call   #software_delay
 wait:         bit.b  #BIT3, &P1IN
                      jz            wait
+                     call   #software_delay
                      jmp           check_btn
  
 software_delay:
@@ -177,10 +179,10 @@ software_delay:
 delay:               dec           r5               ; 2 cycles?  no, 1 cycle!  tricky, tricky!
                      jnz           delay            ; 2 cycles
                      pop           r5               ; 2 cycles
-                     ret                            ; 2 cycles
+                     ret                            ; 2 cycles?  no, 3 cycles!  tricky, tricky!
 ```
 
-So I've got 5 + 3 + 2 + (0xaaaa * (1 + 2)) + 2 + 2 = 131084 total clock cycles.  Only a portion of this is directly related to the 0xaaaa I'm using, so this is tunable to within 4 clock cycles of a precise delay.
+So I've got 5 + 3 + 2 + (0xaaaa * (1 + 2)) + 2 + 3 = 131085 total clock cycles.  Only a portion of this is directly related to the 0xaaaa I'm using, so this is tunable to within 4 clock cycles of a precise delay.
 
 But how long is this?  How do I know the exact time?  I need to know my clock period.
 
@@ -192,6 +194,8 @@ Show L13 notes about Multiplexing and find SMCLK on pinout, look up P1.4 in devi
 ```
                 bis.b	#BIT4, &P1DIR
                 bis.b	#BIT4, &P1SEL
+
+forever         jmp     forever
 ```
 
 Measure on logic analyzer.
@@ -200,7 +204,7 @@ Measure on logic analyzer.
 
 So I see my clock period - 912 ns.
 
-So my delay should be 131084 clock cycles * period - 119.54 ms.  How can I measure this?  Let's try a simple way using GPIO!
+So my delay should be 131085 clock cycles * period - 119.54 ms.  How can I measure this?  Let's try a simple way using GPIO!
 
 ```
                      bis.b  #BIT0, &P1DIR
@@ -226,3 +230,26 @@ And here's the result:
 It matches - cool!
 
 Next lesson, we'll learn about the Serial Peripheral Interface (SPI) - which the MSP430 has hardware support for.  You'll need all of this knowledge to configure / use the SPI subsytem on Lab 3.
+
+## Bonus Material - Overclocking
+
+If you're interested in computers, you've probably heard the term **overclocking** - that's driving your computer's CPU at a clock speed higher than what the manufacturer recommends.  In doing this, there's the potential to fry your CPU - usually because you can't dissipate all of the heat that's generated quickly enough.
+
+As I said earlier, the clock on the MSP430 is configurable.  Like the variance in the base clock frequency, the max frequency you can get also varies across chips.  Check out the Family Users Guide section on the Basic Clock Module for more info.
+
+Here's some code that drives the clock to its highest possible speed:
+```
+            bis.b	#BIT4, &P1DIR	                        ; show SMCLK on P1.4
+            bis.b	#BIT4, &P1SEL
+
+            bis.b	#DCO2|DCO1|DCO0, &DCOCTL                ; drive clock at fastest possible settings
+            bis.b	#RSEL3|RSEL2|RSEL1|RSEL0, &BCSCTL1
+
+forever     jmp     forever 
+```
+
+And here's the resulting Logic Analyzer reading:
+
+![MSP430 Fastest Clock Speed](overclock.png)
+
+Our clock period is 48ns - a max clock speed of 20.83 MHz!

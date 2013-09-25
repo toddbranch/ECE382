@@ -20,7 +20,7 @@
 | L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Prelab |
 | L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | |
 | L18 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/index.html) Functionality |
-| [L19](notes/L19/index.html) | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
+| L19 | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
 | [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment](/notes/L20/L20_C_basics.html) | |
 | [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment](/notes/L21/L21_pong.html) | [Assignment](/notes/L20/L20_C_basics.html) |
 | [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | KSplice Pointer Challenge, [Install Git](notes/L22/git_install.html), [Assignment](/notes/L22/L22_moving_average.html) | [Assignment](/notes/L21/L21_pong.html) |
