@@ -20,7 +20,7 @@ Create an LCD device driver using the C programming language.
 
 Scroll the message "ECE382 is my favorite class!" across the top line of the LCD.  Scroll a message of your choice across the bottom line.
 
-You might want to interface with this LCD again (**you will in Lab 5**).  I expect you to create a reusable LCD library!  Design a good API in advance - you want this library to be easy to work with in the future.
+You will want to interface with this LCD again (**in Lab 5**).  I expect you to create a reusable LCD library!  Design a good API in advance - you want this library to be easy to work with in the future.
 
 Mind your coding standards!  Commit to git regularly with descriptive commit messages!
 

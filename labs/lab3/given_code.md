@@ -235,6 +235,8 @@ LCDWRT4:
 ;
 ; takes byte to send in r5
 SPISEND:
+                  push    r4 
+
                   call    #SET_SS_LO
  
                   mov.b   r5, &UCB0TXBUF                                          ; transfer byte
@@ -243,10 +245,12 @@ wait:
                   bit.b   #UCB0RXIFG, &IFG2                                       ; wait for transfer completion
                   jz      wait
  
-                  mov.b   &UCB0RXBUF, r3                                          ; read value to clear flag
+                  mov.b   &UCB0RXBUF, r4                                          ; read value to clear flag
  
                   call    #SET_SS_HI
  
+                  pop     r4
+
                   ret
  
 ;-------------------------------------------------------------------------------

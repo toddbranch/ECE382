@@ -6,15 +6,15 @@ The LCD is connected to the project board on J13. See schematic below. The LCD u
 
 ![LCD Schematic](lcd_schematic.jpg)
 
-The last signal of interest is the EN line, which is a signal to the LCD to read the data on the data bus. Notice that six lines of the LCD are actively used and require data from the S12.
+The last signal of interest is the EN line, which is a signal to the LCD to read the data on the data bus. Notice that six lines of the LCD are actively used and require data from the MSP430.
 
-In order to reduce the number of pins used for the LCD, the project board uses the SPI ability of the MCU to use only the four SPI pins to communicate with the LCD. However, there needs to be something to convert the serial data from the MSP430 to parallel data the LCD can understand. The schematic shows U5, a 74HC595 Serial Input / Parallel Output Latch. This device takes the serial data from the S12 and places it on the LCD parallel interface. The four SPI signals drive the 74HC595. Look at the data sheet for more detail on what signals drive the outputs of this chip.
+In order to reduce the number of pins used for the LCD, the project board uses the SPI ability of the MCU to use only the four SPI pins to communicate with the LCD. However, there needs to be something to convert the serial data from the MSP430 to parallel data the LCD can understand. The schematic shows U5, a 74HC595 Serial Input / Parallel Output Latch. This device takes the serial data from the MSP430 and places it on the LCD parallel interface. The four SPI signals drive the 74HC595. Look at the data sheet for more detail on what signals drive the outputs of this chip.
 
 Questions to Consider:
 
 - On the project board, is the LCD in read or write mode?
-- What pins on the LCD driver chip require data from the S12?
-- How are the four SPI signals used to convert the S12 serial data to the parallel data needed by the LCD?
+- What pins on the LCD driver chip require data from the MSP430?
+- How are the four SPI signals used to convert the MSP430 serial data to the parallel data needed by the LCD?
 
 ## LCD Protocol
 
@@ -23,7 +23,7 @@ When power is applied, the LCD will display eight rectangles on line 1.  Before 
 You are given code that does 95% of the initialization work for you. However, it is missing a few items to make it work properly. **Do not modify any of the other subroutines provided**. They are intended to save time. The LCD initialization code requires:
 
 1. Two delay functions, called `LCDDELAY1` (40.5 microseconds) and `LCDDELAY2` (1.65 microseconds).
-2. Initialization of the Serial Peripheral Interface (SPI).
+2. Initialization of the Serial Peripheral Interface (SPI) in `INITSPI`.
 3. Implementation of `SET_SS_LO` and `SET_SS_HI`.
 
 Think about how you can measure your delay times using general purpose I/O.
@@ -48,7 +48,7 @@ Here are a few things to notice about sending data and commands to the display:
 
 7. You need to set the DD RAM to what address on the LCD you are writing to.  After you set the initial address, an address counter inside the LCD's microcontroller automatically increments.  You don't have to send another address until you want to use the next line.  Figure 3 of the KS0066U datasheet shows the address for each position. Remember you have a two-line, 8 position display. The datasheet also covers larger LCD units.
 
-8. The shift mode is very messy to use unless your message is 8 characters or less.  If you shift a long message, the eighth character 'falls off' the end instead of being shifted into the ninth position.  This may be useful for A Functionality. 
+8. The shift mode is very messy to use unless your message is 8 characters or less.  If you shift a long message, the eighth character 'falls off' the end instead of being shifted into the ninth position.
 
 9. You must use a loop when displaying characters to the LCD.  The loop should read a character from your string and send it to the LCD.
 
