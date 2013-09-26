@@ -1,4 +1,4 @@
-# Lab 3 - I/O
+# Lab 3 - Polling and SPI - "I/O"
 
 ## Objectives
 
@@ -72,11 +72,6 @@ Geek box wiring details:
 - Above image also connects 5V from Geek Box to board
     - This is to run MSP430 without power from the USB
     - If you hook this up while your USB cable is connected, you could have problems
-
-- **WARNING**
-    - The max voltage your chip can tolerate is 3.6V
-    - Powering it via USB is fine
-    - DO NOT power it with the 5V source on the Geek Box, even though it's shown in the above pictures!
 
 **Step 4**: Write code to print the messages to the LCD screen.  You'll need to use the LCD Datasheet along with the provided subroutines to accomplish this.
 

@@ -28,8 +28,8 @@
 | [L24](notes/L24/index.html) | C Programming - the MSP430.  Modular code design.  Creating libraries / using external libraries.  [Lab 4](/labs/lab4/index.html) Introduction. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment](/notes/L23/L23_git.html) |
 | L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
 | L26 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
-| [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |
-| [L28](notes/L28/index.html) | Timer_A (Interval Timing). Hardware Block Diagrams. [Lab 5](/labs/lab5/index.html) Introduction. | [Lab 5](/labs/lab5/index.html) Prelab | |
+| [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. GPIO Interrupts. | | [Lab 4](/labs/lab4/index.html) Notebook |
+| [L28](notes/L28/index.html) | Hardware Block Diagrams. Timer_A (Interval Timing). [Lab 5](/labs/lab5/index.html) Intro. | [Lab 5](/labs/lab5/index.html) Prelab | |
 | L29 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab |
 | [L30](notes/L30/index.html) | More Interrupts.  HW Config / Modes. Review. | | [Lab 5](/labs/lab5/index.html) Functionality |
 | [L31](notes/L31/index.html) | GR #2 | | [Lab 5](/labs/lab5/index.html) Notebook |
