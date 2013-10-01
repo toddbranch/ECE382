@@ -28,17 +28,21 @@ Remember, program time spent inside ISRs should be minimized!  Remember to effec
 
 ### B Functionality
 
-In addition to Required Functionality, your game must allow users to move up and down with two different push buttons.  Your game must place two mines in random positions on the board (represented by an "x") that players must navigate around.  If a player navigates onto a bomb, the game is over.  When the player wins, sound the buzzer on the Geek Box!
+In addition to Required Functionality, your game must allow users to move up and down with two different push buttons.  Your game must place two mines in random positions on the board (represented by an "x") that players must navigate around.  If a player navigates onto a bomb, the game is over.  The edges of the screen are also mined - if the player runs into an edge, the game is over.  Display a creative message if a player steps on a mine (i.e. "BOOM!"), then the game over screen.
+
+When the player wins, sound the buzzer on the Geek Box!
+
+**TODO: give details on Geek Box buzzer**
 
 Include logic in your program that ensures the game is winnable!  You can't have obstacles stacked on top of or diagonal to one another - players couldn't get around them.
 
 The buzzer should be turned off when the player starts a new game.
 
-**TODO: give details on Geek Box buzzer**
-
 ### A Functionality
 
-In addition to B Functionality, you must place the MSP430 into the lowest possible power mode between interrupts.  It should "wake up" on interrupt and return to the low power mode once the interrupt is handled.  Show that it's in a low power mode using a multimeter (i.e. contrast a program running in normal mode vs your low power program).
+(5 pts) This game is too easy!  Add additional features that make the game more challenging.  Be creative!  Simply making the time limit shorter will not receive any credit.  You can receive between 1 and 5 pts depending on the features you add - at your instructor's discretion!
+
+(5 pts) In addition to B Functionality, you must place the MSP430 into the lowest possible power mode between interrupts.  It should "wake up" on interrupt and return to the low power mode once the interrupt is handled.  Show that it's in a low power mode using a multimeter (i.e. contrast a program running in normal mode vs your low power program).
 
 ## Prelab
 
@@ -55,6 +59,8 @@ Think about the work that will be done in your ISRs and how you'll pass informat
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
 
 Remember to effectively debounce your buttons!
+
+Think about how you'll pass information between ISRs and your main program.  Remember, global variables are acceptable **only** in this circumstance.
 
 ## Grading
 

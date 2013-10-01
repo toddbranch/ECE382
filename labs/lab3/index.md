@@ -1,4 +1,4 @@
-# Lab 3 - Polling and SPI - "I/O"
+# Lab 3 - I/O
 
 ## Objectives
 
@@ -40,7 +40,7 @@ This is the longest lab you've undertaken thus far.  **Use a modular approach to
 
 SPI Notes:
 
-- The LCD driver chip expects data to be changed on the first clock edge and read on the second.
+- The LCD driver chip expects data to be read on the first clock edge and changed on the second.
 - The LCD driver chip expects the clock should be low when not trasnmitting.
 - The Launchpad doesn't come with an ACLK source installed.
 - The LCD can handle an unscaled SMCLK.
@@ -75,7 +75,7 @@ Geek box wiring details:
 
 **Step 4**: Write code to print the messages to the LCD screen.  You'll need to use the LCD Datasheet along with the provided subroutines to accomplish this.
 
-See the [LCD Notes](lcd_notes.html) for a lot of useful information.
+**See the [LCD Notes](lcd_notes.html) for a lot of useful information.**
 
 Printing notes:
 
@@ -86,7 +86,7 @@ You should define your strings in memory (`.string`) and print them with a subro
 
 Button notes:
 
-The push buttons in the Geek Box are **active low**.
+The push buttons in the Geek Box are **active low**.  But they don't need the MSP430 to provide an internal pull-up resistor.
 
 Push buttons can sometimes bounce - you'll need to account for that so you don't confuse a single button push for multiple button pushes.  There are couple of potential approaches to this:
 

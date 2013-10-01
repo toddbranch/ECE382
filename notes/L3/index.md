@@ -207,7 +207,7 @@ There are generally of the form `OP src, dst` which actually means `dest = src O
 | 0101 | ADD src, dest | dest += src | |
 | 0110 | ADDC src, dest | dest += src + C | |
 | 0111 | SUBC src, dest | dest += ~src + C | |
-| 1001 | SUB src, dest | dest -= src | Implemented as dest += ~src + 1 |
+| 1000 | SUB src, dest | dest -= src | Implemented as dest += ~src + 1 |
 | 1001 | CMP src, dest | dest - src | Sets status only; the destination is not written. |
 | 1010 | DADD src, dest | dest += src + C, BCD (Binary Coded Decimal) | |
 | 1011 | BIT src, dest | dest & src | Sets status only; the destination is not written. |
