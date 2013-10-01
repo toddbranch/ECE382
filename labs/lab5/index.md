@@ -56,7 +56,7 @@ Think about the work that will be done in your ISRs and how you'll pass informat
 
 ## Notes
 
-Read the [guidance on Labs / Lab Notebooks / Coding standards](/ECE382/notes/labs.html) thoroughly and follow it.
+Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
 Remember to effectively debounce your buttons!
 
