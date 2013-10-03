@@ -9,3 +9,5 @@ Add note to logic analyzer about how to plug wires into the probes - lot of peop
 Add videos of functioning labs.  Tough to explain what the lab should do - just show a video, that will get the message across much better.
 
 Add more practical demos where possible - MSP430 interfacing with different types of hardware, doing different things, etc.
+
+- Change Lab 5 game to memory game?  

@@ -1,4 +1,4 @@
-# Lab 3 - I/O
+# Lab 3 - SPI - "I/O"
 
 ## Objectives
 

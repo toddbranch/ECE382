@@ -12,7 +12,7 @@ In this game, the player will be represented by an asterisk (*), starting in the
 
 On your Geek Box, PB1 will move the player right and PB2 will move the player left.  If the player reaches the end of the top line and goes right, they should be placed on the farthest left position on the bottom line.
 
-If the player doesn't move within 2 seconds, the game ends - display "GAME" on the first line and "OVER!" on the second line.  If the player reaches the bottom right corner of the screen, they won - display "YOU" on the first line" and "WON!" on the second line.  Pushing either PB1 or PB2 should initiate a new game.
+If the player doesn't move within 2 seconds, the game ends - display "GAME" on the first line and "OVER!" on the second line.  If the player reaches the bottom right corner of the screen, they won - display "YOU" on the first line" and "WON!" on the second line.  At this point, pushing either PB1 or PB2 should initiate a new game.
 
 To achieve B functionality, you'll have to add some additional features to the game.
 

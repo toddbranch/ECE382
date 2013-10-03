@@ -1,4 +1,4 @@
-# Lab 4 - An LCD Device Driver
+# Lab 4 - C - "An LCD Device Driver"
 
 ## Objectives
 

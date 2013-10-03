@@ -48,4 +48,6 @@ There are a variety of techniques that cadets have used in the past to solve the
 
 **Note: Many cadets get poor grades on this lab because their lab notebook documentation is lacking.**
 
+![Maze Diagram](maze_diagram.png)
+
 **Figure 1: Diagram of the maze your robot must navigate.  Your demonstration grade depends on which door you go through.**

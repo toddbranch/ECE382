@@ -1,4 +1,4 @@
-# Lab 6 - Robot Motion
+# Lab 6 - PWM - "Robot Motion"
 
 ## Lab Overview
 
@@ -6,14 +6,14 @@ This lab is designed to provide you with experience using the input capture and 
 
 ## Driving Motors
 
-Our mobile robots have DC motors to driving the wheels.  The amount of torque provided by the motor is directly proportional to the amount of voltage provided.  Therefore, there are two ways of varying the speed of the DC motors:
+Our mobile robots have DC motors to drive the wheels.  The amount of torque provided by the motor is directly proportional to the amount of voltage provided.  Therefore, there are two ways of varying the speed of the DC motors:
 
 1. Provide an analog voltage where the magnitude is proportional to the output torque desired.
-2. Provide a PWM signal where the duty cycle provides an “average” voltage proportional to the output torque desired.  This is shown if Figure 1.
+2. Provide a PWM signal where the duty cycle provides an "average" voltage proportional to the output torque desired.  This is shown if Figure 1.
 
-Figure 1: The PWM signal creates a certain duty cycle which will provide an “average” voltage to the motor.  This average voltage is proportional to the motor’s output torque.
+Figure 1: The PWM signal creates a certain duty cycle which will provide an "average" voltage to the motor.  This average voltage is proportional to the motor's output torque.
 
-The motor can move in two directions.  If you ground one terminal of the motor and connect the PWM signal to the terminal side, then the motor shaft moves in one direction.  If you swap the terminals, the motor will move in the opposite direction.
+The motor can move in two directions.  If you ground one terminal of the motor and connect the PWM signal to the other side of the terminal, then the motor shaft moves in one direction.  If you swap the terminals, the motor will move in the opposite direction.
 
 As one of your pre-lab assignments, you have to create the Boolean equations that map the inputs (your PWM signal and the desired direction) to your outputs (motor terminal 1 and motor terminal 2).  This must be done for both motors – the equations will be nearly identical, only the Boolean variable subscripts will change.
 
@@ -69,7 +69,7 @@ Because of the switching action of the robot motors can load the 5 V rail and ca
     - Verify motors can change direction
     - ...
 
-## Extra Credit
+## A Functionality
 
 Add additional features to this lab for extra credit.  Here are a few ideas, but you can come up with your own as well:
 
@@ -77,4 +77,13 @@ Add additional features to this lab for extra credit.  Here are a few ideas, but
 
 - Use switches to control large/small turns.
 
+## Grading
 
+| Item | Grade | Points | Out of | Date | Due |
+|:-: | :-: | :-: | :-: | :-: |
+| Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L29 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L35 |
+| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L35 |
+| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L35 |
+| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L36 (signed off) |
+| **Total** | | | **100** | | |

@@ -1,4 +1,4 @@
-# Lab 1 - A Simple Calculator
+# Lab 1 - Assembly Language - "A Simple Calculator"
 
 ## Objectives
 
