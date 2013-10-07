@@ -1,19 +1,40 @@
 # Lesson 20 Notes
 
 ## Readings
-[I'm a Compiler](http://stackoverflow.com/questions/2684364/why-arent-programs-written-in-assembly-more-often) - Read the question and top two responses
+- [I'm a Compiler](http://stackoverflow.com/questions/2684364/why-arent-programs-written-in-assembly-more-often) - Read the question and top two answers, particularly the second answer
 
 ## Assignment
+- [C Basics](L20_C_basics.html)
 
 ## Lesson Outline
 - Compilers
 - Introduction to C
 
+## Admin
+- Video
+    - Conan furloughing employees
+- Talk about GRs
+    - Everyone hasn't taken it yet, will be returned next class
+    - Overall, pretty rough
+        - Some of that is on me
+            - GR was a bit long
+            - A couple of questions a little unclear
+        - Some of that is on you
+            - Not enough to just get something working on a lab or survive a HW
+            - You need to **understand** what's going on
+            - I have high expectations for you and that's not going to change
+- Give me some time on the Labs with Dr. York out
+
+Ok, so we're through the first big block.  In previous years, assembly was all we did during this class.  But this year I'm expecting you to learn even more and move even faster.  These next 5 lessons used to be the first 5 lessons of ECE383. 
+
+We've learned about the MSP430 and its instruction set.  We've learned some assembly programming constructs and implemented a few programs.  We've learned about some of the subsystems on our chip and used SPI.
+
+But most engineers and developers don't program in assembly.
+
 ## Compilers
 
-During the first block, we learned about the MSP430 and its instruction set.  We learned some assembly programming constructs and implemented a few programs.
+What are some other programming languages you know?  [List on board]
 
-What are some other programming languages you know?  [List on board]  
 The languages you listed are all what we call High Level Languages (HLL).
 
 What are some benefits of using these over programming in assembly? 
@@ -36,11 +57,11 @@ What are some benefits of using these over programming in assembly?
 
 *Remember our workflow*: **assembly code --> assembler --> relocatable machine code --> linker --> executable**
 
-The compiler adds a layer on top of that.  It converts code written in a higher language into assembly, which can then be fed into the rest of our process:  
+The compiler adds a layer on top of that.  It converts code written in a higher language into assembly, which can then be fed into the rest of our process:
 
 **HLL --> compiler --> assembly code --> assembler --> relocatable machine code --> linker --> executable**
 
-or, since we'll be compiling and assembling code for a different architecture than the one our computer is running, we'll be using a cross-compiler / cross-assembler:  
+or, since we'll be compiling and assembling code for a different architecture than the one our computer is running, we'll be using a cross-compiler / cross-assembler:
 
 **HLL --> cross-compiler --> assembly code --> cross-assembler --> relocatable machine code --> linker --> executable**
 
@@ -60,17 +81,19 @@ Are there any disadvantages to using an HLL over assembly?
 
 The HLL we'll use for the remainder of the course is C.  C is one of the most widely used programming languages of all time - and is still used for a ton of huge / important projects:
 
-- Linux , GNU
-- git
-- Apache , nginx
-- Ruby , Python
-- mysql , postgresql, redis
-- vmware
-- almost anything embedded , device drivers
+- Kernel / OS: Linux, GNU
+- Version Control: git
+- Web Server: Apache, nginx
+- Interpreter: Ruby, Python
+- Databases: mysql, postgresql, redis
+- Virtualization: vmware
+- Almost anything embedded, device drivers
 
-**C is a portable, higher-level assembly.  That's the way you should think about it.**  
+**C is a portable, higher-level assembly.  That's the way you should think about it.**
+
 Great programmers use C very precisely to generate the exact assembly they want to perform a given task - so it's important to understand how the C constructs we'll learn about map to assembly.  I'll save that for a later lesson.
-The reason it's still used in many modern applications is that it gives you a lot of control over the generated assembly - making it FAST and MEMORY EFFICIENT.  
+
+The reason it's still used in many modern applications is that it gives you a lot of control over the generated assembly - making it FAST and MEMORY EFFICIENT.
 
 *[Open up vim and code in front of the class]*
 
@@ -87,8 +110,6 @@ int i = 0;  // a declaration
   ** The previous variable was
   ** declared just as an example.
 *************************************/
-
-// Now my code will do stuff
 ```
 
 ### Variables
@@ -101,8 +122,8 @@ int i = 0;  // a declaration
 | float | 2 bytes | single-precision floating point number |
 | double | 4 bytes | double-precision floating point number |
 
-Note: These sizes are dependent on the compiler and target architecture - these are for the MSP430.  
-Note: Do not use the float / double types on the MSP430 - since it doesn't have floating point hardware support, it will use almost all of your memory.
+- **Note**: These sizes are dependent on the compiler and target architecture - these are for the MSP430.  
+- **Note**: Do not use the float / double types on the MSP430 - since it doesn't have floating point hardware support, implementing software support will use almost all of your memory.
 
 #### Variable Modifiers
 | Modifier | Description |
@@ -115,14 +136,14 @@ Note: Do not use the float / double types on the MSP430 - since it doesn't have 
 | extern | atual storage and initial value of variable is defined elsewhere |
 | const | assigns a constant (read-only) value to a variable |
 
-Note: Once again, sizes are depended on compiler / target architecture - these are for the MSP430.
+- **Note**: Once again, sizes are dependent on compiler / target architecture - these are for the MSP430.
 
 ### Preferred Constant Declaration
 
-The *#define* statment is a pre-processor directive.  The pre-processor will go through and replace each instant of the variable with the value before compilation.
+The `#define` statment is a pre-processor directive.  The pre-processor will go through and replace each instant of the variable with the value before compilation, similar to a `.equ` statement in assembly.
 
 ```
-#define MY_CONST some_value
+// #define MY_CONST some_value
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
@@ -134,29 +155,29 @@ void main(void)
     return;
 }
 ```
-Note: There is no ';' or '=' in *#define* statements  
-Note: Variables must be declared at the top of a block, and they are not initialized by default.  
-Note: A value can be binary (0b), octal (0), or hex (0x) by using prefixes.  
+- **Note**: There is no ';' or '=' in *#define* statements
+- **Note**: Variables must be declared at the top of a block, and they are not initialized by default.  A block is denoted by braces `{}`
+- **Note**: A value can be binary (0b), octal (0), or hex (0x) by using prefixes.
 
-### Arithmetic Operators
+### Assignment, Arithmetic Operators
 
 ```
-char myVar, a, b;  //variable declaration
+char myVar, a, b;  // variable declaration
 
-myVar = a;  //assignment - note, all vars have undefined values at this point
+myVar = a;  // assignment - note, all vars have undefined values at this point
 
-myVar = a + b;  //addition
-myVar = a - b;  //subtraction
-myVar = a * b;  //multiplication
-myVar = a / b;  //division
+myVar = a + b;  // addition
+myVar = a - b;  // subtraction
+myVar = a * b;  // multiplication
+myVar = a / b;  // division
 
-myVar = a % b;  //modulus (remainder)
+myVar = a % b;  // modulus (remainder)
 
-myVar++;        //increment
-myVar--;        //decrement
+myVar++;        // increment
+myVar--;        // decrement
 
-myVar += a;     //myVar = myVar + a
-myVar -= a;     //myVar = myVar - a
+myVar += a;     // myVar = myVar + a
+myVar -= a;     // myVar = myVar - a
 ```
 
 ### Relational Operators
@@ -171,18 +192,19 @@ myVar -= a;     //myVar = myVar - a
 | `!=` | not equal to | |
 | `&&` | logical and | |
 
-OR is double vertical bar, but breaks markdown at this point.
+**Logical OR is double vertical bar `||`, but breaks markdown so I can't print it in the table.**
 
 Example:
 
 ```
 if ((a < 10) && (a > 5)) 
 {
-    //if a is between 5 and 10, do whatever is in here
+    // literally: if a is greater than 5 and less than 10, do whatever is in here
+    // practically: if a is between 5 and 10, do whatever is in here
 }
 ```
 
-Note: In C, "false" is 0, while any non-zero value is considered true.
+- **Note**: In C, "false" is 0, while any non-zero value is considered true.
 
 ### Bit-wise Operators
 
@@ -194,16 +216,28 @@ Note: In C, "false" is 0, while any non-zero value is considered true.
 | `>>` | Bit-shift right | |
 | `<<` | Bit-shift left | |
 
-OR is vertical bar, but breaks markdown at this point.
+**Logical OR is vertical bar `|`, but breaks markdown so I can't print it in the table.**
+
+```
+// Example with SPI
+
+UCA0CTL1 &= ~UCSWRST;            // disable the subsystem (AND UCA0CTL1 with NOT UCSWRST)
+
+// Do config stuff in here
+
+UCA0CTL1 |= UCSWRST;             // enable the subsystem (OR UCA0CTL1 with UCSWRST)
+```
 
 ### if Statement
 
+Conditional code execution based on a logical expression.
+
 General case:
 ```
-if (expression) 
+if (logical expression) 
 {
     statements;
-} else if (expression)
+} else if (logical expression)
 {
     statements;
 }
@@ -213,6 +247,7 @@ else
     statements;
 }
 ```
+
 Example:
 ```
 if (temp < MIN_TEMP) 
@@ -227,20 +262,23 @@ else
     flag = JUST_RIGHT;
 }
 ```
+
 ### switch Statement
+
+Conditional code exection based on a value.
 
 General case:
 ```
-switch (expression)
+switch (value)
 {
     case constant-expression1:
         statements;
-
         break;
     case constant-expression2:
         statements;
         break;
     default:
+        // gets executed if no other case hits
         statements;
         break;
 }
@@ -264,6 +302,8 @@ switch (GAME_STATE)
 
 ### for Loop
 
+Looping construct that tests logical expression and performs operation on an iterator variable.
+
 General case:
 ```
 for (initial; continue; increment)
@@ -271,11 +311,10 @@ for (initial; continue; increment)
     statements;
 }
 ```
-initial - evaluated once, immediately before the first iteration of the loop.  Usually used to initialize variable.
 
-continue - condition checked to execute the next iteration.  If false, then the loop terminates.
-
-increment - single statement executed at the end of each loop.  Usually used to increment / decrement a variable.
+- initial - evaluated once, immediately before the first iteration of the loop.  Usually used to initialize variable.
+- continue - condition checked to execute the next iteration.  If false, then the loop terminates.
+- increment - single statement executed at the end of each loop.  Usually used to increment / decrement a variable.
 
 Example case:
 ```
@@ -286,6 +325,8 @@ for (i = 1; i <= 20; i++)
 ```
 
 ### while / do while Loop
+
+Looping construct dependent on a logical expression.
 
 General case:
 ```
@@ -331,7 +372,7 @@ void main(void)
     // Variable declarations
     // Useful code
 
-    asm swi;    // End the program
+    while (1) {}        // trap the CPU
 }
 ```
 Example:
@@ -349,7 +390,7 @@ void main(void)
         summation += i;
     }
 
-    asm swi;
+    while (1) {}        // trap the CPU
 
 }
 ```

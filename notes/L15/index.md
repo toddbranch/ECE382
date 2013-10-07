@@ -3,7 +3,7 @@
 ## Readings
 
 - [Serial Peripheral Interface (SPI)](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus)
-- [[Lab 3](/labs/lab3/index.html)](/labs/lab3/index.html)
+- [Lab 3](/labs/lab3/index.html)
 
 ## Assignment
 - [Lab 3](/labs/lab3/index.html) Prelab

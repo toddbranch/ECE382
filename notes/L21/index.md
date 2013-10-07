@@ -1,7 +1,7 @@
 # Lesson 21 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+- <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>  
 
 ## Assignment
 
@@ -61,7 +61,7 @@ General case:
 <output_type> func_name(<input type 1> <variable name 1>, ...);
 ```
 
-Note: function parameters / output can be `void`.
+**Note**: function parameters / output can be `void`.
 
 Example:
 ```
@@ -123,7 +123,7 @@ The preprocessor is executed before your code compiles.  It handles any lines th
 - `#ifndef <SOME_CONSTANT> ... <some code> .. #endif`
     - Code is only included if `<SOME_CONSTANT>` is not defined
     - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
-- Note: these lines do not end with a semicolon (;)!
+- **Note**: these lines do not end with a semicolon (;)!
 
 ### C Headers
 
