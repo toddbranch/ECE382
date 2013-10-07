@@ -6,7 +6,7 @@ Write a C program that does the following:
 
 - Creates three unsigned chars (val1, val2, val3).  Initializes them to 0x40, 0x35, and 0x42.
 - Creates three unsigned chars (result1, result2, result3).  Initializes them to 0.
-- Checks each number against a threshold value of 0x55.
+- Checks each number against a threshold value of 0x38.
 - If val1 is greater than the threshold value, stores the [10th Fibonacci number](http://en.wikipedia.org/wiki/Fibonacci_number) in result1 by using a for loop.
 - If val2 is greater than the threshold value, stores 0xAF to result2.
 - If val3 is greater than the threshold value, subtracts 0x10 from val2 and stores the result into result3.
