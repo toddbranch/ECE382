@@ -29,3 +29,14 @@ Additional Requirements:
 **How to create a C project in CCS**
 
 You'll create the project the same way you create an assembly project, but under "Project templates and examples" you'll select "Empty project (with main.c)".  The shortcut to build is still `Ctrl+B`.  The shortcut to debug is still `F11`.
+
+**Compiler Optimization Issue**
+
+There's a good chance you'll run into a warning that says "variable XXXX was set but never used".
+
+The compiler is seeing that you've created a variable and potentially set it to different values, but never tested the value or assigned it to another variable.  As far as the compiler is concerned, this code is useless - and it will delete it upon compilation.  It views this as an improvement - your program now does the same thing with less code.
+
+Usually, this is the behavior we want.  In learning situations like this, we want to keep the compiler from making these sorts of optimizations.  There are two ways we can accomplish this.
+
+1)  Prevent the compiler from optimizing anything: Go to Project -> Properties -> Build -> MSP430 Compiler -> Optimization and turn Optimization level to off.
+2)  Tell the compiler not to optimize a varable.  We can do this by adding the `volatile` modifier to the variables it's optimizing out.  This tells the compiler that this varibale could be modified outside of the given code and not to optimize it away.
