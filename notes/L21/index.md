@@ -2,8 +2,10 @@
 
 ## Readings
 - <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>  
+- [High-level Programming Language](http://en.wikipedia.org/wiki/High-level_programming_language)
 
 ## Assignment
+- [Assignment - Pong!](/notes/L21/L21_pong.html)
 
 ## Lesson Outline
 - Structs
