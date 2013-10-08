@@ -2,6 +2,7 @@
 
 ## Readings
 - [I'm a Compiler](http://stackoverflow.com/questions/2684364/why-arent-programs-written-in-assembly-more-often) - Read the question and top two answers, particularly the second answer
+- [High-level Programming Language](http://en.wikipedia.org/wiki/High-level_programming_language)
 
 ## Assignment
 - [C Basics](L20_C_basics.html)

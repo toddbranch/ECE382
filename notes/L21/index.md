@@ -1,8 +1,8 @@
 # Lesson 21 Notes
 
 ## Readings
-- <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>  
-- [High-level Programming Language](http://en.wikipedia.org/wiki/High-level_programming_language)
+- <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>
+- [MOTIVATIONAL: Self-assembling Robots](http://web.mit.edu/newsoffice/2013/simple-scheme-for-self-assembling-robots-1004.html)
 
 ## Assignment
 - [Assignment - Pong!](/notes/L21/L21_pong.html)
