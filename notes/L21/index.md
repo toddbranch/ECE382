@@ -13,11 +13,28 @@
 - Headers
 - Example
 
+## Admin
+
+- Show Color LCD, Educational Booster Pack
+- Show motivational video - self-assembling robots!
+- Talk about TALOS
+    - If interested in a 499, talk to me after class
+- GRs graded
+    - Stop me with 10 mins left and I'll go over them
+- Talk about compiler optimization issues with HW
+- Look at two assignments:
+    - [Student Example 1](student_example_1.html)
+    - [Student Example 2](student_example_2.html)
+    - [Student Example 3](student_example_3.html)
+
+
 ## Structs
+
+Remember objects from Java and other High Level Languages?  C has a rough equivalent called structs.  They are collections of variables, but don't have their own functions / methods.
 
 - Collection of multiple variables
 - Can be of different types
-- Similar to an OOP object, but only contains data (no methods)
+- Similar to an Object Oriented Programming (OOP) object, but only contains data (no methods)
 
 *[Open up VIM, code to demo this]*
 
@@ -48,9 +65,16 @@ struct circle {
 
 struct point center = {20, 07};
 strict circle myCircle = {center, 5};
+
+// You can use dot notation to access variables!
+
+center.x = 10;
+circle.radius = 25;
 ```
 
 ## Functions
+
+Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and resuable.
 
 ### Function Prototype
 
@@ -70,23 +94,9 @@ Example:
 unsigned int summation (unsigned char n);
 ```
 
-### Function Call
-
-General Case:
-```
-<variable> func_name(<variable 1>, ...);
-```
-
-Example:
-```
-unsigned int mySummation;
-unsigned char maxN = 42;
-
-mySummation = summation(23);
-mySummation = summation(maxN);
-```
-
 ### Function Definition
+
+Just by convention, I prefer to define function prototypes above main and implementations below it.
 
 General Case:
 ```
@@ -109,17 +119,33 @@ unsigned int summation(unsigned char n)
 }
 ```
 
+### Function Call
+
+General Case:
+```
+<variable> func_name(<variable 1>, ...);
+```
+
+Example:
+```
+unsigned int mySummation;
+unsigned char maxN = 42;
+
+mySummation = summation(23);
+mySummation = summation(maxN);
+```
+
 ## Header and Implementation Files
 
 ### Preprocessor Commands
 
-The preprocessor is executed before your code compiles.  It handles any lines that start with `#<some_comand> <params>`.  The following are the preprocessor commands you will use:
+Last time, we talked a little about preprocessor directives (`#define` and `#include`).  The preprocessor is executed before your code compiles.  It handles any lines that start with `#<some_comand> <params>`.  The following are the preprocessor commands you will use:
 
 - `#include "file_name.h"`
     - Essentially a "copy and paste" of the `file_name.h` into your file
-    - if the file name is surrounded by ":, the preprocessor will search in your project working directory
-    - if the file name is surrounded by <>, the preprocessor will search your class path.
-- `#define <SINGLE_WORD> <replacement_token>
+    - if the file name is surrounded by "", the preprocessor will search in your project working directory
+    - if the file name is surrounded by `<>`, the preprocessor will search your class path.
+- `#define <SINGLE_WORD> <replacement_token>`
     - Essentially a global "search and replace" within your code
     - Anytime the `<SINGLE_WORD>` token appears, it will be replaced by the `<replacement token>`
 - `#ifndef <SOME_CONSTANT> ... <some code> .. #endif`
@@ -132,6 +158,7 @@ The preprocessor is executed before your code compiles.  It handles any lines th
 - A separate file that contians a related set of:
     - Function _prototypes_
     - `typedef` declarations
+        - `typedef struct myStruct myStruct_t`
     - `#define` constants
     - etc.
 - File naming convention:

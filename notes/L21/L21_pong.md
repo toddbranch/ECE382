@@ -11,7 +11,7 @@ Write a C program that implements a subset of the functionality of the video "po
     - This function must handle the "bouncing" of the ball when it hits the edges of the screen.
     - When it hits an edge, you flip the sign on the x or y velocity to make the ball move a different direction.
     - This function should call four other "collision detection" functions; one for each of the screen edges.
-    - The "collision detection" functions return a `char` (1 for ture, 0 for false - `#define` these values) to indicate whether or not there is a collision.
+    - The "collision detection" functions return a `char` (1 for true, 0 for false - `#define` these values) to indicate whether or not there is a collision.
 - You must create three separate files: header, implementation, and your `main.c`.
 
 ## Turn-In Requirements (E-mail)
@@ -20,4 +20,4 @@ Write a C program that implements a subset of the functionality of the video "po
 - Simulator screenshots.
 - Answers to the following questions:
     - How did you verify your code functions correctly?
-    - How could you make the "collision detection" helper functions only visible to your implementation file (i.e. your `main.c` could call those functions directly)?
+    - How could you make the "collision detection" helper functions only visible to your implementation file (i.e. your `main.c` could not call those functions directly)?
