@@ -4,9 +4,10 @@
 - [Revision Control][https://en.wikipedia.org/wiki/Revision_control]
 - [Git][https://en.wikipedia.org/wiki/Git_(software)]
 - [Github](https://en.wikipedia.org/wiki/Github)
+    - This is an open source community around Git - check it out!
 
 ## Assignment
-- Clone the [ECE382 Electronic Lab Notebook repo](https://github.com/toddbranch/electronic_lab_notebook).  Look at Lab 4, and make some additions to the lab report.  Commit and push the results.
+- [Assignment](L23_git.html)
 
 ## Lesson Outline
 - Writing Clean Code

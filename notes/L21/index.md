@@ -55,6 +55,10 @@ struct <name> <variable_name>;
 
 Example:
 ```
+// Header
+// #includes
+// #defines
+
 struct point {
     char x, y;
 };
@@ -64,15 +68,18 @@ struct circle {
     char radius;
 };
 
-// You can create and initialize them like this:
+void main(void)
+{
+    // You can create and initialize them like this:
 
-struct point center = {20, 7};
-struct circle myCircle = {center, 5};
+    struct point center = {20, 7};
+    struct circle myCircle = {center, 5};
 
-// You can use dot notation to access variables:
+    // You can use dot notation to access variables:
 
-center.x = 10;
-circle.radius = 25;
+    center.x = 10;
+    circle.radius = 25;
+}
 ```
 
 ## Functions
@@ -88,6 +95,10 @@ General Case:
 
 Example:
 ```
+// Header
+// #includes
+// #defines
+
 void main(void)
 {
     unsigned int mySummation;
@@ -114,6 +125,10 @@ General case:
 
 Example:
 ```
+// Header
+// #includes
+// #defines
+
 unsigned int summation (unsigned char n);
 
 void main(void)
@@ -141,6 +156,10 @@ General Case:
 
 Example:
 ```
+// Header
+// #includes
+// #defines
+
 unsigned int summation (unsigned char n);
 
 void main(void)
@@ -180,7 +199,8 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
     - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
 - `typedef struct point point_t`
     - Saves you some work for commonly used types:
-        - `point_t myPoint` replaces `struct point myPoint`
+        - Old syntax: `struct point myPoint`
+        - With `typedef`: `point_t myPoint`
 - **Note**: these lines do not end with a semicolon (;)!
 
 ### C Headers

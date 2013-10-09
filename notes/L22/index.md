@@ -1,12 +1,14 @@
 # Lesson 22 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+- [Everything You Need to Know About Pointers in C](http://boredzo.org/pointers/)
+- [Short, Funny Pointer Video](http://www.youtube.com/watch?v=UvoHwFvAvQE)
+    - NOTE: `new` is a C++ keyword - we don't use it in C
 
 ## Assignment
-
-- [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
+- [Assignment](/notes/L22/L22_moving_average.html)
 - [Install git](git_install.html) - **We will use this during next class**
+- **(OPTIONAL, but kind of fun)** [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
 
 ## Lesson Outline
 - Pointers
