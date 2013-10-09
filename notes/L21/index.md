@@ -56,17 +56,20 @@ struct <name> <variable_name>;
 Example:
 ```
 struct point {
-    unsigned char x,y;
+    char x, y;
 };
+
 struct circle {
-    point center;
+    struct point center;
     char radius;
 };
 
-struct point center = {20, 07};
-strict circle myCircle = {center, 5};
+// You can create and initialize them like this:
 
-// You can use dot notation to access variables!
+struct point center = {20, 7};
+struct circle myCircle = {center, 5};
+
+// You can use dot notation to access variables:
 
 center.x = 10;
 circle.radius = 25;
@@ -76,11 +79,31 @@ circle.radius = 25;
 
 Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and resuable.
 
+### Function Call
+
+General Case:
+```
+<variable> func_name(<variable 1>, ...);
+```
+
+Example:
+```
+void main(void)
+{
+    unsigned int mySummation;
+    unsigned char maxN = 42;
+
+    mySummation = summation(23);
+    mySummation = summation(maxN);
+}
+```
+
 ### Function Prototype
 
 - Promises the compiler that the function is implemented elsewhere
 - You are allowed to "call" the function from your code
 - The function prototype *must* be defined in a location physically *before* you call it (e.e. defined above `main()` in a `#include` file).
+- If you offer a prototype but don't provide an implementation, you'll get a linker error.
 
 General case:
 ```
@@ -92,6 +115,15 @@ General case:
 Example:
 ```
 unsigned int summation (unsigned char n);
+
+void main(void)
+{
+    unsigned int mySummation;
+    unsigned char maxN = 42;
+
+    mySummation = summation(23);
+    mySummation = summation(maxN);
+}
 ```
 
 ### Function Definition
@@ -109,6 +141,17 @@ General Case:
 
 Example:
 ```
+unsigned int summation (unsigned char n);
+
+void main(void)
+{
+    unsigned int mySummation;
+    unsigned char maxN = 42;
+
+    mySummation = summation(23);
+    mySummation = summation(maxN);
+}
+
 unsigned int summation(unsigned char n)
 {
     // recursion!
@@ -117,22 +160,6 @@ unsigned int summation(unsigned char n)
     else
         return n + summation(n-1);
 }
-```
-
-### Function Call
-
-General Case:
-```
-<variable> func_name(<variable 1>, ...);
-```
-
-Example:
-```
-unsigned int mySummation;
-unsigned char maxN = 42;
-
-mySummation = summation(23);
-mySummation = summation(maxN);
 ```
 
 ## Header and Implementation Files
@@ -148,9 +175,12 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
 - `#define <SINGLE_WORD> <replacement_token>`
     - Essentially a global "search and replace" within your code
     - Anytime the `<SINGLE_WORD>` token appears, it will be replaced by the `<replacement token>`
-- `#ifndef <SOME_CONSTANT> ... <some code> .. #endif`
+- `#ifndef <SOME_CONSTANT> ... <some code> ... #endif`
     - Code is only included if `<SOME_CONSTANT>` is not defined
     - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
+- `typedef struct point point_t`
+    - Saves you some work for commonly used types:
+        - `point_t myPoint` replaces `struct point myPoint`
 - **Note**: these lines do not end with a semicolon (;)!
 
 ### C Headers
@@ -158,7 +188,6 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
 - A separate file that contians a related set of:
     - Function _prototypes_
     - `typedef` declarations
-        - `typedef struct myStruct myStruct_t`
     - `#define` constants
     - etc.
 - File naming convention:
@@ -218,7 +247,7 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
 #ifndef _MATH_HELPER_H_
 #define _MATH_HELPER_H_
 
-// Usefule mathematic constants
+// Useful constants
                                 (estimate)      (actual)
 #define PI  (339 / 108)     //  3.139       vs  3.142
 #define E  (155 / 57)       //  2.719       vs  2.718
@@ -241,12 +270,18 @@ char min(char a, char b);
 
 unsigned int summation(unsigned char n)
 {
-    // code here
+    if (n <= 0)
+        return 0;
+    else
+        return n + summation(n-1);
 }
 
 unsigned int factorial(unsigned char n)
 {
-    // code here
+    if (n <= 0)
+        return 1;
+    else
+        return n * factorial(n-1);
 }
 
 char max(char a, char b)
@@ -280,3 +315,4 @@ void main(void)
     while(1){};                 // trap CPU
 }
 ```
+

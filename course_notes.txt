@@ -11,3 +11,13 @@ Add videos of functioning labs.  Tough to explain what the lab should do - just 
 Add more practical demos where possible - MSP430 interfacing with different types of hardware, doing different things, etc.
 
 - Change Lab 5 game to memory game?  
+
+GR Notes
+
+Revisit stack problem with respect to the class - just give everyone credit this time around because we didn't go over it in class.
+
+Add space for addressing modes in hand-assembly problem.  Lots of people forgot.  Or 
+
+In SPI problem, give spot for 4 signals - lots of people did signal characteristics.
+
+

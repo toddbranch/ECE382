@@ -38,5 +38,5 @@ The compiler is seeing that you've created a variable and potentially set it to 
 
 Usually, this is the behavior we want.  In learning situations like this, we want to keep the compiler from making these sorts of optimizations.  There are two ways we can accomplish this.
 
-1)  Prevent the compiler from optimizing anything: Go to Project -> Properties -> Build -> MSP430 Compiler -> Optimization and turn Optimization level to off.
-2)  Tell the compiler not to optimize a varable.  We can do this by adding the `volatile` modifier to the variables it's optimizing out.  This tells the compiler that this varibale could be modified outside of the given code and not to optimize it away.
+- Prevent the compiler from optimizing anything: Go to Project -> Properties -> Build -> MSP430 Compiler -> Optimization and turn Optimization level to off.
+- Tell the compiler not to optimize a varable.  We can do this by adding the `volatile` modifier to the variables it's optimizing out.  This tells the compiler that this varibale could be modified outside of the given code and not to optimize it away.
