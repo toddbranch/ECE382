@@ -201,7 +201,7 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
     - Saves you some work for commonly used types:
         - Old syntax: `struct point myPoint`
         - With `typedef`: `point_t myPoint`
-- **Note**: these lines do not end with a semicolon (;)!
+- **Note**: aside from `typedef`, these lines do not end with a semicolon (;)!
 
 ### C Headers
 

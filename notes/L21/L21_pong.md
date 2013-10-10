@@ -21,3 +21,41 @@ Write a C program that implements a subset of the functionality of the video "po
 - Answers to the following questions:
     - How did you verify your code functions correctly?
     - How could you make the "collision detection" helper functions only visible to your implementation file (i.e. your `main.c` could not call those functions directly)?
+
+## Hints
+
+I don't expect you to implement an actual pong game!  The way you verify functionality should be by creating code that moves your ball and monitoring how the variables change after each move to ensure functionality.  Don't forget edge cases (i.e. when your ball hits the well, etc.)!
+
+### Initializing a `struct`
+
+You may want to create a type of constructor function that initializes a `struct` for you.  This can be tricky, depending on the compiler you use.
+```
+struct vector2d {
+    int x;
+    int y;
+};
+
+typedef struct vector2d vector2d_t;
+
+// This will not work in CCS!  
+// You cannot do inline initialization with variables
+// (i.e. {1, 2} will work, {x, y} will not work)
+
+vector2d_t initVector(int x, int y)
+{
+    vector2d_t newVector = {x, y};
+    
+    return newVector;
+}
+
+// This will work in CCS
+
+vector2d_t initVector(int x, int y)
+{
+    vector2d_t newVector; 
+    newVector.x = x;
+    newVector.y = y;
+    
+    return newVector;
+}
+```

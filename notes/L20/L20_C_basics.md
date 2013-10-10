@@ -26,11 +26,11 @@ Additional Requirements:
 
 ## Hints
 
-**How to create a C project in CCS**
+### How to create a C project in CCS
 
 You'll create the project the same way you create an assembly project, but under "Project templates and examples" you'll select "Empty project (with main.c)".  The shortcut to build is still `Ctrl+B`.  The shortcut to debug is still `F11`.
 
-**Compiler Optimization Issue**
+### Compiler Optimization Issue
 
 There's a good chance you'll run into a warning that says "variable XXXX was set but never used".
 
@@ -40,3 +40,9 @@ Usually, this is the behavior we want.  In learning situations like this, we wan
 
 - Prevent the compiler from optimizing anything: Go to Project -> Properties -> Build -> MSP430 Compiler -> Optimization and turn Optimization level to off.
 - Tell the compiler not to optimize a varable.  We can do this by adding the `volatile` modifier to the variables it's optimizing out.  This tells the compiler that this varibale could be modified outside of the given code and not to optimize it away.
+
+### Using the Debugger with C
+
+When programming in C, you'll want to monitor variables when you're debuggig.  If you don't have a variables tab, go to View -> Variables.  Now, a list of your program variables should be visible.
+
+Sometimes it useful to look at variables in different bases.  Maybe you want to see the value of a `char` as an ASCII character or as a hex value.  To change the base your variable is shown in, right-click on the variables, select Number Format and choose a new format.
