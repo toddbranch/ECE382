@@ -11,10 +11,26 @@
 - **(OPTIONAL, but kind of fun)** [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
 
 ## Lesson Outline
+- Admin
 - Pointers
 - Arrays
 - Function Parameters
 - Practice
+
+## Admin
+- Video
+- HW
+    - If you didn't turn in L21 HW, you've got a bunch of stuff to do
+        - L21 HW
+            - Talk about process for initializing structs with variables in CCS compiler
+        - L22 Assignment
+        - Install Git
+            - You must do this because we're using it in class next time!
+        - Optional KSplice Pointer Challenge
+            - Tests your knowledge of pointers
+            - Good practice
+    - Important to get practice with C and get issues worked out prior to labs
+    - If we get done early today, you can work on all this stuff
 
 ## Pointers
 
@@ -29,7 +45,31 @@ A pointer is a variable that holds a memory address.
 | `*` | Assignment statement | Allows you to access the contents of the variable at which the pointer is pointing |
 | `->` | Structure | Access a structure's elements through a structure pointer (instead of the "." notation).  Also can use `(*structure).element`. |
 
+```
+int a = 10;                 // declaring an integer
+int * aPtr;                 // declaring a pointer to an integer
+
+int* bPtr, cPtr;            // GOTCHA!  cPtr is of type int, not int*!
+
+aPtr = &a;                  // setting the value of aPtr to the address of a
+
+*aPtr = 20;                 // sets a to 20 by dereferencing aPtr 
+
+point_t myPoint = {1,2};    // declaring a structure of point_t, initializing with constants
+
+point_t * myPointPtr;       // declaring a pointer to a point_t
+
+myPointPtr = &myPoint;      // setting the value of myPointPtr to address of myPoint
+
+(*myPointPtr).x = 10;       // sets myPoint.x to 10 by dereferencing myPointPtr
+
+myPointPtr->x = 20;         // sets myPoint.x 10 20 by dereferencing myPointPtr (alternative method)
+
+```
+
 ### Pointers Example
+
+*[Draw map of this on the board!]*
 
 ```
 unsigned char x = 0x25;                 // address of x is 0x1000

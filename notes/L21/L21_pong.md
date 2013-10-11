@@ -26,7 +26,7 @@ Write a C program that implements a subset of the functionality of the video "po
 
 I don't expect you to implement an actual pong game!  The way you verify functionality should be by creating code that moves your ball and monitoring how the variables change after each move to ensure functionality.  Don't forget edge cases (i.e. when your ball hits the well, etc.)!
 
-### Initializing a `struct`
+### Initializing a struct
 
 You may want to create a type of constructor function that initializes a `struct` for you.  This can be tricky, depending on the compiler you use.
 ```
