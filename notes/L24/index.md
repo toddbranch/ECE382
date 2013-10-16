@@ -6,7 +6,16 @@
 ## Assignment
 
 ## Lesson Outline
+- Electronic Lab Notebook
 - Compiler-Generated Code
+
+### The ECE382 Electronic Lab Notebook
+
+[The template is available on my Github](https://github.com/toddbranch/electronic_lab_notebook).
+
+*[Walk through the structure, etc.  Talk about cloning repos, etc.]*
+
+Talk about homework, let them get started if there's time.
 
 ## Compiler-Generated Code
 

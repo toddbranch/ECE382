@@ -90,7 +90,7 @@
     - Restating your code (`a = 1; // Setting a to 1`)
     - Commented-Out code
     - Too much information
-    - "Don't comment bad code - rewrite it.
+    - Don't comment bad code - rewrite it.
 
 *[Let's fix my code!](pong_c.html)*
 
@@ -112,7 +112,7 @@
     - Subversion (SVN) - designed as a replacement for CVS
     - Git - hugely popular for individual / team software development
         - Required for this class
-        - Invented by Linus Torvalds for use with the Linux Kernel after Bitkeeper withdrew free use of the product
+        - Created by Linus Torvalds for use with the Linux Kernel after Bitkeeper withdrew free use of the product
         - Wrote the initial version in two weeks, used for kernel development within 2 months
 
 ### The Shell
@@ -140,6 +140,8 @@ Here are some common shell commands that will prove useful:
 
 ### [Git Tutorial](git_tutorial.html)
 
+*[Give demo following this in class]*
+
 ### Common Git Commands
 
 - `git config --global user.name "First Last"`
@@ -163,12 +165,13 @@ Here are some common shell commands that will prove useful:
 
 *[Go to website, give brief tour]*
 
+A sampling of real-world projects hosted there:
+
+- [Linux](https://github.com/torvalds/linux)
+    - The world's greatest operating system!
+- [jQuery](https://github.com/jquery/jquery)
+    - Popular javascript library for front-end web development
+- [node,js](https://github.com/joyent/node)
+    - Popular framework for serverside javascript
+
 Github is a great place to get access to the source code for some of the world's most popular open source projects.  It's a great way to keep track of programmers whose work you're interested in.  It's also a great way to get involved in the coding community, maybe work on an open source project or release some code of your own.
-
-### The ECE382 Electronic Lab Notebook
-
-[The template is available on my Github](https://github.com/toddbranch/electronic_lab_notebook).
-
-*[Walk through the structure, etc.  Talk about cloning repos, etc.]*
-
-Talk about homework, let them get started if there's time.
