@@ -89,11 +89,21 @@ We want to share our work with the world!  Let's create a repository on Github.
 
 ## Cloning
 
-So you've got your 
+So you've got your repo created and being hosted on github.  What if you want to work on your files on a different computer?  You should clone (duplicate) your repository!
+
+- Note the URL of the repo on github
+- Navigate to the directory you want to clone into
+- Type `git clone REPO_URL`
+- Now you've got a copy of the repo in a new location!
 
 ## Forking
 
-You see some code you'd like to modify for your own purposes.
+You see some code you'd like to modify for your own purposes - you should fork your own copy!
+
+- Navigate to the github page of the repo you're interested in
+- In the top right corner, there's a button labeled fork - click it!
+- Now you have your own copy in your git account
+- Time to clone it to your local machine!  (see Cloning section)
 
 ## Branching
 
@@ -108,4 +118,14 @@ You see some code you'd like to modify for your own purposes.
 
 ### Ignoring Certain Files
 
-- Talk about .gitignore
+Sometimes there are a bunch of files in your directory that you don't want to place under version control.  It's annoying to have git constantly complaining about these files being untracked.
+
+We can specify files we don't want to track in a .gitignore file!  For instance, vim creates .swp files when you open files for editing.  I don't want those to go under version control.  So I can specify that in my .gitignore:
+
+.gitignore contents:
+```
+*.swp
+```
+Now, git won't notice changes to any .swp files.
+
+**Command to Add All Untracked Files to .gitignore**
