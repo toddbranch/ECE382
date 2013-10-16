@@ -32,6 +32,8 @@
 
 *[Write code in vim]*
 
+**[Bad Code](badCode.html)**
+
 - Use intention-revealing names ("self-documenting")
     - `int d, temp; // elapsed time in days, a temporary variable`
     - `int elapsedTimeInDays, daysSinceModification;`
