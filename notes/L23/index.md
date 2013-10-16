@@ -1,8 +1,8 @@
 # Lesson 23 Notes
 
 ## Readings
-- [Revision Control][https://en.wikipedia.org/wiki/Revision_control]
-- [Git][https://en.wikipedia.org/wiki/Git_(software)]
+- [Revision Control](https://en.wikipedia.org/wiki/Revision_control)
+- <a href="https://en.wikipedia.org/wiki/Git_(software)">Git</a>
 - [Github](https://en.wikipedia.org/wiki/Github)
     - This is an open source community around Git - check it out!
 
@@ -10,12 +10,27 @@
 - [Assignment](L23_git.html)
 
 ## Lesson Outline
+- Admin
+- Review
 - Writing Clean Code
 - Revision Control
+
+## Admin
+
+- Graded labs, available in Lab
+- Prog grades are in - CAMIS should be (mostly) up to date
+- I'll extend turn-in deadline on pong / moving average to COB for this class
+
+## Review
+
+- Review pong code
+- Review moving average code
 
 ## Writing Clean Code
 
 ### Meaningful Names
+
+*[Write code in vim]*
 
 - Use intention-revealing names ("self-documenting")
     - `int d, temp; // elapsed time in days, a temporary variable`
@@ -53,6 +68,11 @@
     - Printer friendly lines!
     - Indent correctly!
 
+*[Let's fix my code!](pong_c.html)*
+
+- Create `updateBallIfHitWall` function
+- Create separate `didHitTop`, `didHitBottom`, `didHitLeft`, `didHitRight` functions
+
 ### Comments
 
 - Comment on "big picture" items
@@ -72,6 +92,10 @@
     - Too much information
     - "Don't comment bad code - rewrite it.
 
+*[Let's fix my code!](pong_c.html)*
+
+- Add comments to functions
+
 ## Revision Control
 
 - Database that keeps track of multiple versions of your code
@@ -88,6 +112,33 @@
     - Subversion (SVN) - designed as a replacement for CVS
     - Git - hugely popular for individual / team software development
         - Required for this class
+        - Invented by Linus Torvalds for use with the Linux Kernel after Bitkeeper withdrew free use of the product
+        - Wrote the initial version in two weeks, used for kernel development within 2 months
+
+### The Shell
+
+"A shell is software that provided an interface for users of an operating system to access the services of a kernel." - Wikipedia
+
+Basically, a shell gives you direct access to your computer.
+
+To use git, we'll be using a shell - Git Bash.  Bash is an acronym for Bourne Again Shell - it is probably the most common shell in existence.
+
+Here are some common shell commands that will prove useful:
+
+- `ls`
+    - Lists contents of a directory
+- `cd`
+    - Change directory
+- `pwd`
+    - Display the present working directory (directory you're currently in)
+- `cat`
+    - Concatenate, but practically used for displaying the contents of a file
+- `vi` or `vim`
+    - Sweet text editor that your instructor uses
+
+*[Demo these commands, get them to open shell and practice them]*
+
+### [Git Tutorial](git_tutorial.html)
 
 ### Git Commands
 

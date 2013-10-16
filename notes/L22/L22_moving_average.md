@@ -3,7 +3,7 @@
 ## Moving Average
 
 - Write a function that computes the "moving average" for a stream of data points it is receiving.
-    - A moving average computes the average of the most recent `N_AVG_SAMPLES` (a constant in your header file) points.
+    - A moving average computes the average of the most recent `N_AVG_SAMPLES` points.
     - Initialize values in the "average" array to be 0.
     - For example: (`N_AVG_SAMPLES` = 2), sample stream = (2, 4, 6, 8).
         - Starting point: average [0, 0]
@@ -40,3 +40,7 @@ unsigned long int rand(void)
 - Answers to the following questions:
     - What data type did you choose for your arrays?  Why?
     - How did you test each of your functions to verify they were functioning correctly?
+
+## Hints
+
+**[Here is my moving_average.h!](moving_average_h.html)**
