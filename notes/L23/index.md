@@ -66,9 +66,7 @@
 - Only depend on local variables / parameters
 - Don't repeat yourself - write a function instread of copy / paste
 - Only one entry / exit point
-- Miscellaneous
-    - Printer friendly lines!
-    - Indent correctly!
+- Indent correctly!
 
 *[Let's fix my code!](pong_c.html)*
 
@@ -142,7 +140,7 @@ Here are some common shell commands that will prove useful:
 
 ### [Git Tutorial](git_tutorial.html)
 
-### Git Commands
+### Common Git Commands
 
 - `git config --global user.name "First Last"`
     - Stores your name as a property to be used for each commit
@@ -156,8 +154,8 @@ Here are some common shell commands that will prove useful:
     - Commits all changes to files you have added and stores a message that describes those changes
 - `git log`
     - Shows you a complete history of commits within the repository
-
-### Demo
+- `git status`
+    - Show you the status of the repo this directory is in
 
 ### [Github](http://www.github.com)
 
