@@ -22,7 +22,9 @@ Scroll the message "ECE382 is my favorite class!" across the top line of the LCD
 
 You will want to interface with this LCD again (**in Lab 5**).  I expect you to create a reusable LCD library!  Design a good API in advance - you want this library to be easy to work with in the future.
 
-Mind your coding standards!  Commit to git regularly with descriptive commit messages!
+You must place your code under version control on git and push your repo to Github.
+
+Mind your coding standards!  Commit regularly with descriptive commit messages!
 
 ### B Functionality
 
@@ -37,11 +39,11 @@ B Functionality Program operation:
     - Top Line (scrolling): ECE382 is my favorite class!
     - Bottom Line (scrolling): *Chosen message*
 
-Create a delay library.  It should be capable of generating delays of different length with a single subroutine (i.e. `delayMicroseconds(45)`).  Modify your program to use this library.
-
 ### A Functionality
 
-You think your libraries for working with delays, buttons, and the LCD could prove useful to other programmers.  You've decided to release them on Github as open source.
+Create an additional library for calibrating your clock to different frequencies.
+
+You think your libraries for working with buttons, clock calibration, and the LCD could prove useful to other programmers.  You've decided to release them on Github as open source.
 
 You'll need a separate git repository for each of your libraries.  You'll need to create a README for each covering their API and usage.
 
@@ -53,7 +55,7 @@ Paste the grading section in your lab notebook as the first page of this lab.
 
 Include whatever information from this lab you think will be useful in creating your program.
 
-Design the API for your LCD library.
+Design the API for your LCD library.  [Here is mine as an example.](LCD_h.html)
 
 Consider how you'll port different assembly language constructs in the [Lab 3 template code](/labs/lab3/given_code.html) to C.
 
@@ -63,9 +65,15 @@ Consider how you'll create software delays in C.
 
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
+Mind your code style!
+
 Use git and commit to it regularly with descriptive commit messages!  This is worth 10pts of your grade!
 
 It might be helpful to start off by porting assembly code directly to C.  But this shouldn't be your final code!  Once you have it working, you should improve its structure using the programming techniques you've learned.
+
+## Hints
+
+There is a C macro available that makes creating delays much easier.  `__delay_cycles(num_of_cycles)` will delay the specified number of clock cycles with no side effects.
 
 ## Grading
 
