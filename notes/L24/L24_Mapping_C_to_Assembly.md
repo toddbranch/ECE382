@@ -2,10 +2,10 @@
 
 When I first introduced it, I told you to think of C as a portable, higher-level assembly language.  My intention was to reinforce the connection between the two.  While it's easy to say to yourself that C is compiled into assembly, then assembly is assembled and linked into executable machine code, it's often easy to lose sight of that.  This reading and lesson are designed give you a better understanding of that connection.
 
+## A Simple C Program
+
 Let's start with a simple C program:
 ```
-#include <msp430g2553.h>
-
 void main(void)
 {
     int variable = 2007;
@@ -14,7 +14,7 @@ void main(void)
 
 Using msp-gcc (the compiler I use), that C gets compiled into this assembly:
 ```
-; NOTE: I've pulled out the assembler directives to make it clearer
+; NOTE: I've removed the assembler directives to make it clearer
 
 main:
 	mov	r1, r4
@@ -36,7 +36,91 @@ Next, we're moving the value 2007 into the location we've reserved on the stack 
 
 After we're done, we'll add 2 to the stack pointer to deallocate `int variable` since we're done using it.
 
-Make sense?  Alright, let's look at something a little more complicated:
+## Global Variables
+
+What if we made our variable global instead of local to main?
+
+```
+int variable = 2007;
+
+void main(void)
+{
+}
+```
+
+Here's the result:
+```
+; NOTE: I've removed the assembler directives to make it clearer
+
+variable:
+	.word	2007
+
+main:
+	mov	r1, r4
+	add	#2, r4
+```
+
+Now, our variable is allocated and initialized in RAM instead of on the stack!  The variable label is visible throughout the program.
+
+## Multiplication
+
+What if we try to do multiplication?
+```
+int variable = 2007;
+
+void main(void)
+{
+    variable *= 2;
+}
+```
+
+Here's the result:
+```
+variable:
+	.word	2007
+
+main:
+	mov	r1, r4
+	add	#2, r4
+	mov	&variable, r15
+	rla	r15
+	mov	r15, &variable
+```
+
+That was too easy!  The compiler realized multiplication by two is just an arithmetic left shift.  What if we tell it to multiply two variables?
+
+```
+int variable = 2007, multiplier = 3;
+
+void main(void)
+{
+    variable *= multiplier;
+}
+```
+
+The result:
+```
+variable:
+	.word	2007
+multiplier:
+	.word	3
+
+main:
+	mov	r1, r4
+	add	#2, r4
+	mov	&variable, r15
+	mov	&multiplier, r14
+	call	#__mulhi3
+	mov	r15, &variable
+```
+
+Since the compiler doesn't know the value of the operands, it loads them as parameters into a `__mulhi3` subroutine and calls that.  The result is passed back in r15 and stored in variable.  The `__mulhi3` must be a subroutine provided by a library.  That code will be added in the linker stage of compilation.
+
+It appears that our Application Binary Interface (ABI) specifies that the first parameter to a function is passed in via r15, the second via r14, and the result is passed back in r15.
+
+## Functions
+
+Let's look at something a little more complicated:
 ```
 #include <msp430g2553.h>
 
@@ -62,7 +146,7 @@ This is the recursive summation code we covered in the lesson on functions!
 
 Here's the assembly it generates:
 ```
-; NOTE: I've pulled out the assembler directives to make it clearer
+; NOTE: I've removed the assembler directives to make it clearer
 
 main:
 	mov	r1, r4
@@ -95,9 +179,9 @@ recursiveSummation:
 	ret
 ```
 
-Our first four instructions are identical to our original program.  We're setting up the frame pointer and allocating our variable on the stack.
+Our first four instructions are identical to our first sample program.  We're setting up the frame pointer and allocating our variable on the stack.
 
-Next, we're moving our variable into r15.  It looks like our Application Binary Interface (ABI) says that the first parameter to a function should be passed in through r15 - so we move our variable into r15.
+Next, we're moving our variable into r15.  Remember, our ABI says that the first parameter to a function should be passed in through r15 - so we move our there.
 
 Next, we call the recursiveSummation subroutine the compiler has created.
 
