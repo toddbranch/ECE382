@@ -7,16 +7,22 @@
 - [Lab 4 Prelab](/labs/lab4/index.html)
 
 ## Lesson Outline
+- Admin
+- Git In-Class Exercise
 - Electronic Lab Notebook
-- Compiler-Generated Code
+- Mapping C to Assembly
+- Compiler Generated Code
+- [Lab 4](/labs/lab4/index.html) Overview
 
-### The ECE382 Electronic Lab Notebook
+## Admin
+
+## [Git In-Class Exercise](L24_git_in_class.html)
+
+## The ECE382 Electronic Lab Notebook
 
 [The template is available on my Github](https://github.com/toddbranch/electronic_lab_notebook).
 
 *[Walk through the structure, etc.  Talk about cloning repos, etc.]*
-
-Talk about homework, let them get started if there's time.
 
 ## Compiler-Generated Code
 
@@ -204,3 +210,7 @@ main:
 ;; End of function 
 
 ```
+
+## [Lab 4](/labs/lab4/index.html) Overview
+
+In this lab, 
