@@ -9,208 +9,92 @@
 ## Lesson Outline
 - Admin
 - Git In-Class Exercise
-- Electronic Lab Notebook
 - Mapping C to Assembly
-- Compiler Generated Code
 - [Lab 4](/labs/lab4/index.html) Overview
+- Working with the C Headers
+- Electronic Lab Notebook
 
 ## Admin
 
 ## [Git In-Class Exercise](L24_git_in_class.html)
 
-## The ECE382 Electronic Lab Notebook
+## Mapping C to Assembly
 
-[The template is available on my Github](https://github.com/toddbranch/electronic_lab_notebook).
+*[Walk through examples from reading]*
 
-*[Walk through the structure, etc.  Talk about cloning repos, etc.]*
+## [Lab 4](/labs/lab4/index.html) Overview
 
-## Compiler-Generated Code
+In this lab, you'll create a library for working with the LCD on the Geek Box - your very first *device driver*.  A good starting point might be the assembly code from Lab 3.  You can port that to C to get it up and running.  But, eventually, I'll expect you to create a reusable LCD library that you can use on future labs (you'll need it for Lab 5).
 
-The compiler does a bunch of work to make our lives easier.  Normally, this code just sits in the background and goes unnoticed.  But it's important to understand what's going on underneath in case you run into errors or disassemble code and can't figure out where certain pieces are coming from.
+*[Walk through tiers of functionality.]*
 
-Consider a simple piece of code like this:
+In this and all future labs, I expect your code to be under version control with git throughout development.  I also expect it to be pushed to Github regularly so I can monitor it.  Commit early and often - I will look at your commit history!
+
+*[Walk through prelab expectations.]*
+
+I've provided my header as an example of an interface that I think is straightforward to work with.  I recommend designing your API (defined in header) before implementing your code!  You want to design an API that's convenient to work with!
+
+## Working with the C Headers
+
+We haven't really talked about using C with MSP430 subsystems.  In Lab 4, you'll need to combine your knowledge of C with your knowledge of the subsystems we learned about in Block 1 (i.e. SPI, GPIO, etc.) to be successful.
+
+The headers we used with our assembly code are the same ones we'll use for C.  The code `#include <msp430.h>` that's included by default in CCS gives you access to the appropriate headers for your platform.
+
+Here's the code we wrote in L13 to turn on the Launchpad lights when we push the button:
 ```
-int variable = 10000;
-
-void main(void)
-{
-}
-```
-
-Here is the disassembly of the resulting executable:
-```
-a.out:     file format elf32-msp430
-
-
-Disassembly of section .text:
-
-0000c000 <__watchdog_support>:
-    c000:	55 42 20 01 	mov.b	&0x0120,r5	
-    c004:	35 d0 08 5a 	bis	#23048,	r5	;#0x5a08
-    c008:	82 45 02 02 	mov	r5,	&0x0202	
-
-0000c00c <__init_stack>:
-    c00c:	31 40 00 04 	mov	#1024,	r1	;#0x0400
-
-0000c010 <__do_copy_data>:
-    c010:	3f 40 02 00 	mov	#2,	r15	;#0x0002
-    c014:	0f 93       	tst	r15		
-    c016:	08 24       	jz	$+18     	;abs 0xc028
-    c018:	92 42 02 02 	mov	&0x0202,&0x0120	
-    c01c:	20 01 
-    c01e:	2f 83       	decd	r15		
-    c020:	9f 4f 4e c0 	mov	-16306(r15),512(r15);0xc04e(r15), 0x0200(r15)
-    c024:	00 02 
-    c026:	f8 23       	jnz	$-14     	;abs 0xc018
-
-0000c028 <__do_clear_bss>:
-    c028:	3f 40 00 00 	mov	#0,	r15	;#0x0000
-    c02c:	0f 93       	tst	r15		
-    c02e:	07 24       	jz	$+16     	;abs 0xc03e
-    c030:	92 42 02 02 	mov	&0x0202,&0x0120	
-    c034:	20 01 
-    c036:	1f 83       	dec	r15		
-    c038:	cf 43 02 02 	mov.b	#0,	514(r15);r3 As==00, 0x0202(r15)
-    c03c:	f9 23       	jnz	$-12     	;abs 0xc030
-
-0000c03e <main>:
-    c03e:	04 41       	mov	r1,	r4	
-    c040:	24 53       	incd	r4		
-
-0000c042 <__stop_progExec__>:
-    c042:	32 d0 f0 00 	bis	#240,	r2	;#0x00f0
-    c046:	fd 3f       	jmp	$-4      	;abs 0xc042
-
-0000c048 <__ctors_end>:
-    c048:	30 40 4c c0 	br	#0xc04c	
-
-0000c04c <_unexpected_>:
-    c04c:	00 13       	reti			
-
-Disassembly of section .data:
-
-00000200 <__data_start>:
- 200:	ef be       	Address 0x0000000000000202 is out of bounds.
-bit.b	@r14,	-1(r15)	;0xffff(r15)
-
-Disassembly of section .noinit:
-
-00000202 <__wdt_clear_value>:
-	...
-
-Disassembly of section .vectors:
-
-0000ffe0 <__ivtbl_16>:
-    ffe0:	48 c0       	bic.b	r0,	r8	
-    ffe2:	48 c0       	bic.b	r0,	r8	
-    ffe4:	48 c0       	bic.b	r0,	r8	
-    ffe6:	48 c0       	bic.b	r0,	r8	
-    ffe8:	48 c0       	bic.b	r0,	r8	
-    ffea:	48 c0       	bic.b	r0,	r8	
-    ffec:	48 c0       	bic.b	r0,	r8	
-    ffee:	48 c0       	bic.b	r0,	r8	
-    fff0:	48 c0       	bic.b	r0,	r8	
-    fff2:	48 c0       	bic.b	r0,	r8	
-    fff4:	48 c0       	bic.b	r0,	r8	
-    fff6:	48 c0       	bic.b	r0,	r8	
-    fff8:	48 c0       	bic.b	r0,	r8	
-    fffa:	48 c0       	bic.b	r0,	r8	
-    fffc:	48 c0       	bic.b	r0,	r8	
-    fffe:	00 c0       	bic	r0,	r0	
+                     bis.b  #BIT0|BIT6, &P1DIR
+                     bic.b  #BIT3, &P1DIR
+                     bis.b  #BIT3, &P1REN
+                     bis.b  #BIT3, &P1OUT
+ 
+check_btn:    bit.b  #BIT3, &P1IN
+                     jz            set_lights
+                     bic.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+set_lights:   bis.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
 ```
 
-C allows us to do certain things that don't necessarily make sense in the context of an MCU.  It allows us to initialize variables, for instance.
-
-But RAM can't be flashed.  So how does this work?  The compiler takes all of the variables we want to initialize and copies them to the end of our executable - in flash ROM.  At runtime, before executing our code, it copies all of them into RAM so they're ready to go when we access them.  Here's what it looks like:
-
-## Name That C Construct!
-
-A game I've invented just for ECE382.  I've written code with some common C constructs, compiled it, and have the resulting assembly.  I want you to tell me what C construct created the following assembly code.
-
+Let's port it to C:
 ```
 #include <msp430g2553.h>
 
+#define TRUE 1
+
 void main(void)
 {
-    int a = 10;
+    P1DIR |= BIT0|BIT6;
+    P1DIR &= ~BIT3;
+    P1REN |= BIT3;
+    P1OUT |= BIT3;
 
-    switch (a) {
-        case 5:
-            a += 5;
-            break;
-        case 10:
-            a += 10;
-            break;
-        case 15:
-            a += 15;
-            break;
-        case 20:
-            a += 20;
-            break;
-        default:
-            a++;
-            break;
+    while (TRUE)
+    {
+        if (P1IN & BIT3)
+            P1OUT &= ~(BIT0|BIT6);
+        else
+            P1OUT |= BIT0|BIT6;
     }
 }
 ```
 
-Generated assembly:
-```
-	.file	"main.c"
-	.arch msp430g2553
-	.cpu 430
-	.mpy none
+We talked about it in one of the early C lessons, but I want to emphasize it here: notice how we do bit-wise manipulation in C.
 
-	.section	.init9,"ax",@progbits
-	.p2align 1,0
-.global	main
-	.type	main,@function
-/***********************
- * Function `main' 
- ***********************/
-main:
-	mov	r1, r4
-	add	#2, r4
-	sub	#2, r1
-	mov	#10, -4(r4)
-	mov	-4(r4), r15
-	cmp	#10, r15
-	jeq	.L4
-	cmp	#11, r15
-	jge	.L7
-	cmp	#5, r15
-	jeq	.L3
-	jmp	.L2
-.L7:
-	cmp	#15, r15
-	jeq	.L5
-	cmp	#20, r15
-	jeq	.L6
-	jmp	.L2
-.L3:
-	add	#5, -4(r4)
-	jmp	.L1
-.L4:
-	add	#10, -4(r4)
-	jmp	.L1
-.L5:
-	add	#15, -4(r4)
-	jmp	.L1
-.L6:
-	add	#20, -4(r4)
-	jmp	.L1
-.L2:
-	add	#1, -4(r4)
-	nop
-.L1:
-	add	#2, r1
-.LIRD0:
-.Lfe1:
-	.size	main,.Lfe1-main
-;; End of function 
+`bis` is performed by `|=` - or is the operation for setting bits.  `bic` is performed by `&= ~` - and not is the operator for clearing bits.
 
-```
+## The ECE382 Electronic Lab Notebook
 
-## [Lab 4](/labs/lab4/index.html) Overview
+I'm open to electronic lab notebooks in this course.  I think git is an interesting way to accomplish this.  If you're interested in using an electronic lab notebook, here's a template I've created:
 
-In this lab, 
+[Lab Notebook Template](https://github.com/toddbranch/electronic_lab_notebook).
+
+*[Walk through the structure, etc.]*
+
+I'd expect you to document software changes in your commit history.  Any higher level design stuff or hardware design should be included in your report.md.
+
+This is the first time we'd be doing lab notebooks in this way, so you'd be trailblazers here.
+
+I'd recommend you fork this template for each new lab you create.
+
+If you want to continue using a physical lab notebook, that's totally fine as well.
+
