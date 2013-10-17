@@ -175,3 +175,8 @@ A sampling of real-world projects hosted there:
     - Popular framework for serverside javascript
 
 Github is a great place to get access to the source code for some of the world's most popular open source projects.  It's a great way to keep track of programmers whose work you're interested in.  It's also a great way to get involved in the coding community, maybe work on an open source project or release some code of your own.
+
+To incentivize you to explore and use Github more, my solutions to the L21 and L22 assignments are posted there:
+
+- [pong](https://github.com/toddbranch/pong)
+- [moving_average](https://github.com/toddbranch/moving-average)
