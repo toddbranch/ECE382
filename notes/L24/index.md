@@ -1,9 +1,10 @@
 # Lesson Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+- [Mapping C to Assembly](L24_Mapping_C_to_Assembly.html)
 
 ## Assignment
+- [Lab 4 Prelab](/labs/lab4/index.html)
 
 ## Lesson Outline
 - Electronic Lab Notebook
