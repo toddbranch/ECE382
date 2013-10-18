@@ -23,14 +23,14 @@ Your task for this exercise is to add your name and account to the README.md fil
     - Now you've got a copy of the repo on your local computer!
 - Time to make your changes!
     - Open your README.md in your favorite text editor
-    - Add your name and link to your repo under the correct section
+    - Updated your name to include a link to your repo!  Format is important!
         - `- [YOUR NAME](YOUR REPO URL)`
         - `- [Capt Branchflower](https://github.com/toddbranch)`
 - Let's make sure git is tracking our changes
     - Type `git status`
         - We should see that README.md has been modified
 - Time to commit our change!
-    - Type `git commit -am "added my name to the README!"`
+    - Type `git commit -am "<descriptive commit message>"`
         - This tells git to add and commit all the files currently being tracked that have changes
 - Let's push our changes back up to Github
     - Type `git push`, enter your username / password
