@@ -1,3 +1,5 @@
+title = 'Intro to Embedded Systems with the MSP430'
+
 # Lesson Notes
 
 | Lesson | Topic | Assigned | Due |

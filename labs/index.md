@@ -1,3 +1,5 @@
+title = 'Labs'
+
 # Labs / Computer Exercises
 
 - [CompEx1 - Intro to the MSP430 and Code Composer Studio](/labs/compex1/index.html)

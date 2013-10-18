@@ -1,3 +1,5 @@
+title = 'Windows Git Install Instructions'
+
 # Git Install Instructions
 
 Download from [http://git-scm.com/downloads](http://git-scm.com/downloads).

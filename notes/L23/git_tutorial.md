@@ -1,3 +1,5 @@
+title = 'Git Tutorial'
+
 # Git Tutorial
 
 - Open up Git Bash
