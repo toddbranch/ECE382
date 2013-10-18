@@ -252,7 +252,7 @@ Section:
 <br>
 <br>
 <br>
-7. (10pts) What additional capabilities does a Hardware Breakpoint offer from a standard breakpoint?
+7. (20pts) Write a program that fills RAM (0x0200 - 0x03ff) with words starting at 0 and counting upward by 2.
 <br>
 <br>
 <br>
@@ -265,16 +265,4 @@ Section:
 <br>
 <br>
 <br>
-8. (20pts) Write a program that fills RAM (0x0200 - 0x03ff) with words starting at 0 and counting upward by 2.
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+8. (10pts) For free!
