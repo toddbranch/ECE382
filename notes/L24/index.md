@@ -16,9 +16,19 @@
 
 ## Admin
 
+- Lab next time!
+- Not getting many Github links from HW!
+    - If improved the git tutorial and added the link to the [datasheets page](/datasheets)
+    - If you're having trouble, see me for EI - I'm in the lab!
+    - Hopefully today's in-class exercise will help with your understanding
+
+To practice the git skills you were introduced to last period, we're going to spend the first 20 minutes of class doing an in-class exercise.  Get your computers out, connected to the internet, and open up Git Bash!
+
 ## [Git In-Class Exercise](L24_git_in_class.html)
 
 ## Mapping C to Assembly
+
+Who read?  You better have because I wrote this thing myself!
 
 *[Walk through examples from reading]*
 
@@ -40,7 +50,7 @@ We haven't really talked about using C with MSP430 subsystems.  In Lab 4, you'll
 
 The headers we used with our assembly code are the same ones we'll use for C.  The code `#include <msp430.h>` that's included by default in CCS gives you access to the appropriate headers for your platform.
 
-Here's the code we wrote in L13 to turn on the Launchpad lights when we push the button:
+Here's the code we wrote in L13 to turn on the Launchpad lights when we push the button (similar to the final GR1 question):
 ```
                      bis.b  #BIT0|BIT6, &P1DIR
                      bic.b  #BIT3, &P1DIR
