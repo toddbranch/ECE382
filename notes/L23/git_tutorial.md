@@ -75,8 +75,12 @@ We want to share our work with the world!  Let's create a repository on Github.
 - Type `git remote`
     - This shouldn't display anything - we haven't added any remote locations for our code yet!
 - Type `git remote add origin "YOUR URL!"`
-- Type `git remote`
+    - If you mess up the URL:
+        - You can remove the remote by `git remote rm origin`
+        - Now, add it again with the correct URL
+- Type `git remote -v`
     - You should see origin - we just added it!
+    - The `-v` tack means verbose - it will show us the names of the remotes and their URL
 - Type `git branch`
     - You should see a single branch - master - because we haven't added any other branches yet.
 - Type `git push origin master`
@@ -87,6 +91,18 @@ We want to share our work with the world!  Let's create a repository on Github.
     - Mine is at https://github.com/toddbranch/pong
     - Your first open source repo is being hosted on github!  Awesome!
 
+## If You Added a README.md on the Github Website
+
+Git is going to complain because your local repo and the repo on Github (origin) are different.  It wants you to pull in the new changes from Github before pushing your new changes.
+
+- Let's pull in the new files from Github
+    - Type `git pull origin master`
+        - This is telling github to pull the master branch from origin
+- Commit if you need to
+- Now, we can push all our new changes back to Github!
+    - Type `git push origin master`
+- It should work now!
+
 ## Cloning
 
 So you've got your repo created and being hosted on github.  What if you want to work on your files on a different computer?  You should clone (duplicate) your repository!
@@ -95,6 +111,8 @@ So you've got your repo created and being hosted on github.  What if you want to
 - Navigate to the directory you want to clone into
 - Type `git clone REPO_URL`
 - Now you've got a copy of the repo in a new location!
+- After you've made changes:
+    - Push them back to the repo on Github via `git push origin master`
 
 ## Forking
 
@@ -107,18 +125,38 @@ You see some code you'd like to modify for your own purposes - you should fork y
 
 ## Branching
 
-- Create a branch
-- Checkout branch
-- Make a change to a branch
-- Commit it
-- Checkout master branch
-- Show change not reflected
+What if we want to maintain different versions of our code?  Say we want to store a version for required, B, and A functionality.  Or maybe we've got a piece of functionality going and we want to add a new feature without breaking existing code.  These are use cases for branches!
 
-## Other Tips
+I'll use the "add a new feature" in my example.  Imagine we have our robot navigating the maze using IR sensors.  But we want to add a sonar feature to increase accuracy without breaking functionality of our working code.
 
-### Ignoring Certain Files
+- Let's take a look at our existing branches
+    - Type `git branch`
+        - This shows all of the branches in our repo
+        - It should just list the master branch at this point
+- Let's create a "sonar-feature" branch in which to add sonar support
+    - Type `git branch sonar-feature`
+- Let's make sure it was added
+    - Type `git branch`
+        - This should list two branches: master and sonar-feature
+        - Master should have a * next to it - this means master is the branch we're currently developing in
+- Let's switch to using our sonar-feature branch
+    - Type `git checkout sonar-feature`
+        - This switches our development to the sonar-feature branch
+- Let's make sure we've switched
+    - Type `git branch`
+        - The sonar-feature branch should now be starred
+- Now we can make and commit changes to our sonar-feature branch without impacting our master branch!  Great success!
+- We can always checkout our master branch if we want to run our earlier code version!
+
+## Ignoring Certain Files
 
 Sometimes there are a bunch of files in your directory that you don't want to place under version control.  It's annoying to have git constantly complaining about these files being untracked.
+
+### Temporarily Ignoring
+
+Instead of `git status`, type `git status -u no`.  This will not display status information on untracked files.
+
+### Permanently Ignoring
 
 We can specify files we don't want to track in a .gitignore file!  For instance, vim creates .swp files when you open files for editing.  I don't want those to go under version control.  So I can specify that in my .gitignore:
 
@@ -128,4 +166,8 @@ We can specify files we don't want to track in a .gitignore file!  For instance,
 ```
 Now, git won't notice changes to any .swp files.
 
-**Command to Add All Untracked Files to .gitignore**
+Make sure you add your .gitignore file to git and commit it!
+
+Here's a bash command to add all currently untracked files to your .gitignore, if that's what you want to do:
+
+`git status --porcelain | grep '^??' | cut -c4- >> .gitignore`
