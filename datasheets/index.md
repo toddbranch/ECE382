@@ -19,3 +19,7 @@
 - [Using the MSP430 with the Geek Box](geek_box.html)
 - [Using the MSP430 with the Robot](robot.html)
 - [Going Standalone](standalone.html)
+
+## Git
+
+- [Git Tutorial](/notes/L23/git_tutorial.html)
