@@ -1,3 +1,5 @@
+title = 'Datasheets'
+
 # Datasheets
 
 - [MSP430x2xx Family Users Guide](msp430_msp430x2xx_family_users_guide.pdf)
@@ -20,6 +22,8 @@
 - [Using the MSP430 with the Robot](robot.html)
 - [Going Standalone](standalone.html)
 
-## Git
+## Miscellaneous
 
+- [Command Line Basics]()
 - [Git Tutorial](/notes/L23/git_tutorial.html)
+- [Intro to vi / vim]()
