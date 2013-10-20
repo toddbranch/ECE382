@@ -1,3 +1,5 @@
+title = 'Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Converting Assembly to Machine Code.' 
+
 # Lesson 3 Notes
 
 ## Readings

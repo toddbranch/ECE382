@@ -1,3 +1,5 @@
+title = 'Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Languages.' 
+
 # Lesson 2 Notes
 
 ## Readings

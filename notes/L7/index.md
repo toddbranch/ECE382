@@ -1,3 +1,5 @@
+title = 'Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer.' 
+
 # Lesson 7 Notes
 
 ## Readings

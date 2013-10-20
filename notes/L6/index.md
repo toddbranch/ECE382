@@ -1,3 +1,5 @@
+title = 'Status Register.  Flow of Control.  Movement Instructions.' 
+
 # Lesson 6 Notes
 
 ## Readings

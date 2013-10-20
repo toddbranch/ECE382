@@ -1,3 +1,5 @@
+title = 'Addressing Modes.  CompEx 1 Intro.' 
+
 # Lesson 4 Notes
 
 ## Readings

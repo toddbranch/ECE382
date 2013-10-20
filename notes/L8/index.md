@@ -1,5 +1,6 @@
-# Lesson 8 Notes
+title = 'Directives.  Assembly Process.  Structured Design and Test.  Debugging.  Lab 1 Introduction.' 
 
+# Lesson 8 Notes
 
 ## Readings
 

@@ -1,3 +1,5 @@
+title = 'Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC.' 
+
 # Lesson 1 Notes
 
 ## Readings
