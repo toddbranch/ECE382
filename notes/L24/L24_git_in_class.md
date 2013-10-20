@@ -20,9 +20,14 @@ Your task for this exercise is to add your name and account to the README.md fil
 - Now you need to **clone** the repo to our computer so you can make changes
     - Note the URL in your browser - this is the address of the repo
     - Navigate to the directory where you want the repo stored and type `git clone REPO_URL`
-    - Now you've got a copy of the repo on your local computer!
+        - Now you've got a copy of the repo on your local computer!
 - Time to make your changes!
+    - `cd` into the directory that was created - probably names `ECE382-student-accounts`
     - Open your README.md in your favorite text editor
+        - Notepad
+        - vim
+        - Code Composer Studio
+        - Word
     - Updated your name to include a link to your repo!  Format is important!
         - `- [YOUR NAME](YOUR REPO URL)`
         - `- [Capt Branchflower](https://github.com/toddbranch)`
