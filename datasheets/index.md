@@ -10,20 +10,24 @@ title = 'Datasheets'
 - [MSP430 Assembly Language Tools](msp430_assembly_language_tools.pdf)
 - [GNU Assembler](http://tigcc.ticalc.org/doc/gnuasm.html)
 
-## Geek Box LCD (Lab 3)
+## Geek Box LCD (Lab 3, 4, 5)
 
 - [LCD Driver Datasheet](lcd_driver_datasheet.pdf)
 - [LCD Commands](lcd_commands.pdf)
+- [Using the MSP430 with the Geek Box](geek_box.html)
+
+## Robot (Lab 6, 7, 8)
+
+- [Using the MSP430 with the Robot](robot.html)
 
 ## Other Useful Resources
 
 - [Programming the MSP430 In-Cicruit](http://www.youtube.com/watch?v=dL2YPS96L18)
-- [Using the MSP430 with the Geek Box](geek_box.html)
-- [Using the MSP430 with the Robot](robot.html)
 - [Going Standalone](standalone.html)
 
 ## Miscellaneous
 
-- [Command Line Basics]()
+- [Command Line Crash Course](http://cli.learncodethehardway.org/book/)
 - [Git Tutorial](/notes/L23/git_tutorial.html)
-- [Intro to vi / vim]()
+- [vim Tutorial (Official)](http://vim.wikia.com/wiki/Tutorial)
+- [Intro to vim - Capt Branchflower](intro_to_vim.html)
