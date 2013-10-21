@@ -28,7 +28,7 @@ Mind your coding standards!  Commit regularly with descriptive commit messages!
 
 ### B Functionality
 
-Create an additional library to deal with buttons and button presses.  Allow the user to select between three different bottom line messages depending on which button they press.
+Create an additional library to deal with buttons.  Allow the user to select between three different bottom line messages depending on which button they press.
 
 B Functionality Program operation:
 
@@ -61,15 +61,23 @@ Consider how you'll port different assembly language constructs in the [Lab 3 te
 
 Consider how you'll create software delays in C.
 
+If you write any code, an early step should be to get it under version control and push it up to Github (effectively backing it up).
+
 ## Notes
 
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
 Mind your code style!
 
-Use git and commit to it regularly with descriptive commit messages!  This is worth 10pts of your grade!
+Use git / Github and commit regularly with descriptive commit messages!  This is worth 10pts of your grade!
 
 It might be helpful to start off by porting assembly code directly to C.  But this shouldn't be your final code!  Once you have it working, you should improve its structure using the programming techniques you've learned.
+
+C does not have a strings data type - they are represented as arrays of characters:
+```
+char * string1 = "this is a string";       // this string is stored in ROM and isn't alterable 
+char string2[] = "this is a string";       // this string is stored in RAM and is alterable
+```
 
 ## Hints
 
@@ -83,6 +91,6 @@ There is a C macro available that makes creating delays much easier.  `__delay_c
 | Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L26 |
 | B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
 | A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
-| Use of Git | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L27 |
+| Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L27 |
 | Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L27 |
 | **Total** | | | **100** | | |
