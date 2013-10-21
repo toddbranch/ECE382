@@ -73,7 +73,7 @@ These commands illustrate vim users' obsession with eliminating keystrokes.  We 
 
 The power of vim really comes to light in combining commands.
 
-Take `c` (for change), for instance.  On its own, it doesn't do anything.  You have to combine it with movement commands for it to make sense.  Say I want to rewrite a word I've written - typing `cw` will delete the word and put me in insert mode.  It helps me to think `cw` = "change word" in my head.  `c` can be combined with any of the other movement commands.
+Take `c` (for change), for instance.  On its own, it doesn't do anything.  You have to combine it with movement commands for it to make sense.  Say I want to rewrite a word I've written - typing `cw` will delete the word and put me in insert mode.  It helps me to think `cw` = "change word".  `c` can be combined with any of the other movement commands.
 
 `d` (for delete) is similar.  `dw` deletes the word at your cursor, but keeps you in command mode.
 
@@ -104,7 +104,9 @@ Composition doesn't just work for edits - `5j` would move down 5 lines and `5w` 
 
 Another powerful feature of vim is its configurability.  It's possible to adjust almost every aspect of your environment to your liking.
 
-Configurations are also very portable - you can replicate your environment on a new computer by simply copying over a single file, your **vimrc**.
+Configurations are very portable - you can replicate your environment on a new computer by simply copying over a single file, your **vimrc**.
+
+**Caution:** There's a temptation to spend a ton of time on your vimrc / plugins and "create the perfect environment".  Resist this.  Learning how to navigate and use vim effectively is a better use of your time.  The important vimrc settings / plugins will find their way in eventually.
 
 ### vimrc
 
@@ -118,8 +120,6 @@ set cursorline          " show marker beneath current line
 ```
 
 There's a lot more in there - research and go nuts.
-
-**Caution:** There's a temptation to spend a ton of time on your vimrc and "create the perfect environment".  Resist this.  Learning how to navigate and use vim effectively is a better use of your time.  The important vimrc settings will find their way in over time.
 
 ### Plugins
 
@@ -172,7 +172,7 @@ Anytime you notice that you're doing the same action over and over, you're proba
 
 A macro is a recording of a series of keystrokes that you want to repeat.
 
-To being recording a macro, type `q<character>`.  The `q` indicates you want to begin recording a macro and the `<character` specifies the identifier of the macro.  After you've completed all the keystrokes for your specified action, type `q` to end recording.  To use the macro, type `@<character>` at the location you want to use it.  The true power of macro comes in specifying repetition: typing `100@a` runs the `a` macro 100 times!
+To begin recording a macro, type `q<character>`.  The `q` indicates you want to begin recording a macro and the `<character` specifies the identifier of the macro.  After you've completed all the keystrokes for your specified action, type `q` to end recording.  To use the macro, type `@<character>` at the location you want to use it.  The true power of macro comes in specifying repetition: typing `100@a` runs the `a` macro 100 times!
 
 Say I wanted to create a list of numbers 1-100 - the kind of repetitive task a macro is perfect for.  I'd first enter insert mode and enter 1.  Now, to record my macro - type `qa`.  You should see `recording` text come up at the bottom left of your screen.  Type `yy`, then `p` to copy and paste 1 to the second line.  Then type `<CTRL>-a` to increment the number, then `q` to stop recording.  Now, I can type `100@a` to repeat the macro 100 times and create my list!  Magic!
 
