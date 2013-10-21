@@ -138,6 +138,8 @@ Here are some common shell commands that will prove useful:
 
 *[Demo these commands, get them to open shell and practice them]*
 
+**If you want to learn more, [a tutorial is available on the datasheets page.](/datasheets)**
+
 ### [Git Tutorial](git_tutorial.html)
 
 *[Give demo following this in class]*

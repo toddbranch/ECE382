@@ -105,6 +105,12 @@ Git is going to complain because your local repo and the repo on Github (origin)
     - Type `git push origin master`
 - It should work now!
 
+## Deleting a Repo
+
+So you put a git repo where you didn't want one.  Maybe you put your whole hard drive under version control.  What next?
+
+git keeps all of its files in a .git directory - to delete the repo, we just have to remove that: `rm -rf .git`.  This says remove the git directory and everything inside of it and don't ask me to verify deletes.
+
 ## Cloning
 
 So you've got your repo created and being hosted on github.  What if you want to work on your files on a different computer?  You should clone (duplicate) your repository!
