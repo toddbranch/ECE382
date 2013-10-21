@@ -9,10 +9,10 @@
 ## Lesson Outline
 - Admin
 - Git In-Class Exercise
-- Mapping C to Assembly
 - [Lab 4](/labs/lab4/index.html) Overview
-- Working with the C Headers
 - Electronic Lab Notebook
+- Working with the C Headers
+- Mapping C to Assembly
 
 ## Admin
 
@@ -26,12 +26,6 @@ To practice the git skills you were introduced to last period, we're going to sp
 
 ## [Git In-Class Exercise](L24_git_in_class.html)
 
-## Mapping C to Assembly
-
-Who read?  You better have because I wrote this thing myself!
-
-*[Walk through examples from reading]*
-
 ## [Lab 4](/labs/lab4/index.html) Overview
 
 In this lab, you'll create a library for working with the LCD on the Geek Box - your very first *device driver*.  A good starting point might be the assembly code from Lab 3.  You can port that to C to get it up and running.  But, eventually, I'll expect you to create a reusable LCD library that you can use on future labs (you'll need it for Lab 5).
@@ -43,6 +37,22 @@ In this and all future labs, I expect your code to be under version control with
 *[Walk through prelab expectations.]*
 
 I've provided my header as an example of an interface that I think is straightforward to work with.  I recommend designing your API (defined in header) before implementing your code!  You want to design an API that's convenient to work with!
+
+## The ECE382 Electronic Lab Notebook
+
+I'm open to electronic lab notebooks in this course.  I think git is an interesting way to accomplish this.  If you're interested in using an electronic lab notebook, here's a template I've created:
+
+[Lab Notebook Template](https://github.com/toddbranch/electronic_lab_notebook).
+
+*[Walk through the structure, etc.]*
+
+I'd expect you to document software changes in your commit history.  Any higher level design stuff or hardware design should be included in your report.md.
+
+This is the first time we'd be doing lab notebooks in this way, so you'd be trailblazers here.
+
+I'd recommend you fork this template for each new lab you create.
+
+If you want to continue using a physical lab notebook, that's totally fine as well.
 
 ## Working with the C Headers
 
@@ -92,19 +102,8 @@ We talked about it in one of the early C lessons, but I want to emphasize it her
 
 `bis` is performed by `|=` - or is the operation for setting bits.  `bic` is performed by `&= ~` - and not is the operator for clearing bits.
 
-## The ECE382 Electronic Lab Notebook
+## Mapping C to Assembly
 
-I'm open to electronic lab notebooks in this course.  I think git is an interesting way to accomplish this.  If you're interested in using an electronic lab notebook, here's a template I've created:
+Who read?  You better have because I wrote this thing myself!
 
-[Lab Notebook Template](https://github.com/toddbranch/electronic_lab_notebook).
-
-*[Walk through the structure, etc.]*
-
-I'd expect you to document software changes in your commit history.  Any higher level design stuff or hardware design should be included in your report.md.
-
-This is the first time we'd be doing lab notebooks in this way, so you'd be trailblazers here.
-
-I'd recommend you fork this template for each new lab you create.
-
-If you want to continue using a physical lab notebook, that's totally fine as well.
-
+*[Walk through examples from reading]*
