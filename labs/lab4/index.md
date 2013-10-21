@@ -28,7 +28,7 @@ Mind your coding standards!  Commit regularly with descriptive commit messages!
 
 ### B Functionality
 
-Create an additional library to deal with buttons.  Allow the user to select between three different bottom line messages depending on which button they press.
+Allow the user to select between three different bottom line messages depending on which button they press.  You are free to write your own button library, or use mine available at https://github.com/toddbranch/buttons .
 
 B Functionality Program operation:
 
@@ -43,7 +43,7 @@ B Functionality Program operation:
 
 Create an additional library for calibrating your clock to different frequencies.
 
-You think your libraries for working with buttons, clock calibration, and the LCD could prove useful to other programmers.  You've decided to release them on Github as open source.
+You think your libraries for working with buttons (if you made one), clock calibration, and the LCD could prove useful to other programmers.  You've decided to release them on Github as open source.
 
 You'll need a separate git repository for each of your libraries.  You'll need to create a README for each covering their API and usage.
 
