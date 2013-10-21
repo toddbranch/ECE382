@@ -38,6 +38,8 @@ It would be even faster if we didn't have to move one character at a time.  So `
 
 It would be even faster if we could navigate directly to the character within a line we're looking for.  So `f<character>` searches forward and `F<character>` searches backward.  If there are multiple appearances of the character in the line, `;` moves you to the next one and `,` moves you to the previous.
 
+`t` and `T` work the same as `f` and `F`, but place your cursor directly before the target character.
+
 It would be even faster if we could search outside of single lines and specify more than a single character.  So `/<search string>` searches for the appearance of the string from the cursor forward and `?<search string>` searches from the cursor backword.  If there are multiple appearances of the search string, `n` goes to the next one forward and `N` goes to the next one backward.
 
 I've found that using search is one of the fastest ways to move through a document with precision.
@@ -85,6 +87,7 @@ Composition doesn't just work for edits - `5j` would move down 5 lines and `5w` 
 - `yy` - yank (copy) current line
 - `p` - paste
 - `C` - change all text to end of line
+- `D` - delete all text to end of line
 
 ## Saving, Switching Files, and Quitting
 
@@ -120,11 +123,46 @@ There's a lot more in there - research and go nuts.
 
 ### Plugins
 
+vim can also be extended with plugins, providing all sorts of additional functionality.
+
+I manage plugins with vundle: https://github.com/gmarik/vundle .
+
+Some plugins I use:
+
+- desert256
+    - My color scheme
+- vim-snipmate, snipmate-snippets
+    - Tab auto-completion of common code constructs
+    - Example: in C, type `main<TAB>`, completes to standard main function
+- vim-startify
+    - Start screen for vim - provides quick access to most recent files edited
+- vim-fugitive
+    - Integration with git
+- vim-markdown
+    - Markdown syntax highlighting
+- hardmode
+    - Disables common movement crutches to help make you better at using vim!
+
+**If you find any others worth adding, let me know!**
+
 ## Managing Multiple Files
 
 ### Windows
 
+Viewing multiple files simultaneously is easy in vim.
+
+- `:vs <filename>` - split window vertically and display file
+- `:sp <filename>` - split window horizontally and display file
+
+You can split windows any number of times.
+
+To navigate amongst multiple windows, use `<CTRL>-w` + direction key.
+
 ### Tabs
+
+It's also possible to have multiple tabs within a vim session.  Type `:tabnew <FILENAME>` to open a new tab.
+
+To switch amongst tabs, use `gt` to go to the next tab right or `gT` to go to the next tab left.
 
 ## Miscellaneous Stuff
 
@@ -140,4 +178,6 @@ Say I wanted to create a list of numbers 1-100 - the kind of repetitive task a m
 
 ### Autocompletion
 
-`<CTRL>-n`, `<CTRL>-p`
+Most people cite tab-autocompletion as a reason for using an IDE over something like vim - but vim can do that too!
+
+`<CTRL>-n` after typing the first few letters will show a list of potential completions.  `<CTRL>-n` will cycle through the list in one direction, `<CTRL>-p` in the opposite.
