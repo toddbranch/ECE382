@@ -7,7 +7,7 @@
 
 ## Assignment
 - [Assignment](/notes/L22/L22_moving_average.html)
-- [Install git](git_install.html) - **We will use this during next class**
+- [Install git](datasheets/git_install.html) - **We will use this during next class**
 - **(OPTIONAL, but kind of fun)** [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
 
 ## Lesson Outline

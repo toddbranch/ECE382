@@ -27,7 +27,17 @@ title = 'Datasheets'
 
 ## Miscellaneous
 
-- [Command Line Crash Course](http://cli.learncodethehardway.org/book/)
-- [Git Tutorial](/notes/L23/git_tutorial.html)
+### git
+
+- [Git Tutorial](git_tutorial.html)
+- [Install Git](git_install.html)
+- [Open Source](open_source.html)
+
+### vim
+
 - [vim Tutorial (Official)](http://vim.wikia.com/wiki/Tutorial)
 - [Intro to vim - Capt Branchflower](intro_to_vim.html)
+
+### Command Line
+
+- [Command Line Crash Course](http://cli.learncodethehardway.org/book/)

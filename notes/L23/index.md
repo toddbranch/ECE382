@@ -140,7 +140,7 @@ Here are some common shell commands that will prove useful:
 
 **If you want to learn more, [a tutorial is available on the datasheets page.](/datasheets)**
 
-### [Git Tutorial](git_tutorial.html)
+### [Git Tutorial](/datasheets/git_tutorial.html)
 
 *[Give demo following this in class]*
 
