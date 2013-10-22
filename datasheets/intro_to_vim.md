@@ -81,6 +81,18 @@ You can also specify repetition in vim.  Say I wanted to delete the next 5 words
 
 Composition doesn't just work for edits - `5j` would move down 5 lines and `5w` would move 5 words.
 
+### Substitution (Find / Replace)
+
+Substitution is easy and powerful in vim.  Let's say I want to substitute `foo` with `bar`.  Here are some common uses and their results:
+
+- `:%s/foo/bar/`
+    - Sub all occurences with `foo` with `bar` in document
+- `:s/foo/bar/`
+    - Sub next occurence of `foo` with `bar` in line
+- `:s/foo/bar/g`
+    - Sub all occurences of `foo` with `bar` in line
+- Adding c to the end of each of these will prompt you to confirm each substitution
+
 ### Common Editing Shortcuts
 
 - `dd` - delete current line
