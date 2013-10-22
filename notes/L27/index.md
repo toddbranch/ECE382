@@ -73,7 +73,8 @@ There are a whole bunch more interrupt vectors we have access to!  Back to our m
 
 At the highest addresses, there is a block reserved for the Interrupt Vector Table.
 
-Here's some more detail on that block for the MSP430G2553:  
+Here's some more detail on that block for the MSP430G2553:
+
 ![MSP430G2553 Interrupt Vectors](MSP430G2553_interrupts.jpg)
 
 Interrupts we can respond to:
