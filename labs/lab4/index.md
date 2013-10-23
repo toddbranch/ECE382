@@ -178,6 +178,22 @@ char string2[] = "this is a string";       // this string is stored in RAM and i
 
 There is a C macro available that makes creating delays much easier.  `__delay_cycles(num_of_cycles)` will delay the specified number of clock cycles with no side effects.
 
+I've implemented string scrolling in two ways - both are equally valid:
+
+- Create a string rotation function that moves the first letter to the end and moves all other characters up
+    - `void rotateString(char * string)`
+- Keep track of your current location within the string and print from there.  Don't forget to wrap around!
+    - `char * printFromPosition(char * start, char * current, char screenSizeInChars)`
+    - returns the updated current position
+
+It's annoying to constantly have to `cd` all the way to the directory where your lab is located.  We can fix that:
+
+Type `alias "goToLab"="cd ~/path/to/your/lab"` in your shell.
+
+Now, every time you type `goToLab`, it will replace it with the longer `cd` command.  Nice!
+
+Unfortunately, we'll have to type this alias every time we open the shell - unless we put it in the file `~/.bashrc`.  If we put it in there, it will automatically be loaded everytime we open our shell!  Once you add it, type `source ~/.bashrc` to load the commands.
+
 ## Grading
 
 | Item | Grade | Points | Out of | Date | Due |
