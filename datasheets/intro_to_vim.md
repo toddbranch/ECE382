@@ -56,6 +56,9 @@ I've found that using search is one of the fastest ways to move through a docume
 - `zz` - move the current line to the middle of the page
 - `zt` - move the current line to the top of the page
 - `zb` - move the current line to the bottom of the page
+- `H` - move cursor to top line on current screen
+- `M` - move cursor to middle line on current screen
+- `L` - move cursor to bottom line on current screen
 
 ## Editing a File
 
