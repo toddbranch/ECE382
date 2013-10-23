@@ -15,11 +15,13 @@ int main(void)
 
     P1IFG &= ~BIT3;                         // clear P1.3 interrupt flag
 
+    __enable_interrupt();
+
     return 0;
 }
 
 interrupt(PORT1_VECTOR) PORT1_ISR()
 {
-    P1OUT ^= BIT0|BIT6;                     // toggle LEDs
     P1IFG &= ~BIT3;                         // clear P1.3 interrupt flag
+    P1OUT ^= BIT0|BIT6;                     // toggle LEDs
 }
