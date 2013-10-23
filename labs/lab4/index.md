@@ -56,6 +56,12 @@ void LCDinit()
     delayMicro();
 }
 
+
+void LCDclear()
+{
+    writeCommandByte(1);
+}
+
 void writeCommandNibble(char commandNibble)
 {
     LCDCON &= ~RS_MASK;
@@ -96,7 +102,7 @@ void LCD_write_8(char byteToSend)
 
 void SPI_send(char byteToSend)
 {
-    char readByte;
+    volatile char readByte;
 
     set_SS_lo();
 
