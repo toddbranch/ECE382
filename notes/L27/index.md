@@ -29,13 +29,9 @@ What's the alternative?
 
 **Interrupts**.  Interrupts are closer to you raising your hand when you have a question.  I'm freed to do other things until you interrupt me, at which time I can handle your question before picking up where I left off.
 
-Interrupts signal an event that requires an immediate response.  Some examples:
+Interrupts signal an event that requires an immediate response.  Example: A hardware timer has overflowed, indicating your device must awake from sleep and perform a task.
 
-- Your network interface received a data packet that must be processed before the next arrives
-- A hardware timer has overflowed, indicating your device must awake from sleep and perform a task
-
-
-When an interrupt is requested (typically by hardware, but can be triggered in software), the processor stops what it's doing, stores enough information so it can restore its current state.  It then executes some predefined piece of code called an **Interrupt Service Routine (ISR)** designed to respond to the event.  Once it's finished, the CPU restores its previous state and continues what it was previously doing.  ISRs are like subroutines called at unpredictable (to the CPU, at least) times.
+When an interrupt is requested, the processor stops what it's doing, stores enough information so it can restore its current state.  It then executes some predefined piece of code called an **Interrupt Service Routine (ISR)** designed to respond to the event.  Once it's finished, the CPU restores its previous state and continues what it was previously doing.  ISRs are like subroutines called at unpredictable (to the CPU, at least) times.
 
 Interrupts serve two main purposes:
 
@@ -94,6 +90,10 @@ So when a given interrupt is triggered, the CPU knows to go to the associated ve
 
 These are the source of all the warnings you get about not implementing ISRs when you compile your C code.
 
+### Interrupt Priority
+
+Interrupt priority dictates which interrupt is taken when multiple interrupts are pending simultaneously.  The interrupt with the highest priority will be handled first.
+
 ### What Happens On Interrupt
 
 **On Interrupt:**
@@ -115,9 +115,29 @@ These are the source of all the warnings you get about not implementing ISRs whe
 
 ![Stack On ISR Completion](interrupt2.jpg)
 
-**Interrupt Nesting**
+### Maskable vs Non-maskable Interrupts
 
-If you set the GIE bnit inside an ISR, it's possible for an interrupt to interrupt an ISR - regardless of differences in priority.
+Besides RESET, there are two types of interrupts - maskable and non-maskable.
+
+Just like it sounds, it's not possible to ignore non-maskable interrupts.  If they're enabled and the interrupt occurs, their ISR will be triggered.
+
+Maskable interrupts are different.
+
+Remember the status register from L6?
+
+| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Reserved	colspan=7 | V | SCG1 | SCG0 | OSCOFF | CPUOFF | GIE | N | Z | C |
+
+We're going to revisit one of the bits we ignored when we first covered it - General Interrupt Enable (GIE).
+
+Setting this bit enables maskable interrupts, clearing it disables maskable interrupts.  So this gives us the ability to programmatically enable / disable maskable interrupts.
+
+If you remember back to the MSP430 instruction set, these actions had their own emulated instructions: `EINT` and `DINT`.
+
+Our headers give us access to a macro in C that allows us to call these instructions directly: `__enable_interrupt()` and `__disable_interrupt()`.  This comes from the `intrinsics.h` header - which gives access to architecture-specific instructions.
+
+GIE is cleared on RESET, so you have to explicitly enable it if you want to respond to maskable interrupts.
 
 ### Interrupt Service Routines (ISRs)
 
@@ -144,35 +164,31 @@ These should go below main!
 
 Time spent inside ISRs should be minimized!  You don't want to miss additional interrupts!
 
-### Interrupt Priority
+**Interrupt Nesting**
 
-Interrupt priority dictates which interrupt is taken when multiple interrupts are pending simultaneously.  The interrupt with the highest priority will be handled first.
-
-### Maskable vs Non-maskable Interrupts
-
-Besides RESET, there are two types of interrupts - maskable and non-maskable.
-
-Just like it sounds, it's not possible to ignore non-maskable interrupts.  If they're enabled and the interrupt occurs, their ISR will be triggered.
-
-Maskable interrupts are different.
-
-Remember the status register from L6?
-
-| 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Reserved	colspan=7 | V | SCG1 | SCG0 | OSCOFF | CPUOFF | GIE | N | Z | C |
-
-We're going to revisit one of the bits we ignored when we first covered it - General Interrupt Enable (GIE).
-
-Setting this bit enables maskable interrupts, clearing it disables maskable interrupts.  So this gives us the ability to programmatically enable / disable maskable interrupts.
-
-If you remember back to the MSP430 instruction set, these actions had their own emulated instructions: `EINT` and `DINT`.
-
-Our headers give us access to a macro in C that allows us to call these instructions directly: `__enable_interrupt()` and `__disable_interrupt()`.  This comes from the `intrinsics.h` header - which gives access to architecture-specific instructions.
-
-GIE is cleared on RESET, so you have to explicitly enable it if you want to respond to maskable interrupts.
+If you set the GIE bit inside an ISR, it's possible for an interrupt to interrupt an ISR - regardless of differences in priority.
 
 ## Using Interrupts
+
+### Programmer's Job
+
+1. Initialize
+    - Configure subsystem
+        - Set parameters to generate the interrupt you're interested in
+    - Clear interrupt flag
+        - Clear the flag for the interrupt you're interested in
+        - Make sure an interrupt isn't generated immediately once you enable it
+    - Turn on local switch
+        - Set the interrupt enable bit for the interrupt you're interested in
+    - Turn on global switch
+        - Set the GIE bit in the SR
+2. Write ISR
+    - Include `#pragma vector` statement and subroutine itself
+        - `#pragma vector` loads address into interrupt vector table
+    - Clear interrupt flag
+    - Accomplish task
+3. Give interrupt opportunity to occur
+    - It might take some time!
 
 ### P1 Interrupt
 
@@ -202,13 +218,14 @@ int main(void)
 
     P1DIR |= BIT0|BIT6;                     // set LEDs to output
 
-    P1IE |= BIT3;                           // enable the interrupt for P1.3
-    P1IES |= BIT3;                          // configure interrupt to sense falling edges
-
     P1REN |= BIT3;                          // enable internal pull-up/pull-down network
     P1OUT |= BIT3;                          // configure as pull-up
 
+    P1IES |= BIT3;                          // configure interrupt to sense falling edges
+
     P1IFG &= ~BIT3;                         // clear P1.3 interrupt flag
+
+    P1IE |= BIT3;                           // enable the interrupt for P1.3
 
     __enable_interrupt();
 
@@ -217,6 +234,8 @@ int main(void)
         //  if (interruptFlag)
         //      // respond
     }
+
+    return 0;
 }
 
 interrupt(PORT1_VECTOR) PORT1_ISR()
