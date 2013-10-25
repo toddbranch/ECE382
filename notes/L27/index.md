@@ -13,6 +13,10 @@ title = 'Interrupts and ISRs.  MSP430 Interrupt System.'
 
 ## Admin
 
+**Policy on Sharing Code**
+
+I encourage you to use Github to browse code for ideas and assistance - this is consistent with the cooperative ethos of engineering.  That does not mean you're free to copy the code of your classmates.  **I expect you to document any assistance you get.  I expect any code you turn in to be your own, unless I explicitly allow you to use the libraries of others.**  Any questions? 
+
 There are only two lessons between now and Lab 5, which covers interrupts.  You will need the knowledge from the them to be successful on the lab.  You'll only get one in-class lesson for Lab 5 - so pay attention today and next time so you're prepared!
 
 ## Interrupts
