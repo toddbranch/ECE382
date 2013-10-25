@@ -1,9 +1,12 @@
+title = 'Analog-to-Digital and Digital-to-Analog Conversion'
+
 # Lesson 36 Notes
 
 ## Readings
-[Reading 1](/path/to/reading)
+- [Reading 1](/path/to/reading)
 
 ## Assignment
+- Lab 7 Prelab
 
 ## Lesson Outline
 - Analog-to-Digital Conversion
