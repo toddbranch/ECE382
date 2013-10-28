@@ -13,6 +13,8 @@ title = 'Interrupts and ISRs.  MSP430 Interrupt System.'
 
 ## Admin
 
+How was the lab?  People getting more comfortable using git / Github?  How was including the button library?  See the value of creating reusable libraries?
+
 **Policy on Sharing Code**
 
 I encourage you to use Github to browse code for ideas and assistance - this is consistent with the cooperative ethos of engineering.  That does not mean you're free to copy the code of your classmates.  **I expect you to document any assistance you get.  I expect any code you turn in to be your own, unless I explicitly allow you to use the libraries of others.**  Any questions? 
@@ -33,7 +35,7 @@ What's the alternative?
 
 **Interrupts**.  Interrupts are closer to you raising your hand when you have a question.  I'm freed to do other things until you interrupt me, at which time I can handle your question before picking up where I left off.
 
-Interrupts signal an event that requires an immediate response.  Example: A hardware timer has overflowed, indicating your device must awake from sleep and perform a task.
+Interrupts signal an event that requires an immediate response.  Example: A hardware timer has overflowed, indicating your device must awake from a low power mode and perform a task.
 
 When an interrupt is requested, the processor stops what it's doing, stores enough information so it can restore its current state.  It then executes some predefined piece of code called an **Interrupt Service Routine (ISR)** designed to respond to the event.  Once it's finished, the CPU restores its previous state and continues what it was previously doing.  ISRs are like subroutines called at unpredictable (to the CPU, at least) times.
 
@@ -41,6 +43,8 @@ Interrupts serve two main purposes:
 
 - To execute some predefined subroutine based on an event
 - To wake up the MSP430 from a low-power mode
+
+Interrupts are how the operating system on your computer implements time-sharing (sharing the CPU between multiple programs).  It will give a program control of the CPU and schedule an interrupt for some time in the future.  When the interrupt fires, it transfers control to another program.
 
 ### What Happens On RESET
 
@@ -52,7 +56,7 @@ It triggers an interrupt!
 
 The CPU notices that the RESET interrupt has occurred.  In response to the interrupt, the CPU consults its **Interrupt Vector Table**.  This is the table that holds the addresses of the ISR to be executed as a result of each interrupt.  It finds the vector that corresponds to the pending interrupt and executes the code there.
 
-Remember this code that automatically was generated in your assembly projects?
+Remember this code that was automatically generated in your assembly projects?
 
 ```
 RESET       mov.w   #__STACK_END,SP         ; Initialize stackpointer
@@ -70,6 +74,8 @@ StopWDT     mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ```
 
 This is storing the RESET label (the address of the start of your code) as the vector for the reset interrupt!  It tells the MSP430 to execute your code whenever that interrupt is triggered.
+
+That's why it was a big problem if you accidentally deleted some of the boilerplate or deleted the RESET label!
 
 ### Interrupt Vectors
 
@@ -213,6 +219,8 @@ Go to pp 331 of Family Users Guide.
 
 I want to write some code that will toggle the LEDs each time I push the Launchpad's pushbutton.  I want to use the PORT1 interrupt to sense the button push and toggle the LEDs within the PORT1 ISR.
 
+*[Put code on screen, walk through what each step is doing]*
+
 ```
 char interruptFlag = 0;
 
@@ -242,7 +250,8 @@ int main(void)
     return 0;
 }
 
-interrupt(PORT1_VECTOR) PORT1_ISR()
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1_ISR(void)
 {
     P1IFG &= ~BIT3;                         // clear P1.3 interrupt flag
     P1OUT ^= BIT0|BIT6;                     // toggle LEDs
@@ -254,8 +263,54 @@ interrupt(PORT1_VECTOR) PORT1_ISR()
 
 How can I communicate information from my ISR back to my main program loop?  ISRs cannot return information, so the only way is through global variables.  This is the only use-case where I'll encourage the use of globals.
 
-Remember how I said time spent inside ISRs should be minimized so you don't miss additional interrupts?  A good strategy is to set a global variable inside your ISR, then address it in your main program loop.
+Remember how I said time spent inside ISRs should be minimized so you don't miss additional interrupts?  A good strategy is to set a global variable inside your ISR, then address it in your main program loop.  This is very similar to how your operating system handles interrupts - it will acknowledge the interrupt in a very fast routine called a First-Level Interrupt Handler.  If there is work to be done in response, it will dispatch a Seocnd-Level Interrupt Handler that functions like a normal process.
 
 ### Handling Multiple Buttons
 
 What would we do if we configured three Port 1 pins as buttons?  We'd have to test the P1IFG register to see which one hit and then handle it appropriately.  All pins on Port 1 trigger the same interrupt.
+
+```
+int main(void)
+{
+    WDTCTL = WDTPW|WDTHOLD;                 // stop the watchdog timer
+
+    P1DIR |= BIT0|BIT6;                     // set LEDs to output
+    P1DIR &= ~(BIT1|BIT2|BIT3);				// set buttons to input
+
+    P1IE |= BIT1|BIT2|BIT3; 				// enable the interrupt for P1.3
+    P1IES |= BIT1|BIT2|BIT3;               	// configure interrupt to sense falling edges
+
+    P1REN |= BIT1|BIT2|BIT3;               	// enable internal pull-up/pull-down network
+    P1OUT |= BIT1|BIT2|BIT3;               	// configure as pull-up
+
+    P1IFG &= ~(BIT1|BIT2|BIT3);            	// clear P1.3 interrupt flag
+
+    __enable_interrupt();
+
+	while (1) {}
+
+    return 0;
+}
+
+#pragma vector=PORT1_VECTOR
+__interrupt void Port_1_ISR(void)
+{
+	if (P1IFG & BIT1)
+	{
+		P1IFG &= ~BIT1;							// clear flag
+		P1OUT ^= BIT6;							// toggle LED 2
+	}
+
+	if (P1IFG & BIT2)
+	{
+		P1IFG &= ~BIT2;                         // clear flag
+		P1OUT ^= BIT0;							// toggle LED 1
+	}
+
+	if (P1IFG & BIT3)
+	{
+		P1IFG &= ~BIT3;                         // clear P1.3 interrupt flag
+		P1OUT ^= BIT0|BIT6;                     // toggle both LEDs
+	}
+}
+```
