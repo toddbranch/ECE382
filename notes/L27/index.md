@@ -263,7 +263,7 @@ __interrupt void Port_1_ISR(void)
 
 How can I communicate information from my ISR back to my main program loop?  ISRs cannot return information, so the only way is through global variables.  This is the only use-case where I'll encourage the use of globals.
 
-Remember how I said time spent inside ISRs should be minimized so you don't miss additional interrupts?  A good strategy is to set a global variable inside your ISR, then address it in your main program loop.  This is very similar to how your operating system handles interrupts - it will acknowledge the interrupt in a very fast routine called a First-Level Interrupt Handler.  If there is work to be done in response, it will dispatch a Seocnd-Level Interrupt Handler that functions like a normal process.
+Remember how I said time spent inside ISRs should be minimized so you don't miss additional interrupts?  A good strategy is to set a global variable inside your ISR, then address it in your main program loop.  This is very similar to how your operating system handles interrupts - it will acknowledge the interrupt in a very fast routine called a First-Level Interrupt Handler.  If there is work to be done in response, it will dispatch a Second-Level Interrupt Handler that functions like a normal process.
 
 ### Handling Multiple Buttons
 
@@ -277,13 +277,13 @@ int main(void)
     P1DIR |= BIT0|BIT6;                     // set LEDs to output
     P1DIR &= ~(BIT1|BIT2|BIT3);				// set buttons to input
 
-    P1IE |= BIT1|BIT2|BIT3; 				// enable the interrupt for P1.3
+    P1IE |= BIT1|BIT2|BIT3; 				// enable the interrupts
     P1IES |= BIT1|BIT2|BIT3;               	// configure interrupt to sense falling edges
 
     P1REN |= BIT1|BIT2|BIT3;               	// enable internal pull-up/pull-down network
     P1OUT |= BIT1|BIT2|BIT3;               	// configure as pull-up
 
-    P1IFG &= ~(BIT1|BIT2|BIT3);            	// clear P1.3 interrupt flag
+    P1IFG &= ~(BIT1|BIT2|BIT3);            	// clear flags
 
     __enable_interrupt();
 
