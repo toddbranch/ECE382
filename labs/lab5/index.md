@@ -14,15 +14,13 @@ On your Geek Box, PB1 will move the player right and PB2 will move the player le
 
 If the player doesn't move within 2 seconds, the game ends - display "GAME" on the first line and "OVER!" on the second line.  If the player reaches the bottom right corner of the screen, they won - display "YOU" on the first line" and "WON!" on the second line.  At this point, pushing either PB1 or PB2 should initiate a new game.
 
-To achieve B functionality, you'll have to add some additional features to the game.
-
-To achieve A functionality, you'll have to use the MSP430's low power modes to minimize the power consumption of your game.
+To achieve A and B functionality, you'll have to add some additional features to the game.
 
 ### Required Functionality
 
 To achieve Required Functionality, you must implement the game as described in The Basic Idea.
 
-In the spirit of open source software, you're free to use any LCD library you find on Github.
+In the spirit of open source software, you're free to use any LCD library you find on Github.  You can also use the button library I provided last time.
 
 The two-second between-move time limit must also be handled via an interrupt and the Timer_A subsystem.
 
@@ -34,7 +32,14 @@ You must place your code under version control on git and push your repo to Gith
 
 In addition to Required Functionality, your game must allow users to move up and down with two different push buttons.  Your game must place two mines in random positions on the board (represented by an "x") that players must navigate around.  If a player navigates onto a bomb, the game is over.  Display a creative message if a player steps on a mine (i.e. "BOOM!"), then the game over screen.
 
-You must also handle button pushes via interrupts, not polling.
+Here's some code that can help you out with random numbers (from K&R's "The C Programming Language"):
+```
+int rand()
+{
+  rand_next = rand_next * 1103515245 + 12345;
+  return (unsigned int)(rand_next/ 65536) % 32768;
+}
+```
 
 ### A Functionality
 
@@ -42,7 +47,7 @@ You must also handle button pushes via interrupts, not polling.
 
 (5 pts) This game is too easy!  Add an additional feature that makes the game more challenging.  Be creative!  Simply making the time limit shorter will not receive any credit.
 
-(5 pts) Place the MSP430 into the lowest possible power mode between interrupts.  It should "wake up" on interrupt and return to the low power mode once the interrupt is handled.
+(5 pts) Handle button presses via interrupts!  There are a couple of ways to do this - make sure you detail your approach and why you chose it.
 
 **Note:** There's the potential for 5 bonus points if you implement all of the features of A Functionality.
 
@@ -55,6 +60,8 @@ Include whatever information from this lab you think will be useful in creating 
 Think about how you'll implement your game logic.  Draw a flowchart of how it will operate - include pseudocode, as well as the interfaces to your functions.
 
 Think about the work that will be done in your ISRs and how you'll pass information to your main program.  Remember to minimize the amount of time spent in ISRs. 
+
+Think of how to configure Timer_A for your purposes.
 
 ## Notes
 
@@ -71,8 +78,8 @@ Think about how you'll pass information between ISRs and your main program.  Rem
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
 | Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L29 |
-| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L30 |
-| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L30 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L30 |
+| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L30 |
 | A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L30 |
 | Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L27 |
 | Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L31 |
