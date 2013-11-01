@@ -127,8 +127,14 @@ Let's use this to perform an action at a specified time interval.  Remember the 
             - Set TACLR bit in TACTL
         - Set for continuous mode
             - Set Mode Control to 10 in TACTL
+	- Select the clock I want to count off of
+		- Set TASSEL1 to select SMCLK
+	- Select divider value
+		- Set ID1 and ID0 to divide clock by 8
     - Clear interrupt flag
         - Clear TAIFG in TACTL
+	- Start clock
+		- Set count mode to continuous by setting MC1
     - Turn on local switch
         - Set TAIE in TACTL
     - Turn on global switch
