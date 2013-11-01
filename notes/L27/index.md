@@ -230,6 +230,8 @@ int main(void)
 
     P1DIR |= BIT0|BIT6;                     // set LEDs to output
 
+	P1DIR &= ~BIT3;							// set button to input
+
     P1REN |= BIT3;                          // enable internal pull-up/pull-down network
     P1OUT |= BIT3;                          // configure as pull-up
 
