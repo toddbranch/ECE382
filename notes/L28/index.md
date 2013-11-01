@@ -107,7 +107,7 @@ Up / down mode counts from 0 to the value in register TACCR0, then back down to 
 
 Your msp430g2553 has two Timer_A subsystems, as shown on the interrupt vector table:
 
-![MSP430G2553 Interrupts](/notes/L27/MSP430G2553_interrupts,jpg)
+![MSP430G2553 Interrupts](/notes/L27/MSP430G2553_interrupts.jpg)
 
 And each of these can trigger multiple interrupts - corresponding to two ISRs.
 
