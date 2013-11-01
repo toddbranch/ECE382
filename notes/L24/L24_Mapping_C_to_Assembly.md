@@ -1,4 +1,4 @@
-# Mapping C to Assembly
+# Mapping C Programming Constructs to MSP430 Assembly
 
 When I first introduced it, I told you to think of C as a portable, higher-level assembly language.  My intention was to reinforce the connection between the two.  While it's easy to say to yourself that C is compiled into assembly, then assembly is assembled and linked into executable machine code, it's often easy to lose sight of that.  This reading and lesson are designed give you a better understanding of that connection.
 

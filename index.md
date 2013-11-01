@@ -27,7 +27,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment](/notes/L21/L21_pong.html) | [Assignment](/notes/L20/L20_C_basics.html) |
 | [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment](/notes/L22/L22_moving_average.html), (Optional) [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge) | [Assignment](/notes/L21/L21_pong.html) |
 | [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment](/notes/L23/L23_git.html) | KSplice Pointer Challenge, [Install Git](notes/L22/git_install.html), [Assignment](/notes/L22/L22_moving_average.html) |
-| [L24](notes/L24/index.html) | C Programming - the MSP430.  Modular code design.  Creating libraries / using external libraries.  [Lab 4](/labs/lab4/index.html) Introduction. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment](/notes/L23/L23_git.html) |
+| [L24](notes/L24/index.html) | More git.  [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment](/notes/L23/L23_git.html) |
 | L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
 | L26 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
 | [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |

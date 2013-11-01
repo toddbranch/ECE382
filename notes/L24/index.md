@@ -1,7 +1,9 @@
-# Lesson Notes
+title = 'More git.  Lab 4 Introduction.  Mapping C to Assembly.'
+
+# Lesson 24 Notes
 
 ## Readings
-- [Mapping C to Assembly](L24_Mapping_C_to_Assembly.html)
+- [Mapping C Programming Constructs to MSP430 Assembly](L24_Mapping_C_to_Assembly.html)
 
 ## Assignment
 - [Lab 4 Prelab](/labs/lab4/index.html)
@@ -54,7 +56,9 @@ I'd recommend you fork this template for each new lab you create.
 
 If you want to continue using a physical lab notebook, that's totally fine as well.
 
-## Working with the C Headers
+## Mapping C to Assembly
+
+### Working with the C Headers
 
 We haven't really talked about using C with MSP430 subsystems.  In Lab 4, you'll need to combine your knowledge of C with your knowledge of the subsystems we learned about in Block 1 (i.e. SPI, GPIO, etc.) to be successful.
 
@@ -102,7 +106,7 @@ We talked about it in one of the early C lessons, but I want to emphasize it her
 
 `bis` is performed by `|=` - or is the operation for setting bits.  `bic` is performed by `&= ~` - and not is the operator for clearing bits.
 
-## Mapping C to Assembly
+### How C Programming Constructs Map to Assembly
 
 Who read?  You better have because I wrote this thing myself!
 
