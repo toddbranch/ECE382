@@ -1,5 +1,7 @@
 # Lab 5 - Interrupts - "A Simple Game"
 
+[Teaching Notes](notes.html)
+
 ## Objectives
 
 In this lab, you'll use your knowledge of interrupts and the Timer_A subsytem to create a simple game.  To be successful, you'll have to use button and LCD libraries - either your own or open source.
@@ -62,7 +64,7 @@ void testAndRespondToButtonPush(char buttonToTest)
 
 Your game must place two mines in random positions on the board (represented by an "x") that players must navigate around.  If a player navigates onto a bomb, the game is over.  Display a creative message if a player steps on a mine (i.e. "BOOM!"), then the game over screen.
 
-Randomness is hard!  I found a random number library for the MSP430 on github: https://github.com/0/msp430-rng .  Use it!  The `rand()` function generates a random seed.  `prand()` uses this seed to generate subsequent pseudorandom numbers.  You should only call `rand()` once, then let `prand()` generate additional numbers you may need.  You'll need to store each result of `prand()` to use as the seed for the next time you call `prand()`.
+Randomness is hard!  I found a random number library for the MSP430 on github and forked it to be compatible with CCS: https://github.com/toddbranch/msp430-rng .  Use it!  The `rand()` function generates a random seed.  `prand()` uses this seed to generate subsequent pseudorandom numbers.  You should only call `rand()` once, then let `prand()` generate additional numbers you may need.  You'll need to store each result of `prand()` to use as the seed for the next time you call `prand()`.
 
 Include logic in your program that ensures the game is winnable!  You can't have obstacles stacked on top of or diagonal to one another - players couldn't get around them.
 
