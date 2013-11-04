@@ -2,6 +2,8 @@ title = 'Intro to Embedded Systems with the MSP430'
 
 # Lesson Notes
 
+**Find a problem?  The source behind this site is available on Github: [file a bug report or send me a pull request!](https://github.com/toddbranch/ECE382/issues)**
+
 | Lesson | Topic | Assigned | Due |
 | :-: | :-: | :-: | :-: | :-: |
 | [L1](notes/L1/index.html) | Course Introduction. Computer Structure.  Architecture vs Microarchitecture.  RISC vs CISC. | [Skills Review](notes/L1/skills_review.html) | |
