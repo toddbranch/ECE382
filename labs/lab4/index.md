@@ -1,5 +1,7 @@
 # Lab 4 - C - "An LCD Device Driver"
 
+[Teaching Notes](notes.html)
+
 ## Objectives
 
 You've spent the last 5 lessons transitioning from programming in assembly language to C.  In this lab, you'll use C to write a device driver for the LCD you used in Lab 3.  You'll be expected to write clean, maintainable, modular code that is committed regularly to Git.

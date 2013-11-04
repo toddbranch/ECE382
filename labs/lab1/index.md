@@ -1,5 +1,7 @@
 # Lab 1 - Assembly Language - "A Simple Calculator"
 
+[Teaching Notes](notes.html)
+
 ## Objectives
 
 You'll write your first complete assembly language program using what you've learned in class.  You'll need all of the skills you've learned to this point - the instruction set, addressing modes, conditional jumps, status register flags, assembler directives, the assembly process, etc.  This lab will give you practice in using assembly to implement higher-level if/then/else and looping constructs.
@@ -90,8 +92,6 @@ Since you haven't learned about them yet, don't use subroutines.  Do everything 
 - Spacing
     - Align your code to make it readable
     - Put whitespace between logical blocks of code
-
-[Other Notes](notes.html)
 
 ## Test Cases!
 
