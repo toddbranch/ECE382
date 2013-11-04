@@ -10,13 +10,17 @@ In this course, I expect you to write your own code unless you receive explicit 
 
 ## Using a Library As-Is
 
-To use an existing library, all you need to do is clone it:
+To use an existing library, all you need to do is clone it.  Navigate to your project folder and:
 
 `git clone <REPO URL>`
 
 If you want to update your version with the most current changes to the library:
 
 `git pull origin master`
+
+Now that you have it in your project folder, include it:
+
+`#include REPO_NAME/REPO_NAME.h`
 
 ## Making Modifications to a Library
 
