@@ -18,6 +18,7 @@ title = 'Datasheets'
 
 ## Robot (Lab 6, 7, 8)
 
+- [SN754410 Datasheet](SN754410.pdf)
 - [Using the MSP430 with the Robot](robot.html)
 
 ## Other Useful Resources
