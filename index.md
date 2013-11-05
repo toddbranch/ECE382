@@ -35,7 +35,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |
 | [L28](notes/L28/index.html) | Timer_A: Interval Timing. [Lab 5](/labs/lab5/index.html) Introduction. | [Lab 5](/labs/lab5/index.html) Prelab | |
 | L29 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab |
-| [L30](notes/L30/index.html) | More Interrupts.  HW Config / Modes. Review. | | [Lab 5](/labs/lab5/index.html) Functionality |
+| [L30](notes/L30/index.html) | More Advanced git.  Low Power Modes.  GR Review. | | [Lab 5](/labs/lab5/index.html) Functionality |
 | [L31](notes/L31/index.html) | GR #2 | | [Lab 5](/labs/lab5/index.html) Notebook |
 | [L32](notes/L32/index.html) | Timer_A: Capture / Compare, Pulse Width Modulation. | [Lab 6](/labs/lab6/index.html) Prelab | |
 | L33 | [Lab 6](/labs/lab6/index.html) - Robot Motion | [Lab 6](/labs/lab6/index.html) | [Lab 6](/labs/lab6/index.html) Prelab |
