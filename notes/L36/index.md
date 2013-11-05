@@ -1,4 +1,4 @@
-title = 'Analog-to-Digital and Digital-to-Analog Conversion'
+title = 'Analog-to-Digital and Digital-to-Analog Conversion. Lab 7 / 8 Intro.'
 
 # Lesson 36 Notes
 
@@ -11,6 +11,7 @@ title = 'Analog-to-Digital and Digital-to-Analog Conversion'
 ## Lesson Outline
 - Analog-to-Digital Conversion
 - Digital-to-Analog Conversion
+- Lab 7 / 8 Introduction
 
 ## Analog-to-Digital Conversion
 
@@ -23,3 +24,5 @@ title = 'Analog-to-Digital and Digital-to-Analog Conversion'
 ### ATD Technologies
 
 ## Digital-to-Analog Conversion
+
+## Lab 7 / 8 Introduction

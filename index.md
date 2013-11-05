@@ -41,7 +41,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L33 | [Lab 6](/labs/lab6/index.html) - Robot Motion | [Lab 6](/labs/lab6/index.html) | [Lab 6](/labs/lab6/index.html) Prelab |
 | L34 | [Lab 6](/labs/lab6/index.html) - Robot Motion | | |
 | L35 | [Lab 6](/labs/lab6/index.html) - Robot Motion | | [Lab 6](/labs/lab6/index.html) Functionality |
-| [L36](notes/L36/index.html) | Analog-to-Digital and Digital-to-Analog Conversion | [Lab 7](/labs/lab7/index.html) Prelab | [Lab 6](/labs/lab6/index.html) Notebook |
+| [L36](notes/L36/index.html) | Analog-to-Digital and Digital-to-Analog Conversion. Lab 7 / 8 Intro. | [Lab 7](/labs/lab7/index.html) Prelab | [Lab 6](/labs/lab6/index.html) Notebook |
 | L37 | [Lab 7](/labs/lab7/index.html) - Robot Sensing | Lab 7, [Lab 8](/labs/lab8/index.html) Prelab | [Lab 7](/labs/lab7/index.html) Prelab, [Lab 7](/labs/lab7/index.html) Functionality |
 | L38 | [Lab 8](/labs/lab8/index.html) - Robot Maze | [Lab 8](/labs/lab8/index.html) | [Lab 8](/labs/lab8/index.html) Prelab |
 | L39 | [Lab 8](/labs/lab8/index.html) - Robot Maze | | |
