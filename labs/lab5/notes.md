@@ -4,9 +4,13 @@ From now on, I'm not going to look at your lab notebooks aside from prelabs.  I'
 
 I've given you a lot of skeleton code - you're not required to use it, but you can if you want to.
 
+For movement, I used `#define ROW_MASK 0x40`.  To move up, you just need to `bic` the `ROW_MASK`.  To move down, you just need to `bis` it.
+
 There are libraries available for buttons / LCD / random number generation on Github - use them!  It will save you time and effort!  Clone them and `#include` them, don't copy / paste code!
 
 I've given you code that will help with using interrupts to drive buttons under B functionality.
+
+**Draw picture of button** - talk about what happens on each edge.
 
 The size of your ISRs is a design decision.  Typically, we want to keep them short so we don't miss other interrupts - but this is a guideline, not a rule.  If it makes sense in your application to do more work in ISRs, that's your prerogative.
 
@@ -16,6 +20,10 @@ The `rand()` function in the lib takes a while to generate a random seed - you o
 
 To place mines, I just did `0x81 + random%7` for the top row and `0xC0 + random%7` for the bottom row.
 
+**Draw picture of board on the board**
+
 To test if a board is valid, you just need to compare the lower nibbles - so first, I blanked both top nibbles.  Then I check whether they are equal or within one of the other - those are unwinnable boards.
 
 To generate the board, I created a `do while` loop that keeps regenerating the board as long as it's invalid.
+
+**LED bug** - if you plan on using P1.0 as a button, make sure to disconnect the LED jumper on the Launchpad.  The LED will try to pull the pin down and interfere with your button.
