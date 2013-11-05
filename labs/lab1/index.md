@@ -1,3 +1,5 @@
+title = 'Lab 1 - Assembly Language - "A Simple Calculator"'
+
 # Lab 1 - Assembly Language - "A Simple Calculator"
 
 [Teaching Notes](notes.html)
