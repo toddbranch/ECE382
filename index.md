@@ -25,11 +25,11 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | |
 | L18 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/index.html) Functionality |
 | L19 | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
-| [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment](/notes/L20/L20_C_basics.html) | |
-| [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment](/notes/L21/L21_pong.html) | [Assignment](/notes/L20/L20_C_basics.html) |
-| [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment](/notes/L22/L22_moving_average.html). | [Assignment](/notes/L21/L21_pong.html) |
-| [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment](/notes/L23/L23_git.html) | KSplice Pointer Challenge, [Install Git](notes/L22/git_install.html), [Assignment](/notes/L22/L22_moving_average.html) |
-| [L24](notes/L24/index.html) | More git.  [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment](/notes/L23/L23_git.html) |
+| [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) | |
+| [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html) | [Assignment 5](/notes/L20/L20_C_basics.html) |
+| [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html). | [Assignment 6](/notes/L21/L21_pong.html) |
+| [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment 8](/notes/L23/L23_git.html) | KSplice Pointer Challenge, [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) |
+| [L24](notes/L24/index.html) | More git.  [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment 8](/notes/L23/L23_git.html) |
 | L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
 | L26 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
 | [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |
