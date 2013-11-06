@@ -66,7 +66,10 @@ void testAndRespondToButtonPush(char buttonToTest)
 
 Your game must place two mines in random positions on the board (represented by an "x") that players must navigate around.  If a player navigates onto a bomb, the game is over.  Display a creative message if a player steps on a mine (i.e. "BOOM!"), then the game over screen.
 
-Randomness is hard!  I found a random number library for the MSP430 on github and forked it to be compatible with CCS: https://github.com/toddbranch/msp430-rng .  Use it!  The `rand()` function generates a random seed.  `prand()` uses this seed to generate subsequent pseudorandom numbers.  You should only call `rand()` once, then let `prand()` generate additional numbers you may need.  You'll need to store each result of `prand()` to use as the seed for the next time you call `prand()`.
+Randomness is hard!  Here are two good ways to do it:
+
+- I found a random number library for the MSP430 on github and forked it to be compatible with CCS: https://github.com/toddbranch/msp430-rng .  Use it!  The `rand()` function generates a random seed.  `prand()` uses this seed to generate subsequent pseudorandom numbers.  You should only call `rand()` once, then let `prand()` generate additional numbers you may need.  You'll need to store each result of `prand()` to use as the seed for the next time you call `prand()`.  **For some people, rand() takes a long time to execute.  If this is the case for you, I'll allow you to create a static seed (i.e. seed = 2793).**
+- Ask the user for button input!  Write a message (i.e. "Press button to set mine!") and iterate through all possible mine locations - stop when the user presses the button and save that mine!
 
 Include logic in your program that ensures the game is winnable!  You can't have obstacles stacked on top of or diagonal to one another - players couldn't get around them.
 
