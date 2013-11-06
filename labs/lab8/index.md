@@ -1,3 +1,5 @@
+title = 'Lab 8 - Robot Maze'
+
 # Lab 8 - Robot Maze
 
 ## Overview

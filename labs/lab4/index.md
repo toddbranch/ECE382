@@ -1,3 +1,5 @@
+title = 'Lab 4 - C - "An LCD Device Driver"'
+
 # Lab 4 - C - "An LCD Device Driver"
 
 [Teaching Notes](notes.html)

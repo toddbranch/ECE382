@@ -1,3 +1,5 @@
+title = 'Lab 6 - PWM - "Robot Motion"'
+
 # Lab 6 - PWM - "Robot Motion"
 
 ## Lab Overview

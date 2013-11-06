@@ -1,3 +1,5 @@
+title = 'Lab 7 - A/D Conversion - "Robot Sensing"'
+
 # Lab 7 - A/D Conversion - "Robot Sensing"
 
 ## Overview

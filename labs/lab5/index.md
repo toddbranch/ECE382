@@ -1,3 +1,5 @@
+title = 'Lab 5 - Interrupts - "A Simple Game"'
+
 # Lab 5 - Interrupts - "A Simple Game"
 
 [Teaching Notes](notes.html)

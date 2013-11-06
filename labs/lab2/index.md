@@ -1,3 +1,5 @@
+title = 'Lab 2 - Subroutines - "Cryptography"'
+
 # Lab 2 - Subroutines - "Cryptography"
 
 ## Objectives

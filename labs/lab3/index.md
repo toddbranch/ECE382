@@ -1,3 +1,5 @@
+title = 'Lab 3 - SPI - "I/O"'
+
 # Lab 3 - SPI - "I/O"
 
 ## Objectives
