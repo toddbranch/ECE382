@@ -14,7 +14,7 @@ title = 'More Advanced git.  Low Power Modes.  GR Review.'
 - Low Power Modes
 - GR Review
 
-**Reminder:** Lab 5 functionality is due by COB today!  Lab 5 notebooks are due by COB next time!
+**Reminder:** Lab 5 functionality is due by COB today!  Lab 5 documentation is due by COB next time!
 
 Just a few topics today - let's get through this material quickly so we can use the rest of the time to work on the lab.
 
