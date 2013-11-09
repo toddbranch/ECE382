@@ -24,7 +24,7 @@ title = 'Datasheets'
 
 ## Other Useful Resources
 
-- [Programming the MSP430 In-Cicruit](http://www.youtube.com/watch?v=dL2YPS96L18)
+- [Programming the MSP430 In-Cicruit](in_circuit_programming.html)
 - [Going Standalone](standalone.html)
 
 ## Miscellaneous
