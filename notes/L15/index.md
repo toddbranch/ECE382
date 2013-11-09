@@ -1,3 +1,5 @@
+title = 'Serial Comm Fundamentals. Serial Peripheral Interface. Lab 3 Introduction. Logic Analyzer Demo.'
+
 # Lesson 15 Notes
 
 ## Readings

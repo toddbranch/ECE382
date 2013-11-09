@@ -1,3 +1,5 @@
+title = 'C Programming - Structs, Functions, and Headers.' 
+
 # Lesson 21 Notes
 
 ## Readings

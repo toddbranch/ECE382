@@ -1,3 +1,5 @@
+title = 'C Programming - Pointers and Arrays' 
+
 # Lesson 22 Notes
 
 ## Readings

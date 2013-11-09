@@ -1,3 +1,5 @@
+title = 'The Stack. Subroutines. Lab 2 Introduction.'
+
 # Lesson 10 Notes
 
 ## Readings

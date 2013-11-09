@@ -1,3 +1,5 @@
+title = 'Polling. Debouncing. Software Delay Routines.'
+
 # Lesson 14 Notes
 
 ## Readings
