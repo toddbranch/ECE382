@@ -1,6 +1,6 @@
 title = 'Timer_A: Capture / Compare, Pulse Width Modulation'
 
-# Lesson 32 Notes
+# Lesson 31 Notes
 
 ## Readings
 - [Intro to Pulse Width Modulation](http://www.embedded.com/electronics-blogs/beginner-s-corner/4023833/Introduction-to-Pulse-Width-Modulation)
