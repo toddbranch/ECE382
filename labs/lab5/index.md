@@ -43,18 +43,29 @@ Remember the strategy we discussed in class!  We can initially trigger a button 
 ```
 void testAndRespondToButtonPush(char buttonToTest)
 {
-	if (buttonToTest & P1IFG)
+	// was this the pin that triggered the interrupt?
+	// if yes, let's respond
+	if (buttonToTest & P1IFG)									
 	{
-		if (buttonToTest & P1IES)
-		{
+
+		// was the interrupt configured to fire on a falling edge
+		// if yes, it was a button press - let's respond!
+		if (buttonToTest & P1IES)								
+		{														
 			movePlayerInResponseToButtonPush(buttonToTest);
 			clearTimer();
+
+		// if not, it was a button release - let's debounce
 		} else
 		{
 			debounce();
 		}	
 		
+		// buttons exist in two sequential states - pressed or released
+		// let's toggle the flag to detect the other state
 		P1IES ^= buttonToTest;
+
+		// let's clear the flag so the interrupt isn't called again for this event
 		P1IFG &= ~buttonToTest;
 	}
 }
