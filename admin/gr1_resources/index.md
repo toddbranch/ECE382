@@ -1,3 +1,5 @@
+title = 'GR1 Resources'
+
 # GR Resources
 
 ## Instruction Set

@@ -1,4 +1,4 @@
-zitle = 'C Style Guide'
+title = 'C Style Guide'
 
 # C Style Guide
 

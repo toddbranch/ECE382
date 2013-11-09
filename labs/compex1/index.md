@@ -1,3 +1,4 @@
+title = 'CompEx 1 - Introduction to the MSP430 and Code Composer Studio'
 # CompEx 1 - Introduction to the MSP430 and Code Composer Studio
 
 ## Objectives

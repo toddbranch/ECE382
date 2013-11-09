@@ -1,3 +1,5 @@
+title = 'GR2 Resources'
+
 # GR Resources
 
 ## Timer_A

@@ -1,3 +1,5 @@
+title = 'Going Standalone'
+
 # Going Standalone
 
 In a true embedded application, you're not going to want your MSP430 to be powered by the microUSB cable to connected to your computer.  Luckily, going standalone with the MSP430 and Launchpad is pretty easy.

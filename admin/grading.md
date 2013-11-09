@@ -1,3 +1,5 @@
+title = 'Grading'
+
 # Grading 
 
 All grading will be performed in Q2i.

@@ -1,3 +1,5 @@
+title = 'The Geek Box'
+
 # The Geek Box
 
 - [Geek Box Datasheet](PBMCUSLKUG.pdf)

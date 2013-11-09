@@ -1,3 +1,5 @@
+title = 'Course Letter'
+
 # Electrical and Computer Engineering 382 - Embedded Systems I
 
 ## Course Policies and Administration
