@@ -2,7 +2,6 @@
 
 - [Geek Box Datasheet](PBMCUSLKUG.pdf)
 
-
 ## Intro
 
 The Geek Box was built to interface with the chip this class used to use (68HC12 / 68S12), not the MSP430.  But we still need the buttons, LEDs, LCD, and buzzer included in the Geek Box for our labs - so we're still using it.  Since it wasn't designed for the MSP430, it isn't a totally natural fit - but we're hackers, so we'll find a way to make it work.
