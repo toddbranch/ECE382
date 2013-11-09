@@ -151,7 +151,7 @@ More detailed info is in the reading from today.
 
 This is the GR - similar layout to the last one.  5 questions.  The first is kind of a hodge podge of short questions, the rest are work out.  I've made a conscious effort to make this shorter than the last one, so you shouldn't be crunched for time.
 
-The resources I'll give you are also available on the course website at [GR 2 Resources]().
+The resources I'll give you are also available on the course website at [GR 2 Resources](/admin/gr2_resources/).
 
 From the first GR, you should notice that I place an emphasis on practical skills.  So expect to write code!
 
