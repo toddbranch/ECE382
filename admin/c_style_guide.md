@@ -1,3 +1,5 @@
+zitle = 'C Style Guide'
+
 # C Style Guide
 
 ## General Guidelines
@@ -9,6 +11,38 @@
 - Choose readability over brevity!
 - Well-written code doesn't require many comments
 - Don't comment bad code, rewrite it!
+- If you find yourself writing the same code more than once, create a function!
+
+## General Style
+
+Don't comment bad code, rewrite it!
+
+Use whitespace to group code logically:
+
+```c
+
+```
+
+Use functions to make code more readable:
+
+```c
+// bad
+if ((employeeAge >= 65) && (yearsOfService >= 10) && (isFullTime == TRUE))
+{
+	// confer benefits
+}
+
+// good
+if (isEmployeeEligibleForBenefits())
+{
+	// confer benefits
+}
+
+char isEmployeeEligibleForBenefits()
+{
+	return (employeeAge >= 65) && (yearsOfService >= 10) && (isFullTime == TRUE);
+}
+```
 
 ## Common Warnings / Errors
 
@@ -69,10 +103,3 @@ switch (direction)
 }
 ```
 
-## General Style
-
-Use whitespace to group code logically:
-
-```c
-
-```
