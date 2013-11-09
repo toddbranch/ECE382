@@ -96,4 +96,4 @@ Other guidance:
 
 ### C
 
-
+[Check out the C style guide.](c_style_guide.html)
