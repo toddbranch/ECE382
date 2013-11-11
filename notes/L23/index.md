@@ -1,3 +1,5 @@
+title = 'C Programming - Writing Clean Code.  Revision Control.'
+
 # Lesson 23 Notes
 
 ## Readings
