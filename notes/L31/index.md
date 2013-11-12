@@ -1,4 +1,4 @@
-title = 'Timer_A: Capture / Compare, Pulse Width Modulation'
+title = 'Timer_A: Capture / Compare, Pulse Width Modulation.  Lab 6 Introduction.'
 
 # Lesson 31 Notes
 
