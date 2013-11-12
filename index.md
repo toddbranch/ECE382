@@ -27,8 +27,8 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L19 | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
 | [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) | |
 | [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html) | [Assignment 5](/notes/L20/L20_C_basics.html) |
-| [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html). | [Assignment 6](/notes/L21/L21_pong.html) |
-| [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment 8](/notes/L23/L23_git.html) | KSplice Pointer Challenge, [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) |
+| [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) | [Assignment 6](/notes/L21/L21_pong.html) |
+| [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment 8](/notes/L23/L23_git.html) | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) |
 | [L24](notes/L24/index.html) | More git.  [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment 8](/notes/L23/L23_git.html) |
 | L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
 | L26 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
@@ -36,7 +36,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L28](notes/L28/index.html) | Timer_A: Interval Timing. [Lab 5](/labs/lab5/index.html) Introduction. | [Lab 5](/labs/lab5/index.html) Prelab | |
 | L29 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab |
 | [L30](notes/L30/index.html) | More Advanced git.  Low Power Modes.  GR Review. | | [Lab 5](/labs/lab5/index.html) Functionality |
-| [L31](notes/L31/index.html) | Timer_A: Capture / Compare, Pulse Width Modulation. | | [Lab 5](/labs/lab5/index.html) Documentation |
+| [L31](notes/L31/index.html) | Timer_A: Capture / Compare, Pulse Width Modulation.  Lab 6 Introduction. | | [Lab 5](/labs/lab5/index.html) Documentation |
 | L32 | GR #2 | [Lab 6](/labs/lab6/index.html) Prelab | |
 | L33 | [Lab 6](/labs/lab6/index.html) - Robot Motion | [Lab 6](/labs/lab6/index.html) | [Lab 6](/labs/lab6/index.html) Prelab |
 | L34 | [Lab 6](/labs/lab6/index.html) - Robot Motion | | |
