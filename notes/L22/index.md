@@ -207,4 +207,4 @@ A - x = 0x89
 B - letter_ptr = 0x0800
 C - letter_ptr = 0x0801
 D - x = 0x89
-E - y[2] = 0x56
+E - y[2] = 0x23
