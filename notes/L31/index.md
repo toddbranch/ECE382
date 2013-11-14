@@ -179,7 +179,7 @@ int main(void)
 
 ### Motor Driver Chip
 
-You cannot hook your MSP430 directly up to the motors - it can supply enough current!  We need to use a motor driver chip instead.  It can only supply 1A per circuit!  Do not exceed that!  [Check out the datasheet for wiring details.](/datasheets/)
+You cannot hook your MSP430 directly up to the motors - it can't supply enough current!  We need to use a motor driver chip instead.  It can only supply 1A per circuit!  Do not exceed that!  [Check out the datasheet for wiring details.](/datasheets/)
 
 ### Motor Stall Current
 
