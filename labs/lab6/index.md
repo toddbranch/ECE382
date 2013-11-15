@@ -2,6 +2,8 @@ title = 'Lab 6 - PWM - "Robot Motion"'
 
 # Lab 6 - PWM - "Robot Motion"
 
+[Teaching Notes](notes.html)
+
 ## Lab Overview
 
 This lab is designed to provide you with experience using the pulse-width modulation features of the MSP430.  You will need to program the MSP430 to generate pulse-width-modulated waveforms to control the speed / direction of your robot's motors.  In this lab, you will make your robot move forward, backwards, a small (< 45 degree) turn left/right, and a large (> 45 dgree) turn left/right.
@@ -76,6 +78,14 @@ On my robot, the stall current does not go below one amp until my motor is being
 ### Decoupling Capacitors
 
 Because the switching action of the robot motors can load the 5V rail and cause the microcontroller to reset, you need to install capacitors to ensure a stable power supply to the microcontroller.  Placing a large capacitor across the 5V rail should be able to absorb any current fluctuations and keep your robot from reseting.
+
+### Breaking Parts
+
+You'll probably break parts on this lab - you'll know by the burning smell!
+
+This will sometimes result in a short, causing you to burn out one of the fuses on the battery management board that protect the batteries.  When the light on the battery goes from green to yellow, that means there's something is wrong. Either the battery is dead or you've burned a fuse.
+
+To test whether a fuse is burned, use the ohmmeter - a working fuse should have very little resistance. You should turn off the power before you do this!  You can also use a voltmeter - there shouldn't be much voltage drop across a working fuse.  If you have burned a fuse, don't just replace it and try again - try to figure out what caused the fuse to burn in the first place! If you burned your motor driver chip, replace that - but also figure out why you burned it!  If you don't fix the root cause, you'll just break more parts and cost yourself more time / frustration.
 
 ## Grading
 
