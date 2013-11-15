@@ -1,23 +1,21 @@
+Try to flip classroom in some lessons - have them watch videos at home, then do practical exercises in-class.
+
+Revamp lessons to be more in reverse - show demo, then code, then explain code, then explain concepts.
+
 Look into more interactive exercises.  Have cadets bring computers, MSP430 boards to class - actually do in-class coding.
 
 Look into screen-sharing - remote desktop into cadet machines and show them writing code in front of rest of class.
 
 Do more in-class exercises.  Maybe brief coding assignments in-class with me walking around.  Just get people into the practice of writing code.
 
-Add note to logic analyzer about how to plug wires into the probes - lot of people screwing that up.  Also add note about aliasing.
-
-Add videos of functioning labs.  Tough to explain what the lab should do - just show a video, that will get the message across much better.
-
 Add more practical demos where possible - MSP430 interfacing with different types of hardware, doing different things, etc.
 
-- Change Lab 5 game to memory game?  
-
 GR Notes
+
+This was a time crunch!  Need to make it shorter for the next time.
 
 Revisit stack problem with respect to the class - just give everyone credit this time around because we didn't go over it in class.
 
 Add space for addressing modes in hand-assembly problem.  Lots of people forgot.  Or 
 
 In SPI problem, give spot for 4 signals - lots of people did signal characteristics.
-
-
