@@ -19,3 +19,13 @@ Revisit stack problem with respect to the class - just give everyone credit this
 Add space for addressing modes in hand-assembly problem.  Lots of people forgot.  Or 
 
 In SPI problem, give spot for 4 signals - lots of people did signal characteristics.
+
+Lab Notes:
+ 
+Give more step-by-step guidance.  Need to break down labs into different steps â donât put all info on single page.  Info is there, just need to make it more digestible.  Cadets are frustrated, find it hard to get started.
+ 
+GR1:
+ 
+Give full credit for stack question since we didnât really touch on it in class.
+Next year, eliminate one of the hand assembly questions.  Put actual space for addressing modes â make them same as number of addressing modes in instruction.
+If you do stack, put memory addresses in table.
