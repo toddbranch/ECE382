@@ -31,8 +31,9 @@ title = 'Datasheets'
 
 ### git
 
-- [Git Tutorial](git_tutorial.html)
 - [Install Git](git_install.html)
+- [Git Tutorial](git_tutorial.html)
+- [Git Cheatsheet](http://www.ndpsoftware.com/git-cheatsheet.html#loc=workspace)
 - [Open Source](open_source.html)
 
 ### vim
