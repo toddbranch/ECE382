@@ -35,6 +35,8 @@ Release a robot movement library on Github.  Document your interface and provide
 
 Use input capture to count PWM periods instead of `_delay_cycles()` to determine the length of your movement elements.
 
+You can use a dedicated PWM signal for timing - this is probably the easiest approach.
+
 ## Prelab
 
 Paste the grading section in your lab notebook as the first page of this lab.
