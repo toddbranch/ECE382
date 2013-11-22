@@ -53,9 +53,10 @@ Let's run the code!
 int main(void)
 {
   WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
-  ADC10CTL0 = ADC10SHT_2 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled
-  ADC10CTL1 = INCH_4;                       // input A1
-  ADC10AE0 |= 0x08;                         // PA.1 ADC option select
+  ADC10CTL0 = ADC10SHT_3 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled
+  ADC10CTL1 = INCH_4;                       // input A4
+  ADC10AE0 |= BIT4;                         // PA.1 ADC option select
+	ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;				// Select SMCLK
   P1DIR |= 0x01;                            // Set P1.0 to output direction
 
   for (;;)
@@ -85,26 +86,77 @@ So how does this work on the MSP430?
 
 In the above code, we used the MSP430's ADC10 subsystem to take the readings - the 10 indicates the number of bits of resolution we have to represent each sample.
 
-
 If we have 10 bits, what's the highest value our ADC can return?  0x3FF!
 
 Let's walk through the code and see what each line is doing.
 
-`ADC10CTL0 = ADC10SHT_2 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled`
+`ADC10CTL0 = ADC10SHT_3 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled`
 
-So we're setting some bits in the ADC10CTL0 register - what are these bits doing?  Let's check out the register:
+So we're setting some bits in the `ADC10CTL0` register - what are these bits doing?  Let's check out the register:
 
 ![ADC10CTL0 Register](ADC10CTL0.jpg)
 ![ADC10CTL0 Register Continued](ADC10CTL0-cont.jpg)
 
+`ADC10CTL0 = ADC10SHT_3 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled`
 
+`ADC10SHT_3` controls the amount of time per sample.  Section 22.2.5.1 of the Family Users Guide gives more information on this.  Essentially, the higher the input impedance seen by the chip, the longer you'll need to sample to get an accurate reading.  You can view the input pin as a low-pass filer.  On our robots, input impedance changes based on the amount of light reflected - it gets lower if more light is reflected.  **My advice would be to choose the longest possible sampling period to be safe.**  This also means that your ADC will be more accurate at close distances.
+
+`ADC10ON` turns the subsystem on.  `ADC10IE` enables the corresponding interrupt.
+
+```c
+  ADC10CTL1 = INCH_4;                       // input A4
+  ADC10AE0 |= BIT4;                         // PA.1 ADC option select
+  ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;       // Select SMCLK
+  P1DIR |= 0x01;                            // Set P1.0 to output direction
+```
+
+So we're setting bits in the `ADC10CTL1` and `ADC10AE0` registers - let's take a look at those.
 
 ![ADC10CTL1 Register](ADC10CTL1.jpg)
 ![ADC10CTL1 Register Continued](ADC10CTL1-cont.jpg)
 
 ![ADC10AE0 Register](ADC10AE0.jpg)
 
+```c
+  ADC10CTL1 = INCH_4;                       // input A4
+  ADC10AE0 |= BIT4;                         // PA.1 ADC option select
+  ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;       // Select SMCLK
+  P1DIR |= 0x01;                            // Set P1.0 to output direction
+```
+
+`ADC10CTL1 = INCH_4;` selects the input channel to be A4.  There are many other options we can choose here, including an internal temperature sensor.
+
+`ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;` selects the SMCLK to be our ADC clock source.  This runs at roughly 1MHz by default.  If we leave this unchanged, we'll use ADC10OSC as our clock source - which runs at roughly 5MHz.  This is also impacts our sample period - which is important depending on the impedance of our signal.
+
+`ADC10AE0 |= BIT4;` this sets up A4 for analog input - disabling any internal chip resistors, etc. that could interfere. 
+
+`P1DIR |= 0x01;` just sets P1.0 to output so we can light up the LED on the Launchpad.
+
+And now onto our `for` loop - that uses the ADC10MEM register:
+
+```c
+  for (;;)
+  {
+    ADC10CTL0 |= ENC + ADC10SC;             // Sampling and conversion start
+    __bis_SR_register(CPUOFF + GIE);        // LPM0, ADC10_ISR will force exit
+    if (ADC10MEM < 0x1FF)
+      P1OUT &= ~0x01;                       // Clear P1.0 LED off
+    else
+      P1OUT |= 0x01;                        // Set P1.0 LED on
+  }
+```
+
 ![ADC10MEM Register](ADC10MEM.jpg)
+
+`for (;;)` is a forever loop - the same as `while (1)`.
+
+`ADC10CTL0 |= ENC + ADC10SC;` - the ENC bit enables the core.  Control bits can only be modified when the core is disabled.  The ADC10SC bit tells the core to begin a sample-and-conversion sequence.
+
+`__bis_SR_register(CPUOFF + GIE);` - here's some low-power code!  We're going to turn off the CPU and enable interrupts.
+
+When the interrupt is triggered, we'll execute `__bic_SR_register_on_exit(CPUOFF);`, re-enabling the CPU and executing our next instructions.
+
+Finally, we'll read the sample we took in via `if (ADC10MEM < 0x1FF)` - `ADC10MEM` is where our sample is stored. We'll use the reading to light the LED if it's above a threshold.
 
 But how does the underlying technology work?
 
