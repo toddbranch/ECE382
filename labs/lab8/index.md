@@ -2,6 +2,10 @@ title = 'Lab 8 - Robot Maze'
 
 # Lab 8 - Robot Maze
 
+[Teaching Notes](notes.html)
+
+**[A Note On Robot Sharing](/labs/lab6/other_peoples_robots.html)**
+
 ## Overview
 
 During this lab, you will combine the previous laboratory assignments and program your robot to autonomously navigate through a maze.  On the last day of the lab, each section will hold a competition to see who can solve the maze the fastest.  The fastest time in ECE 383 will have their name engraved on a plaque in the CSD lab.  Believe it or not, the main goal of this lab is for you to have some fun with electrical and computer engineering!

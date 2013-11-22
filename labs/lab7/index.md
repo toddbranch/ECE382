@@ -2,6 +2,10 @@ title = 'Lab 7 - A/D Conversion - "Robot Sensing"'
 
 # Lab 7 - A/D Conversion - "Robot Sensing"
 
+[Teaching Notes](notes.html)
+
+**[A Note On Robot Sharing](/labs/lab6/other_peoples_robots.html)**
+
 ## Overview
 
 This lab is designed to assist you in learning the concepts associated with the analog-to-digital converter (ADC) for your MSP430.  A set of three infrared (IR) emitter and detector pairs on your robot is used to bring in analog voltage values for the ADC.  You will program your MSP430 to interpret these incoming voltages to determine whether your mobile robot is approaching a wall in front or on one of its sides.  The skills you will learn from this lab will come in handy in the future – especially for your senior design project since many designs require you to interface analog systems with digital systems.
