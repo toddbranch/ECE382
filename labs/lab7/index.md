@@ -2,6 +2,8 @@ title = 'Lab 7 - A/D Conversion - "Robot Sensing"'
 
 # Lab 7 - A/D Conversion - "Robot Sensing"
 
+[Teaching Notes](notes.html)
+
 **[A Note On Robot Sharing](/labs/lab6/other_peoples_robots.html)**
 
 ## Overview
