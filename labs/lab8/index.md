@@ -6,7 +6,7 @@ title = 'Lab 8 - Robot Maze'
 
 ## Overview
 
-During this lab, you will combine the previous laboratory assignments and program your robot to autonomously navigate through a maze.  On the last day of the lab, each section will hold a competition to see who can solve the maze the fastest.  The fastest time in ECE 383 will have their name engraved on a plaque in the CSD lab.  Believe it or not, the main goal of this lab is for you to have some fun with computer engineering!
+During this lab, you will combine the previous laboratory assignments and program your robot to autonomously navigate through a maze.  On the last day of the lab, each section will hold a competition to see who can solve the maze the fastest.  The fastest time in ECE 382 will have their name engraved on a plaque in the CSD lab.  Believe it or not, the main goal of this lab is for you to have some fun with computer engineering!
 
 ## Requirements
 
@@ -43,6 +43,7 @@ Include whatever information from this lab you think will be useful in creating 
 Consider your maze navigation strategy.  Write pseudocode to show what your main program loop will look like.
 
 ## Hints
+
 There are a variety of techniques that cadets have used in the past to solve the maze.  Here are a few:
 
 - Use a wall-following algorithm (i.e., it tries to maintain a certain distance from the wall).
