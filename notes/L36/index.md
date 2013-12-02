@@ -6,6 +6,7 @@ title = 'Analog-to-Digital and Digital-to-Analog Conversion. Lab 7 / 8 Intro.'
 - Lab 7 Prelab
 
 ## Lesson Outline
+- Admin
 - Robot Demo
 - ADC Example Code
 - The MSP430's ADC10
@@ -15,7 +16,22 @@ title = 'Analog-to-Digital and Digital-to-Analog Conversion. Lab 7 / 8 Intro.'
 
 ## Admin
 
+- Amazon Drone video!
+  - http://www.youtube.com/watch?v=98BIu9dpwHU&feature=youtu.be
+  - You better believe there are microcontrollers in that thing!
+- Demo robot fix
+  - I sent this e-mail on the Friday before break, but wanted to show you the fix in action
+  - It turns out that the RESET line on the MSP430 is extremely sensitive to noise, which DC motors can create
+  - To guard against the noise we can use a small (10pF) capacitor to smooth any voltage variation
+  - Demo before fix, demo after fix
+- Make up assignment
+  - I'm offering an opportunity to do an assignment that will replace your lowest score
+  - Send me 1 pull request on Github for the course website or file three issue reports for the course website
+  - They must be meaningful, not necessarily specific
+
 This is our last in-class lesson of the year!  I'm going to experiment with a new approach today where I kind of start at the end and work backward - let me know what you think!
+
+From here on out, we're working toward getting you through the maze.  This lesson will show you how to use the robot sensors to detect walls and move your robot accordingly.
 
 ## Robot Demo
 
@@ -41,7 +57,7 @@ In Lab 7, you'll have to use Analog-to-Digital conversion to take these readings
 
 Let's take the first sensor readings from our robot.  This code monitors A4, located on P1.4.  If the voltage on that pin is above the threshold 0x1FF, it sets P1.0 (an LED on the Launchpad).  Otherwise, it clears it.
 
-Let's run the code!
+Let's run the code!  Later I'll go through it line-by-line.
 
 *[Demo on robot - hook up DMM to measure voltage into A-to-D]*
 
@@ -99,7 +115,7 @@ So we're setting some bits in the `ADC10CTL0` register - what are these bits doi
 
 `ADC10CTL0 = ADC10SHT_3 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled`
 
-`ADC10SHT_3` controls the amount of time per sample.  Section 22.2.5.1 of the Family Users Guide gives more information on this.  Essentially, the higher the input impedance seen by the chip, the longer you'll need to sample to get an accurate reading.  You can view the input pin as a low-pass filer.  On our robots, input impedance changes based on the amount of light reflected - it gets lower if more light is reflected.  **My advice would be to choose the longest possible sampling period to be safe.**  This also means that your ADC will be more accurate at close distances.
+`ADC10SHT_3` controls the amount of time per sample.  Section 22.2.5.1 of the Family Users Guide gives more information on this.  Essentially, the higher the input impedance seen by the chip, the longer you'll need to sample to get an accurate reading.  You can view the input pin as a low-pass filer.  On our robots, input impedance changes based on the amount of light reflected - it gets lower if more light is reflected.  There is **significant** loading at low voltages.  **My advice would be to choose the longest possible sampling period to be safe.**  This also means that your ADC will be more accurate at close distances.  You can tell you have loading if the voltage reading changes when you plug it into the chip.
 
 `ADC10ON` turns the subsystem on.  `ADC10IE` enables the corresponding interrupt.
 
@@ -126,9 +142,9 @@ So we're setting bits in the `ADC10CTL1` and `ADC10AE0` registers - let's take a
 
 `ADC10CTL1 = INCH_4;` selects the input channel to be A4.  There are many other options we can choose here, including an internal temperature sensor.
 
-`ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;` selects the SMCLK to be our ADC clock source.  This runs at roughly 1MHz by default.  If we leave this unchanged, we'll use ADC10OSC as our clock source - which runs at roughly 5MHz.  This is also impacts our sample period - which is important depending on the impedance of our signal.
+`ADC10AE0 |= BIT4;` this sets up A4 for analog input - disabling any internal chip components, etc. that could interfere. 
 
-`ADC10AE0 |= BIT4;` this sets up A4 for analog input - disabling any internal chip resistors, etc. that could interfere. 
+`ADC10CTL1 |= ADC10SSEL1|ADC10SSEL0;` selects the SMCLK to be our ADC clock source.  This runs at roughly 1MHz by default.  If we leave this unchanged, we'll use ADC10OSC as our clock source - which runs at roughly 5MHz.  This is also impacts our sample period - which is important depending on the impedance of our signal.  Remember the loading problems we talked about earlier?
 
 `P1DIR |= 0x01;` just sets P1.0 to output so we can light up the LED on the Launchpad.
 
@@ -144,6 +160,15 @@ And now onto our `for` loop - that uses the ADC10MEM register:
     else
       P1OUT |= 0x01;                        // Set P1.0 LED on
   }
+
+
+
+// ADC10 interrupt service routine
+#pragma vector=ADC10_VECTOR
+__interrupt void ADC10_ISR(void)
+{
+  __bic_SR_register_on_exit(CPUOFF);        // Clear CPUOFF bit from 0(SR)
+}
 ```
 
 ![ADC10MEM Register](ADC10MEM.jpg)
@@ -162,24 +187,38 @@ But how does the underlying technology work?
 
 ## Analog-to-Digital Conversion
 
-If we have a 10 bit ADC, how many unique values can we represent?
+![Analog to Digital Conversion](ATD.png)
 
-Talk about the equation first.
+Some questions:
 
-- Generate a digital value that represents the input voltage "level"
-- Levels usually range from (0 to 2^b) or (-2^(b-1) to 2^(b-1)-1)
-- *Clipping* - above / below Vrh / Vrl voltages
+- If we have a 10 bit ADC, how many unique values can we represent?
+- What's better a smaller resolution or larger resolution?
+- How can we improve resolution?  This is important on the robot - better resolution means you'll be able to see walls sooner.
 
 ### ATD Technologies
 
-Talk about how it works.  On our chip, we have a Successive Approximation ADC.
+On our chip, we have a Successive Approximation ADC.
+
+![Successive Approximation ADC](successive_approximation.png)
+
+### Digital-to-Analog Conversion
+
+Your chips do not have Digital-to-Analog hardware on board, but they're out there!
+
+![Digital to Analog Conversion](DTA.png)
+
+How would the robot motion lab have been easier if you had access to a DAC?
 
 ## Lab 7 / 8 Introduction
 
-How can we use what we just learned to determine how to set our Vref value?
+[Lab 7](/labs/lab7/index.html)
 
-We want our Vref to be as close as possible to the highest voltage we expect to convert.  You need to characterize your robot in the maze to determine this.
+## End of Semster Talk
 
-## Digital-to-Analog Conversion
+Congratulations on getting this far.  This class underwent a ton of changes this semester.  A lot of material we used to teach in ECE383 was moved into this course.  We also hit on a few topics we've never taught before.  Some of the material was brand new and untested.  The class got much harder than it had been in the past.  I know a lot of you were pushed to do things you weren't comfortable with.  I hope you can see the value in the skills you've learned.  I think you'll find them some of the most useful, practical things you'll learn.  I'm excited to see what you do with them in capstone and beyond.
 
-Your chips do not have Digital-to-Analog hardware on board, but it's out there!
+General advice about living in the moment and not looking to future events to fix your problems.
+
+http://www.thisamericanlife.org/radio-archives/episode/494/hit-the-road - 2030-2400
+
+I'm going to send out an e-mail about course critiques - if you do them, I'll drop your lowest assignment.
