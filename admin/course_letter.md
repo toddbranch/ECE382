@@ -41,7 +41,7 @@ You must request permission from your instructor for any class absence (with a d
 
 ### Collaboration Policy
 
-For all assignments in this course, you may work with any faculty members or students **currently** enrolled in ECE382 unless otherwise indicated.  We expect all graded work, to include software programs, wired circuits, lab notebooks, and written reports, to be your own work.  If they aren't, you've copied and will receive **no academic credit** even if the copying is documented.  Further, copying without attribution id dishonorable and will be dealt with as a suspected honor code violation.  As in all courses, cadets must document any assistance received in the execution of graded work.  If you receive no assistance on an assignment, the use of the **Documentation: None** statement is mandatory.  If no documentation statement exists, the assignment will be returned for correction and the work will be considered at least one day late.
+For all assignments in this course, you may work with any faculty members or students **currently** enrolled in ECE382 unless otherwise indicated.  We expect all graded work, to include software programs, wired circuits, lab notebooks, and written reports, to be your own work.  If they aren't, you've copied and will receive **no academic credit** even if the copying is documented.  Further, copying without attribution is dishonorable and will be dealt with as a suspected honor code violation.  As in all courses, cadets must document any assistance received in the execution of graded work.  If you receive no assistance on an assignment, the use of the **Documentation: None** statement is mandatory.  If no documentation statement exists, the assignment will be returned for correction and the work will be considered at least one day late.
 
 ### Homework
 
@@ -55,7 +55,7 @@ Reading assignments are provided at the top of the lesson notes and should be ac
 
 All exams are closed textbook and notes.  Cadets are allowed to use only the provided TI documents and data sheets for exams and quizzes.  Both laboratory and classroom work will appear on exams.  For missed GRs, the following policies are outlined:
 
-- **Scheduled Absence** - If you know that you will be unable to take the GR during the scheduled GR period, yo uare required to inform your instructor as soon as possible before the GR to schedule a make-up exam.
+- **Scheduled Absence** - If you know that you will be unable to take the GR during the scheduled GR period, you are required to inform your instructor as soon as possible before the GR to schedule a make-up exam.
 - **Unscheduled Absense** - If you miss the GR for reasons beyond your control (e.g. hospitalization, emergency leave, delayed field trip return, etc.) you must contact DFEC (x3190) within **two working days** to schedule a make-up.  Exceptions can only be granted by the Department Head.
 
 ### Course Materials

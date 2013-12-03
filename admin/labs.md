@@ -32,7 +32,7 @@ Although handwritten (and in ink), it must be neat.  Erroneous entries (and larg
 
 ### Electronic Lab Notebooks
 
-If you choose to use an electronic lab notebook, we'll be using the version control software **git** and your code must be hosted on [Github](www.github.com).  Here is the directory structure that must be used:
+If you choose to use an electronic lab notebook, we'll be using the version control software **git** and your code must be hosted on [Github](http://www.github.com).  Here is the directory structure that must be used:
 
 - /LabX
     - /code

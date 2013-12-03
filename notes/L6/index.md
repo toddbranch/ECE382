@@ -153,7 +153,7 @@ setz
 
 ## Flow of Control
 
-Often times, we want to execute certain pieces of code conditionally.  In computer science, **control flow** refers to the order in which instructions in a program are executed.  Higher level languages use constructs like if/then/else statements or switch statements or loops to achieve this.  
+Oftentimes, we want to execute certain pieces of code conditionally.  In computer science, **control flow** refers to the order in which instructions in a program are executed.  Higher level languages use constructs like if/then/else statements or switch statements or loops to achieve this.  
 
 ``` 
 if (a > 10) {

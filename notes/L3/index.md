@@ -201,7 +201,7 @@ Talk about differences in naming between loops that do the same thing - good for
 
 ### Two Operand Instructions
 
-There are generally of the form `OP src, dst` which actually means `dest = src OP dest`.
+These are generally of the form `OP src, dst` which actually means `dest = src OP dest`.
 
 | Opcode | Assembly Instruction | Description | Notes |
 | :---: | :---: | :---: | :---: |
