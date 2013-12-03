@@ -107,7 +107,7 @@ Each TACCRx has two possible capture pins - CCIxA and CCIxB.  The one being moni
 
 If a capture occurs:
 	- The TAR value is copied into the TACCRx register
-	- THe interrupt flag CCIFG is set
+	- The interrupt flag CCIFG is set
 
 ![Capture Cycle](capture_cycle.jpg)
 
