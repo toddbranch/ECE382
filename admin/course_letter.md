@@ -13,7 +13,6 @@ E-mail: todd.branchflower@usafa.edu
 
 **Dr. George York**  
 Office: 2E46E  
-Phone:   
 E-mail: george.york@usafa.edu  
 
 ### Course Objectives
