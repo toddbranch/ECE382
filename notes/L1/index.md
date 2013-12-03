@@ -55,8 +55,6 @@ We're going to get very hands-on and expect you to build things that actually wo
 
 *[My slides]*
 
-[Dr. George York](york.html)
-
 Capt Branchflower - I have an interest in Linux and low-level systems programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
 ## Admin
