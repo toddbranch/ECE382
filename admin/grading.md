@@ -29,7 +29,7 @@ If problems arise with graded assignments, see your instructor in advance.  Assi
 
 ## CheckPlus / Check / CheckMinus / 0
 
-Many assignments in this course will be graded on the CheckPlus / Check / CheckMinus / 0 scale.  The goal here is to give you fast feedback without putting an undue grading burden on instructore.  Here are some general guidelines about what these grades mean:
+Many assignments in this course will be graded on the CheckPlus / Check / CheckMinus / 0 scale.  The goal here is to give you fast feedback without putting an undue grading burden on instructor.  Here are some general guidelines about what these grades mean:
 
 - **CheckPlus** - Superlative.  Truly outstanding work.  Complete and thorough.  Any mistakes are minor and do not detract from the assignment.  Corresponds to grade of 100%.
 - **Check** - Good work.  Few errors or omissions.  Corresponds to grade of 85%.
