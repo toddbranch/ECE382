@@ -1,5 +1,9 @@
 # Lab 7 Notes
 
+- **No walking in the mazes!**  You will break the floor!
+
+- It's probably a good idea to choose one maze and stick with it - different shadows in other mazes can impact your sensor readings.
+
 - You can dead-reckon for the competition, not for functionality!  Functionality must use at least one sensor.
 - Deadline for makeup assignment is L40.  Deadline for course critiques is BOC L39.
 
