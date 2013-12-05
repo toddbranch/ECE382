@@ -1,5 +1,7 @@
 # USAFA ECE382 (Embedded Systems I) Course Website
 
+Live site: www.ece382.com
+
 Course Director - Capt Todd Branchflower, todd.branchflower@usafa.edu
 
 ## Building the Site
