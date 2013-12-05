@@ -2,6 +2,8 @@ title = 'Lab 8 - Robot Maze'
 
 # Lab 8 - Robot Maze
 
+[Teaching Notes](notes.html)
+
 **[A Note On Robot Sharing](/labs/lab6/other_peoples_robots.html)**
 
 ## Overview
@@ -18,6 +20,7 @@ You must write a program that autonomously navigates your robot through a maze (
   1. Door 1 - Required Functionality
   2. Door 2 - B Functionality
   3. Door 3 - A Functionality
+  4. Bonus!  Navigate from the A door back to the entrance using the same algorithm.
 4. Your robot must solve the maze in less than three minutes.
 5. Your robot will be stopped if it touches the wall more than twice.
 6. Your robot must use the IR sensors to find its path through the maze.
@@ -61,6 +64,7 @@ There are a variety of techniques that cadets have used in the past to solve the
 | Required Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L40 |
 | B Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
 | A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
+| Bonus Functionality | **On-Time** -------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
 | Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
 | Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
 | README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L40 |
