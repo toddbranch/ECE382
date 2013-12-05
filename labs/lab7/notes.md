@@ -9,6 +9,7 @@
 
 - If you want to change the ADC configuration, you have to ensure the ENC bit is clear.  The chip won't allow you to change settings without clearing this bit.  You'll need to change settings when switching sensors!
 - If your chip is in the breadboard, you'll have to wire it to the appropriate pins on the Launchpad to light the LEDs.
+- If you want to use P1.1 or P1.2, you should remove the TXD and RXD jumpers.
 
 - Be mindful of your interface when writing code!  You'll want to hide all of this complexity in a library once you get to the maze.
   - `unsigned int getLeftSensorReading()` seems like a good prototype
@@ -18,3 +19,13 @@
 - The code in the L36 notes uses interrupts - you don't necessarily have to do that.
   - The `ADC10IFG` flag indicates `ADC10MEM` has been loaded with a conversion result.  It is automatically reset if the interrupt request is accepted.
   - You can also poll this flag and reset it in software.
+
+- Be mindful of loading problems!
+  - You know there's loading when the voltage you're reading changes when you hook up your MSP430
+  - You can reduce loading by:
+    - Slowing down sampling:
+      - Increase sample and hold time
+      - Use slower clock
+      - Divide clock
+    - Reducing input impedance:
+      - Make potentiometer resistance for sensors smaller
