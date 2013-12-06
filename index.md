@@ -1,6 +1,6 @@
 title = 'Intro to Embedded Systems with the MSP430'
 
-# Lesson Notes
+# ECE382 - Embedded Systems I
 
 **Find a problem?  The source behind this site is available on Github: [file a bug report or send me a pull request!](https://github.com/toddbranch/ECE382/issues)**
 
