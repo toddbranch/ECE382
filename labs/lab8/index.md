@@ -49,6 +49,10 @@ Consider your maze navigation strategy.  Write pseudocode to show what your main
 
 ## Hints
 
+Only the door you are trying to get functionality for will be open - all others will be closed.  We can't expect our robot to know to skip openings!
+
+If you get A Functionality, you get credit for Required and B Functionality.  There is no need to complete the maze through all doors.
+
 There are a variety of techniques that cadets have used in the past to solve the maze.  Here are a few:
 
 - Use a wall-following algorithm (i.e., it tries to maintain a certain distance from the wall).
