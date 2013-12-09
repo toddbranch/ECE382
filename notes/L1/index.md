@@ -36,7 +36,7 @@ My goal is for you to leave this course with enough knowledge to be confident yo
 
 Did anyone do the reading for today?!  Readings / Assignments in the lesson notes on the course website.
 
-So if you read, what are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.
+So if you read, what are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accommodate a wide range of needs.
 
 Embedded systems are different - they're built to interact with the real-world and perform very specific functions, often with difficult constraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.  Or perform functions in manufacturing lines, power plants or water treatment facilities.
 
@@ -86,7 +86,7 @@ There have been a **ton** of changes in this course from last year to this.  We'
     - Late Policy
     - Course Text (optional!)
         - The information you need is in the datasheets, but they aren't always user friendly
-        - The book definitely gives you a more digestable explanation of a lot of the features / subsystems
+        - The book definitely gives you a more digestible explanation of a lot of the features / subsystems
         - If you didn't get the book, don't expect that I'll give you what it says in EI
 - Instructor policies:
     - Go over teaching schedule
@@ -137,7 +137,7 @@ Now, let's see where we are in the overall hierarchy of ECE - and talk about CPU
 ![EE Hierarchy](EE_hierarchy.png)
 
 [Instruction Set Architecture (ISA)](https://en.wikipedia.org/wiki/Instruction_set)  
-The ISA is the programmer's view of the processor.  Processors with the same ISA share the same data types, assembly lanugage instructions, registers, addressing modes, memory architecture, interrupts, IO, etc.  This is the API into the processor for the programmer - the tools the programmer has access to to accomplish what they want.
+The ISA is the programmer's view of the processor.  Processors with the same ISA share the same data types, assembly language instructions, registers, addressing modes, memory architecture, interrupts, IO, etc.  This is the API into the processor for the programmer - the tools the programmer has access to to accomplish what they want.
 
 Are all processors that implement an ISA the same?  Are the Intel and AMD chips that implement x86 the same (Pentium, Athlon)?  **Pause - wait for answer**.  NO - different microarchitectures.
 
@@ -175,7 +175,7 @@ Early in the history of computing, most programming was done using the ISA direc
 
 Brief summary on board.
 
-Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.  So programmer convenience became less of an driving force behind ISA design.  Designers noticed that compilers didn't need many of the features meant to facilitate manual assembly programming.  They thought that these *complex* instruction could be replaced with sequences of simpler ones.  The simpler hardware would give room for more registers, reducing the number of slow memory accesses.  In these designs, instructions were typically of uniform length - allowing for better pipelining and higher clock frequences.  This strategy became known as Reduced Instruction Set Computing (RISC).
+Over time, people began to gravitate toward higher-level compiled languages like C for their benefits in portability and programmer productivity.  Good, portable compilers along with open operating systems had been developed and fewer programs were being written in assembly language.  So programmer convenience became less of an driving force behind ISA design.  Designers noticed that compilers didn't need many of the features meant to facilitate manual assembly programming.  They thought that these *complex* instruction could be replaced with sequences of simpler ones.  The simpler hardware would give room for more registers, reducing the number of slow memory accesses.  In these designs, instructions were typically of uniform length - allowing for better pipelining and higher clock frequencies.  This strategy became known as Reduced Instruction Set Computing (RISC).
 
 Brief summary on board.
 

@@ -158,7 +158,7 @@ For the first half of this course, we'll be writing in assembly.  We use an **as
 
 What's the first program we write when we're learning a language?  Hello, world!  But we don't have a screen on our dev board.  So we use the only thing we've got - turn on the LEDs.
 
-*[Cat this prgoram to the screen, walk through what each instruction is doing]*
+*[Cat this program to the screen, walk through what each instruction is doing]*
 
 ```
 ; This program sets all pins on Port 1 to output and high.  Since LEDs 1 and 2 are connected to P1.0 and P1.6 respectively, they will light up.

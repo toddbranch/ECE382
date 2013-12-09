@@ -13,7 +13,7 @@ Due Date: **Beginning of Class (BOC), Lesson 3**
 
 **Authorized Resources**
 
-This review is **individual effort** and willbe counted as a quiz grade.  You may seek help from any instructor and reference any publication in its completion.  You may **not** reference ECE382 skills reviews from previous years.  Normal documentation is required.
+This review is **individual effort** and will be counted as a quiz grade.  You may seek help from any instructor and reference any publication in its completion.  You may **not** reference ECE382 skills reviews from previous years.  Normal documentation is required.
 
 ## Part 1: Software
 
@@ -26,7 +26,7 @@ This will not be checked, but **it must be accomplished by BOC on Lesson 5**.  F
 Objectives:
 
 
-- Explain, by means of an example, the diea of positional weighting in numbering systems.
+- Explain, by means of an example, the idea of positional weighting in numbering systems.
 - Convert an arbitrary base Q number to a decimal number.
 - Convert a decimal number to a number with base Q.
 

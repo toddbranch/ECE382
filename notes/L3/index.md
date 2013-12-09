@@ -226,7 +226,7 @@ BCD - each decimal digit can be coded with 4 bits.  Takes care of the carries, e
 
 Talk about `+=`, `-=`, `^=`.
 
-Walk thorugh how BIC, BIS work.
+Walk through how BIC, BIS work.
 
 ### Emulated Instructions
 
@@ -374,7 +374,7 @@ The first 4 bits are the opcode, which we'll look up - it's `0100`.  Next, we ne
 
 Let's try another two-operand instruction - `add.b #0xC7, r10` - from our disassembly, `c014:	7a 50 c7 00 	add.b	#199,	r10	;#0x00c7`.
 
-This addes the value 0xC7 to r10.
+This adds the value 0xC7 to r10.
 
 The first 4 bits are the opcode, which we'll look up - it's `0101`.  Next, we need to indicate the source register.  Since we're using an immediate, we'll look at the word following our instruction for our value - the location pointed to by the PC  - so the source is the PC `0000`.  Next, we need to know the addressing mode of the destination.  It's Register Direct - `0`, it only needs a single bit because there are only two ways the destination can be addressed.  Next, we need to know if it's a byte or word instruction.  It's a byte, so `1`.  Finally, source addressing mode - we're referencing the value at the address pointed to by the PC, so register indirect - we also need to post-increment so it contains the next executable instruction.  So register indirect with post-increment - `11`.  The PC always increments by 2 when this is specified because the word size is 2 bytes.  Finally, we need the destination register, r10 - `1010`.  So our hand-assembled machine code instruction is `0101 0000 0111 1010` or `7a 50` in little-endian hex.
 
