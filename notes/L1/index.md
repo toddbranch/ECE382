@@ -38,7 +38,7 @@ Did anyone do the reading for today?!  Readings / Assignments in the lesson note
 
 So if you read, what are embedded systems?  You're familiar with general-purpose computers - devices that are designed to be flexible and accomodate a wide range of needs.
 
-Embedded systems are different - they're built to interact with the real-world and perform very specific functions, often with difficult contraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.  Or perform functions in manufacturing lines, power plants or water treatment facilities.
+Embedded systems are different - they're built to interact with the real-world and perform very specific functions, often with difficult constraints (timing, power, etc).  These are the systems that monitor the engine temperature in your car, power your digital watch, the brains of your microwave, etc.  Or perform functions in manufacturing lines, power plants or water treatment facilities.
 
 I think that this area of computing is going to be a big part of the future.  
 [Swarm of Quadrotors](http://www.youtube.com/watch?v=YQIMGV5vtd4)

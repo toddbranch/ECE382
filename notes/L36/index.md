@@ -115,7 +115,7 @@ So we're setting some bits in the `ADC10CTL0` register - what are these bits doi
 
 `ADC10CTL0 = ADC10SHT_3 + ADC10ON + ADC10IE; // ADC10ON, interrupt enabled`
 
-`ADC10SHT_3` controls the amount of time per sample.  Section 22.2.5.1 of the Family Users Guide gives more information on this.  Essentially, the higher the input impedance seen by the chip, the longer you'll need to sample to get an accurate reading.  You can view the input pin as a low-pass filer.  On our robots, input impedance changes based on the amount of light reflected - it gets lower if more light is reflected.  There is **significant** loading at low voltages.  **My advice would be to choose the longest possible sampling period to be safe.**  This also means that your ADC will be more accurate at close distances.  You can tell you have loading if the voltage reading changes when you plug it into the chip.
+`ADC10SHT_3` controls the amount of time per sample.  Section 22.2.5.1 of the Family Users Guide gives more information on this.  Essentially, the higher the input impedance seen by the chip, the longer you'll need to sample to get an accurate reading.  You can view the input pin as a low-pass filter.  On our robots, input impedance changes based on the amount of light reflected - it gets lower if more light is reflected.  There is **significant** loading at low voltages.  **My advice would be to choose the longest possible sampling period to be safe.**  This also means that your ADC will be more accurate at close distances.  You can tell you have loading if the voltage reading changes when you plug it into the chip.
 
 `ADC10ON` turns the subsystem on.  `ADC10IE` enables the corresponding interrupt.
 

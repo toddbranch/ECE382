@@ -24,7 +24,7 @@ Create a standalone library for your ATD code and release it on Github.  This sh
 
 ## A Functionality
 
-Since each robot’s sensors are a little bit different, you need to fully characterize the sensor for your robot.  Create a table and graphical plot that shows the ATD values for a variety of distances from a maze wall.  This table/graph must be generated for each IR sensor.  Use these values to determine how the IR sensors work so you can properly use them to solve the maze.
+Since each robot's sensors are a little bit different, you need to fully characterize the sensor for your robot.  Create a table and graphical plot that shows the ATD values for a variety of distances from a maze wall.  This table/graph must be generated for each IR sensor.  Use these values to determine how the IR sensors work so you can properly use them to solve the maze.
 
 ## Prelab
 
