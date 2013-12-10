@@ -40,11 +40,11 @@ But how can we do this with the MSP430?  GPIO only gives us logical 1 or 0.  We 
 
 ## Pulse Width Modulation
 
-Imagine a lightbulb that is on 50% of the time and off 50% of the time.  *[Draw waveform with 50% duty cycle on the board]*.
+Imagine a light bulb that is on 50% of the time and off 50% of the time.  *[Draw waveform with 50% duty cycle on the board]*.
 
 *[Turn classroom lights on and off]*
 
-If the frequency of the change is very slow, it would be very noticable that we're just switching between two digital states.
+If the frequency of the change is very slow, it would be very noticeable that we're just switching between two digital states.
 
 But what if the frequency was very fast?  It would just appear as a light with 50% brightness!  It would appear like an analog voltage of 50% of the high voltage, providing 50% power.
 
@@ -125,7 +125,7 @@ In the lab, we only used Continuous.  But what does Up Mode do?
 
 It counts from 0 up to the value in TACCR0!  We can set the value in TACCR0 just by writing to it.
 
-TimerA0 also comes equipped with two more Capture / Compare registers - TA0CCR1 and TACCR2.  We can set their values by writing to them as well.  These gives us interesting capabilities.  While TimerA0 counts upward, these registers can perform actions when the values in them are passed.  Here's what they can do:
+TimerA0 also comes equipped with two more Capture / Compare registers - TA0CCR1 and TACCR2.  We can set their values by writing to them as well.  These give us interesting capabilities.  While TimerA0 counts upward, these registers can perform actions when the values in them are passed.  Here's what they can do:
 
 ![Output Modes](output_modes.jpg)
 
