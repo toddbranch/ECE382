@@ -43,7 +43,7 @@ This is the longest lab you've undertaken thus far.  **Use a modular approach to
 SPI Notes:
 
 - The LCD driver chip expects data to be read on the first clock edge and changed on the second.
-- The LCD driver chip expects the clock should be low when not trasnmitting.
+- The LCD driver chip expects the clock should be low when not transmitting.
 - The Launchpad doesn't come with an ACLK source installed.
 - The LCD can handle an unscaled SMCLK.
 - Other configuration info you can gather from the SPI lesson notes and datasheet.

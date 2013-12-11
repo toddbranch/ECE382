@@ -207,7 +207,7 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
 
 ### C Headers
 
-- A separate file that contians a related set of:
+- A separate file that contains a related set of:
     - Function _prototypes_
     - `typedef` declarations
     - `#define` constants
