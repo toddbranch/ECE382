@@ -28,4 +28,6 @@
       - Use slower clock
       - Divide clock
     - Reducing input impedance:
+      - Put a big resistor in parallel!
+        - Something like 5M between your ADC input and ground should work
       - Make potentiometer resistance for sensors smaller
