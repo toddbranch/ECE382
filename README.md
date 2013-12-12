@@ -14,6 +14,7 @@ I want you to help me make this the best Intro to Embedded course in existence! 
 
 - [Todd Branchflower](https://github.com/toddbranch)
 - [Kevin Cooper](https://github.com/KevinCooper)
+- [Travis Schriner](https://github.com/travisschriner)
 
 ## License
 
