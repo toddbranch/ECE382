@@ -14,7 +14,7 @@ See [Programming the MSP430 In-Circuit](in_circuit_programming.html).
 
 ![Top View of Assembled Robot with Annotations](robot_top.jpg)
 
-**Red Circle** - decoupling capactior placed across the 5V rail to prevent current fluctuation that may cause your MSP430 to reset.
+**Red Circle** - decoupling capacitor placed across the 5V rail to prevent current fluctuation that may cause your MSP430 to reset.
 
 **Light Blue Circle** - regulator that converts 5V to 3.3V to power your MSP430.  Hooking 5V directly up to your MSP430 would burn it!  See datasheet for more info.
 
