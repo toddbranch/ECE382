@@ -24,7 +24,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Prelab |
 | L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | |
 | L18 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/index.html) Functionality |
-| L19 | GR #1 | | [Lab 3](/labs/lab3/index.html) Notebook |
+| L19 | [GR #1](/admin/gr1_resources) | | [Lab 3](/labs/lab3/index.html) Notebook |
 | [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) | |
 | [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html) | [Assignment 5](/notes/L20/L20_C_basics.html) |
 | [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) | [Assignment 6](/notes/L21/L21_pong.html) |
@@ -37,7 +37,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L29 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab |
 | [L30](notes/L30/index.html) | More Advanced git.  Low Power Modes.  GR Review. | | [Lab 5](/labs/lab5/index.html) Functionality |
 | [L31](notes/L31/index.html) | Timer_A: Capture / Compare, Pulse Width Modulation.  Lab 6 Introduction. | | [Lab 5](/labs/lab5/index.html) Documentation |
-| L32 | GR #2 | [Lab 6](/labs/lab6/index.html) Prelab | |
+| L32 | [GR #2](/admin/gr2_resources) | [Lab 6](/labs/lab6/index.html) Prelab | |
 | L33 | [Lab 6](/labs/lab6/index.html) - Robot Motion | [Lab 6](/labs/lab6/index.html) | [Lab 6](/labs/lab6/index.html) Prelab |
 | L34 | [Lab 6](/labs/lab6/index.html) - Robot Motion | | |
 | L35 | [Lab 6](/labs/lab6/index.html) - Robot Motion | | [Lab 6](/labs/lab6/index.html) Functionality |
