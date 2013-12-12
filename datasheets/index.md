@@ -2,8 +2,8 @@ title = 'Datasheets'
 
 # Datasheets
 
-- [MSP430x2xx Family Users Guide](msp430_msp430x2xx_family_users_guide.pdf)
-- [MSP430G2x53 MSP430G2x13 Mixed Signal Microcontroller](msp430g2x53_2x13_mixed_sig_mcu.pdf)
+- [General - MSP430x2xx Family Users Guide](msp430_msp430x2xx_family_users_guide.pdf)
+- [Device-Specific - MSP430G2x53 MSP430G2x13 Mixed Signal Microcontroller](msp430g2x53_2x13_mixed_sig_mcu.pdf)
 
 ## Geek Box LCD (Lab 3, 4, 5)
 
