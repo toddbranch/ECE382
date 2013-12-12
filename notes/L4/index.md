@@ -320,7 +320,7 @@ If there's an extension word, how is it usually interpreted?  As an offset for r
 
 But what if we want to go to that exact address - don't want any relative addressing?
 
-The last mode we'll talk about is **absolute addressing** - a unique mode given in the common constants table.  In this mode, you are specifiying an absolute location in memory.  You precede the location with an & to tell the assembler this is a literal location.
+The last mode we'll talk about is **absolute addressing** - a unique mode given in the common constants table.  In this mode, you are specifying an absolute location in memory.  You precede the location with an & to tell the assembler this is a literal location.
 
 ```
 mov.w   #0xff, &0x1111    ;this instruction moves the immediate value 0xff to the memory location 0x1111

@@ -42,7 +42,7 @@ A pointer is a variable that holds a memory address.
 
 | Token | Context | Description |
 | :-: | :-: | :-: 
-| `&` | Assignment statement | Returns the addresss of the variable after this token |
+| `&` | Assignment statement | Returns the address of the variable after this token |
 | `*` | Variable declaration | Variable contains the address pointing to a variable of type `var_type` |
 | `*` | Assignment statement | Allows you to access the contents of the variable at which the pointer is pointing |
 | `->` | Structure | Access a structure's elements through a structure pointer (instead of the "." notation).  Also can use `(*structure).element`. |

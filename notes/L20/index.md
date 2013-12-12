@@ -270,7 +270,7 @@ else
 
 ### switch Statement
 
-Conditional code exection based on a value.
+Conditional code execution based on a value.
 
 General case:
 ```
@@ -345,7 +345,7 @@ do
 } while (condition);
 ```
 
-*do while* is guaranteed to be exectuted once, *while* isn't.
+*do while* is guaranteed to be executed once, *while* isn't.
 
 Example:
 ```

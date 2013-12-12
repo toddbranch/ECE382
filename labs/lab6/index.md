@@ -120,7 +120,7 @@ The robot motors have the potential to create voltage fluctuations due to sudden
 
 You'll probably break parts on this lab - you'll know by the burning smell!
 
-This will sometimes result in a short, causing you to burn out one of the fuses on the battery management board that protect the batteries.  When the light on the battery goes from green to yellow, that means there's something is wrong. Either the battery is dead or you've burned a fuse.
+This will sometimes result in a short, causing you to burn out one of the fuses on the battery management board that protect the batteries.  When the light on the battery goes from green to yellow, that means there's something wrong. Either the battery is dead or you've burned a fuse.
 
 To test whether a fuse is burned, use the ohmmeter - a working fuse should have very little resistance. You should turn off the power before you do this!  You can also use a voltmeter - there shouldn't be much voltage drop across a working fuse.  If you have burned a fuse, don't just replace it and try again - try to figure out what caused the fuse to burn in the first place! If you burned your motor driver chip, replace that - but also figure out why you burned it!  If you don't fix the root cause, you'll just break more parts and cost yourself more time / frustration.
 

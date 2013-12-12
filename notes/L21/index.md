@@ -86,7 +86,7 @@ void main(void)
 
 ## Functions
 
-Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and resuable.
+Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and reusable.
 
 ### Function Call
 
@@ -265,7 +265,7 @@ Last time, we talked a little about preprocessor directives (`#define` and `#inc
 ### math_helper.h
 
 ```
-// Your high-quality header wtih aythor / description / revision history
+// Your high-quality header with author / description / revision history
 #ifndef _MATH_HELPER_H_
 #define _MATH_HELPER_H_
 

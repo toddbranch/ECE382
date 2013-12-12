@@ -9,7 +9,7 @@ title = 'Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Langua
 ## Lesson Outline
 - Intro to the MSP430
 - MSP430 Architecture
-- Assembly and Mahcine Languages
+- Assembly and Machine Languages
 
 ## Admin
 

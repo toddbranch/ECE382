@@ -66,7 +66,7 @@ title = 'C Programming - Writing Clean Code.  Revision Control.'
 - Side effects - function should only do what you say it does
 - Do not use static or global variables
 - Only depend on local variables / parameters
-- Don't repeat yourself - write a function instread of copy / paste
+- Don't repeat yourself - write a function instead of copy / paste
 - Only one entry / exit point
 - Indent correctly!
 
