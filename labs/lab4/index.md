@@ -196,7 +196,7 @@ Type `alias "goToLab"="cd ~/path/to/your/lab"` in your shell.
 
 Now, every time you type `goToLab`, it will replace it with the longer `cd` command.  Nice!
 
-Unfortunately, we'll have to type this alias every time we open the shell - unless we put it in the file `~/.bashrc`.  If we put it in there, it will automatically be loaded everytime we open our shell!  Once you add it, type `source ~/.bashrc` to load the commands.
+Unfortunately, we'll have to type this alias every time we open the shell - unless we put it in the file `~/.bashrc`.  If we put it in there, it will automatically be loaded every time we open our shell!  Once you add it, type `source ~/.bashrc` to load the commands.
 
 ## Grading
 
