@@ -61,6 +61,10 @@ The calculator program `02 33 04` is equivalent to `0x02 * 0x04`.  It would stor
 
 The MSP430G2553 that you're using does not have a hardware multiplier, so you'll have to get creative to implement this.
 
+There are a couple of ways to implement multiply - **strive for the fastest possible implementation**.  Solutions that multiply in O(n) time will receive half points.  Only solutions that multiply in O(log n) time will receive full points.
+
+O(n) means that the time it takes to reach a solution varies with the size of the input.  O(log n) means that time to solvevaries with the log of the size of the input.
+
 ## Prelab
 
 Paste the grading section in your lab notebook as the first page of this lab.
@@ -106,6 +110,7 @@ Since you haven't learned about them yet, don't use subroutines.  Do everything 
 | Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L9 |
 | Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L10 |
 | B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
-| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
+| A Functionality - O(n) | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L10 |
+| A Functionality - O(log n) | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L10 |
 | Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L11 |
 | **Total** | | | **100** | | |
