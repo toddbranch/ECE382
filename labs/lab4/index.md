@@ -14,7 +14,7 @@ You've spent the last 5 lessons transitioning from programming in assembly langu
 
 Ever wonder how you plug a mouse into your computer and it "just works"?  That's due in large part to software called a device driver.  Device drivers are low-level software that interface directly with hardware.  In this lab, you'll write a device driver for the LCD in the Geek box.
 
-Unlike Lab 3, you will not be given any code.  The [code from Lab 3](/labs/lab3/given_code.html) will prove useful - but you'll have to port it to C!
+Luckily, you've already successfully interfaced with the LCD!  The [code from Lab 3](/labs/lab3/given_code.html) will prove useful - but you'll have to port it to C!
 
 The [datasheets](/datasheets) you used in Lab 3, the [Lab 3 documentation](/labs/lab3), and relevant lesson notes will also prove useful.
 
@@ -22,7 +22,7 @@ The [datasheets](/datasheets) you used in Lab 3, the [Lab 3 documentation](/labs
 
 Create an LCD device driver using the C programming language.
 
-Scroll the message "ECE382 is my favorite class!" across the top line of the LCD.  Scroll a message of your choice across the bottom line.
+Print a string to the top and bottom lines of the LCD.
 
 You will want to interface with this LCD again (**in Lab 5**).  I expect you to create a reusable LCD library!  Design a good API in advance - you want this library to be easy to work with in the future.
 
@@ -30,106 +30,21 @@ You must place your code under version control on git and push your repo to Gith
 
 Mind your coding standards!  Commit regularly with descriptive commit messages!
 
-Here are some of my ports of assembly functions to C:
-```
-#define RS_MASK 0x40
-
-void LCDinit()
-{
-    writeCommandNibble(0x03);
-
-    writeCommandNibble(0x03);
-
-    writeCommandNibble(0x03);
-
-    writeCommandNibble(0x02);
-
-    writeCommandByte(0x28);
-
-    writeCommandByte(0x0C);
-
-    writeCommandByte(0x01);
-
-    writeCommandByte(0x06);
-
-    writeCommandByte(0x01);
-
-    writeCommandByte(0x02);
-
-    SPI_send(0);
-    delayMicro();
-}
-
-
-void LCDclear()
-{
-    writeCommandByte(1);
-}
-
-void writeCommandNibble(char commandNibble)
-{
-    LCDCON &= ~RS_MASK;
-    LCD_write_4(commandNibble);
-    delayMilli();
-}
-
-void writeCommandByte(char commandByte)
-{
-    LCDCON &= ~RS_MASK;
-    LCD_write_8(commandByte);
-    delayMilli();
-}
-
-void writeDataByte(char dataByte)
-{
-    LCDCON |= RS_MASK;
-    LCD_write_8(dataByte);
-    delayMilli();
-}
-
-void LCD_write_8(char byteToSend)
-{
-    unsigned char sendByte = byteToSend;
-
-    sendByte &= 0xF0;
-
-    sendByte = sendByte >> 4;               // rotate to the right 4 times
-
-    LCD_write_4(sendByte);
-
-    sendByte = byteToSend;
-
-    sendByte &= 0x0F;
-
-    LCD_write_4(sendByte);
-}
-
-void SPI_send(char byteToSend)
-{
-    volatile char readByte;
-
-    set_SS_lo();
-
-    UCB0TXBUF = byteToSend;
-
-    while(!(UCB0RXIFG & IFG2))
-    {
-        // wait until you've received a byte
-    }
-
-    readByte = UCB0RXBUF;
-
-    set_SS_hi();
-}
-```
+[Here are some of my ports of assembly functions to C.](given_code.html)
 
 The rest, you'll have to do yourself...
 
 ### B Functionality
 
+Scroll the message "ECE382 is my favorite class!" across the top line of the LCD.  Scroll a message of your choice across the bottom line.
+
+Note, the messages must wrap around!  So, at some point, I should see "class! E" on the screen.
+
+### A Functionality
+
 Allow the user to select between three different bottom line messages depending on which button they press.  You are free to write your own button library, or use mine available at https://github.com/toddbranch/buttons .
 
-B Functionality Program operation:
+A Functionality Program operation:
 
 - Screen 1
     - Top Line: Message?
@@ -138,13 +53,15 @@ B Functionality Program operation:
     - Top Line (scrolling): ECE382 is my favorite class!
     - Bottom Line (scrolling): *Chosen message*
 
-### A Functionality
+Release your LCD library on Github as open source.  Your library should have your `lcd.h` and `lcd.c` files and a `README.md` covering its API and usage at a minimum.  You may include a `example.c` to showcase how it works.  This repo should be separate and distinct from your Lab4 repo.
+
+You must show me each repo successfully hosted on Github to receive credit.
+
+### Bonus Functionality
 
 Create an additional library for calibrating your clock to different frequencies.
 
-You think your libraries for working with buttons (if you made one), clock calibration, and the LCD could prove useful to other programmers.  You've decided to release them on Github as open source.
-
-You'll need a separate git repository for each of your libraries.  You'll need to create a README for each covering their API and usage.
+Release your clock calibration library  on Github as open source, using the same standards described above for A functionality.  Make sure you include `README.md` covering its API and usage.
 
 You must show me each repo successfully hosted on Github to receive credit.
 
@@ -182,13 +99,17 @@ char string2[] = "this is a string";       // this string is stored in RAM and i
 
 There is a C macro available that makes creating delays much easier.  `__delay_cycles(num_of_cycles)` will delay the specified number of clock cycles with no side effects.
 
+Strings in C are "null terminated".  That means that each string is ended with a character with the value 0.  This can help you determine where the end of a string is.
+
 I've implemented string scrolling in two ways - both are equally valid:
 
 - Create a string rotation function that moves the first letter to the end and moves all other characters up
     - `void rotateString(char * string)`
+	- You must use a rewritable string for this technique!
 - Keep track of your current location within the string and print from there.  Don't forget to wrap around!
     - `char * printFromPosition(char * start, char * current, char screenSizeInChars)`
     - returns the updated current position
+	- This is the more robust technique - it doesn't need rewritable strings and can handle strings of any length.
 
 It's annoying to constantly have to `cd` all the way to the directory where your lab is located.  We can fix that:
 
@@ -206,6 +127,7 @@ Unfortunately, we'll have to type this alias every time we open the shell - unle
 | Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L26 |
 | B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
 | A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
+| Bonus Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L26 |
 | Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L27 |
 | Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L27 |
 | **Total** | | | **100** | | |
