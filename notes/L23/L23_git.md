@@ -20,4 +20,4 @@ title = 'L23 Assignment - Git'
 
 ## Hints
 
-[Follow the Git tutorial!](git_tutorial.html)
+[Follow the Git tutorial!](/datasheets/git_tutorial.html)
