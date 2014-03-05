@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <meta name="description" content="ECE 382 - Intro to Embedded Systems with the MSP430 at the United States Air Force Academy (USAFA).  Covers assembly language, C, and MSP430 subsystems including SPI, GPIO, PWM, Timers, and interrupts.  Free and open course on the MSP430.">
+        <meta name="author" content="Todd Branchflower">
+        <link rel='stylesheet' type='text/css' href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css'>
+        <script src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'></script>
+    </head>
+    <body>
+        <div class = "container">
+            <div class = "navbar navbar-inverse">
+                <div class = "navbar-inner">
+                    <a class = "brand" href="/index.html">ECE382</a>
+                    <ul class = "nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/labs/index.html">Labs</a></li>
+                        <li><a href="/datasheets/index.html">Datasheets</a></li>
+                        <li><a href="/admin/index.html">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+            <%- markdown %>
+        </div>
+    </body>
+</html>
