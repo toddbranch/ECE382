@@ -51,7 +51,7 @@ Reading assignments are provided at the top of the lesson notes and should be ac
 
 ### Labs / Lab Notebooks
 
-[Lab / Lab Notebook Policy](labs.html)
+Labs will be turned in and graded via GitHub.  
 
 ### Exams
 
@@ -74,5 +74,5 @@ This course is designed to help you in your development as an electrical and com
 
 Good luck!
 
-TODD T. BRANCHFLOWER, Capt, USAF  
+VIRGINIA TRIMBLE, Capt, USAF  
 Course Director, ECE 382
