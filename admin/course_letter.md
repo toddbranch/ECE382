@@ -6,14 +6,17 @@ title = 'Course Letter'
 
 ### Instructors
 
-**Capt Todd Branchflower (CD)**  
-Office: 2F46A  
-Phone: 333-6766  
-E-mail: todd.branchflower@usafa.edu  
+**Capt Virginia Trimble (CD)**  
+Office: 2E46B    
+E-mail: virginia.trimble@usafa.edu  
 
 **Dr. George York**  
 Office: 2E46E  
 E-mail: george.york@usafa.edu  
+
+**Dr. Chris Coulston**  
+Office: 6G149 
+E-mail: christopher.coulston@usafa.edu 
 
 ### Course Objectives
 
