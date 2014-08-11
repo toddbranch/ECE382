@@ -89,14 +89,6 @@ All exams are closed textbook and notes.  Cadets are allowed to use only the pro
 - **Scheduled Absence** - If you know that you will be unable to take the GR during the scheduled GR period, you are required to inform your instructor as soon as possible before the GR to schedule a make-up exam.
 - **Unscheduled Absense** - If you miss the GR for reasons beyond your control (e.g. hospitalization, emergency leave, delayed field trip return, etc.) you must contact DFEC (x3190) within **two working days** to schedule a make-up.  Exceptions can only be granted by the Department Head.
 
-### Course Materials
-
-All of the course materials are open and available in a git repo on Github - [http://github.com/toddbranch/ECE382.git](http://github.com/toddbranch/ECE382.git).
-
-You're free to use it as-is or fork the repo and modify it to suit your own purposes.
-
-I welcome any bug fixes / useful additions - please file bug reports or send pull requests as much as possible.
-
 ### Miscellaneous
 
 This course is designed to help you in your development as an electrical and computer engineer.  Feel free to provide feedback on the lessons and labs at any time.  If you have ideas to improve or enhance the course, please let me know.  The class builds on concepts from the prerequisites, so it's important that you seek help as soon as you need it.  Procrastination is truly the enemy in an assembly language course.  A little foresight and planning and a lot of effort will result in an extremely rewarding experience serving as the basis for future microcontroller work.
