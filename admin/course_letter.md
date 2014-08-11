@@ -26,7 +26,36 @@ CompSci 110 and ECE 281
 
 ### Grading
 
-[Grading Policy](grading.html)
+#### Grade Distribution and Policy
+
+| | Prog | Final |
+| :-: | :-: | :-: |
+| GRs | 40% (1) | 30% (2) |
+| Labs | 45% (2) | 35% (8) |
+| HW / Quizzes / Skills Review / CompEx | 15% | 10% |
+| Final | | 25% |
+| TOTAL | 100% | 100% |
+
+**You must complete the required functionality for every lab (even for zero credit) to pass the course.**
+
+| Grade | Grade |
+| :-: | :-: |
+| 90 £  A £ 100 | 74 £ C+ < 77 |
+| 87 £ A- < 90 | 70 £ C < 74 |
+| 84 £ B+ < 87 | 67 £ C- < 70 |
+| 80 £ B < 84 | 60 £ D < 67 |
+| 77 £ B- < 80 | 0 £ F < 60 |
+
+#### Late Work
+
+If problems arise with graded assignments, see your instructor in advance.  Assignments turned in later than the due date without prior permission from the instructor will be penalized as follows (note there is no distinction between "Duty Day" or "Day":
+
+| How Late? | Penalty |
+| :-: | :-: |
+| 0 - 24 Hours | 10% |
+| 24 - 48 Hours | 30% |
+| 48 - 72 Hours | 60% |
+| > 72 Hours | 100% |
 
 ### Course Materials
 
