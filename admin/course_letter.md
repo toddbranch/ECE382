@@ -15,10 +15,21 @@ Office: 2E46E
 E-mail: george.york@usafa.edu  
 
 **Dr. Chris Coulston**  
-Office: 6G149 
+Office: 6G149
 E-mail: christopher.coulston@usafa.edu 
 
 ### Course Objectives
+
+By the end of this course, cadets shall be able to:
+
+1.	Utilize the built-in functional units of a specified microcontroller.
+2.	Write, assemble, link, and run microcontroller code in assembly language.
+3.	Write, compile, assemble, link, and run microcontroller code in the C programming language.
+4.	Interpret and explain orally and in writing the functions of a given assembly language or C program as well as laboratory work
+5.	Evaluate, analyze, debug, and modify a given program to improve its execution of a specified task
+6.	Demonstrate a working knowledge of the on-board hardware components of a microcontroller and implement an interface between a specified microcontroller and other hardware.
+7.	Demonstrate the ability to solve well and ill-defined problems
+
 
 ### Course Prerequisites
 
@@ -40,7 +51,7 @@ CompSci 110 and ECE 281
 
 | Grade | Grade |
 | :-: | :-: |
-| 90 &le; ?A &le; 100 | 74 &le; C+ < 77 |
+| 90 &le; A &le; 100 | 74 &le; C+ < 77 |
 | 87 &le; A- < 90 | 70 &le; C < 74 |
 | 84 &le; B+ < 87 | 67 &le; C- < 70 |
 | 80 &le; B < 84 | 60 &le; D < 67 |
