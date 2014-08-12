@@ -49,17 +49,8 @@ We're going to get very hands-on and expect you to build things that actually wo
 
 *[Show robot]* - and if you win, you'll get your name on the wall - we've been running the maze competition since 1997.
 
-## Instructor Intro
-
-[Capt Todd Branchflower](branchflower.html) - Course Director  
-
-*[My slides]*
-
-Capt Branchflower - I have an interest in Linux and low-level systems programming.  The stuff we teach in this course is extremely relevant to that.  The knowledge you'll learn about low-level computers is the same stuff that higher-level computers operate on.
 
 ## Admin
-There have been a **ton** of changes in this course from last year to this.  We've changed the platform and IDE for probably the first time in almost 10 years.  We're introducing the C programming language earlier than we ever have before.  Some of the labs are completely new - and they'll be graded differently than in years past.  I think I'm doing the course website differently than its ever been done.  If there's something going on that you don't like or you do like and want to see more of, **please tell me**.  We're going to run into problems.  There's going to be stuff that I don't know.  But stick with me and we'll make it through - and I promise you'll learn something in the process.
-
 - Show course website, walk through structure - goal is to have everything you need on here
 - Go over course goals:
     - Writing programs in Assembly Language, then C
@@ -80,8 +71,7 @@ There have been a **ton** of changes in this course from last year to this.  We'
         - Lab Cleanliness
     - Lab Notebooks
         - Grading
-        - From ECE281, you know the standard - grading will be less forgiving in this course
-        - "Securely Affixed" - tape all around, glue
+        - Grading will be less forgiving than ECE 281 in this course
         - "Hit by a Bus" standard
     - Late Policy
     - Course Text (optional!)
@@ -115,7 +105,7 @@ Let's start with some perspective.  What are the key components of a computer?
     - RAM clears when it's powered off
     - If you don't want to lose your work, you need some sort of persistent storage (hard drive)
 
-If you shrink this to a single PCB, you've got what we call a **single board computer** - I've got a Raspberry Pi.
+If you shrink this to a single PCB, you've got what we call a **single board computer** - think of a Raspberry Pi.
 
 ### System on a Chip
 If you take the core components from this computer, shrink them, and integrate them on a single die, you have what's known as a [System on a Chip (SoC)](http://en.wikipedia.org/wiki/System_on_a_chip).  Multiple components on a single die is the core feature here.  This is what powers your cell phones.  The Galaxy S4, for instance, has two models - one uses Qualcomm SnapDragon 600 and other Samsung Exynos 5 Octa.  They can include additional components based on application.
