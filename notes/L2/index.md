@@ -28,9 +28,7 @@ Suffice to say, this chip is used by engineers to create real-world products tha
 
 The other cool thing - they're cheap!  The MSP430 Launchpad development kit costs only $5 including shipping, so you can definitely get your own if you want to experiment with this beyond the semester.  We can also get replacement chips cheaply for when you inevitably burn them out.
 
-We're still issuing the Geek Boxes because they have peripherals we'll need to do the labs.
-
-**Issue Launchpad Kits, Geek Boxes**
+**Issue Launchpad Kits**
 
 For the rest of the semester, you'll be using these kits along with CodeComposer to learn about the msp430 and build things with it.
 
