@@ -40,7 +40,7 @@ CompSci 110 and ECE 281
 
 | Grade | Grade |
 | :-: | :-: |
-| 90 &le;??A &le; 100 | 74 &le; C+ < 77 |
+| 90 &le; ?A &le; 100 | 74 &le; C+ < 77 |
 | 87 &le; A- < 90 | 70 &le; C < 74 |
 | 84 &le; B+ < 87 | 67 &le; C- < 70 |
 | 80 &le; B < 84 | 60 &le; D < 67 |
