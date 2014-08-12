@@ -88,6 +88,9 @@ We're going to get very hands-on and expect you to build things that actually wo
             - to test your assumptions
 - Skills Review!
     - Due L3
+- Git and GitHub
+	- Commit often!  Don't forget descriptive comments on each commit.  A great time to commit might be as soon as you get a piece a code working.
+	- Ensure your readme looks professional.  A Markdown refresher can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet).
 
 ## Structure of a Computer
 Let's start with some perspective.  What are the key components of a computer?
@@ -142,7 +145,7 @@ Mine runs x86_64:
 Can anyone name any more instruction set architectures (ISA)?
 
 - x86 - both 32(IA32) and 64(x86_64) bit
-- MIPS - taught in 281 book, will be in future course offerings
+- MIPS 
 - PowerPC
 - Itanium
 - SPARC
