@@ -8,8 +8,6 @@ The labs make up a significant portion of both your prog and final grades.  You 
 
 ## Lab Notebooks
 
-Lab notebooks will be graded on the CheckPlus / Check / CheckMinus / 0 scale - see the [Grading Policy](grading.html) for details.
-
 Lab notebooks are heavily emphasized in this course and constitute a large portion of lab grades.  Their format must follow the *DFEE Standard for Writing Lab Notebooks*.  The lab notebook is maintained as a journal of your lab experience and should allow you, or any knowledgeable engineer, to recreate your project.  For this course, your notebook should contain at least the following (as applicable to the particular lab):
 
 - Descriptive title
@@ -26,13 +24,10 @@ The actual format is flexible, so don't be afraid to add something later.  All l
 
 You are expected to keep your lab notebooks current as you work on a lab.  You will lose substantial points if sections of the lab notebook which should be part of your documentation before the demonstration (such as prelab, approach, flowcharts, testing, debugging, etc.) are entered afterwards.  Your conclusion section, lessons learned, and your final formatted code are not required before your demo.
 
-### Physical Lab Notebooks
-
-Although handwritten (and in ink), it must be neat.  Erroneous entries (and large amounts of whitespace) must be lined out with a single line, never obliterated.  Each page of the lab notebook must be signed and dated by you.  Papers such as computer printouts may be pasted or taped in the lab notebook with the following restrictions: do not cover up any writing, be sure the edges of the pasted paper don't hang out beyond the edge of the notebook page.  If tape is used, it must completely cover all four edges of the item being affixed to the notebook.  Cut and paste the grading criteria on the first page of the lab.  In general, the lab handout may be cut and pasted in as the first two bullets from the list above.
 
 ### Electronic Lab Notebooks
 
-If you choose to use an electronic lab notebook, we'll be using the version control software **git** and your code must be hosted on [Github](http://www.github.com).  Here is the directory structure that must be used:
+In this class, we will use an electronic lab notebook.  We'll be using the version control software **git** and your code must be hosted on [Github](http://www.github.com).  Here is the directory structure that must be used:
 
 - /LabX
     - /code
@@ -44,7 +39,7 @@ If you choose to use an electronic lab notebook, we'll be using the version cont
 
 Your commit history will be used as verification that you've been keeping your lab notebook up to date as you progress.  You should commit early and often.
 
-You'll still need to paste the grading rubric in your lab notebook so I can record grades as you go.
+You'll still need to hand in your grading sheet so I can record grades and feedback for you.
 
 ## Coding Standards
 

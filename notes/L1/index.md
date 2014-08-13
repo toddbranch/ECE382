@@ -95,8 +95,6 @@ We're going to get very hands-on and expect you to build things that actually wo
 ## Structure of a Computer
 Let's start with some perspective.  What are the key components of a computer?
 
-*[DEMO with home-built computer]*
-
 - CPU
     - Does the work!
 - Memory (RAM)
