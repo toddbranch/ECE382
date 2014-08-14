@@ -266,4 +266,4 @@ Section:
 <br>
 <br>
 <br>
-8. (10pts) For free!
+8. (10pts) Tell me three things you have learned so far in this class.
