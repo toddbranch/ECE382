@@ -8,7 +8,7 @@ The labs make up a significant portion of both your prog and final grades.  You 
 
 ## Lab Notebooks
 
-Lab notebooks are heavily emphasized in this course and constitute a large portion of lab grades.  Their format must follow the *DFEE Standard for Writing Lab Notebooks*.  The lab notebook is maintained as a journal of your lab experience and should allow you, or any knowledgeable engineer, to recreate your project.  For this course, your notebook should contain at least the following (as applicable to the particular lab):
+Lab notebooks are heavily emphasized in this course and constitute a large portion of lab grades.  The lab notebook is maintained as a journal of your lab experience and should allow you, or any knowledgeable engineer, to recreate your project.  For this course, your notebook should contain at least the following (as applicable to the particular lab):
 
 - Descriptive title
 - Objectives or purpose
