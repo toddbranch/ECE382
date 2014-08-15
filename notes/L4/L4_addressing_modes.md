@@ -1,12 +1,10 @@
 # L4 Assignment - Addressing Modes, Hand-assembly
 
-This assignment will be graded on the CheckPlus / Check / CheckMinus / 0 scale - see [Grading](/admin/grading.html) for more information.
-
 ## Addressing Modes
 
 **All answers should be in little-endian, hex format.**
 
-1. For each of the following instructions, identify the addressing modes being used and hand-assemble it.
+1. (50 pts) For each of the following instructions, identify the addressing modes being used and hand-assemble it.
 ```
 swpb    r7
 ```
@@ -104,7 +102,7 @@ Hand-assembled machine code:
 <br>
 <br>
 <br>
-2. Consider the following code snippet:
+2. (30 pts) Consider the following code snippet:
 ```
 mov.w   #0xFF, P1OUT    ;P1OUT is 0x0021
 ```
@@ -157,7 +155,7 @@ How would you change the code snippet to fix the problem?
 <br>
 <br>
 <br>
-3. Consider the following code snippet:
+3. (20 pts) Consider the following code snippet:
 ```
 mov.w   r10, @r9
 ```
