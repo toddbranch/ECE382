@@ -87,7 +87,7 @@ This might be a good point to save your work.
 
 ## Your First Program
 
-Alright, let's write some code.  Below the comment block that says "Main loop here", write this code:
+Okay, let's write some code.  Below the comment block that says "Main loop here", write this code:
 
 ```
             mov.w   #0xdfec, &0x0200        ;writes 0xdfec to memory location 0x0200
