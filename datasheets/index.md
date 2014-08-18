@@ -5,11 +5,9 @@ title = 'Datasheets'
 - [General - MSP430x2xx Family Users Guide](msp430_msp430x2xx_family_users_guide.pdf)
 - [Device-Specific - MSP430G2x53 MSP430G2x13 Mixed Signal Microcontroller](msp430g2x53_2x13_mixed_sig_mcu.pdf)
 
-## Geek Box LCD (Lab 3, 4, 5)
+## LCD (Lab 3, 4, 5)
 
-- [LCD Driver Datasheet](lcd_driver_datasheet.pdf)
-- [LCD Commands](lcd_commands.pdf)
-- [Using the MSP430 with the Geek Box](geek_box.html)
+- [Nokia 1202 LCD Boosterpack](Nokia_1202_LCD_BoosterPack_v4-5.pdf)
 
 ## Robot (Lab 6, 7, 8)
 
