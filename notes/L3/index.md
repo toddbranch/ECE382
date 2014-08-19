@@ -14,10 +14,6 @@ title = 'Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Convertin
 - MSP430 Instruction Set
 - Converting Assembly to Machine Code
 
-## Admin
-
-- Funny video!
-- Collect skills reviews at end of class
 
 ## Review
 
