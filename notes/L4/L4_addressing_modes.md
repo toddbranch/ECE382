@@ -2,9 +2,13 @@
 
 ## Addressing Modes
 
+Name:
+Documentation:
+
+
 **All answers should be in little-endian, hex format.**
 
-1. (50 pts) For each of the following instructions, identify the addressing modes being used and hand-assemble it.
+1. For each of the following instructions, identify the addressing modes being used and hand-assemble it.
 ```
 swpb    r7
 ```
@@ -54,14 +58,7 @@ Addressing modes used:
 <br>
 <br>
 <br>
-Hand-assembled machine code:
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 ```
             jmp     TARGET      ; address is 0xc000
 ...
@@ -75,14 +72,7 @@ What addressing mode do relative jumps use (if any)?
 <br>
 <br>
 <br>
-Hand-assembled machine code:
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 ```
 mov.w   @r12, &0x0200
 ```
@@ -94,15 +84,8 @@ Addressing modes used:
 <br>
 <br>
 <br>
-Hand-assembled machine code:
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-2. (30 pts) Consider the following code snippet:
+
+2. Consider the following code snippet:
 ```
 mov.w   #0xFF, P1OUT    ;P1OUT is 0x0021
 ```
@@ -118,18 +101,7 @@ What addressing modes are being used here?
 <br>
 <br>
 <br>
-Hand-assemble the code.
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 The programmer wants this code to move 0xFF into P1OUT, but the code isn't working.  Why not?  
 *Hint: talk about the assembly / linking process.*
 <br>
@@ -155,7 +127,7 @@ How would you change the code snippet to fix the problem?
 <br>
 <br>
 <br>
-3. (20 pts) Consider the following code snippet:
+3. Consider the following code snippet:
 ```
 mov.w   r10, @r9
 ```
@@ -184,3 +156,11 @@ What's an equivalent replacement instruction?
 <br>
 <br>
 <br>
+4. What is the purpose of emulated instructions?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+

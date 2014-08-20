@@ -17,12 +17,6 @@ Davies 5.2 (pp125 - pp131)
 - Converting to Machine Code
 - CompEx1 Intro
 
-## Admin
-
-- Video
-- Collect HW at end
-
-Alright, give me a little feedback.  How's everybody feeling so far?  Feeling like you're keeping up?  Everyone in this class is guinea pigs - particularly M4.  M4 always gets the rough first cut.  I wrote all these lessons in the lab in the summer, unsure how they'd work in the classroom.  But the general goal is to firehose you early on - expose you to code early, make you ask questions, maybe get you a little nervous, etc - learn the basics quick so we can do some cool stuff.  Then throttle back and make you understand the stuff you've seen a little more.
 
 So today should be a lesson that explains a few of the things you've seen but didn't understand.
 
