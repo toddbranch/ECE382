@@ -8,7 +8,10 @@ Section:
 <br>
 <br>
 <br>
-
+Documentation:
+<br>
+<br>
+<br>
 Due Date: **Beginning of Class (BOC), Lesson 3**
 
 **Authorized Resources**
@@ -134,7 +137,7 @@ Objectives:
 5. (10pts each) All of the numbers below are represented using 8-bit, two's complement notation.  Perform the specified operations and specify whether or not an overflow occurs.
 
 a.  
-  1110 1101  
+   1110 1101  
 + 1010 1100  
 <br>
 <br>
@@ -143,7 +146,7 @@ a.
 <br>
 <br>
 b.  
-  1001 1000  
+   1001 1000  
 - 1110 0111  
 <br>
 <br>
@@ -151,7 +154,7 @@ b.
 <br>
 <br>
 <br>
-6. (5pts) When an overflow occurs, a common solution is ot expand the number of bits used in the calculation (known as sign extension).  How would  you extend the negative 8-bit two's complement number with a hexadecimal value of BC to 16 bits?
+6. (5pts) When an overflow occurs, a common solution is to expand the number of bits used in the calculation (known as sign extension).  How would  you extend the negative 8-bit two's complement number with a hexadecimal value of BC to 16 bits?
 <br>
 <br>
 <br>
@@ -161,8 +164,8 @@ b.
 7. (10pts each) Perform the specified operations and specify whether or not an overflow occurs.  Give the answer in unsigned 16-bit hexadecimal format.
 
 a.  
-  E76D (unsigned 16-bit)  
-+   14 (2's comp 8-bit)  
+  0xE76D (unsigned 16-bit)  
++   0x14 (2's comp 8-bit)  
 <br>
 <br>
 <br>
