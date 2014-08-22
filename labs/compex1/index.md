@@ -227,7 +227,20 @@ Section:
 <br>
 <br>
 <br>
-5. (10pts) Consider the `forever    jmp forever` instruction from the simple program you wrote first.  What type of instruction is this?  Hand-assemble the instruction (show your work!).  Is the result the same as the machine code you recorded?
+5a. (5pts) Consider the `forever    jmp forever` instruction from the simple program you wrote first.  What type of instruction is this?  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+5b. (5pts) How many different addressing modes are used in the mystery code?  List and give an example from the code of each mode used.
 <br>
 <br>
 <br>
