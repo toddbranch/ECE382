@@ -55,16 +55,18 @@ Run the following starting values through your program and record the results.
 <br>
 <br>
 
-In the MSP430G2553 detailed Tech Doc (75 pages)
-·	What is the range of recommended operating voltages for the MSP430G2553? <br> <br> <br> <br>
-·	What is the absolute maximum and minimum voltage that should be applied to any pin? <br> <br> <br> <br>
-·	Running at 3.5v, what is the operating current of the MSP430G2553 at
-o	Fdco = 16Mhz <br> <br>
-o	Fdco = 12Mhz <br> <br>
-o	Fdco = 8Mhz <br> <br> 
-o	Fdco = 1Mhz <br> <br>
-·	For the following question consult page 25.  Assume your MSP430 is operating at room temperature and 3v supply.  You need to draw a large amount of current from an MSP430 I/O pin while keeping the output voltage within 0.5 of Vcc = 2.5v (@ high-level output voltage) and within 0.5v of Vss = 0.5v (@ low-level output voltage).  How much current can you draw from the I/O pin in each case? <br> <br> <br> <br> <br> <br>
-·	Pin P1.0 can be functionally multiplexed between digital output (I/O function) and an analog to digital converter input (A function).  Describe the settings of P1SEL.0, P1SEL.0, and P1SEL2.0 required to make this happen.  Hint, consult page 43. <br> <br> <br> <br> <br> <br> <br> <br>
+In the MSP430G2553 detailed Tech Doc (75 pages):
+a)	What is the range of recommended operating voltages for the MSP430G2553? <br> <br> <br> <br>
+b)	What is the absolute maximum and minimum voltage that should be applied to any pin? <br> <br> <br> <br>
+c)	Running at 3.5v, what is the operating current of the MSP430G2553 at
+i)	Fdco = 16Mhz <br> <br>
+ii)	 Fdco = 12Mhz <br> <br>
+iii)	  Fdco = 8Mhz <br> <br> 
+iv)	 Fdco = 1Mhz <br> <br>
+<br>	
+For the following question consult page 25.
+a) Assume your MSP430 is operating at room temperature and 3v supply.  You need to draw a large amount of current from an MSP430 I/O pin while keeping the output voltage within 0.5 of Vcc = 2.5v (@ high-level output voltage) and within 0.5v of Vss = 0.5v (@ low-level output voltage).  How much current can you draw from the I/O pin in each case? <br> <br> <br> <br> <br> <br>
+b) Pin P1.0 can be functionally multiplexed between digital output (I/O function) and an analog to digital converter input (A function).  Describe the settings of P1SEL.0, P1SEL.0, and P1SEL2.0 required to make this happen.  Hint, consult page 43. <br> <br> <br> <br> <br> <br> <br> <br>
 
 ## Turn-in Requirements
 
