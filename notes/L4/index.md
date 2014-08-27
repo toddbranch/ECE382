@@ -50,7 +50,7 @@ Luckily, the MSP430 has only 4 different addressing modes to cover.  The old S12
 | 10 | @Rn	| Register indirect | `mov @r5, r6` | r6 = 0x1234 |
 | 11 | @Rn+	| Register indirect with post-increment | `mov @r5+, r6` | r6 = 0x1234, r5 = 0x0202 |
 | | #XXXX | Immediate | `mov #0x2006, r6` | r6 = 0x2006 |
-| | label | PC Relative | `mov label, r6` | (becomes mov.w xxxx(PC), r6|
+| | label | PC Relative | `mov label, r6` | (becomes mov.w xxxx(PC), r6) |
 | | &label | Absolute | `mov &0x0200, r6` | r6 = 0x0200 | 
 
 Let's start with a quick sample program.  *Use this program to illustrate addressing modes.*
