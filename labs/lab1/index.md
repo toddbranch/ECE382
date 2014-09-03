@@ -67,7 +67,7 @@ O(n) means that the time it takes to reach a solution varies with the size of th
 
 ## Prelab
 
-Paste the grading section in your lab notebook as the first page of this lab.
+Print out the grading section.  Hand it in to your instructor, complete with functionality marks, when the lab is due.  
 
 Include whatever information from this lab you think will be useful in creating your program.
 
@@ -76,8 +76,6 @@ Think about how you'll implement your calculator.  Draw a flowchart of how it wi
 ## Notes
 
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
-
-Since you haven't learned about them yet, don't use subroutines.  Do everything in the main program.  You'll get to use subroutines in future labs.
 
 - Comments
     - Assume the reader is a competent assembly language programmer
@@ -107,10 +105,10 @@ Since you haven't learned about them yet, don't use subroutines.  Do everything 
 
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
-| Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L9 |
+| Prelab | **On-Time:** | | 5 | | BOC L9 |
 | Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L10 |
 | B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L10 |
 | A Functionality - O(n) | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L10 |
 | A Functionality - O(log n) | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L10 |
-| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L11 |
+| Lab Notebook | **On-Time:** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L11 |
 | **Total** | | | **100** | | |
