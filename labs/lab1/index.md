@@ -77,6 +77,8 @@ Think about how you'll implement your calculator.  Draw a flowchart of how it wi
 
 Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html) thoroughly and follow it.
 
+Since you haven't learned about them yet, don't use subroutines. Do everything in the main program. You'll get to use subroutines in future labs.
+
 - Comments
     - Assume the reader is a competent assembly language programmer
     - Comment above blocks of code to convey **purpose**
