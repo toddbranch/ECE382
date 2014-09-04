@@ -26,22 +26,22 @@ Your program will implement the following operations:
 
 **ADD_OP**  
 An addition operation is coded by the value 0x11.  It adds two numbers and stores the result.  
-The calculator program `14 11 12` is equivalent to `0x14 + 0x12`.  It would store the result `26`.
+The calculator program `0x14 0x11 0x12` is equivalent to `0x14 + 0x12`.  It would store the result `0x26`.
 
 **SUB_OP**  
 An subtraction operation is coded by the value 0x22.  It subtracts two numbers and stores the result.  
-The calculator program `21 22 01` is equivalent to `0x21 - 0x1`.  It would store the result `20`.
+The calculator program `0x21 0x22 0x01` is equivalent to `0x21 - 0x1`.  It would store the result `0x20`.
 
 **CLR_OP**  
-A clear operation clears the result by storing `00` to memory.  It then uses the second operand as the initial value for the next operation.
-The calculator program `21 22 01 44 14 11 12` is equivalent to `0x21 - 0x1 CLR 0x14 + 0x12`.  It would store `20 00 26`.
+A clear operation, represented by the value 0x44, clears the result by storing `00` to memory.  It then uses the second operand as the initial value for the next operation.
+The calculator program `0x21 0x22 0x01 0x44 0x14 0x11 0x12` is equivalent to `0x21 - 0x1 CLR 0x14 + 0x12`.  It would store `0x20 0x00 0x26`.
 
 **END_OP**  
 The end operation terminates execution of the calculator.  It is coded by the value 0x55.
 
-Example calculator program: `14 11 32 22 08 44 04 11 08 55`  
+Example calculator program: `0x14 0x11 0x32 0x22 0x08 0x44 0x04 0x11 0x08 0x55`  
 It's equivalent to: `0x14 + 0x32 - 0x08 CLR 0x04 + 0x08 END`  
-The result should be, stored at 0x0200: `46 3e 00 0c`
+The result should be, stored at 0x0200: `0x46 0x3e 0x00 0x0c`
 
 Your calculator will be tested with various combinations of input instructions.  Results will be verified using the debugger.
 
@@ -57,7 +57,7 @@ In addition to B Functionality, your program will implement a multiply operation
 
 **MUL_OP**  
 An multiplication operation is coded by the value 0x33.  It multiplies two numbers and stores the result.  
-The calculator program `02 33 04` is equivalent to `0x02 * 0x04`.  It would store the result `08`.
+The calculator program `0x02 0x33 0x04` is equivalent to `0x02 * 0x04`.  It would store the result `0x08`.
 
 The MSP430G2553 that you're using does not have a hardware multiplier, so you'll have to get creative to implement this.
 
