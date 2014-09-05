@@ -14,10 +14,10 @@ title = 'The Stack. Subroutines. Lab 2 Introduction.'
 
 ## Admin
 
-- Demo your Lab 1 functionality by COB today!  Dr. York and I are in staff meeting from 330pm - 430pm, so get us before or immediately after that.
+- Demo your Lab 1 functionality by COB today!  
 - Be prepared to walk me through the program you've written to test your own lab.
 - Any quick questions?
-- Lab notebook sign off at BOC next lesson.
+
 
 ## The Stack
 
