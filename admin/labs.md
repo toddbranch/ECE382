@@ -14,8 +14,9 @@ Lab notebooks are heavily emphasized in this course and constitute a large porti
 - Objectives or purpose
 - Preliminary design
 - Software flow chart / algorithms
-- Well-formatted code
 - Hardware schematic
+- Well-formatted code
+- Debugging
 - Testing methodology / results
 - Observations and Conclusions
 - Documentation
@@ -34,12 +35,12 @@ In this class, we will use an electronic lab notebook.  We'll be using the versi
         - Include all source code here
     - /images
         - Include all images you use in your notebook here
-    - notebook.md
+    - notebook.md (or README.md)
         - Lab notes not included in your git commit history
 
 Your commit history will be used as verification that you've been keeping your lab notebook up to date as you progress.  You should commit early and often.
 
-You'll still need to hand in your grading sheet so I can record grades and feedback for you.
+You'll still need to hand in your grading sheet so I will know your achieved functionality and can record grades and feedback for you.
 
 ## Coding Standards
 
