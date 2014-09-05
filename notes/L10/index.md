@@ -224,7 +224,6 @@ So split your problems into parts that logically belong together and could be re
 
 Even modern operating systems must obey the convention of specifying which registers are used for arguments passed in to a subroutine and which are used to pass back results.  This convention is known as the Application Binary Interface (ABI).
 
-**Questions?**
 
 ## Lab 2 Introduction
 
