@@ -103,8 +103,8 @@ Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html)
 
 ## Grading
 
-Name:
-Documentation:
+Name:<br>
+Documentation:<br>
 
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
