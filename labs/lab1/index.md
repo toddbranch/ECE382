@@ -103,6 +103,9 @@ Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html)
 
 ## Grading
 
+Name:
+Documentation:
+
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
 | Prelab | **On-Time:** | | 5 | | BOC L9 |
