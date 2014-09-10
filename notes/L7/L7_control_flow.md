@@ -65,8 +65,8 @@ iii)	  Fdco = 8Mhz <br> <br>
 iv)	 Fdco = 1Mhz <br> <br>
 <br>	
 For the following question consult page 25.<br>
-a) Assume your MSP430 is operating at room temperature and 3v supply.  You need to draw a large amount of current from an MSP430 I/O pin while keeping the output voltage within 0.5 of Vcc = 2.5v (@ high-level output voltage) and within 0.5v of Vss = 0.5v (@ low-level output voltage).  How much current can you draw from the I/O pin in each case? <br> <br> <br> <br> <br> <br>
-b) Pin P1.0 can be functionally multiplexed between digital output (I/O function) and an analog to digital converter input (A function).  Describe the settings of P1DIR.0, P1SEL.0, and P1SEL2.0 required to make this happen.  Hint, consult page 43. <br> <br> <br> <br> <br> <br> <br> <br>
+a) Assume your MSP430 is operating at room temperature and 3v supply.  You need to draw a large amount of current from an MSP430 I/O pin while not allowing the output voltage to fall below Vcc = 2.5v at high-level output voltage and rise above Vss = 0.5v at low-level output voltage.  How much current can you draw from the I/O pin in each case? <br> <br> <br> <br> <br> <br>
+b) Pin P1.0 can be functionally multiplexed between digital output (I/O function) and an analog to digital converter input (A function).  Describe the settings of P1DIR.0, P1SEL.0, and P1SEL2.0 required to make this happen for these two situations.  Hint, consult page 43. <br> <br> <br> <br> <br> <br> <br> <br>
 
 ## Turn-in Requirements
 
