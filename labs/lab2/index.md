@@ -83,7 +83,7 @@ There are many ways to attack this problem.  Some techniques require substantial
 
 ## Prelab
 
-Paste the grading section in your lab notebook as the first page of this lab.
+Print out the grading section and bring it to class.
 
 Include whatever information from this lab you think will be useful in creating your program.
 
