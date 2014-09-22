@@ -51,6 +51,6 @@ Look at the top of your MSP430 chip and write down all the numbers you can read.
 -	Eco Plan <br>
 -	Lead/Ball Finish <br>
 -	MSL Peak Temp <br>
--	Op Temp (°C) <br>
+-	Op Temp  <br>
 -	Device Marking <br>
 
