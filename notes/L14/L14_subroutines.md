@@ -24,31 +24,33 @@ Returns output in r15.
 What does this subroutine do?
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
+In the MSP430G2553 detailed Tech Doc (75 pages):<br>
 
-
-
-
-
-
-
-
-
-
-
-In the MSP430G2553 detailed Tech Doc (75 pages):
-
-Look at the top of your MSP430 chip and write down all the numbers you can read.  Consult the Package Option Addendum section of the Tech Doc and determine the following information for your chip.
--	Orderable Device 
--	Status
--	Package Type 
--	Package Drawing
--	Pins 
--	Package Qty
--	Eco Plan
--	Lead/Ball Finish 
--	MSL Peak Temp
--	Op Temp (°C) 
--	Device Marking
+Look at the top of your MSP430 chip and write down all the numbers you can read.  Consult the Package Option Addendum section of the Tech Doc and determine the following information for your chip.<br>
+-	Orderable Device <br>
+-	Status <br>
+-	Package Type <br>
+-	Package Drawing <br>
+-	Pins <br>
+-	Package Qty <br>
+-	Eco Plan <br>
+-	Lead/Ball Finish <br>
+-	MSL Peak Temp <br>
+-	Op Temp (°C) <br>
+-	Device Marking <br>
 
