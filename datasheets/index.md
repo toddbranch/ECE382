@@ -8,6 +8,7 @@ title = 'Datasheets'
 ## LCD (Lab 3, 4, 5)
 
 - [Nokia 1202 LCD Boosterpack](Nokia_1202_LCD_BoosterPack_v4-5.pdf)
+- [STE2007](ste2007.pdf)
 
 ## Robot (Lab 6, 7, 8)
 
