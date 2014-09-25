@@ -22,9 +22,9 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L14](notes/L14/index.html) | Polling.  Debouncing.  Software Delay Routines. | [Assignment 4](notes/L14/L14_subroutines.html) | |
 | [L15](notes/L15/index.html) | Serial Comm Fundamentals.  Serial Peripheral Interface.  [Lab 3](/labs/lab3/ index.html) Introduction.  Logic Analyzer Demo. | [Lab 3](/labs/lab3/index.html) Mega Prelab | [Assignment 4](notes/L14/L14_subroutines.html) |
 | L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Mega Prelab |
-| L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | |Logic Analyzer |
+| L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | ||
 | L18 | [GR #1](/admin/gr1_resources) | | |
-| L19 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/index.html) Functionality |
+| L19 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/index.html) Functionality and Logic Analyzer |
 | [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) |  [Lab 3](/labs/lab3/index.html) Notebook|
 | [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html) | [Assignment 5](/notes/L20/L20_C_basics.html) |
 | [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) | [Assignment 6](/notes/L21/L21_pong.html) |

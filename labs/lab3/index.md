@@ -205,6 +205,8 @@ The native write operation to the Nokia 1202 will overwrite any information that
 Import the following image into a paint program and show the result of the operation between the two bits maps combined using the logic operator specified.
 ![xor picture](bitblock.bmp)
 ## Functionality
+Required functionality: Create a block on the LCD that is 8x8 pixels.  The location of the block must be passed into the subroutine via r12 and r13.
+A functionality: Move the 8-pixel block one block in the direction of the pressed button (up, down, left, right).
 (Under construction)
 
 ## Grading
@@ -212,9 +214,9 @@ Import the following image into a paint program and show the result of the opera
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
 | Mega Prelab | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days | | 20 | | EOC L16 |
-| Required Logic Analyzer | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L17 |
-| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L19 |
+| Required Logic Analyzer | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 40 | | COB L19 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 20 | | COB L19 |
 | A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L19 |
-| Lab Notebook | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 20 | | COB L20 |
+| Lab Notebook | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L20 |
 | **Total** | | | **100** | | ||
 
