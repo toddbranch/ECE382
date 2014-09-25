@@ -5,8 +5,8 @@ title = 'Lab 3 - SPI - "I/O"'
 
 ##  Mega Pre-lab
 ### Nokia1202  LCD BoosterPack v4-5
-Look at the schematic for the Nokia1202 LCD BoosterPack. Complete the following table.  The pin number should be the pin number that signal connects to on the MSP 430.  You may need to examine page 3 of the MSP430 Data Sheet. The type is from the perspective of the MSP430 and is one of the following: input, output, or power .  For example, the RST' line should  be listed as having an output type because it is an output from the  MSP430 (to an input on the Nokia 1202).  For input and output types (do nothing further with power), list their bit settings in the three registers listed (see pages 328 and 329 of the MSP430g2553 User's Guide).
-| Name| Pin #| Type | PxDIR| PxREN | PxOUT |
+Look at the schematic for the Nokia1202 LCD BoosterPack. Complete the following table.  The pin number should be the pin number that signal connects to on the MSP 430.  You may need to examine page 3 of the MSP430 Data Sheet. The type is from the perspective of the MSP430 and is one of the following: input, output, or power .  For example, the RST' line should  be listed as having an output type because it is an output from the  MSP430 (to an input on the Nokia 1202).  For input and output types (do nothing further with power), list their bit settings in the three registers listed (see pages 328 and 329 of the MSP430g2553 User's Guide). <br>
+| Name | Pin # | Type | PxDIR| PxREN | PxOUT |
 |:-: | :-: | :-: | :-: | :-: | :-: |
 |GND |  |   |   |   |   |
 | RST |   |   |   |   |   |
@@ -188,7 +188,7 @@ Complete the table below.  To answer this question you will have to use some com
 ## Logic Analyzer
 ###Physical communication
 Connect the Nokia 1202 Booster Pack to your TI Launch Pad.  Make sure that the buttons on the Booster Pack are pointed away from the USB connector (and on the same side of the board as the MSP430 buttons), just like in the following picture.
-![Board connection](connection.jpg)
+![Board connection](connection.jpg)<br>
 Download <a href="lab3.asm">lab3.asm</a> and build a project around the file.
 Run the program and observe the output on the LCD every time you press the SW3 button.  It should look something like the following image after a few button presses.
 ![test program](screen.jpg)
