@@ -45,9 +45,6 @@ The following initializes the SPI subsystem of the MSP430.  For each of the bits
 	bic.b	#UCSWRST, &UCB0CTL1
 ```
 
-<ol start=3>
-<li>
-<table class="table table-striped table-bordered table-condensed">
 | ID | Bit | Function as set in the code |
 |:-:|:-:|:-:|
 | UCCKPH | | |
@@ -57,7 +54,7 @@ The following initializes the SPI subsystem of the MSP430.  For each of the bits
 | UCSSEL_2|  | |
 | UCSWRST| | |
 
-### Commuicate to the Nokia1202 display
+### Communicate to the Nokia1202 display
 The following code communicates one byte to the Nokia 1202 display using its 9-bit protocol.  Use this to draw a timing diagram of the expected behavior of LCD1202_CS_PIN, LCD1202_SCLK_PIN, LCD1202_MOSI_PINs from the begining of this subroutine to the end.  Make sure that you clearly show the relationship of the edges in the clk and data waveforms.
 ```
 ;-------------------------------------------------------------------------------
