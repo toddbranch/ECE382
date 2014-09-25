@@ -3,7 +3,8 @@ title = 'Lab 3 - SPI - "I/O"'
 
 # Lab 3 - SPI - "I/O"
 
-##  Mega Pre-lab
+##  Mega Prelab
+A hard copy of this Mega Prelab is required to be turned in.  Answers should not be handwritten.  The timing diagram may be NEATLY drawn by hand with the assistance of a straightedge on engineering paper.
 ### Nokia1202  LCD BoosterPack v4-5
 Look at the schematic for the Nokia1202 LCD BoosterPack. Complete the following table.  The pin number should be the pin number that signal connects to on the MSP 430.  You may need to examine page 3 of the MSP430 Data Sheet. The type is from the perspective of the MSP430 and is one of the following: input, output, or power .  For example, the RST' line should  be listed as having an output type because it is an output from the  MSP430 (to an input on the Nokia 1202).  For input and output types (do nothing further with power), list their bit settings in the three registers listed (see pages 328 and 329 of the MSP430g2553 User's Guide). <br>
 
@@ -38,7 +39,7 @@ mov.b	#LCD1202_RESET_PIN, & D
 | D |  |
 
 
-The following initializes the SPI subsystem of the MSP430.  For each of the bits listed in the table below, identify how the code-snippet configures that pin and what function is realized by that setting.  For example, setting the UCMSB bit of the UCB0CTL0 register forces the SPI subsystem to output the bits starting from the LSB.  Also list the bit position that each occupies in its associated register.
+The following initializes the SPI subsystem of the MSP430.  For each of the bits listed in the table below, identify how the code-snippet configures that pin and what function is realized by that setting.  For example, setting the UCMSB bit of the UCB0CTL0 register forces the SPI subsystem to output the bits starting from the LSB.  Also, list the bit position that each occupies in its associated register.
 ```
 	bis.b	#UCCKPH|UCMSB|UCMST|UCSYNC, &UCB0CTL0
 	bis.b	#UCSSEL_2, &UCB0CTL1
@@ -55,7 +56,7 @@ The following initializes the SPI subsystem of the MSP430.  For each of the bits
 | UCSWRST| | |
 
 ### Communicate to the Nokia1202 display
-The following code communicates one byte to the Nokia 1202 display using its 9-bit protocol.  Use this to draw a timing diagram of the expected behavior of LCD1202_CS_PIN, LCD1202_SCLK_PIN, LCD1202_MOSI_PINs from the begining of this subroutine to the end.  Make sure that you clearly show the relationship of the edges in the clk and data waveforms.
+The following code communicates one byte to the Nokia 1202 display using its 9-bit protocol.  Use this code to draw a timing diagram of the expected behavior of LCD1202_CS_PIN, LCD1202_SCLK_PIN, LCD1202_MOSI_PINs from the begining of this subroutine to the end.  Make sure that you clearly show the relationship of the edges in the clk and data waveforms.
 ```
 ;-------------------------------------------------------------------------------
 ;	Name:		writeNokiaByte
@@ -105,7 +106,7 @@ pollSPI:
 ```
 ### Configure the Nokia1202 display
 The following code configures the Nokia 1202 display to display pixels.  The code consists of two main areas.  The first section holds the reset line low and then high for a specific length of time.  You will measure the duration of the reset pulse later in the lab. <br> <br>
-The second section sends a sequence of commands to the Nokia 1202 display.  Your task is to use the the information on page 42 (and beyond) of the STE2007 technical document to decode the sybolic constants moved into register R13 on the lines marked with "DECODE HERE".
+The second section sends a sequence of commands to the Nokia 1202 display.  Your task is to use the the information on page 42 (and beyond) of the STE2007 technical document to decode the symbolic constants moved into register R13 on the lines marked with "DECODE HERE".
 
 ```
 ;-------------------------------------------------------------------------------
@@ -178,10 +179,11 @@ Complete the table below.  To answer this question you will have to use some com
 |#STE2007_DISPLAYALLPOINTSOFF| | |
 |#STE2007_POWERCONTROL| | | 
 |#STE2007_POWERCTRL_ALL_ON | | |
-|#STE2007_DISPLAYNORMAL| | | 
-|#STE2007_DISPLAYON | | | 
+|#STE2007_DISPLAYNORMAL | | |
+|#STE2007_DISPLAYON | | |
 
-
+(This marks the end of the Mega Prelab.)
+---------------------------------------------------------------
 ## Logic Analyzer
 ###Physical communication
 Connect the Nokia 1202 Booster Pack to your TI Launch Pad.  Make sure that the buttons on the Booster Pack are pointed away from the USB connector (and on the same side of the board as the MSP430 buttons), just like in the following picture.
@@ -195,10 +197,24 @@ Now connect wires to GND, SCLK, MOSI, and RESET.  Use the pin numbers from the p
 - Setup the logic analyzer to capture the waveform generated when the SW3 button is pressed.  Identify the calls to writeNokiaByte in the lab3.asm program that generated the 4 packets.
 - Setup the logic analyzer to capture the waveform generated when the SW3 button is pressed.  Decode the contents of the 4 packets and explain how their concents correpond to what was drawn on the display.  Be specific with the relationship between the data values and what and where the pixels are drawn.
 - What is the frequency of the SCLK waveform when sending the final 8 bits?
-
+(Under construction)
 
 
 ###Writing modes
 The native write operation to the Nokia 1202 will overwrite any information that is was on the display with new information.  However, that may not be the best course of action in your application.  The new bits being added to the image may be merged using the AND, OR, XOR operators.  To do this treat a black pixel as a logic 1 and a white pixel as a logic 0.  The pixel values from the same locations are combined using a logical operator and placed at the corresponding location in the destination imaged.
 Import the following image into a paint program and show the result of the operation between the two bits maps combined using the logic operator specified.
 ![xor picture](bitblock.bmp)
+## Functionality
+(Under construction)
+
+## Grading
+
+| Item | Grade | Points | Out of | Date | Due |
+|:-: | :-: | :-: | :-: | :-: |
+| Mega Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 20 | | EOC L16 |
+| Required Logic Analyzer | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L17 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L19 |
+| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L19 |
+| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 20 | | COB L20 |
+| **Total** | | | **100** | | ||
+
