@@ -190,8 +190,8 @@ Complete the table below.  To answer this question you will have to use some com
 Connect the Nokia 1202 Booster Pack to your TI Launch Pad.  Make sure that the buttons on the Booster Pack are pointed away from the USB connector (and on the same side of the board as the MSP430 buttons), just like in the following picture.
 ![Board connection](connection.jpg)<br>
 Download <a href="lab3.asm">lab3.asm</a> and build a project around the file.
-Run the program and observe the output on the LCD every time you press the SW3 button.  It should look something like the following image after a few button presses.
-![test program](screen.jpg)
+Run the program and observe the output on the LCD every time you press the SW3 button.  It should look something like the following image after a few button presses.<br>
+![test program](screen.jpg)<br>
 Now connect wires to GND, SCLK, MOSI, and RESET.  Use the pin numbers from the prelab to determine which pins to use.  Connect the Logic Analyzer to these lines and capture the following information:
 
 - Setup the Logic Analyzer to capture the RESET signal on a falling edge.  Measure the duration that the RESET line is held low in the initNokia subroutine.
