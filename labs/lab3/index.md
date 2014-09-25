@@ -185,6 +185,7 @@ Complete the table below.  To answer this question you will have to use some com
 (This marks the end of the Mega Prelab.)
 ---------------------------------------------------------------
 ## Logic Analyzer
+The answers to the logic analyzer section will be posted to GitHub along with the functionality code.
 ###Physical communication
 Connect the Nokia 1202 Booster Pack to your TI Launch Pad.  Make sure that the buttons on the Booster Pack are pointed away from the USB connector (and on the same side of the board as the MSP430 buttons), just like in the following picture.
 ![Board connection](connection.jpg)<br>
