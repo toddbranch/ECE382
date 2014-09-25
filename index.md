@@ -21,8 +21,8 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L13](notes/L13/index.html) | Peripherals. Ports.  GPIO.  Multiplexing. | | [Lab 2](/labs/lab2/index.html) Notebook |
 | [L14](notes/L14/index.html) | Polling.  Debouncing.  Software Delay Routines. | [Assignment 4](notes/L14/L14_subroutines.html) | |
 | [L15](notes/L15/index.html) | Serial Comm Fundamentals.  Serial Peripheral Interface.  [Lab 3](/labs/lab3/ index.html) Introduction.  Logic Analyzer Demo. | [Lab 3](/labs/lab3/index.html) Prelab | [Assignment 4](notes/L14/L14_subroutines.html) |
-| L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Prelab |
-| L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | |
+| L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Mega Prelab |
+| L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | |Prelab |
 | L18 | [GR #1](/admin/gr1_resources) | | |
 | L19 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | | [Lab 3](/labs/lab3/ index.html) Functionality and Notebook|
 | [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) | |
