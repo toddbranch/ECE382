@@ -193,19 +193,21 @@ Download <a href="lab3.asm">lab3.asm</a> and build a project around the file.
 Run the program and observe the output on the LCD every time you press the SW3 button.  It should look something like the following image after a few button presses.<br>
 ![test program](screen.jpg)<br>
 When SW3 is detected as being pressed and released (lines 56-62), the MSP430 generates 4 packets of data that are sent to the Nokia 1202 display, causing a vertical bar to be drawn. Complete the following table by finding the 4 calls to writeNokiaByte that generate these packets. In addition, scan the nearby code to determine the parameters being passed into this subroutine. Finally, write a brief description of what is trying to be accomplished by each call to writeNokiaByte.
+
 |Line|R12|R13|Purpose|
 |:-:|:-:|:-:|:-:|
 |||||
 |||||
 |||||
 |||||
-Configure the logic analyzer to capture the waveform generated when the SW3 button is pressed and released. Decode the data bits of each 9-bit waveform by separating out the MSB, which indicates command or data. Explain how the packet contents correspond to what was drawn on the display.  Be specific with the relationship between the data values and what and where the pixels are drawn.
+Configure the logic analyzer to capture the waveform generated when the SW3 button is pressed and released. Decode the data bits of each 9-bit waveform by separating out the MSB, which indicates command or data. Explain how the packet contents correspond to what was drawn on the display.  Be specific with the relationship between the data values and what and where the pixels are drawn
+
 |Line|Command/Data|8-bit packet|
 |:-:|:-:|:-:|
 ||||
 ||||
 ||||
-||||
+|||||
 Hint: in order to probe the signals while the LCD is connected to the LaunchPad, you will need to use the LaunchPad header pins with the probe hook grippers. Be careful when attaching and detaching the grippers to the pins, as they may easily bend and then no longer serve you well. Also, don't forget the ground pin!<br>
 ![Logic analyzer connection](left.jpg)<br>
 You will get a waveform similar to that shown below. Note that the command/data bit is significantly far away from the 8 data bits. <br>
