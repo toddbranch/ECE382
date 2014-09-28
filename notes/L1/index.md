@@ -7,6 +7,7 @@ title = 'Course Introduction. Computer Structure.  Architecture vs Microarchitec
 - [Complex Instruction Set Computing](http://en.wikipedia.org/wiki/Complex_instruction_set_computing)
 - [Reduced Instruction Set Computing](https://en.wikipedia.org/wiki/Reduced_instruction_set_computing)
 - [RISC vs CISC](http://www-cs-faculty.stanford.edu/~eroberts/courses/soco/projects/risc/risccisc/)
+- [PPT slides](Lsn1.pptx)
 
 ## Assignments
 [Skills Review](skills_review.html)
