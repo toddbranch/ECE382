@@ -5,6 +5,7 @@ title = 'Debuggers.  MSP430 Execution Model.  MSP430 Instruction Set.  Convertin
 ## Readings
 [Debuggers](http://en.wikipedia.org/wiki/Debugger)  
 [MSP430 Instruction Set](http://mspgcc.sourceforge.net/manual/x223.html)
+[ppt](Lsn3.pptx)
 
 ## Assignment
 [Execution](L3_execution.html)

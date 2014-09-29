@@ -3,7 +3,8 @@ title = 'Peripherals, Ports, GPIO, Multiplexing'
 # Lesson 13 Notes
 
 ## Readings
-[Memory-mapped IO](http://en.wikipedia.org/wiki/Memory-mapped_I/O)
+- [Memory-mapped IO](http://en.wikipedia.org/wiki/Memory-mapped_I/O)
+- [ppt](Lsn13.pptx)
 
 ## Lesson Outline
 - Peripherals

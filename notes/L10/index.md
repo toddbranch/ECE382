@@ -5,6 +5,7 @@ title = 'The Stack. Subroutines. Lab 2 Introduction.'
 ## Readings
 - <a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stacks</a>  
 - [Stack Overflow](http://en.wikipedia.org/wiki/Stack_overflow)
+- [ppt](Lsn10.pptx)
 
 ## Lesson Outline
 - Admin

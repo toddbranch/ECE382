@@ -5,6 +5,7 @@ title = 'Intro to the MSP430.  MSP430 Architecture.  Assembly and Machine Langua
 ## Readings
 <a href="http://en.wikipedia.org/wiki/Assembler_(computing)#Assembler">Assembler</a>  
 <a href="https://en.wikipedia.org/wiki/Linker_(computing)">Linker</a>
+[ppt](Lsn2.pptx)
 
 ## Lesson Outline
 - Intro to the MSP430

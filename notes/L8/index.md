@@ -6,6 +6,7 @@ title = 'Directives.  Assembly Process.  Structured Design and Test.  Debugging.
 
 - [What's the Hardest Bug You've Debugged?](http://www.quora.com/Programming-Interviews/Whats-the-hardest-bug-youve-debugged/answer/Dave-Baggett?srid=pxH3&share=1)
 - [Modularity](http://www.examiner.com/article/programming-concepts-the-benefits-of-modular-programming)
+- [ppt](Lsn8.pptx)
 
 ## Assignment
 

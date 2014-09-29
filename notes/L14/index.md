@@ -18,6 +18,8 @@ Videos of cool MSP430 project:
 - [Hacking an RC Car](http://www.youtube.com/watch?v=SPbOUqOpu3I)
 - [Interactive Periodic Table](http://www.youtube.com/watch?v=s0c2vkO8tck)
 
+- [ppt](Lsn14.pptx)
+
 ## Assignment
 
 Very short assignment:

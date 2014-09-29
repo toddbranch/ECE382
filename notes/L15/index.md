@@ -6,6 +6,7 @@ title = 'Serial Comm Fundamentals. Serial Peripheral Interface. Lab 3 Introducti
 
 - [Serial Peripheral Interface (SPI)](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus)
 - [Lab 3](/labs/lab3/index.html)
+- [ppt](Lsn15.pptx)
 
 ## Assignment
 - [Lab 3](/labs/lab3/index.html) Prelab
@@ -224,7 +225,7 @@ Their status can be monitored using flags TXIFG and RXIFG, both in IFG2.  If you
 
 [Lab 3](/labs/lab3/index.html) is your first opportunity to interface the MSP430 with external hardware - we'll be using pushbuttons and an LCD.  **It's a long lab**.  You'll need all the time, so make sure you don't fall behind.
 
-You're going to be using push buttons to select a key and message, then use your subroutines from Lab 2 to attempt to decrypt the selected message with the selected key.
+You're going to be using push buttons to write a block to the LCD and move it around.
 
 There is a lot of information on the lab handout and in the links included in the lab handout - **you'll need it**.  Follow it closely.
 
@@ -233,8 +234,6 @@ I've given you template code - **USE IT**.  It will make your life much, much ea
 Datasheets you'll need are on the course website.
 
 Describe required functionality.
-
-Describe B functionality.
 
 Describe A functionality.
 

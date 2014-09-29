@@ -199,7 +199,7 @@ When SW3 is detected as being pressed and released (lines 56-62), the MSP430 gen
 |||||
 |||||
 |||||
-|||||
+||||||
 Configure the logic analyzer to capture the waveform generated when the SW3 button is pressed and released. Decode the data bits of each 9-bit waveform by separating out the MSB, which indicates command or data. Explain how the packet contents correspond to what was drawn on the display.  Be specific with the relationship between the data values and what and where the pixels are drawn
 
 |Line|Command/Data|8-bit packet|
