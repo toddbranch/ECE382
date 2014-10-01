@@ -39,7 +39,7 @@ mov.b	#LCD1202_RESET_PIN, & D
 | D |  |
 
 
-The following initializes the SPI subsystem of the MSP430.  For each of the bits listed in the table below, identify how the code-snippet configures that pin and what function is realized by that setting.  For example, setting the UCMSB bit of the UCB0CTL0 register forces the SPI subsystem to output the bits starting from the LSB.  Also, list the bit position that each occupies in its associated register.
+The following initializes the SPI subsystem of the MSP430.  For each of the bits listed in the table below, identify how the code-snippet configures that pin and what function is realized by that setting.  For example, setting the UCMSB bit of the UCB0CTL0 register forces the SPI subsystem to output the bits starting from the MSB.  Also, list the bit position that each occupies in its associated register.
 ```
 	bis.b	#UCCKPH|UCMSB|UCMST|UCSYNC, &UCB0CTL0
 	bis.b	#UCSSEL_2, &UCB0CTL1
