@@ -1,340 +1,209 @@
-title = 'C Programming - Structs, Functions, and Headers.' 
+title = 'C Programming - Pointers and Arrays' 
 
 # Lesson 21 Notes
 
 ## Readings
-- <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>
-- [MOTIVATIONAL: Self-assembling Robots](http://web.mit.edu/newsoffice/2013/simple-scheme-for-self-assembling-robots-1004.html)
+- [Everything You Need to Know About Pointers in C](http://boredzo.org/pointers/)
+- [Short, Funny Pointer Video](http://www.youtube.com/watch?v=UvoHwFvAvQE)
+    - NOTE: `new` is a C++ keyword - we don't use it in C
 
 ## Assignment
-- [Assignment - Pong!](/notes/L21/L21_pong.html)
+- [Assignment](/notes/L21/L21_moving_average.html)
+- **(OPTIONAL, but kind of fun)** [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
 
 ## Lesson Outline
-- Structs
-- Functions
-- Headers
-- Example
+- Admin
+- Pointers
+- Arrays
+- Function Parameters
+- Practice
 
 ## Admin
+- Video
+- HW
+    - If you didn't turn in L21 HW, you've got a bunch of stuff to do
+        - L21 HW
+            - Talk about process for initializing structs with variables in CCS compiler
+        - L22 Assignment
+        - Install Git
+            - You must do this because we're using it in class next time!
+        - Optional KSplice Pointer Challenge
+            - Tests your knowledge of pointers
+            - Good practice
+    - Important to get practice with C and get issues worked out prior to labs
+    - If we get done early today, you can work on all this stuff
 
-- Show Color LCD, Educational Booster Pack
-- Show motivational video - self-assembling robots!
-- Talk about TALOS
-    - If interested in a 499, talk to me after class
-- GRs graded
-    - Stop me with 10 mins left and I'll go over them
-- Talk about compiler optimization issues with HW
-- Look at two assignments:
-    - [Student Example 1](student_example_1.html)
-    - [Student Example 2](student_example_2.html)
-    - [Student Example 3](student_example_3.html)
+## Pointers
 
+A pointer is a variable that holds a memory address.
 
-## Structs
+### Pointers Overview
 
-Remember objects from Java and other High Level Languages?  C has a rough equivalent called structs.  They are collections of variables, but don't have their own functions / methods.
+| Token | Context | Description |
+| :-: | :-: | :-: 
+| `&` | Assignment statement | Returns the address of the variable after this token |
+| `*` | Variable declaration | Variable contains the address pointing to a variable of type `var_type` |
+| `*` | Assignment statement | Allows you to access the contents of the variable at which the pointer is pointing |
+| `->` | Structure | Access a structure's elements through a structure pointer (instead of the "." notation).  Also can use `(*structure).element`. |
 
-- Collection of multiple variables
-- Can be of different types
-- Similar to an Object Oriented Programming (OOP) object, but only contains data (no methods)
-
-*[Open up VIM, code to demo this]*
-
-General case:
 ```
-struct <name>
+int a = 10;                 // declaring an integer
+int * aPtr;                 // declaring a pointer to an integer
+
+int* bPtr, cPtr;            // GOTCHA!  cPtr is of type int, not int*!
+
+aPtr = &a;                  // setting the value of aPtr to the address of a
+
+*aPtr = 20;                 // sets a to 20 by dereferencing aPtr 
+
+point_t myPoint = {1,2};    // declaring a structure of point_t, initializing with constants
+
+point_t * myPointPtr;       // declaring a pointer to a point_t
+
+myPointPtr = &myPoint;      // setting the value of myPointPtr to address of myPoint
+
+(*myPointPtr).x = 10;       // sets myPoint.x to 10 by dereferencing myPointPtr
+
+myPointPtr->x = 20;         // sets myPoint.x 10 20 by dereferencing myPointPtr (alternative method)
+
+```
+
+### Pointers Example
+
+*[Draw map of this on the board!]*
+
+```
+unsigned char x = 0x25;                 // address of x is 0x1000
+unsigned int y = 0x1234;                // address of y is 0x1001 - 0x1002
+unsigned char* xPtr = &x;               // address of xPtr is 0x1003 - 0x1004
+unsigned char* yPtr = &y;               // address of yPtr is 0x1005 - 0x1006 
+```
+
+Questions are independent - variables reset to original state prior to each.
+
+**Question:** What is the value of x and xPtr after the following statements? (remember, MSP430 is little endian)
+```
+xPtr++;
+x = *xPtr + 1; // x = ?
+```
+**Answer:** x = 0x35
+
+**Question:** What is the value of x and xPtr after the following statement?
+```
+*xPtr = 0x12;
+```
+**Answer:** x = 0x12, xPtr unchanged
+
+**Question:** What is the value of y and yPtr after the following statement?
+```
+y = yPtr + *yPtr;
+```
+**Answer:** y = 0x2235, yPtr unchanged
+
+## Arrays
+
+- *Array* - a collection of elements of the same data type stored in consecutive memory locations.
+    - Index counting starts at 0
+    - Max index is `NUM_ELEMENTS` - 1
+
+### Array Declaration
+
+```
+<data_type> array_name[NUM_ELEMENTS]; // Uninitialized
+<data_type> array_name[] = {val0, val1, ...}; // Initialized
+```
+
+`array_name` **decays** into a pointer to the first element in the array
+
+`<data_type>` lets the compiler know how much to "jump" between elements in the array
+
+### Array Element Access
+
+`array_name[INDEX_VAL]`
+
+### Arrays Example
+
+```
+unsigned int a[3];                      // address of a[0] is 0x1000, address of a[1] is 0x1002, address of a[2] is 0x1004
+unsigned int temp;                      // address of a[3] is 0x1006
+unsigned char* cPtr;                    // address of cPtr is 0x1008
+a[0] = 0x1234;
+a[1] = 0x5678;
+a[2] = 0x9ABC;
+```
+
+Questions are independent - variables reset to original state prior to each.
+
+**Question:** What is the value of `temp` after each of the following statements?  (remember, the MSP430 is little endian)
+
+```
+temp = (unsigned int)a;
+temp = (a+1)[0];
+```
+**Answer:** temp = 0x1000, temp = 0x5678
+
+**Question:** What is the value of `cPtr` and `temp` after the following statements? (remember, the MSP430 is little endian) 
+
+```
+cPtr = (unsigned char *)a;
+temp = (cPtr+1)[0];
+```
+**Answer:** cPtr = 0x1000, temp = 0x7812
+
+## Function Parameters
+
+- *Pass by Value* - Passing the actual variable
+    - Good choice for small-sized variables
+    - Expensive to copy larger variables (e.g. structures, arrays, etc.)
+- *Pass by Pointer* - Pass pointer into variable (same as Pass by Reference from assembly block)
+    - Constant size parameter no matter how large the object it is to point to
+    - Allows you to directly modify the variable in the function without a `return` statement
+    - Use the `const` keyword if you do not want the function to modify the contents of the pointer's target
+
+**Pass by Value**
+
+```
+char some_function(char a, char b)
 {
-    <type> <var1>;
-    <type> <var2>;
-    ...
-};
+    return ++a + b;
 
-struct <name> <variable_name>;
-<variable_name>.<var1> = <value>;
-<variable_name>.<var2> = <value>;
-
-```
-
-Example:
-```
-// Header
-// #includes
-// #defines
-
-struct point {
-    char x, y;
-};
-
-struct circle {
-    struct point center;
-    char radius;
-};
-
-void main(void)
-{
-    // You can create and initialize them like this:
-
-    struct point center = {20, 7};
-    struct circle myCircle = {center, 5};
-
-    // You can use dot notation to access variables:
-
-    center.x = 10;
-    circle.radius = 25;
 }
 ```
 
-## Functions
+**Pass by Pointer**
 
-Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and reusable.
-
-### Function Call
-
-General Case:
 ```
-<variable> func_name(<variable 1>, ...);
-```
-
-Example:
-```
-// Header
-// #includes
-// #defines
-
-void main(void)
+char some_function(char* a, char* b)
 {
-    unsigned int mySummation;
-    unsigned char maxN = 42;
-
-    mySummation = summation(23);
-    mySummation = summation(maxN);
+    return ++(*a) + *b;
 }
 ```
 
-### Function Prototype
+**Question:** What is the value of the actual parameter `a` in the client code after each of these functions are called?  What if we change the second one to `const char* a`?
 
-- Promises the compiler that the function is implemented elsewhere
-- You are allowed to "call" the function from your code
-- The function prototype *must* be defined in a location physically *before* you call it (e.e. defined above `main()` in a `#include` file).
-- If you offer a prototype but don't provide an implementation, you'll get a linker error.
+**Question:** How large (in bytes) are each of the parameters in these two functions?
 
-General case:
-```
-<output_type> func_name(<input type 1> <variable name 1>, ...);
-```
-
-**Note**: function parameters / output can be `void`.
-
-Example:
-```
-// Header
-// #includes
-// #defines
-
-unsigned int summation (unsigned char n);
-
-void main(void)
-{
-    unsigned int mySummation;
-    unsigned char maxN = 42;
-
-    mySummation = summation(23);
-    mySummation = summation(maxN);
-}
-```
-
-### Function Definition
-
-Just by convention, I prefer to define function prototypes above main and implementations below it.
-
-General Case:
-```
-<output_type> func_name(<input type 1> <variable name 1>, ...)
-{
-    // Some interesting stuff
-    return <output variable>;
-}
-```
-
-Example:
-```
-// Header
-// #includes
-// #defines
-
-unsigned int summation (unsigned char n);
-
-void main(void)
-{
-    unsigned int mySummation;
-    unsigned char maxN = 42;
-
-    mySummation = summation(23);
-    mySummation = summation(maxN);
-}
-
-unsigned int summation(unsigned char n)
-{
-    // recursion!
-    if (n <= 0)
-        return 0;
-    else
-        return n + summation(n-1);
-}
-```
-
-## Header and Implementation Files
-
-### Preprocessor Commands
-
-Last time, we talked a little about preprocessor directives (`#define` and `#include`).  The preprocessor is executed before your code compiles.  It handles any lines that start with `#<some_comand> <params>`.  The following are the preprocessor commands you will use:
-
-- `#include "file_name.h"`
-    - Essentially a "copy and paste" of the `file_name.h` into your file
-    - if the file name is surrounded by "", the preprocessor will search in your project working directory
-    - if the file name is surrounded by `<>`, the preprocessor will search your class path.
-- `#define <SINGLE_WORD> <replacement_token>`
-    - Essentially a global "search and replace" within your code
-    - Anytime the `<SINGLE_WORD>` token appears, it will be replaced by the `<replacement token>`
-- `#ifndef <SOME_CONSTANT> ... <some code> ... #endif`
-    - Code is only included if `<SOME_CONSTANT>` is not defined
-    - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
-- `typedef struct point point_t`
-    - Saves you some work for commonly used types:
-        - Old syntax: `struct point myPoint`
-        - With `typedef`: `point_t myPoint`
-- **Note**: aside from `typedef`, these lines do not end with a semicolon (;)!
-
-### C Headers
-
-- A separate file that contains a related set of:
-    - Function _prototypes_
-    - `typedef` declarations
-    - `#define` constants
-    - etc.
-- File naming convention:
-    - All lowercase
-    - Use "_" to combine words
-    - ".h" is the file extension
-    - Example: `atd_helper.h`
-- You must "wrap" the header in a `#ifndef` to prevent circular inclusions
+## Practice
 
 ```
-#ifndef _ATD_HELPER_H_
-#define _ATD_HELPER_H_
-
-// Your header file code (typedefs, function prototypes, #defines, etc.)
-// Use good comment headers to define each function (see example)
-// ...
-
-#endif // _ATD_HELPER_H
+char x;                         // Memory location 0x0800 = 0xFF
+char y[3];                      // Memory locations: 0x0801 = 0x23, 0x0802 = 0x56, 0x0803 = 0x89
+char* letter_ptr;               // Memory locations: 0x0804 - 0x0805 = 0xABDC
 ```
 
-### C Implementation Files
-
-- A separate C file that implements the header file
-- Contains the function _definitions_
-- `#include` the header file as your first line
-- File naming convention:
-    - Same name as the header file!
-    - ".c" is the file extension
-    - Example: `atd_helper.c`
+**Question:** What values would be assigned using the following statements?  Unless otherwise stated, assume each instruction is independent of the other instructions.
 
 ```
-#include "atd_helper.h"
-
-// Function definitions
-// ...
+x = y[2];                       // Part A
+letter_ptr = &x;                // Part B
+letter_ptr = y;                 // Part C
+x = *(letter_ptr + 2);          // Assume Part C
+y[2] = *(letter_ptr + 1);       // Assume Part B
 ```
 
-## Example
-
-### Program Requirements
-
-- Build a program that can calculate the following:
-    - Summation
-    - Factorial
-    - Minimum of two values
-    - Maximum of two values
-    - Provides user helpful mathematic constants
-- Must write modular / reusable code:
-    - Header file
-    - Implementation file
-    - `main()` file
-
-### math_helper.h
-
-```
-// Your high-quality header with author / description / revision history
-#ifndef _MATH_HELPER_H_
-#define _MATH_HELPER_H_
-
-// Useful constants
-                                (estimate)      (actual)
-#define PI  (339 / 108)     //  3.139       vs  3.142
-#define E  (155 / 57)       //  2.719       vs  2.718
-
-// Note: you would add some really good headers before each of these
-//       functions to describe their purpose.  In the interest of
-//       brevity, I'm omitting them here.
-unsigned int summation(unsigned char n);
-unsigned int factorial(unsigned char n);
-char max(char a, char b);
-char min(char a, char b);
-
-#endif // _MATH_HELPER_H_
-```
-
-### math_helper.c
-
-```
-#include "math_helper.h"
-
-unsigned int summation(unsigned char n)
-{
-    if (n <= 0)
-        return 0;
-    else
-        return n + summation(n-1);
-}
-
-unsigned int factorial(unsigned char n)
-{
-    if (n <= 0)
-        return 1;
-    else
-        return n * factorial(n-1);
-}
-
-char max(char a, char b)
-{
-    return (a > b) ? a : b;
-}
-
-char min(char a, char b)
-{
-    return (a < b) ? a : b;
-}
-```
-
-### main.c
-
-```
-#include "math_helper.h"
-
-void main(void)
-{
-    char a = 10;
-    char b = 15;
-    char maxVar, minVar;
-    unsigned int sum, fact;
-
-    sum = summation(a);
-    fact = factorial(6);
-    maxVar = max(a, b);
-    minVar = min(a, b);
-
-    while(1){};                 // trap CPU
-}
-```
-
+**Answers**
+A - x = 0x89
+B - letter_ptr = 0x0800
+C - letter_ptr = 0x0801
+D - x = 0x89
+E - y[2] = 0x23

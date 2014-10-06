@@ -24,16 +24,16 @@ title = 'Intro to Embedded Systems with the MSP430'
 | L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Mega Prelab (BOC) |
 | L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | ||
 | L18 | [GR #1](/admin/gr1_resources) | | |
-| L19 |Compilers.  Introduction to C.  | | [Lab 3](/labs/lab3/index.html) Functionality, Logic Analyzer, and Notebook |
-| [L20](notes/L20/index.html) | Compilers.  Introduction to C. | [Assignment 5](/notes/L20/L20_C_basics.html) |  |
-| [L21](notes/L21/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html) | [Assignment 5](/notes/L20/L20_C_basics.html) |
-| [L22](notes/L22/index.html) | C Programming - Pointers and Arrays | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) | [Assignment 6](/notes/L21/L21_pong.html) |
-| [L23](notes/L23/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment 8](/notes/L23/L23_git.html) | [Install Git](notes/L22/git_install.html), [Assignment 7](/notes/L22/L22_moving_average.html) |
-| [L24](notes/L24/index.html) | [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment 8](/notes/L23/L23_git.html) |
-| L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | [Lab 4](/labs/lab4/index.html) | [Lab 4](/labs/lab4/index.html) Prelab |
-| L26 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. | | [Lab 4](/labs/lab4/index.html) Functionality |
-| [L27](notes/L27/index.html) | Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |
-| [L28](notes/L28/index.html) | Timer_A: Interval Timing. [Lab 5](/labs/lab5/index.html) Introduction. | [Lab 5](/labs/lab5/index.html) Prelab | |
+| [L19](notes/L19/index.html) | Compilers.  Introduction to C.  | [Assignment 5](/notes/L20/L20_C_basics.html)| [Lab 3](/labs/lab3/index.html) Functionality, Logic Analyzer, and Notebook |
+| [L20](notes/L20/index.html) | C Programming - Structs, Functions, and Headers. | [Assignment 6](/notes/L21/L21_pong.html)| [Assignment 5](/notes/L20/L20_C_basics.html) |
+| [L21](notes/L21/index.html) | C Programming - Pointers and Arrays | [Assignment 7](/notes/L22/L22_moving_average.html) | [Assignment 6](/notes/L21/L21_pong.html) |
+| [L22](notes/L22/index.html) | C Programming - Writing Clean Code.  Revision Control. | [Assignment 8]| [Assignment 7](/notes/L22/L22_moving_average.html) |
+| [L23](notes/L23/index.html) | [Lab 4](/labs/lab4/index.html) Introduction.  Mapping C to Assembly. | [Lab 4](/labs/lab4/index.html) Prelab | [Assignment 8] |
+| L24 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C.  [Lab 4](/labs/lab4/index.html)| [Lab 4](/labs/lab4/index.html) Prelab |
+| L25 | [Lab 4](/labs/lab4/index.html) - Polling and SPI in C. |  | [Lab 4](/labs/lab4/index.html) Functionality |
+| [L26](notes/L26/index.html)| Interrupts and ISRs. MSP430 Interrupt System. | | [Lab 4](/labs/lab4/index.html) Notebook |
+| [L27](notes/L27/index.html) | Timer_A: Interval Timing. [Lab 5](/labs/lab5/index.html) Introduction. | [Lab 5](/labs/lab5/index.html) Prelab |  |
+| L28 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab  |
 | L29 | [Lab 5](/labs/lab5/index.html) - Interrupts | [Lab 5](/labs/lab5/index.html) | [Lab 5](/labs/lab5/index.html) Prelab |
 | [L30](notes/L30/index.html) | Low Power Modes.  GR Review. | [Lab 5](/labs/lab5/index.html) Documentation | [Lab 5](/labs/lab5/index.html) Functionality |
 | L31 | [GR #2](/admin/gr2_resources) |  | [Lab 5](/labs/lab5/index.html) Documentation |

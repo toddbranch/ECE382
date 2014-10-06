@@ -1,186 +1,104 @@
-title = 'C Programming - Writing Clean Code.  Revision Control.'
+title = 'Lab 4 Introduction.  Mapping C to Assembly.'
 
 # Lesson 23 Notes
 
 ## Readings
-- [Revision Control](https://en.wikipedia.org/wiki/Revision_control)
-- <a href="https://en.wikipedia.org/wiki/Git_(software)">Git</a>
-- [Github](https://en.wikipedia.org/wiki/Github)
-    - This is an open source community around Git - check it out!
+- [Mapping C Programming Constructs to MSP430 Assembly](L24_Mapping_C_to_Assembly.html)
 
 ## Assignment
-- [Assignment](L23_git.html)
+- [Lab 4 Prelab](/labs/lab4/index.html)
 
 ## Lesson Outline
 - Admin
-- Review
-- Writing Clean Code
-- Revision Control
+- [Lab 4](/labs/lab4/index.html) Overview
+- Electronic Lab Notebook
+- Working with the C Headers
+- Mapping C to Assembly
 
 ## Admin
 
-- Graded labs, available in Lab
-- Prog grades are in - CAMIS should be (mostly) up to date
-- I'll extend turn-in deadline on pong / moving average to COB for this class
+- Lab next time!
 
-## Review
+## [Lab 4](/labs/lab4/index.html) Overview
 
-- Review pong code
-- Review moving average code
+In this lab, you'll create a library for working with the LCD on the Geek Box - your very first *device driver*.  A good starting point might be the assembly code from Lab 3.  You can port that to C to get it up and running.  But, eventually, I'll expect you to create a reusable LCD library that you can use on future labs (you'll need it for Lab 5).
 
-## Writing Clean Code
+*[Walk through tiers of functionality.]*
 
-### Meaningful Names
+In this and all future labs, I expect your code to be under version control with git throughout development.  I also expect it to be pushed to Github regularly so I can monitor it.  Commit early and often - I will look at your commit history!
 
-*[Write code in vim]*
+*[Walk through prelab expectations.]*
 
-**[Bad Code](badCode.html)**
+I've provided my header as an example of an interface that I think is straightforward to work with.  I recommend designing your API (defined in header) before implementing your code!  You want to design an API that's convenient to work with!
 
-- Use intention-revealing names ("self-documenting")
-    - `int d, temp; // elapsed time in days, a temporary variable`
-    - `int elapsedTimeInDays, daysSinceModification;`
-- Make meaningful distinctions
-    - `void copyChars(char* a1, char* a2)`
-    - `void copyChars(char* source, char* destination)`
-- Use pronounceable names
-    - `DtaRcrd`
-    - `DataRecord`
-- Use searchable names
-    - `MAX`
-    - `MAX_STUDENTS`
-- Functions: use verbs!
-    - `forward()`
-    - `moveForward()`
-- Don't be cute
-    - `holyHandGrenade()`
-    - `deleteItem()`
-- Pick one word per concept
-    - Bad: `fetch(), retrieve(), get()`
+## The ECE382 Electronic Lab Notebook
 
-### Functions
+I'm open to electronic lab notebooks in this course.  I think git is an interesting way to accomplish this.  If you're interested in using an electronic lab notebook, here's a template I've created:
 
-- Small - ideally less than 10 lines long
-- Do one thing
-- Use descriptive names
-- Parameters: rarely need more than two or three
-- Side effects - function should only do what you say it does
-- Do not use static or global variables
-- Only depend on local variables / parameters
-- Don't repeat yourself - write a function instead of copy / paste
-- Only one entry / exit point
-- Indent correctly!
+[Lab Notebook Template](https://github.com/toddbranch/electronic_lab_notebook).
 
-*[Let's fix my code!](pong_c.html)*
+*[Walk through the structure, etc.]*
 
-- Create `updateBallIfHitWall` function
-- Create separate `didHitTop`, `didHitBottom`, `didHitLeft`, `didHitRight` functions
+I'd expect you to document software changes in your commit history.  Any higher level design stuff or hardware design should be included in your report.md.
 
-### Comments
+This is the first time we'd be doing lab notebooks in this way, so you'd be trailblazers here.
 
-- Comment on "big picture" items
-    - Head of each file
-    - Definition of each function
-    - Beginning of each major block of code
-- As you move deeper in the hierarchy, the comments are more specific
-- Try writing functions / meaningful names
-    - `if ((employeeFlags & HOURLY_FLAGS) && (employeeAge > 65)) ...`
-    - `if (isEligibleForFullBenefits(employee)) ...`
-- TODO comments
-    - `// TODO: Make this into a function`
-    - `// TODO: Write new header file to group these functions`
-- Bad comments
-    - Restating your code (`a = 1; // Setting a to 1`)
-    - Commented-Out code
-    - Too much information
-    - Don't comment bad code - rewrite it.
+I'd recommend you fork this template for each new lab you create.
 
-*[Let's fix my code!](pong_c.html)*
+If you want to continue using a physical lab notebook, that's totally fine as well.
 
-- Add comments to functions
+## Mapping C to Assembly
 
-## Revision Control
+### Working with the C Headers
 
-- Database that keeps track of multiple versions of your code
-- Revision Control Terms
-    - *Repository* - database where your versions are stored
-    - *Commit* - submit the changes to files since last commit
-    - *Revert* - go back in time to a previous version
-- **Not a substitute for backing up your data!**
-- Commit very frequently
-    - Usually after you get a small part working (e.g. simple function)
-    - It only stores the *difference* between versions (i.e. commits don't take up much disk space)
-- Most common revision control tools
-    - Concurrent Versions System (CVS) - older, but still popular
-    - Subversion (SVN) - designed as a replacement for CVS
-    - Git - hugely popular for individual / team software development
-        - Required for this class
-        - Created by Linus Torvalds for use with the Linux Kernel after Bitkeeper withdrew free use of the product
-        - Wrote the initial version in two weeks, used for kernel development within 2 months
+We haven't really talked about using C with MSP430 subsystems.  In Lab 4, you'll need to combine your knowledge of C with your knowledge of the subsystems we learned about in Block 1 (i.e. SPI, GPIO, etc.) to be successful.
 
-### The Shell
+The headers we used with our assembly code are the same ones we'll use for C.  The code `#include <msp430.h>` that's included by default in CCS gives you access to the appropriate headers for your platform.
 
-"A shell is software that provided an interface for users of an operating system to access the services of a kernel." - Wikipedia
+Here's the code we wrote in L13 to turn on the Launchpad lights when we push the button (similar to the final GR1 question):
+```
+                     bis.b  #BIT0|BIT6, &P1DIR
+                     bic.b  #BIT3, &P1DIR
+                     bis.b  #BIT3, &P1REN
+                     bis.b  #BIT3, &P1OUT
+ 
+check_btn:    bit.b  #BIT3, &P1IN
+                     jz            set_lights
+                     bic.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+set_lights:   bis.b  #BIT0|BIT6, &P1OUT
+                     jmp           check_btn
+```
 
-Basically, a shell gives you direct access to your computer.
+Let's port it to C:
+```
+#include <msp430g2553.h>
 
-To use git, we'll be using a shell - Git Bash.  Bash is an acronym for Bourne Again Shell - it is probably the most common shell in existence.
+#define TRUE 1
 
-Here are some common shell commands that will prove useful:
+void main(void)
+{
+    P1DIR |= BIT0|BIT6;
+    P1DIR &= ~BIT3;
+    P1REN |= BIT3;
+    P1OUT |= BIT3;
 
-- `ls`
-    - Lists contents of a directory
-- `cd`
-    - Change directory
-- `pwd`
-    - Display the present working directory (directory you're currently in)
-- `cat`
-    - Concatenate, but practically used for displaying the contents of a file
-- `vi` or `vim`
-    - Sweet text editor that your instructor uses
+    while (TRUE)
+    {
+        if (P1IN & BIT3)
+            P1OUT &= ~(BIT0|BIT6);
+        else
+            P1OUT |= BIT0|BIT6;
+    }
+}
+```
 
-*[Demo these commands, get them to open shell and practice them]*
+We talked about it in one of the early C lessons, but I want to emphasize it here: notice how we do bit-wise manipulation in C.
 
-**If you want to learn more, [a tutorial is available on the datasheets page.](/datasheets)**
+`bis` is performed by `|=` - or is the operation for setting bits.  `bic` is performed by `&= ~` - and not is the operator for clearing bits.
 
-### [Git Tutorial](/datasheets/git_tutorial.html)
+### How C Programming Constructs Map to Assembly
 
-*[Give demo following this in class]*
+Who read?  You better have because I wrote this thing myself!
 
-### Common Git Commands
-
-- `git config --global user.name "First Last"`
-    - Stores your name as a property to be used for each commit
-- `git config --global user.email first.last@usafa.edu`
-    - Stores your email as a property to be used for each commit
-- `git init`
-    - Creates a git repository in the current directory
-- `git add <filename>`
-    - Adds the file `<filename>` to the git repository
-- `git commit -a -m "This is what I changed."`
-    - Commits all changes to files you have added and stores a message that describes those changes
-- `git log`
-    - Shows you a complete history of commits within the repository
-- `git status`
-    - Show you the status of the repo this directory is in
-
-### [Github](http://www.github.com)
-
-[Github](http://www.github.com) is the most popular open source code repository site in the world.  It's a web-based hosting service for projects that use Git.  It is required for this class.
-
-*[Go to website, give brief tour]*
-
-A sampling of real-world projects hosted there:
-
-- [Linux](https://github.com/torvalds/linux)
-    - The world's greatest operating system!
-- [jQuery](https://github.com/jquery/jquery)
-    - Popular javascript library for front-end web development
-- [node,js](https://github.com/joyent/node)
-    - Popular framework for serverside javascript
-
-Github is a great place to get access to the source code for some of the world's most popular open source projects.  It's a great way to keep track of programmers whose work you're interested in.  It's also a great way to get involved in the coding community, maybe work on an open source project or release some code of your own.
-
-To incentivize you to explore and use Github more, my solutions to the L21 and L22 assignments are posted there:
-
-- [pong](https://github.com/toddbranch/pong)
-- [moving_average](https://github.com/toddbranch/moving-average)
+*[Walk through examples from reading]*

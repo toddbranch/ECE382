@@ -1,210 +1,182 @@
-title = 'C Programming - Pointers and Arrays' 
+title = 'C Programming - Writing Clean Code.  Revision Control.'
 
 # Lesson 22 Notes
 
 ## Readings
-- [Everything You Need to Know About Pointers in C](http://boredzo.org/pointers/)
-- [Short, Funny Pointer Video](http://www.youtube.com/watch?v=UvoHwFvAvQE)
-    - NOTE: `new` is a C++ keyword - we don't use it in C
+- [Revision Control](https://en.wikipedia.org/wiki/Revision_control)
 
 ## Assignment
-- [Assignment](/notes/L22/L22_moving_average.html)
-- [Install git](/datasheets/git_install.html) - **We will use this during next class**
-- **(OPTIONAL, but kind of fun)** [KSplice pointer challenge](https://blogs.oracle.com/ksplice/entry/the_ksplice_pointer_challenge)
 
 ## Lesson Outline
 - Admin
-- Pointers
-- Arrays
-- Function Parameters
-- Practice
+- Review
+- Writing Clean Code
+- Revision Control
 
 ## Admin
-- Video
-- HW
-    - If you didn't turn in L21 HW, you've got a bunch of stuff to do
-        - L21 HW
-            - Talk about process for initializing structs with variables in CCS compiler
-        - L22 Assignment
-        - Install Git
-            - You must do this because we're using it in class next time!
-        - Optional KSplice Pointer Challenge
-            - Tests your knowledge of pointers
-            - Good practice
-    - Important to get practice with C and get issues worked out prior to labs
-    - If we get done early today, you can work on all this stuff
 
-## Pointers
+- Graded labs, available in Lab
+- Prog grades are in - CAMIS should be (mostly) up to date
+- I'll extend turn-in deadline on pong / moving average to COB for this class
 
-A pointer is a variable that holds a memory address.
+## Review
 
-### Pointers Overview
+- Review pong code
+- Review moving average code
 
-| Token | Context | Description |
-| :-: | :-: | :-: 
-| `&` | Assignment statement | Returns the address of the variable after this token |
-| `*` | Variable declaration | Variable contains the address pointing to a variable of type `var_type` |
-| `*` | Assignment statement | Allows you to access the contents of the variable at which the pointer is pointing |
-| `->` | Structure | Access a structure's elements through a structure pointer (instead of the "." notation).  Also can use `(*structure).element`. |
+## Writing Clean Code
 
-```
-int a = 10;                 // declaring an integer
-int * aPtr;                 // declaring a pointer to an integer
+### Meaningful Names
 
-int* bPtr, cPtr;            // GOTCHA!  cPtr is of type int, not int*!
+*[Write code in vim]*
 
-aPtr = &a;                  // setting the value of aPtr to the address of a
+**[Bad Code](badCode.html)**
 
-*aPtr = 20;                 // sets a to 20 by dereferencing aPtr 
+- Use intention-revealing names ("self-documenting")
+    - `int d, temp; // elapsed time in days, a temporary variable`
+    - `int elapsedTimeInDays, daysSinceModification;`
+- Make meaningful distinctions
+    - `void copyChars(char* a1, char* a2)`
+    - `void copyChars(char* source, char* destination)`
+- Use pronounceable names
+    - `DtaRcrd`
+    - `DataRecord`
+- Use searchable names
+    - `MAX`
+    - `MAX_STUDENTS`
+- Functions: use verbs!
+    - `forward()`
+    - `moveForward()`
+- Don't be cute
+    - `holyHandGrenade()`
+    - `deleteItem()`
+- Pick one word per concept
+    - Bad: `fetch(), retrieve(), get()`
 
-point_t myPoint = {1,2};    // declaring a structure of point_t, initializing with constants
+### Functions
 
-point_t * myPointPtr;       // declaring a pointer to a point_t
+- Small - ideally less than 10 lines long
+- Do one thing
+- Use descriptive names
+- Parameters: rarely need more than two or three
+- Side effects - function should only do what you say it does
+- Do not use static or global variables
+- Only depend on local variables / parameters
+- Don't repeat yourself - write a function instead of copy / paste
+- Only one entry / exit point
+- Indent correctly!
 
-myPointPtr = &myPoint;      // setting the value of myPointPtr to address of myPoint
+*[Let's fix my code!](pong_c.html)*
 
-(*myPointPtr).x = 10;       // sets myPoint.x to 10 by dereferencing myPointPtr
+- Create `updateBallIfHitWall` function
+- Create separate `didHitTop`, `didHitBottom`, `didHitLeft`, `didHitRight` functions
 
-myPointPtr->x = 20;         // sets myPoint.x 10 20 by dereferencing myPointPtr (alternative method)
+### Comments
 
-```
+- Comment on "big picture" items
+    - Head of each file
+    - Definition of each function
+    - Beginning of each major block of code
+- As you move deeper in the hierarchy, the comments are more specific
+- Try writing functions / meaningful names
+    - `if ((employeeFlags & HOURLY_FLAGS) && (employeeAge > 65)) ...`
+    - `if (isEligibleForFullBenefits(employee)) ...`
+- TODO comments
+    - `// TODO: Make this into a function`
+    - `// TODO: Write new header file to group these functions`
+- Bad comments
+    - Restating your code (`a = 1; // Setting a to 1`)
+    - Commented-Out code
+    - Too much information
+    - Don't comment bad code - rewrite it.
 
-### Pointers Example
+*[Let's fix my code!](pong_c.html)*
 
-*[Draw map of this on the board!]*
+- Add comments to functions
 
-```
-unsigned char x = 0x25;                 // address of x is 0x1000
-unsigned int y = 0x1234;                // address of y is 0x1001 - 0x1002
-unsigned char* xPtr = &x;               // address of xPtr is 0x1003 - 0x1004
-unsigned char* yPtr = &y;               // address of yPtr is 0x1005 - 0x1006 
-```
+## Revision Control
 
-Questions are independent - variables reset to original state prior to each.
+- Database that keeps track of multiple versions of your code
+- Revision Control Terms
+    - *Repository* - database where your versions are stored
+    - *Commit* - submit the changes to files since last commit
+    - *Revert* - go back in time to a previous version
+- **Not a substitute for backing up your data!**
+- Commit very frequently
+    - Usually after you get a small part working (e.g. simple function)
+    - It only stores the *difference* between versions (i.e. commits don't take up much disk space)
+- Most common revision control tools
+    - Concurrent Versions System (CVS) - older, but still popular
+    - Subversion (SVN) - designed as a replacement for CVS
+    - Git - hugely popular for individual / team software development
+        - Required for this class
+        - Created by Linus Torvalds for use with the Linux Kernel after Bitkeeper withdrew free use of the product
+        - Wrote the initial version in two weeks, used for kernel development within 2 months
 
-**Question:** What is the value of x and xPtr after the following statements? (remember, MSP430 is little endian)
-```
-xPtr++;
-x = *xPtr + 1; // x = ?
-```
-**Answer:** x = 0x35
+### The Shell
 
-**Question:** What is the value of x and xPtr after the following statement?
-```
-*xPtr = 0x12;
-```
-**Answer:** x = 0x12, xPtr unchanged
+"A shell is software that provided an interface for users of an operating system to access the services of a kernel." - Wikipedia
 
-**Question:** What is the value of y and yPtr after the following statement?
-```
-y = yPtr + *yPtr;
-```
-**Answer:** y = 0x2235, yPtr unchanged
+Basically, a shell gives you direct access to your computer.
 
-## Arrays
+To use git, we'll be using a shell - Git Bash.  Bash is an acronym for Bourne Again Shell - it is probably the most common shell in existence.
 
-- *Array* - a collection of elements of the same data type stored in consecutive memory locations.
-    - Index counting starts at 0
-    - Max index is `NUM_ELEMENTS` - 1
+Here are some common shell commands that will prove useful:
 
-### Array Declaration
+- `ls`
+    - Lists contents of a directory
+- `cd`
+    - Change directory
+- `pwd`
+    - Display the present working directory (directory you're currently in)
+- `cat`
+    - Concatenate, but practically used for displaying the contents of a file
+- `vi` or `vim`
+    - Sweet text editor that your instructor uses
 
-```
-<data_type> array_name[NUM_ELEMENTS]; // Uninitialized
-<data_type> array_name[] = {val0, val1, ...}; // Initialized
-```
+*[Demo these commands, get them to open shell and practice them]*
 
-`array_name` **decays** into a pointer to the first element in the array
+**If you want to learn more, [a tutorial is available on the datasheets page.](/datasheets)**
 
-`<data_type>` lets the compiler know how much to "jump" between elements in the array
+### [Git Tutorial](/datasheets/git_tutorial.html)
 
-### Array Element Access
+*[Give demo following this in class]*
 
-`array_name[INDEX_VAL]`
+### Common Git Commands
 
-### Arrays Example
+- `git config --global user.name "First Last"`
+    - Stores your name as a property to be used for each commit
+- `git config --global user.email first.last@usafa.edu`
+    - Stores your email as a property to be used for each commit
+- `git init`
+    - Creates a git repository in the current directory
+- `git add <filename>`
+    - Adds the file `<filename>` to the git repository
+- `git commit -a -m "This is what I changed."`
+    - Commits all changes to files you have added and stores a message that describes those changes
+- `git log`
+    - Shows you a complete history of commits within the repository
+- `git status`
+    - Show you the status of the repo this directory is in
 
-```
-unsigned int a[3];                      // address of a[0] is 0x1000, address of a[1] is 0x1002, address of a[2] is 0x1004
-unsigned int temp;                      // address of a[3] is 0x1006
-unsigned char* cPtr;                    // address of cPtr is 0x1008
-a[0] = 0x1234;
-a[1] = 0x5678;
-a[2] = 0x9ABC;
-```
+### [Github](http://www.github.com)
 
-Questions are independent - variables reset to original state prior to each.
+[Github](http://www.github.com) is the most popular open source code repository site in the world.  It's a web-based hosting service for projects that use Git.  It is required for this class.
 
-**Question:** What is the value of `temp` after each of the following statements?  (remember, the MSP430 is little endian)
+*[Go to website, give brief tour]*
 
-```
-temp = (unsigned int)a;
-temp = (a+1)[0];
-```
-**Answer:** temp = 0x1000, temp = 0x5678
+A sampling of real-world projects hosted there:
 
-**Question:** What is the value of `cPtr` and `temp` after the following statements? (remember, the MSP430 is little endian) 
+- [Linux](https://github.com/torvalds/linux)
+    - The world's greatest operating system!
+- [jQuery](https://github.com/jquery/jquery)
+    - Popular javascript library for front-end web development
+- [node,js](https://github.com/joyent/node)
+    - Popular framework for serverside javascript
 
-```
-cPtr = (unsigned char *)a;
-temp = (cPtr+1)[0];
-```
-**Answer:** cPtr = 0x1000, temp = 0x7812
+Github is a great place to get access to the source code for some of the world's most popular open source projects.  It's a great way to keep track of programmers whose work you're interested in.  It's also a great way to get involved in the coding community, maybe work on an open source project or release some code of your own.
 
-## Function Parameters
+To incentivize you to explore and use Github more, my solutions to the L21 and L22 assignments are posted there:
 
-- *Pass by Value* - Passing the actual variable
-    - Good choice for small-sized variables
-    - Expensive to copy larger variables (e.g. structures, arrays, etc.)
-- *Pass by Pointer* - Pass pointer into variable (same as Pass by Reference from assembly block)
-    - Constant size parameter no matter how large the object it is to point to
-    - Allows you to directly modify the variable in the function without a `return` statement
-    - Use the `const` keyword if you do not want the function to modify the contents of the pointer's target
-
-**Pass by Value**
-
-```
-char some_function(char a, char b)
-{
-    return ++a + b;
-
-}
-```
-
-**Pass by Pointer**
-
-```
-char some_function(char* a, char* b)
-{
-    return ++(*a) + *b;
-}
-```
-
-**Question:** What is the value of the actual parameter `a` in the client code after each of these functions are called?  What if we change the second one to `const char* a`?
-
-**Question:** How large (in bytes) are each of the parameters in these two functions?
-
-## Practice
-
-```
-char x;                         // Memory location 0x0800 = 0xFF
-char y[3];                      // Memory locations: 0x0801 = 0x23, 0x0802 = 0x56, 0x0803 = 0x89
-char* letter_ptr;               // Memory locations: 0x0804 - 0x0805 = 0xABDC
-```
-
-**Question:** What values would be assigned using the following statements?  Unless otherwise stated, assume each instruction is independent of the other instructions.
-
-```
-x = y[2];                       // Part A
-letter_ptr = &x;                // Part B
-letter_ptr = y;                 // Part C
-x = *(letter_ptr + 2);          // Assume Part C
-y[2] = *(letter_ptr + 1);       // Assume Part B
-```
-
-**Answers**
-A - x = 0x89
-B - letter_ptr = 0x0800
-C - letter_ptr = 0x0801
-D - x = 0x89
-E - y[2] = 0x23
+- [pong](https://github.com/toddbranch/pong)
+- [moving_average](https://github.com/toddbranch/moving-average)

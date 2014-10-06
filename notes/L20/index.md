@@ -1,413 +1,340 @@
-title = 'Compilers. Introduction to C.' 
+title = 'C Programming - Structs, Functions, and Headers.' 
 
 # Lesson 20 Notes
 
 ## Readings
-- [I'm a Compiler](http://stackoverflow.com/questions/2684364/why-arent-programs-written-in-assembly-more-often) - Read the question and top two answers, particularly the second answer
-- [High-level Programming Language](http://en.wikipedia.org/wiki/High-level_programming_language)
+- <a href="http://en.wikipedia.org/wiki/Struct_(C_programming_language)">structs</a>
+- [MOTIVATIONAL: Self-assembling Robots](http://web.mit.edu/newsoffice/2013/simple-scheme-for-self-assembling-robots-1004.html)
 
 ## Assignment
-- [C Basics](L20_C_basics.html)
+- [Assignment - Pong!](/notes/L20/L20_pong.html)
 
 ## Lesson Outline
-- Compilers
-- Introduction to C
+- Structs
+- Functions
+- Headers
+- Example
 
 ## Admin
-- Video
-    - Conan furloughing employees
-- Talk about GRs
-    - Everyone hasn't taken it yet, will be returned next class
-    - Overall, pretty rough
-        - Some of that is on me
-            - GR was a bit long
-            - A couple of questions a little unclear
-        - Some of that is on you
-            - Not enough to just get something working on a lab or survive a HW
-            - You need to **understand** what's going on
-            - I have high expectations for you and that's not going to change
-- Give me some time on the Labs
 
-Ok, so we're through the first big block.  In previous years, assembly was all we did during this class.  But this year we're expecting you to learn even more and move even faster.  These next 5 lessons used to be the first 5 lessons of ECE383. 
+- Show Color LCD, Educational Booster Pack
+- Show motivational video - self-assembling robots!
+- Talk about TALOS
+    - If interested in a 499, talk to me after class
+- GRs graded
+    - Stop me with 10 mins left and I'll go over them
+- Talk about compiler optimization issues with HW
+- Look at two assignments:
+    - [Student Example 1](student_example_1.html)
+    - [Student Example 2](student_example_2.html)
+    - [Student Example 3](student_example_3.html)
 
-We've learned about the MSP430 and its instruction set.  We've learned some assembly programming constructs and implemented a few programs.  We've learned about some of the subsystems on our chip and used SPI.
 
-But most engineers and developers don't program in assembly.
+## Structs
 
-## Compilers
+Remember objects from Java and other High Level Languages?  C has a rough equivalent called structs.  They are collections of variables, but don't have their own functions / methods.
 
-Let's talk about **compilers**.  Everyone do the reading?  If you haven't, you should - it's pretty entertaining and informative.
+- Collection of multiple variables
+- Can be of different types
+- Similar to an Object Oriented Programming (OOP) object, but only contains data (no methods)
 
-What are some other programming languages you know?  [List on board]
-
-[List of Programming Languages](http://en.wikipedia.org/wiki/List_of_programming_languages)
-
-The languages you listed are all what we call High Level Languages (HLL).
-
-What are some benefits of using these over programming in assembly? 
-
-- Ease of development
-    - HLLs offer constructs that allow us to develop code faster.
-        - loops
-        - conditional statements (if/then)
-        - functions
-        - memory management (for some)
-- Portability
-    - HLL code can be made to run on many different machines, whereas assembly is architecture-specific
-- Readability
-    - HLL code is generally easier to read / understand than assembly
-- Optimization
-    - Humans typically aren't that great at writing assembly code
-    - HLLs can offer optimization techniques / restrictions that can improve poorly-written code
-
-*Some perspective*: everything that happens on a computer is machine code.  What do we use to generate machine code?  The assembler.  So every program you write ultimately becomes assembly code, then machine code.
-
-*Remember our workflow*: **assembly code --> assembler --> relocatable machine code --> linker --> executable**
-
-The compiler adds a layer on top of that.  It converts code written in a higher language into assembly, which can then be fed into the rest of our process:
-
-**HLL --> compiler --> assembly code --> assembler --> relocatable machine code --> linker --> executable**
-
-or, since we'll be compiling and assembling code for a different architecture than the one our computer is running, we'll be using a cross-compiler / cross-assembler:
-
-**HLL --> cross-compiler --> assembly code --> cross-assembler --> relocatable machine code --> linker --> executable**
-
-To further our understanding, let's break it down a little further - into Compiled and Interpreted languages.
-
-Compiled languages fit this model exactly.
-
-Interpreted languages (scripting languages) run code on top of their own interpreter, which is written in a compiled language.  [if there is interest, can talk about interpreter / bytecode / bytecode interpreter / JIT compilation / etc]
-
-Some languages, like Java and C#, live somewhere in the middle.  They're compiled into bytecode which can be run on a virtual machine.
-
-REGARDLESS, all code run on a computer is assembly code, then machine code.  Don't lose sight of that connection.
-
-Are there any disadvantages to using an HLL over assembly?
-
-- Less control over generated code
-
-## Introduction to C
-
-The HLL we'll use for the remainder of the course is C.  C is one of the most widely used programming languages of all time - and is still used for a ton of huge / important projects:
-
-- Kernel / OS: Linux, GNU
-- Version Control: git
-- Web Server: Apache, nginx
-- Interpreter: Ruby, Python
-- Databases: mysql, postgresql, redis
-- Virtualization: vmware
-- Almost anything embedded, device drivers
-
-**C is a portable, higher-level assembly.  That's the way you should think about it.**
-
-Great programmers use C very precisely to generate the exact assembly they want to perform a given task - so it's important to understand how the C constructs we'll learn about map to assembly.  I'll save that for a later lesson.
-
-The reason it's still used in many modern applications is that it gives you a lot of control over the generated assembly - making it FAST and MEMORY EFFICIENT.
-
-*[Open up vim and code in front of the class]*
-
-### Comments
-```
-// Single line comment
-
-/* block comment that can span 
-multiple lines */
-
-int i = 0;  // a declaration
-
-/*************************************
-  ** The previous variable was
-  ** declared just as an example.
-*************************************/
-```
-
-### Variables
-
-#### Variable Types
-| Type | Size | Description |
-| :---: | :---: | :---: |
-| char | 1 byte | number or ASCII character |
-| int | 2 bytes | larger number |
-| float | 2 bytes | single-precision floating point number |
-| double | 4 bytes | double-precision floating point number |
-
-- **Note**: These sizes are dependent on the compiler and target architecture - these are for the MSP430.
-- **Note**: Do not use the float / double types on the MSP430 - since it doesn't have floating point hardware support, implementing software support will use almost all of your memory.
-
-#### Variable Modifiers
-| Modifier | Description |
-| :---: | :---: |
-| short | remains a 2-byte integer |
-| long | increases int size to 4 bytes |
-| signed | two's complement numbers (default) |
-| unsigned | allows unsigned arithmetic |
-| static | directly allocates memory to remember a value between function calls.  Variable is allocated to "permanent" memory, not the stack. |
-| extern | atual storage and initial value of variable is defined elsewhere |
-| const | assigns a constant (read-only) value to a variable |
-
-- **Note**: Once again, sizes are dependent on compiler / target architecture - these are for the MSP430.
-
-### Preferred Constant Declaration
-
-The `#define` statment is a pre-processor directive.  The pre-processor will go through and replace each instant of the variable with the value before compilation, similar to a `.equ` statement in assembly.
-
-```
-// #define MY_CONST some_value
-
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
-int numPixels = 0;
-numPixels = SCREEN_WIDTH * SCREEN_HEIGHT;
-```
-- **Note**: There is no ';' or '=' in *#define* statements
-- **Note**: Variables must be declared at the top of a block, and they are not initialized by default.  A block is denoted by braces `{}`
-- **Note**: A value can be binary (0b), octal (0), or hex (0x) by using prefixes.
-
-### Assignment, Arithmetic Operators
-
-```
-char myVar, a, b;  // variable declaration
-
-myVar = a;  // assignment - note, all vars have undefined values at this point
-
-myVar = a + b;  // addition
-myVar = a - b;  // subtraction
-myVar = a * b;  // multiplication
-myVar = a / b;  // division
-
-myVar = a % b;  // modulus (remainder)
-
-myVar++;        // increment
-myVar--;        // decrement
-
-myVar += a;     // myVar = myVar + a
-myVar -= a;     // myVar = myVar - a
-```
-
-### Relational Operators
-
-| Operator | Description | Example |
-| --- | :---: | --- |
-| `<` | less than | |
-| `<=` | less than or equal to | |
-| `>` | greater than | |
-| `>=` | greater than or equal to | |
-| `==` | equal to | |
-| `!=` | not equal to | |
-| `&&` | logical and | |
-
-**Logical OR is double vertical bar `||`, but breaks markdown so I can't print it in the table.**
-
-Example:
-
-```
-if ((a < 10) && (a > 5)) 
-{
-    // literally: if a is greater than 5 and less than 10, do whatever is in here
-    // practically: if a is between 5 and 10, do whatever is in here
-}
-```
-
-- **Note**: In C, "false" is 0, while any non-zero value is considered true.
-
-### Bit-wise Operators
-
-| Operator | Description | Example |
-| :-: | :-: | :-: |
-| `&` | AND | |
-| `^` | XOR | |
-| `~` | One's Complement | |
-| `>>` | Bit-shift right | |
-| `<<` | Bit-shift left | |
-
-**Logical OR is vertical bar `|`, but breaks markdown so I can't print it in the table.**
-
-```
-// Example with SPI
-
-UCA0CTL1 &= ~UCSWRST;            // disable the subsystem (AND UCA0CTL1 with NOT UCSWRST)
-
-// Do config stuff in here
-
-UCA0CTL1 |= UCSWRST;             // enable the subsystem (OR UCA0CTL1 with UCSWRST)
-```
-
-### if Statement
-
-Conditional code execution based on a logical expression.
+*[Open up VIM, code to demo this]*
 
 General case:
 ```
-if (logical expression) 
+struct <name>
 {
-    statements;
-} else if (logical expression)
-{
-    statements;
-}
-...
-else
-{
-    statements;
-}
+    <type> <var1>;
+    <type> <var2>;
+    ...
+};
+
+struct <name> <variable_name>;
+<variable_name>.<var1> = <value>;
+<variable_name>.<var2> = <value>;
+
 ```
 
 Example:
 ```
-if (temp < MIN_TEMP) 
-{
-    flag = TOO_LOW;
-} else if (temp > MAX_TEMP)
-{
-    flag = TOO_HIGH;
-}
-else
-{
-    flag = JUST_RIGHT;
-}
-```
+// Header
+// #includes
+// #defines
 
-### switch Statement
+struct point {
+    char x, y;
+};
 
-Conditional code execution based on a value.
-
-General case:
-```
-switch (value)
-{
-    case constant-expression1:
-        statements;
-        break;
-    case constant-expression2:
-        statements;
-        break;
-    default:
-        // gets executed if no other case hits
-        statements;
-        break;
-}
-```
-
-Example:
-```
-switch (GAME_STATE)
-{
-    case MENU:
-        displayMenu();
-        break;
-    case PLAYING:
-        updateState();
-        break;
-    case LOST:
-        displayLost();
-        break;
-}
-```
-
-### for Loop
-
-Looping construct that tests logical expression and performs operation on an iterator variable.
-
-General case:
-```
-for (initial; continue; increment)
-{
-    statements;
-}
-```
-
-- initial - evaluated once, immediately before the first iteration of the loop.  Usually used to initialize variable.
-- continue - condition checked to execute the next iteration.  If false, then the loop terminates.
-- increment - single statement executed at the end of each loop.  Usually used to increment / decrement a variable.
-
-Example case:
-```
-for (i = 1; i <= 20; i++)
-{
-    sum += i;
-}
-```
-
-### while / do while Loop
-
-Looping construct dependent on a logical expression.
-
-General case:
-```
-while (condition) {
-    statements;
-}
-
-do
-{
-    statements;
-} while (condition);
-```
-
-*do while* is guaranteed to be executed once, *while* isn't.
-
-Example:
-```
-int i = 5;
-
-while (i < 10)
-{
-    i++;
-}
-
-do {
-    i++
-} while (i < 10);
-
-// final value of i is 11
-```
-
-### Basic C Program Structure
-
-General case:
-```
-// #include statements
-// #define statements
-
-// global variables
+struct circle {
+    struct point center;
+    char radius;
+};
 
 void main(void)
 {
-    // Variable declarations
-    // Useful code
+    // You can create and initialize them like this:
 
-    while (1) {}        // trap the CPU
+    struct point center = {20, 7};
+    struct circle myCircle = {center, 5};
+
+    // You can use dot notation to access variables:
+
+    center.x = 10;
+    circle.radius = 25;
 }
 ```
+
+## Functions
+
+Functions are the C equivalent to assembly subroutines or Java methods.  They allow you to make your code modular and reusable.
+
+### Function Call
+
+General Case:
+```
+<variable> func_name(<variable 1>, ...);
+```
+
 Example:
 ```
-#include "helper.h"
-#define NUM_LOOPS 23
+// Header
+// #includes
+// #defines
 
 void main(void)
 {
-    unsigned char i;
-    unsigned int summation = 0;
+    unsigned int mySummation;
+    unsigned char maxN = 42;
 
-    for (i = 1; i <= NUM_LOOPS; i++)
-    {
-        summation += i;
-    }
-
-    while (1) {}        // trap the CPU
-
+    mySummation = summation(23);
+    mySummation = summation(maxN);
 }
 ```
 
-### Header Example
+### Function Prototype
 
-Don't forget your code style!
+- Promises the compiler that the function is implemented elsewhere
+- You are allowed to "call" the function from your code
+- The function prototype *must* be defined in a location physically *before* you call it (e.e. defined above `main()` in a `#include` file).
+- If you offer a prototype but don't provide an implementation, you'll get a linker error.
+
+General case:
+```
+<output_type> func_name(<input type 1> <variable name 1>, ...);
+```
+
+**Note**: function parameters / output can be `void`.
+
+Example:
+```
+// Header
+// #includes
+// #defines
+
+unsigned int summation (unsigned char n);
+
+void main(void)
+{
+    unsigned int mySummation;
+    unsigned char maxN = 42;
+
+    mySummation = summation(23);
+    mySummation = summation(maxN);
+}
+```
+
+### Function Definition
+
+Just by convention, I prefer to define function prototypes above main and implementations below it.
+
+General Case:
+```
+<output_type> func_name(<input type 1> <variable name 1>, ...)
+{
+    // Some interesting stuff
+    return <output variable>;
+}
+```
+
+Example:
+```
+// Header
+// #includes
+// #defines
+
+unsigned int summation (unsigned char n);
+
+void main(void)
+{
+    unsigned int mySummation;
+    unsigned char maxN = 42;
+
+    mySummation = summation(23);
+    mySummation = summation(maxN);
+}
+
+unsigned int summation(unsigned char n)
+{
+    // recursion!
+    if (n <= 0)
+        return 0;
+    else
+        return n + summation(n-1);
+}
+```
+
+## Header and Implementation Files
+
+### Preprocessor Commands
+
+Last time, we talked a little about preprocessor directives (`#define` and `#include`).  The preprocessor is executed before your code compiles.  It handles any lines that start with `#<some_comand> <params>`.  The following are the preprocessor commands you will use:
+
+- `#include "file_name.h"`
+    - Essentially a "copy and paste" of the `file_name.h` into your file
+    - if the file name is surrounded by "", the preprocessor will search in your project working directory
+    - if the file name is surrounded by `<>`, the preprocessor will search your class path.
+- `#define <SINGLE_WORD> <replacement_token>`
+    - Essentially a global "search and replace" within your code
+    - Anytime the `<SINGLE_WORD>` token appears, it will be replaced by the `<replacement token>`
+- `#ifndef <SOME_CONSTANT> ... <some code> ... #endif`
+    - Code is only included if `<SOME_CONSTANT>` is not defined
+    - Usually, your first line of code will be to `#define <SOME_CONSTANT>`
+- `typedef struct point point_t`
+    - Saves you some work for commonly used types:
+        - Old syntax: `struct point myPoint`
+        - With `typedef`: `point_t myPoint`
+- **Note**: aside from `typedef`, these lines do not end with a semicolon (;)!
+
+### C Headers
+
+- A separate file that contains a related set of:
+    - Function _prototypes_
+    - `typedef` declarations
+    - `#define` constants
+    - etc.
+- File naming convention:
+    - All lowercase
+    - Use "_" to combine words
+    - ".h" is the file extension
+    - Example: `atd_helper.h`
+- You must "wrap" the header in a `#ifndef` to prevent circular inclusions
 
 ```
-/*******************************************
-  * Author: Capt Todd Branchflower
-  * Created: 7 Oct 2013
-  * Description: This is an example header!
-*******************************************/
+#ifndef _ATD_HELPER_H_
+#define _ATD_HELPER_H_
+
+// Your header file code (typedefs, function prototypes, #defines, etc.)
+// Use good comment headers to define each function (see example)
+// ...
+
+#endif // _ATD_HELPER_H
 ```
+
+### C Implementation Files
+
+- A separate C file that implements the header file
+- Contains the function _definitions_
+- `#include` the header file as your first line
+- File naming convention:
+    - Same name as the header file!
+    - ".c" is the file extension
+    - Example: `atd_helper.c`
+
+```
+#include "atd_helper.h"
+
+// Function definitions
+// ...
+```
+
+## Example
+
+### Program Requirements
+
+- Build a program that can calculate the following:
+    - Summation
+    - Factorial
+    - Minimum of two values
+    - Maximum of two values
+    - Provides user helpful mathematic constants
+- Must write modular / reusable code:
+    - Header file
+    - Implementation file
+    - `main()` file
+
+### math_helper.h
+
+```
+// Your high-quality header with author / description / revision history
+#ifndef _MATH_HELPER_H_
+#define _MATH_HELPER_H_
+
+// Useful constants
+                                (estimate)      (actual)
+#define PI  (339 / 108)     //  3.139       vs  3.142
+#define E  (155 / 57)       //  2.719       vs  2.718
+
+// Note: you would add some really good headers before each of these
+//       functions to describe their purpose.  In the interest of
+//       brevity, I'm omitting them here.
+unsigned int summation(unsigned char n);
+unsigned int factorial(unsigned char n);
+char max(char a, char b);
+char min(char a, char b);
+
+#endif // _MATH_HELPER_H_
+```
+
+### math_helper.c
+
+```
+#include "math_helper.h"
+
+unsigned int summation(unsigned char n)
+{
+    if (n <= 0)
+        return 0;
+    else
+        return n + summation(n-1);
+}
+
+unsigned int factorial(unsigned char n)
+{
+    if (n <= 0)
+        return 1;
+    else
+        return n * factorial(n-1);
+}
+
+char max(char a, char b)
+{
+    return (a > b) ? a : b;
+}
+
+char min(char a, char b)
+{
+    return (a < b) ? a : b;
+}
+```
+
+### main.c
+
+```
+#include "math_helper.h"
+
+void main(void)
+{
+    char a = 10;
+    char b = 15;
+    char maxVar, minVar;
+    unsigned int sum, fact;
+
+    sum = summation(a);
+    fact = factorial(6);
+    maxVar = max(a, b);
+    minVar = min(a, b);
+
+    while(1){};                 // trap CPU
+}
+```
+
