@@ -1,4 +1,4 @@
-# L22 Assignment - Moving Average
+# L21 Assignment - Moving Average
 
 ## Moving Average
 
