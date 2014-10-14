@@ -3,7 +3,7 @@ title = 'Lab 4 Introduction.  Mapping C to Assembly.'
 # Lesson 23 Notes
 
 ## Readings
-- [Mapping C Programming Constructs to MSP430 Assembly](L24_Mapping_C_to_Assembly.html)
+- [Mapping C Programming Constructs to MSP430 Assembly](L23_Mapping_C_to_Assembly.html)
 
 ## Assignment
 - [Lab 4 Prelab](/labs/lab4/index.html)
