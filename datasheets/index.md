@@ -4,6 +4,8 @@ title = 'Datasheets'
 
 - [General - MSP430x2xx Family Users Guide](msp430_msp430x2xx_family_users_guide.pdf)
 - [Device-Specific - MSP430G2x53 MSP430G2x13 Mixed Signal Microcontroller](msp430g2x53_2x13_mixed_sig_mcu.pdf)
+- [MSP430 Assembly Language Tools](msp430_assembly_language_tools.pdf)
+- [MSP430 Optimizing C Compiler](msp430_optimizing_c_compiler_v4-3.pdf)
 
 ## LCD (Lab 3, 4, 5)
 
@@ -20,6 +22,7 @@ title = 'Datasheets'
 
 - [Programming the MSP430 In-Circuit](in_circuit_programming.html)
 - [Going Standalone](standalone.html)
+- [Mixing C and Assembly] (mixing_c_and_assembly.pdf)
 
 ## Miscellaneous
 

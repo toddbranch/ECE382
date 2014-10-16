@@ -1,83 +1,134 @@
-title = 'Lab 4 - C - "An LCD Device Driver"'
+title = 'Lab 4 - C - "An Etch-a-Sketch"'
 
-# Lab 4 - C - "An LCD Device Driver"
-
-[Teaching Notes](notes.html)
+# Lab 4 - C - "An Etch-a-Sketch"
 
 ## Objectives
 
-You've spent the last 5 lessons transitioning from programming in assembly language to C.  In this lab, you'll use C to write a device driver for the LCD you used in Lab 3.  You'll be expected to write clean, maintainable, modular code that is committed regularly to Git.
+You've spent the last 5 lessons transitioning from programming in assembly language to C.  In this lab, you'll use C to create an etch-a-sketch-type program that utilizes some subroutines from Lab 3.  You'll be expected to write clean, maintainable, modular code that is committed regularly to Git.
 
 ## Details
 
-### The Basic Idea
-
-Ever wonder how you plug a mouse into your computer and it "just works"?  That's due in large part to software called a device driver.  Device drivers are low-level software that interface directly with hardware.  In this lab, you'll write a device driver for the LCD in the Geek box.
-
-Luckily, you've already successfully interfaced with the LCD!  The [code from Lab 3](/labs/lab3/given_code.html) will prove useful - but you'll have to port it to C!
-
-The [datasheets](/datasheets) you used in Lab 3, the [Lab 3 documentation](/labs/lab3), and relevant lesson notes will also prove useful.
-
 ### Required Functionality
 
-Create an LCD device driver using the C programming language.
 
-Print a string to the top and bottom lines of the LCD.
+Modify your assembly drawBlock function to take in 3 values: an x coordinate, a y coodinate, and a color.  
 
-You will want to interface with this LCD again (**in Lab 5**).  I expect you to create a reusable LCD library!  Design a good API in advance - you want this library to be easy to work with in the future.
+Then create an etch-a-sketch program using the directional buttons of the LCD booster pack to control the position of the paint brush. The paint brush will draw 8x8 blocks of pixels. The user will change the position of the paint brush by pressing the directional buttons. Each button press will move the cursor 8 pixels in the direction pressed (see table below). Pressing the auxilary button (SW3) will toggle the mode of the paint brush between filling squares and clearing squares.
 
-You must place your code under version control on git and push your repo to Github.
+| Button | Function |
+| --- | --- |
+| SW5/Up |	Move the cursor up 1 block |
+| SW4/Down	| Move the cursor down 1 block |
+| SW2/Left	| Move the cursor left 1 block |
+| SW1/Right | Move the cursor right 1 block |
+| SW3/Aux | Toggle the color of the paint brush |
+
+This program must be written in C and call many of the subroutines written as part of lab 3, including drawBlock and changePosition. 
 
 Mind your coding standards!  Commit regularly with descriptive commit messages!
 
-[Here are some of my ports of assembly functions to C.](given_code.html)
-
-The rest, you'll have to do yourself...
-
 ### B Functionality
 
-Scroll the message "ECE382 is my favorite class!" across the top line of the LCD.  Scroll a message of your choice across the bottom line.
-
-Note, the messages must wrap around!  So, at some point, I should see "class! E" on the screen.
+Create a bouncing block!  This block should move across the screen in no more than 8 pixel jumps.  Your starting position and starting x and y velocities should be initialized in your header, or should be randomly generated.  
 
 ### A Functionality
 
-Allow the user to select between three different bottom line messages depending on which button they press.  You are free to write your own button library, or use mine available at https://github.com/toddbranch/buttons .
-
-A Functionality Program operation:
-
-- Screen 1
-    - Top Line: Message?
-    - Bottom Line: Press123
-- Screen 2
-    - Top Line (scrolling): ECE382 is my favorite class!
-    - Bottom Line (scrolling): *Chosen message*
-
-Release your LCD library on Github as open source.  Your library should have your `lcd.h` and `lcd.c` files and a `README.md` covering its API and usage at a minimum.  You may include a `example.c` to showcase how it works.  This repo should be separate and distinct from your Lab4 repo.
-
-You must show me each repo successfully hosted on Github to receive credit.
+Create Pong on your display! Create a single paddle that will move up and down on one side of the display, controlled by the up and down buttons.  Where the block hits the paddle will determine how the block bounces off.  When the block misses hitting the paddle, the game will end.  
 
 ### Bonus Functionality
 
-Create an additional library for calibrating your clock to different frequencies.
+Each functionality can be achieved in conjunction with either A or B functionality.  These functionalities must be written in assembly and called by C.  Each is worth 5 points.
 
-Release your clock calibration library  on Github as open source, using the same standards described above for A functionality.  Make sure you include `README.md` covering its API and usage.
+Circle: Instead of a bouncing block, create a bouncing circular ball!
 
-You must show me each repo successfully hosted on Github to receive credit.
+Fine movement: Instead of having the ball/paddle move in 8-pixel jumps, have it move in 1-pixel jumps.
+
+Inverted display: With a push of the SW3 button, invert the display.  Dark pixels will become light pixels, and vice versa.  Instead of a bouncing dark ball, you will have a bouncing light ball.
+
+Note:  The maximum lab grade cannot exceed 105.
+
+## Given Code
+- [lab4.c](lab4.c)
+- [nokia.asm](nokia.asm)
+- [simpleLab4.c](simpleLab4.c)
 
 ## Prelab
 
-Paste the grading section in your lab notebook as the first page of this lab.
 
-Include whatever information from this lab you think will be useful in creating your program.
+### Data types
 
-Design the API for your LCD library.  [Here is mine as an example.](LCD_h.html)
+Go to page 76 of the C Compiler User's Guide to complete the following table. For the type, fill in data type that produces a variable of the given size. For max/min values, write in the maximum and minimum values that can be represented with the data type in that row.  Two examples have been given.
 
-Consider how you'll port different assembly language constructs in the [Lab 3 template code](/labs/lab3/given_code.html) to C.
+| Size | Signed/Unsigned | Type | Min value | Max value |
+| --- | --- | --- | --- | --- |
+| 8-bit | unsigned | | | |
+| 8-bit | signed | | | |
+| 16-bit | unsigned | unsigned short | | |
+| 16-bit | signed | | | |
+| 32-bit | unsigned | | | |
+| 32-bit | signed | | -2,147,483,648 | |
+| 64-bit | unsigned | | | |
+| 64-bit | signed | | | |
 
-Consider how you'll create software delays in C.
+When writing embedded C code, it is always a good idea to separate your code from the architecture as much as possible because to make the code easier to change. This is why it is better to:
+- use the peripheral register names in your code (e.g. P2IN) rather than their address (e.g. 0x28).
+- use peripheral register field names in your code 
 
-If you write any code, an early step should be to get it under version control and push it up to Github (effectively backing it up).
+Because space is limited on microcontrollers, it is a common practice to use variables with a range suitable for the task at hand. Unfortunately, there is no standard among C compilers between the basic data types like char, short, long and the number of bits in the underlying data representation. Furthermore, when writing and reading code, it is not readily apparent how many bits are in a short or long variable. Consequently, we will write our programs using typed definitions that provide an obvious connection between the data type and the number of bits in the representation. 
+
+Start by consulting the [Typedef Wikipedia page](http://en.wikipedia.org/wiki/Typedef). Next, fill in the following chart with the appropriate C code definitions.
+
+| Type | Meaning | C typedef declaration |
+| --- | --- | --- |
+| int8 | unsigned 8-bit value |  |
+| sint8 | signed 8-bit value |  |
+| int16 | unsigned 16-bit value | typedef unsigned short int16;|
+| sint16 | signed 16-bit value |  |
+| int32 | unsigned 32-bit value |  |
+| sint32 | signed 32-bit value |  |
+| int64 | unsigned 64-bit value |  |
+| sint64 | signed 64-bit value |  |
+
+### Calling/Return Convention
+
+Make a project around simpleLab4.c. While the functioning of the program is not really that important, let's first take some time to understand what is going on in this program before we look at the underlying assembly language. Use CCS to step through the program and examine the a, b, c, d, e variables in main, just after the call to the function func in line 16.
+
+| Iteration | a | b | c | d | e |
+| --- | --- | --- | --- | ---| --- |
+| 1st | | | | | | 
+| 2nd | | | | | | 
+| 3rd | | | | | | 
+| 4th | | | | | | 
+| 5th | | | | | | 
+
+Now examine the assembly code generated by the compiler by selecting the View -> Disassembly menu item. You should see the disassembly window as a selectable tab in the subwindow where your registers are displayed. To fill in the following table with the appropriate values, you have a few tasks:
+- Firstly, find the code for the function `func` and write down the starting and ending address in the table below. 
+- Next, identify which registers are used to pass the input parameters from main to the function. Write their identities below. If it is not clear which register holds which input parameter, test it out!  Go ahead and change the code, so that `func` only has one input parameter, recompile the code, and then examine the assembly. 
+- Finally, determine which register is used to return the value from func to main.
+
+| Parameter | Value Sought |
+| --- | --- |
+| Starting address of `func` | |
+| Ending address of `func` | |
+| Register holding w | |
+| Register holding x | |
+| Register holding y | |
+| Register holding z | |
+| Register holding return value | |
+
+### Cross language build constructs
+
+Answer the following questions:
+
+What is the role of the `extern` directive in a .c file?  Hint: check out the [external variable](http://en.wikipedia.org/wiki/External_variable) Wikipedia page.
+<br><br><br><br><br>
+
+
+
+
+
+What is the role of the `.global` directive in an .asm file (used in lines 28-32)?  Hint: reference section 2.6.2 in the MSP 430 Assembly Language Tools v4.3 User's Guide.
+<br><br><br><br><br>
 
 ## Notes
 
@@ -85,49 +136,15 @@ Read the [guidance on Labs / Lab Notebooks / Coding standards](/admin/labs.html)
 
 Mind your code style!
 
-Use git / Github and commit regularly with descriptive commit messages!  This is worth 10pts of your grade!
-
-It might be helpful to start off by porting assembly code directly to C.  But this shouldn't be your final code!  Once you have it working, you should improve its structure using the programming techniques you've learned.
-
-C does not have a strings data type - they are represented as arrays of characters:
-```
-char * string1 = "this is a string";       // this string is stored in ROM and isn't alterable 
-char string2[] = "this is a string";       // this string is stored in RAM and is alterable
-```
-
-## Hints
-
-There is a C macro available that makes creating delays much easier.  `__delay_cycles(num_of_cycles)` will delay the specified number of clock cycles with no side effects.
-
-Strings in C are "null terminated".  That means that each string is ended with a character with the value 0.  This can help you determine where the end of a string is.
-
-I've implemented string scrolling in two ways - both are equally valid:
-
-- Create a string rotation function that moves the first letter to the end and moves all other characters up
-    - `void rotateString(char * string)`
-	- You must use a rewritable string for this technique!
-- Keep track of your current location within the string and print from there.  Don't forget to wrap around!
-    - `char * printFromPosition(char * start, char * current, char screenSizeInChars)`
-    - returns the updated current position
-	- This is the more robust technique - it doesn't need rewritable strings and can handle strings of any length.
-
-It's annoying to constantly have to `cd` all the way to the directory where your lab is located.  We can fix that:
-
-Type `alias "goToLab"="cd ~/path/to/your/lab"` in your shell.
-
-Now, every time you type `goToLab`, it will replace it with the longer `cd` command.  Nice!
-
-Unfortunately, we'll have to type this alias every time we open the shell - unless we put it in the file `~/.bashrc`.  If we put it in there, it will automatically be loaded every time we open our shell!  Once you add it, type `source ~/.bashrc` to load the commands.
 
 ## Grading
 
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
-| Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L25 |
-| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L26 |
-| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
-| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L26 |
-| Bonus Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 | | COB L26 |
-| Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L27 |
-| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L27 |
+| Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 10 | | BOC L23 |
+| Required Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L24 |
+| B Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L24 |
+| A Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L24 |
+| Bonus Functionality | **On-Time** -------------------------------------------------------------------- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 5 each for circle, fine, and inverted | | COB L24 |
+| Lab Notebook | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ----- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L25 |
 | **Total** | | | **100** | | |
