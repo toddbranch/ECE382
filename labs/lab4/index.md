@@ -1,6 +1,6 @@
-title = 'Lab 4 - C - "An Etch-a-Sketch"'
+title = 'Lab 4 - C - "Etch-a-Sketch and Pong"'
 
-# Lab 4 - C - "An Etch-a-Sketch"
+# Lab 4 - C - "Etch-a-Sketch and Pong"
 
 ## Objectives
 
@@ -13,7 +13,7 @@ You've spent the last 5 lessons transitioning from programming in assembly langu
 
 Modify your assembly drawBlock function to take in 3 values: an x coordinate, a y coodinate, and a color.  
 
-Then create an etch-a-sketch program using the directional buttons of the LCD booster pack to control the position of the paint brush. The paint brush will draw 8x8 blocks of pixels. The user will change the position of the paint brush by pressing the directional buttons. Each button press will move the cursor 8 pixels in the direction pressed (see table below). Pressing the auxilary button (SW3) will toggle the mode of the paint brush between filling squares and clearing squares.
+Create an etch-a-sketch program using the directional buttons of the LCD booster pack to control the position of the paint brush. The paint brush will draw 8x8 blocks of pixels. The user will change the position of the paint brush by pressing the directional buttons. Each button press will move the cursor 8 pixels in the direction pressed (see table below). Pressing the auxiliary button (SW3) will toggle the mode of the paint brush between filling squares and clearing squares.
 
 | Button | Function |
 | --- | --- |
@@ -29,15 +29,15 @@ Mind your coding standards!  Commit regularly with descriptive commit messages!
 
 ### B Functionality
 
-Create a bouncing block!  This block should move across the screen in no more than 8 pixel jumps.  Your starting position and starting x and y velocities should be initialized in your header, or should be randomly generated.  
+Create a bouncing block!  This block should move across the screen with no more than 8 pixels per jump.  It should bounce off the walls appropriately, similar to assignment 6.  An adequate delay movement should be added between each block movement.  Your starting position and starting x and y velocities should be initialized in your header, or should be randomly generated. 
 
 ### A Functionality
 
-Create Pong on your display! Create a single paddle that will move up and down on one side of the display, controlled by the up and down buttons.  Where the block hits the paddle will determine how the block bounces off.  When the block misses hitting the paddle, the game will end.  
+Create Pong on your display! Create a single paddle that will move up and down on one side of the display, controlled by the up and down buttons.  The block will bounce off the paddle like it bounces off the wall.  When the block misses hitting the paddle, the game will end.  
 
 ### Bonus Functionality
 
-Each functionality can be achieved in conjunction with either A or B functionality.  These functionalities must be written in assembly and called by C.  Each is worth 5 points.
+Each bonus functionality can be achieved in conjunction with either A or B functionality.  These functionalities must be written in assembly and called by C.  Each is worth 5 points.
 
 Circle: Instead of a bouncing block, create a bouncing circular ball!
 
