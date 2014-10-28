@@ -6,6 +6,9 @@ title = 'More timers.  Interrupts and ISRs.  MSP430 Interrupt System.'
 - [Interrupts](http://en.wikipedia.org/wiki/Interrupt)
 - [Interrupt Handler](http://en.wikipedia.org/wiki/Interrupt_handler)
 
+## Assignment
+- [Assignment](/notes/L26/L26_timer_interrupt_lab4.html)
+
 ## Lesson Outline
 - Admin
 - Interrupts
