@@ -2,8 +2,8 @@
 
 ## Timers and Interrupts
 
-Modify your lab4 code to either:
-	- Use the timer subsystem for your delay on your pong game or bouncy ball, or
+Modify your lab4 code to either: <br>
+	- Use the timer subsystem for your delay on your pong game or bouncy ball, or <br>
 	- Use interrupts for the push buttons on your pong game or etch-a-sketch
 
 
