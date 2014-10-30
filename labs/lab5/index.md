@@ -84,10 +84,13 @@ Write the codes (in hex) for several remote control buttons.
 | CH + | |
 | CH - | | |
 
+### Day 2
+
+Demonstrate to your instructor that your code can receive and decode button presses from the remote control.
+
 ### Required Functionality
 
-Watch the video andachieve that functionality.  Turn an LED on and off with onebuttonon the remote.  Turn another LED on and off witha different button.
-
+Watch the video and achieve that functionality.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
 
 
 ### B Functionality
@@ -109,11 +112,10 @@ Read the assignment so you can make good use of your time in class.
 
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
-| Day 1 activities | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | BOC L29 |
+| Day 1 activities | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | BOC L29 |
 | Day 2 functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L30 |
-| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L30 |
-| Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L31 |
-| Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L31 |
-| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L31 |
+| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | | | COB L30 |
+| Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
+| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
 | **Total** | | | **100** | | |
 |
