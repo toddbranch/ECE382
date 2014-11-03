@@ -22,6 +22,13 @@ Lab day 3: implement etch-a-sketch or pong
 
 Answers to these activities should be posted to GitHub.
 
+#### Connecting the IR sensor
+Insert the IR receiver module into the protoboard.  Use M/F wires to connect your protoboard to your MSP430. Use a regular wire to connect your signal and ground to the logic analyzer.
+
+When you are looking at the sensor ball on your IR receiver module, the pin on the left is your signal pin; the pin in the middle is your ground pin; and the pin on the right is your Vcc.  
+
+On your MSP430, connect the signal pin to XIN/P2.6 on J2, the ground pin to the GND pin on J6, and the Vcc pin to Vcc on J6.  
+
 #### Timer Counts
 Build a project around test5.c and then download it onto your LaunchPad. Make sure to open the variables tab (View -> Variables). I also like to clear memory from the Memory Browser tab (View -> Memory Browser), Fill Memory from 0x200 to 0x400 with 0's. Run the program and then press a button on a remote. Then pause the program and look at the variables. You should see something like the following. <br>
 ![array screen shot](arrayScreenShot.gif)
@@ -90,7 +97,7 @@ Demonstrate to your instructor that your code can receive and decode button pres
 
 ### Required Functionality
 
-Watch the video and achieve that functionality.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
+Watch the Dave Jones' Trigger Holdoff video and achieve that functionality using both timer interrupts and a.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
 
 
 ### B Functionality
@@ -107,6 +114,10 @@ Use the buttons on a remote control to either control your lab #4 etch-a-sketch 
 
 Read the assignment so you can make good use of your time in class.
 
+## GitHub
+
+Don't forget to include your hardware schematic!
+
 
 ## Grading
 
@@ -114,6 +125,7 @@ Read the assignment so you can make good use of your time in class.
 |:-: | :-: | :-: | :-: | :-: |
 | Day 1 activities | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | BOC L29 |
 | Day 2 functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L30 |
+| Required functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L30 |
 | A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | | | COB L30 |
 | Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
 | README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
