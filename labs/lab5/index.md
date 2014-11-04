@@ -51,7 +51,7 @@ Before you start on this portion of the assignment, watch [Dave Jones' Trigger H
 
 Setup your LaunchPad like the picture below. Make sure to connect the power and ground in the correct order! Connect the the O'scope on the Vout pin of the Vishay Remote Control Decoder. 
 <br>
-![LaunchPad setup]
+![LaunchPad setup](launchpadSetup.jpg)
 <br>
 
 Set the trigger threshold to mid voltage and the trigger hold-off to accommodate an IR packet. On my remote control, this was about 80ms. Please note that remote control data packets are not standardized by any means, so the remote that you use to perform these experiment will almost certainly generate different results than those that your neighbor's will generate.
@@ -123,11 +123,11 @@ Don't forget to include your hardware schematic!
 
 | Item | Grade | Points | Out of | Date | Due |
 |:-: | :-: | :-: | :-: | :-: |
-| Day 1 activities | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | BOC L29 |
-| Day 2 functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L30 |
-| Required functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L30 |
-| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | | | COB L30 |
-| Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
-| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| |  | | COB L31 |
+| Day 1 activities | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | BOC L29 |
+| Day 2 functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | BOC L30 |
+| Required functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 20 | | BOC L30 |
+| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L30 |
+| Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L31 |
+| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 30 | | COB L31 |
 | **Total** | | | **100** | | |
 |
