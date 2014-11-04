@@ -22,7 +22,7 @@ title = 'Datasheets'
 
 - [Programming the MSP430 In-Circuit](in_circuit_programming.html)
 - [Going Standalone](standalone.html)
-- [Mixing C and Assembly] (mixing_c_and_assembly.pdf)
+- [Mixing C and Assembly](mixing_c_and_assembly.pdf)
 
 ## Miscellaneous
 
