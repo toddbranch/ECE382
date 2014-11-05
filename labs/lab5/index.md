@@ -97,7 +97,7 @@ Demonstrate to your instructor that your code can receive and decode button pres
 
 ### Required Functionality
 
-Watch the Dave Jones' Trigger Holdoff video and achieve that functionality using both timer interrupts and a.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
+Watch the Dave Jones' Trigger Holdoff video and achieve that functionality using both timer interrupts and a port 2 interrupt.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
 
 The below image may be of some use:<br>
 ![schematic](schematic.jpg)
