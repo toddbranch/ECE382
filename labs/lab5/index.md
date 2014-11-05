@@ -100,15 +100,14 @@ Demonstrate to your instructor that your code can receive and decode button pres
 Watch the Dave Jones' Trigger Holdoff video and achieve that functionality using both timer interrupts and a.  Turn an LED on and off with one button on the remote.  Turn another LED on and off with a different button.
 
 
-### B Functionality
-
-
 ### A Functionality
 
 Use the buttons on a remote control to either control your lab #4 etch-a-sketch (up, down, right, left, color) or your pong game.
 
 ## Given code
 - [test5.c](test5.c)
+- [start5.c](start5.c)
+- [start5.h](start5.h)
 
 ## Prelab
 
@@ -116,7 +115,7 @@ Read the assignment so you can make good use of your time in class.
 
 ## GitHub
 
-Don't forget to include your hardware schematic!
+Don't forget to include your hardware schematic!  Software flowcharts are also very useful.
 
 
 ## Grading
