@@ -15,7 +15,7 @@ This lab is designed to provide you with experience using the pulse-width modula
 Our mobile robots have DC motors to drive the wheels.  The amount of torque provided by the motor is directly proportional to the amount of voltage provided.  Therefore, there are two ways of varying the speed of the DC motors:
 
 1. Provide an analog voltage where the magnitude is proportional to the output torque desired.
-2. Provide a PWM signal where the duty cycle provides an "average" voltage proportional to the output torque desired.  This is shown if Figure 1.
+2. Provide a PWM signal where the duty cycle provides an "average" voltage proportional to the output torque desired.  This is shown in Figure 1.
 
 ![PWM to Motor](pwm_to_motor.png)
 
@@ -27,21 +27,13 @@ You might want to program your robot so it turns like a tank; one wheel moves fo
 
 ## Required Functionality
 
-Demonstrate movement forward, backwards, a small (< 45 degree) turn left/right, and a large (> 45 dgree) turn left/right.  The robot should perform these movements sequentially, completely disconnected from a computer (no USB cord).
-
-## B Functionality
-
-Release a robot movement library on Github.  Document your interface and provide sample code using the library functions in a README.
+Demonstrate movement forward, backward, a small (< 45 degree) turn left and right, and a large (> 45 dgree) turn left and right.  The robot should perform these movements sequentially, completely disconnected from a computer (no USB cord).
 
 ## A Functionality
 
-Use interrupts to count PWM periods instead of `_delay_cycles()` to determine the length of your movement elements.
-
-You can use a dedicated PWM signal for timing - this is probably the easiest approach.
+Control your robot with your remote!  You should use at least four different buttons on the remote: one each to indicate motion directions of forward, backward, left, and right.
 
 ## Prelab
-
-Paste the grading section in your lab notebook as the first page of this lab.
 
 Include whatever information from this lab you think will be useful in creating your program.
 
@@ -130,9 +122,7 @@ To test whether a fuse is burned, use the ohmmeter - a working fuse should have 
 |:-: | :-: | :-: | :-: | :-: |
 | Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 15 | | BOC L33 |
 | Required Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 35 | | COB L35 |
-| B Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L35 |
-| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L35 |
-| Use of Git / Github | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L36 |
+| A Functionality | **On-Time** ------------------------------------------------------------------ **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 15 | | COB L35 |
 | Code Style | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L36 |
-| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 10 | | COB L36 |
+| README | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus ---- **Late:** 1Day ---- 2Days ---- 3Days ---- 4+Days| | 25 | | COB L36 |
 | **Total** | | | **100** | | |
