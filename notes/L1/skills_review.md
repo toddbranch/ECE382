@@ -188,21 +188,23 @@ Objectives:
 - Know how to use bit masking to change registers. 
 - Demonstrate the ability to design a digital logic circuit.
 <br>
-8. (5 pts)  You are given a 16-bit register called R6 that contains a certain value.  You need to ensure that the 0th and the 6th bits are set (in other words, they have a value of one) in order for your program to function correctly, but you don't want to change any other bits in the register.  Describe what operation needs to be performed and the operands involved in order to set these bits.  Pseudocode will suffice.
+<ol start="8">
+<li> (5 pts)  You are given a 16-bit register called R6 that contains a certain value.  You need to ensure that the 0th and the 6th bits are set (in other words, they have a value of one) in order for your program to function correctly, but you don't want to change any other bits in the register.  Describe what operation needs to be performed and the operands involved in order to set these bits.  Pseudocode will suffice.</li>
 <br>
 <br>
 <br>
 <br>
 <br>
-9. (5 pts) You forgot you needed to modify one other 16-bit register called R7 to allow your program to work correctly.  In R7, the 0th, 6th, and 15th bits need to be cleared (set to zero) without affecting the other bits in the register.  Describe what operation needs to be performed and the operands involved in order to clear these bits.  Pseudocode will suffice.
+<li>(5 pts) You forgot you needed to modify one other 16-bit register called R7 to allow your program to work correctly.  In R7, the 0th, 6th, and 15th bits need to be cleared (set to zero) without affecting the other bits in the register.  Describe what operation needs to be performed and the operands involved in order to clear these bits.  Pseudocode will suffice.</li>
 <br>
 <br>
 <br>
 <br>
 <br>
-10. (5pts) Draw a schematic circuit that will generate the following equation.  You may use only the following gates: AND, OR, and NOT.  **No simplification is allowed**.
+<li>(5pts) Draw a schematic circuit that will generate the following equation.  You may use only the following gates: AND, OR, and NOT.  **No simplification is allowed**.
 
-F = X'Y' + YZ' +X'Y'Z
+F = X'Y' + YZ' +X'Y'Z</li>
+</ol>
 <br>
 <br>
 <br>
