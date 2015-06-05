@@ -134,7 +134,7 @@ Objectives:
 - Explain the concept of overflow and when it occurs.
 - Know how to add and subtract two binary numbers and note whether an overflow occurs.
 
-5. (10pts each) All of the numbers below are represented using 8-bit, two's complement notation.  Perform the specified operations and specify whether or not an overflow occurs.
+5. (5 pts each) All of the numbers below are represented using 8-bit, two's complement notation.  Perform the specified operations and specify whether or not an overflow occurs.
 
 a.  
    1110 1101  
@@ -185,10 +185,24 @@ b.
 
 Objectives:
 
-
+- Know how to use bit masking to change registers. 
 - Demonstrate the ability to design a digital logic circuit.
 
-8. (5pts) Draw a schematic circuit that will generate the following equation.  You may use only the following gates: AND, OR, and NOT.  **No simplification is allowed**.
+8. (5 pts)  You are given a 16-bit register called R6 that contains a certain value.  You need to ensure that the 0th and the 6th bits are set (in other words, they have a value of one) in order for your program to function correctly, but you don't want to change any other bits in the register.  Describe what operation needs to be performed and the operands involved in order to set these bits.  Pseudocode will suffice.
+<br>
+<br>
+<br>
+<br>
+<br>
+
+9. (5 pts) You forgot you needed to modify one other 16-bit register called R7 to allow your program to work correctly.  In R7, the 0th, 6th, and 15th bits need to be cleared (set to zero) without affecting the other bits in the register.  Describe what operation needs to be performed and the operands involved in order to clear these bits.  Pseudocode will suffice.
+<br>
+<br>
+<br>
+<br>
+<br>
+
+10. (5pts) Draw a schematic circuit that will generate the following equation.  You may use only the following gates: AND, OR, and NOT.  **No simplification is allowed**.
 
 F = X'Y' + YZ' +X'Y'Z
 <br>
