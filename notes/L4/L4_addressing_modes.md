@@ -14,9 +14,10 @@ swpb    r7
 ```
 Addressing modes used:
 <br>
+source:
 <br>
 <br>
-<br>
+destination:
 <br>
 <br>
 <br>
@@ -25,9 +26,10 @@ xor     @r12+, 0(r6)
 ```
 Addressing modes used:
 <br>
+source:
 <br>
 <br>
-<br>
+destination:
 <br>
 <br>
 <br>
@@ -36,9 +38,10 @@ nop
 ```
 Addressing modes used:
 <br>
+source:
 <br>
 <br>
-<br>
+destination:
 <br>
 <br>
 <br>
@@ -47,9 +50,10 @@ mov.w   @r12, &0x0200
 ```
 Addressing modes used:
 <br>
+source:
 <br>
 <br>
-<br>
+destination:
 <br>
 <br>
 <br>
@@ -76,8 +80,10 @@ What addressing modes are being used here?
 <br>
 <br>
 <br>
+source:
 <br>
 <br>
+destination:
 <br>
 <br>
 <br>
