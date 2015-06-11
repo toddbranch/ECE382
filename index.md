@@ -15,12 +15,12 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L7](notes/L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | [Assignment 3](notes/L7/L7_control_flow.html) | |
 | [L8](notes/L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  [Lab 1](/labs/lab1/index.html) Introduction. | [Lab 1](/labs/lab1/index.html) Prelab | [Assignment 3](notes/L7/L7_control_flow.html) |
 | L9 | [Lab 1](/labs/lab1/index.html) - Loops / Branches.  "Simple Calculator". | [Lab 1](/labs/lab1/index.html) | [Lab 1](/labs/lab1/index.html) Prelab |
-| [L10](notes/L10/index.html) | The Stack.  Subroutines.  [Lab 2](/labs/lab2/index.html) Introduction. | [Lab 2](/labs/lab2/index.html) Prelab | [Lab 1](/labs/lab1/index.html) Functionality |
+| [L10](notes/L10/index.html) | The Stack.  Subroutines.  [Lab 2](/labs/lab2/index.html) Introduction. | [Lab 2](/labs/lab2/index.html) Prelab, [Stack hw](notes/L10/stack_hw.html) | [Lab 1](/labs/lab1/index.html) Functionality |
 | L11 | [Lab 2](/labs/lab2/index.html) - Subroutines.  "Cryptography". | [Lab 2](/labs/lab2/index.html) | [Lab 1](/labs/lab1/index.html) Lab Notebook (Signoff), [Lab 2](/labs/lab2/index.html) Prelab |
 | L12 | [Lab 2](/labs/lab2/index.html) - Subroutines.  "Cryptography". | | [Lab 2](/labs/lab2/index.html) Functionality |
 | [L13](notes/L13/index.html) | Peripherals. Ports.  GPIO.  Multiplexing. | | [Lab 2](/labs/lab2/index.html) Notebook |
 | [L14](notes/L14/index.html) | Polling.  Debouncing.  Software Delay Routines. | [Assignment 4](notes/L14/L14_subroutines.html) | |
-| [L15](notes/L15/index.html) | Serial Comm Fundamentals.  Serial Peripheral Interface.  [Lab 3](/labs/lab3/ index.html) Introduction.  Logic Analyzer Demo. | [Lab 3](/labs/lab3/index.html) Mega Prelab | [Assignment 4](notes/L14/L14_subroutines.html) |
+| [L15](notes/L15/index.html) | Serial Comm Fundamentals.  Serial Peripheral Interface.  [Lab 3](/labs/lab3/index.html) Introduction.  Logic Analyzer Demo. | [Lab 3](/labs/lab3/index.html) Mega Prelab | [Assignment 4](notes/L14/L14_subroutines.html) |
 | L16 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | [Lab 3](/labs/lab3/index.html) | [Lab 3](/labs/lab3/index.html) Mega Prelab (BOC) |
 | L17 | [Lab 3](/labs/lab3/index.html) - Polling and SPI. | ||
 | L18 | [GR #1](/admin/gr1_resources) | | |
