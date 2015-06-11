@@ -15,7 +15,7 @@ title = 'Intro to Embedded Systems with the MSP430'
 | [L7](notes/L7/index.html) | Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer. | [Assignment 3](notes/L7/L7_control_flow.html) | |
 | [L8](notes/L8/index.html) | Directives.  Assembly Process.  Structured Design and Test.  Debugging.  [Lab 1](/labs/lab1/index.html) Introduction. | [Lab 1](/labs/lab1/index.html) Prelab | [Assignment 3](notes/L7/L7_control_flow.html) |
 | L9 | [Lab 1](/labs/lab1/index.html) - Loops / Branches.  "Simple Calculator". | [Lab 1](/labs/lab1/index.html) | [Lab 1](/labs/lab1/index.html) Prelab |
-| [L10](notes/L10/index.html) | The Stack.  Subroutines.  [Lab 2](/labs/lab2/index.html) Introduction. | [Lab 2](/labs/lab2/index.html) Prelab, [Stack hw](notes/L10/stack_hw.html) | [Lab 1](/labs/lab1/index.html) Functionality |
+| [L10](notes/L10/index.html) | The Stack.  Subroutines.  [Lab 2](/labs/lab2/index.html) Introduction. | [Lab 2](/labs/lab2/index.html) Prelab, [Stack hw](notes/L10/stack_hw.htm) | [Lab 1](/labs/lab1/index.html) Functionality |
 | L11 | [Lab 2](/labs/lab2/index.html) - Subroutines.  "Cryptography". | [Lab 2](/labs/lab2/index.html) | [Lab 1](/labs/lab1/index.html) Lab Notebook (Signoff), [Lab 2](/labs/lab2/index.html) Prelab |
 | L12 | [Lab 2](/labs/lab2/index.html) - Subroutines.  "Cryptography". | | [Lab 2](/labs/lab2/index.html) Functionality |
 | [L13](notes/L13/index.html) | Peripherals. Ports.  GPIO.  Multiplexing. | | [Lab 2](/labs/lab2/index.html) Notebook |
