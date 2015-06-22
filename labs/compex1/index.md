@@ -279,4 +279,6 @@ Section:
 <br>
 <br>
 <br>
-8. (10pts) Tell me three things you have learned so far in this class.
+8. (10pts) Go to bitbucket.org and create an account there if you do not have one already.  This site will be where you turn in your labs for this class.  For each lab, you will create a separate project (with a descriptive name, such as ECE382-Lab1).  Each repository will be private, and you will add your instructor with read permissions to each repository.  For full points on this question, send your instructor an email with your bitbucket username before this assignment is due.  
+<br>
+<br>

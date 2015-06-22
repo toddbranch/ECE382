@@ -160,14 +160,7 @@ What's an equivalent replacement instruction?
 <br>
 <br>
 <br>
-- Give an example of how the PUSH and POP instructions manipulate the stack.
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 - In the example code for the CMP instruction (page 77) what role do the R6 and R7 registers play?
 <br>
 <br>
