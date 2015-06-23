@@ -28,7 +28,7 @@ You are expected to keep your lab notebooks current as you work on a lab.  You w
 
 ### Electronic Lab Notebooks
 
-In this class, we will use an electronic lab notebook.  We'll be using the version control software **git** and your code must be hosted on [Github](http://www.github.com).  Here is the directory structure that must be used if you have more than one code file or more than one image file to be uploaded for a single lab:
+In this class, we will use an electronic lab notebook.  We'll be using the version control software **git** and your code must be hosted on [Bitbucket](http://bitbucket.org).  Here is the directory structure that must be used if you have more than one code file or more than one image file to be uploaded for a single lab:
 
 - /LabX
     - /code
