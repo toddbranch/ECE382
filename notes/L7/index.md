@@ -19,13 +19,6 @@ title = 'Arithmetic / Logic, Shift / Rotate Instructions.  Watchdog Timer.'
 
 ## Admin
 
-- Video
-- Parents weekend
-    - Who has parents coming on Friday?
-    - Any DVs I should know about?
-    - Friday is your lab day - you need to come prepared to work.  Parents can help you - but this needs to be a productive period or you'll be behind.  You  only get one lab day for Lab 1.
-- Pass out lab notebooks
-    - We'll discuss expectations next class.
 - Questions about stuff we did last lesson?  Earlier?
 - CompEx
     - When I say "write a program that...", that is NOT an abstract exercise.  You have the development board - write in CCS, run, and debug!
